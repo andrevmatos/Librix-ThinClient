@@ -1,0 +1,33 @@
+[1] Indentation
+	Use 4-space tab per indentation level.
+
+[2] Maximum Line Length
+	[2.1] Limit all lines to a maximum of 79 characters.
+	[2.2] Try to limit comments and docstrings to maximum of 72 characters.
+	
+[3] Encoding
+	Use UTF-8 always
+
+[4] Names
+	[4.1] Classes, functions and variables must be written in English.
+	[4.2] Modules and packets: No capitalized and words separation must be
+	underline.
+	(ex: pack_name).
+	[4.3] Classes: The first character of all words must be capitalized and
+	has no word separation.
+	(ex: ClassName)
+	[4.4] Functions and Methods: The first character of all words must be
+	capitalized but the first word and has no word separation.
+	(ex: functionName)
+		[4.4.1] Local functions and methods must starts with underline.
+		(ex: _localFunctionName)
+	[4.5] Variables: No capitalized and words separation must be underline.
+	(ex: variable_name)
+		[4.5.1] Local variables must starts with underline.
+		(ex: _local_variable_name)
+	[4.6] Constants: All capitalized and words separation must be underline.
+	(ex: CONSTANT_NAME)
+
+[5] Docstrings and Comments.
+	[5.1] Docstrings and Comments must be written in English.
+	[5.2] All Classes and public functions must have a docstring.
