@@ -63,7 +63,7 @@ class Main(QtGui.QMainWindow):
 
 		self.currentOptionsWidgets = self.Users.widget
 
-		QtCore.QObject.connect(self.ui.listWidget, QtCore.SIGNAL("itemClicked(QListWidgetItem*)"), self.activateTab)
+		QtCore.QObject.connect(self.ui.listWidget, QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
 
 		self.ui.listWidget.item(0).setSelected(1)
 		self.activateTab(self.Users.Tab)
