@@ -1,0 +1,25 @@
+<RCC>
+  <qresource prefix="user_icon">
+    <file>system-users.png</file>
+  </qresource>
+  <qresource prefix="profileAction">
+    <file>document-close.png</file>
+    <file>document-edit.png</file>
+    <file>document-edit-verify.png</file>
+    <file>document-new.png</file>
+  </qresource>
+  <qresource prefix="add_icon">
+    <file>arrow-right-double.png</file>
+    <file>list-add.png</file>
+  </qresource>
+  <qresource prefix="remove_icon">
+    <file>arrow-left-double.png</file>
+    <file>list-remove.png</file>
+  </qresource>
+  <qresource prefix="edit_icon">
+    <file>document-edit.png</file>
+  </qresource>
+  <qresource prefix="export_icon">
+    <file>fork.png</file>
+  </qresource>
+</RCC>
