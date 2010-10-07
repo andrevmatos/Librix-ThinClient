@@ -36,35 +36,39 @@ class Main(QtGui.QMainWindow):
 
 		self.ui = Ui_ThinClient()
 		self.ui.setupUi(self)
+		self.setupWidgets()
 
+	def setupWidgets(self):
+		""" Execute the options widgets configuration
+		@param self a Main() instance
+		"""
+		# TODO: implement qt translate, instead of pure strings
 		self.Users = Ui_UsersWidget()
 		self.Users.widget = QtGui.QWidget()
 		self.Users.setupUi(self.Users.widget)
+		self.Users.Tab = self.makeListItemWidget(self.ui.listWidget, 'Users', QtGui.QIcon(":/user_icon/system-users.png"))
+		self.ui.horizontalLayout.addWidget(self.Users.widget)
+		self.Users.widget.hide()
 
 		self.Edit = Ui_EditWidget()
 		self.Edit.widget = QtGui.QWidget()
 		self.Edit.setupUi(self.Edit.widget)
+		self.Edit.Tab = self.makeListItemWidget(self.ui.listWidget, 'Edit Profiles', QtGui.QIcon(":/edit_icon/document-edit.png"))
 		self.makeProfilesToolBar()
+		self.ui.horizontalLayout.addWidget(self.Edit.widget)
+		self.Edit.widget.hide()
 
 		self.Export = Ui_ExportWidget()
 		self.Export.widget = QtGui.QWidget()
 		self.Export.setupUi(self.Export.widget)
-
-		self.Users.Tab = self.makeListItemWidget(self.ui.listWidget, 'Users', QtGui.QIcon(":/user_icon/system-users.png"))
-		self.Edit.Tab = self.makeListItemWidget(self.ui.listWidget, 'Edit Profiles', QtGui.QIcon(":/edit_icon/document-edit.png"))
 		self.Export.Tab = self.makeListItemWidget(self.ui.listWidget, 'Import/Export', QtGui.QIcon(":/export_icon/fork.png"))
-
-		self.ui.horizontalLayout.addWidget(self.Users.widget)
-		self.Users.widget.hide()
-		self.ui.horizontalLayout.addWidget(self.Edit.widget)
-		self.Edit.widget.hide()
 		self.ui.horizontalLayout.addWidget(self.Export.widget)
 		self.Export.widget.hide()
 
+		QtCore.QObject.connect(self.ui.listWidget,
+			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
+
 		self.currentOptionsWidgets = self.Users.widget
-
-		QtCore.QObject.connect(self.ui.listWidget, QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
-
 		self.ui.listWidget.item(0).setSelected(1)
 		self.activateTab(self.Users.Tab)
 
@@ -95,6 +99,9 @@ class Main(QtGui.QMainWindow):
 		self.Edit.ToolBar.DeleteAction = QtGui.QAction(QtGui.QIcon(":/profileAction/document-close.png"),
 		"Delete Profile", self.Edit.ToolBar)
 		self.Edit.ToolBar.addAction(self.Edit.ToolBar.DeleteAction)
+
+		self.Edit.ToolBar.addSeparator()
+
 		self.Edit.ToolBar.EditAction = QtGui.QAction(QtGui.QIcon(":/profileAction/document-edit.png"),
 		"Edit Profile", self.Edit.ToolBar)
 		self.Edit.ToolBar.addAction(self.Edit.ToolBar.EditAction)
@@ -104,7 +111,7 @@ class Main(QtGui.QMainWindow):
 		self.Edit.horizontalLayout_2.addWidget(self.Edit.ToolBar)
 
 	def makeListItemWidget(self, parentList, text, icon):
-		""" Create a Widget to put into itens in leftList
+		""" Create a Widget to put as item in leftList
 		@param self A Main() instance
 		@param parentList QtGui.QListWidget object
 		@param text String to use as title of tab
@@ -137,7 +144,7 @@ class Main(QtGui.QMainWindow):
 		iconLabel.setSizePolicy(sizePolicyM)
 		vboxLayout.addWidget(iconLabel)
 
-		nameLabel = QtGui.QLabel('<b>'+text, listItemWidget)
+		nameLabel = QtGui.QLabel('<b>{0}</b>'.format(text), listItemWidget)
 		nameLabel.setMaximumSize(300, 20)
 		nameLabel.setAlignment(QtCore.Qt.AlignCenter)
 		nameLabel.setSizePolicy(sizePolicyM)

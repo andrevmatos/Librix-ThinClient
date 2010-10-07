@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'usersWidget.ui'
 #
-# Created: Wed Oct  6 16:41:39 2010
+# Created: Wed Oct  6 21:34:53 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -53,6 +53,7 @@ class Ui_UsersWidget(object):
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(self.buttons.sizePolicy().hasHeightForWidth())
 		self.buttons.setSizePolicy(sizePolicy)
+		self.buttons.setMaximumSize(QtCore.QSize(25, 57))
 		self.buttons.setObjectName(_fromUtf8("buttons"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.buttons)
 		self.verticalLayout_2.setMargin(0)
