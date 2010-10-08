@@ -43,7 +43,7 @@ class Main(QtGui.QMainWindow):
 		self.ui.setupUi(self)
 
 		# Demonstration users and profiles list
-		_userDict = {'listItem': None, 'treeItem': None, 'profileItem': None, 'profile': ''}
+		_userDict = { 'profile': ''}
 		self._users = {
 			'andre': _userDict.copy(),
 			'ivan': _userDict.copy(),
@@ -53,28 +53,27 @@ class Main(QtGui.QMainWindow):
 			'carvalho': _userDict.copy()
 		}
 
+		self.new_profiles_count = 0
 		self._profilesFalse = {
 			'treeItem': None,
 			'listItem': None,
 			'config': {
 				'hardware': {
-					'option 1': choice(TF),
-					'option 2': choice(TF),
-					'option 3': choice(TF),
-					'option 4': choice(TF)
+					'option 1': False,
+					'option 2': False,
+					'option 3': False,
+					'option 4': False
 				},
 				'software': {
-					'option 5': choice(TF),
-					'option 6': choice(TF),
-					'option 7': choice(TF),
-					'option 8': choice(TF)
+					'option 5': False,
+					'option 6': False,
+					'option 7': False,
+					'option 8': False
 				}
 			}
 		}
 		self._profiles = {
 			'Profile 1': {
-				'treeItem': None,
-				'listItem': None,
 				'config': {
 					'hardware': {
 						'option 1': choice(TF),
@@ -91,8 +90,6 @@ class Main(QtGui.QMainWindow):
 				}
 			},
 			'Profile 2': {
-				'treeItem': None,
-				'listItem': None,
 				'config': {
 					'hardware': {
 						'option 1': choice(TF),
@@ -109,8 +106,6 @@ class Main(QtGui.QMainWindow):
 				}
 			},
 			'Profile 3': {
-				'treeItem': None,
-				'listItem': None,
 				'config': {
 					'hardware': {
 						'option 1': choice(TF),
@@ -145,9 +140,18 @@ class Main(QtGui.QMainWindow):
 		@param self a Main() instance
 		@param event a QtGui.QDropEvent object
 		"""
-		if event.source() not in  [self.Users.usersList, self.Users.profilesTree]:
+		_users = []
+		if event.source() == self.Users.usersList:
+			for U in event.source().selectedItems():
+				_users.append(U.text())
+		elif event.source() == self.Users.profilesTree:
+			for U in event.source().selectedItems():
+				if U.parent():
+					_users.append(U.text(0))
+		else:
 			return
-		self.addUser2Profile(event.source().selectedItems(), self.Users.profilesTree.itemAt(event.pos()))
+		_profile = self.Users.profilesTree.itemAt(event.pos()).text(0)
+		self.addUser2Profile(_users, _profile)
 
 	def _userDropEvent(self, event):
 		""" Qt Event of Drop actions on users list of Users tab
@@ -156,8 +160,11 @@ class Main(QtGui.QMainWindow):
 		"""
 		if event.source() != self.Users.profilesTree:
 			return
-		self.delUser2Profile(event.source().selectedItems())
-
+		_users = []
+		for U in event.source().selectedItems():
+			if U.parent():
+				_users.append(U.text(0))
+		self.delUser2Profile(_users)
 
 	def populateLists(self):
 		""" Create the lists and tree in self.Users.usersList, self.Users.profilesTree and self.Edit.profilesList
@@ -168,12 +175,7 @@ class Main(QtGui.QMainWindow):
 		for i in _users:
 			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
 
-		_profiles = list(self._profiles)
-		_profiles.sort()
-		for i in _profiles:
-			self._profiles[i]['treeItem'] = QtGui.QTreeWidgetItem(self.Users.profilesTree, [i])
-			self._profiles[i]['treeItem'].setExpanded(True)
-			self._profiles[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/edit_icon/profiles.png"), i, self.Edit.profilesList)
+		self.profilesRefresh()
 
 		self.Users.usersList.setAcceptDrops(True)
 		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
@@ -198,6 +200,7 @@ class Main(QtGui.QMainWindow):
 		@param self a Main() instance
 		@param listItem a QtGui.QTreeWidgetItem profile object
 		"""
+		if not treeItem: return
 		if treeItem.parent():
 			treeItem = treeItem.parent()
 		self.setSummary(treeItem.text(0), self.Users.profileSummaryFrame)
@@ -208,6 +211,7 @@ class Main(QtGui.QMainWindow):
 		@param self a Main() instance
 		@param listItem a QtGui.QListWidgetItem profile object
 		"""
+		if not listItem: return
 		if self.Edit.profilesList.previous != self.Edit.profileSummaryFrame:
 			self.Edit.profilesList.previous.hide()
 			self.Edit.profileSummaryFrame.show()
@@ -295,57 +299,73 @@ class Main(QtGui.QMainWindow):
 		self.currentOptionsWidgets = self.Users.widget
 		self.ui.listWidget.item(0).setSelected(True)
 
-	def addUser2Profile(self, _User = None, _profile = None):
+
+	def profilesRefresh(self):
+		""" Repopulate self.Users.profilesTree
+		@param self a Main() instance
+		"""
+		self.Users.profilesTree.clear()
+		while self.Edit.profilesList.count():
+			self.Edit.profilesList.takeItem(0)
+		_profiles = list(self._profiles.keys())
+		_profiles.sort()
+		_icon = QtGui.QIcon(":/edit_icon/profiles.png")
+		for p in _profiles:
+			QtGui.QTreeWidgetItem(self.Users.profilesTree, [p]).setExpanded(True)
+			QtGui.QListWidgetItem(_icon, p, self.Edit.profilesList)
+		_users = list(self._users.keys())
+		_users.sort()
+		for u in _users:
+			p = self._users[u]['profile']
+			if not p: continue
+			P = self.Users.profilesTree.findItems(p, QtCore.Qt.MatchExactly)[0]
+			QtGui.QTreeWidgetItem(P, [u])
+
+	def addUser2Profile(self, _users = [], _profile = ''):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main( instance
-		@param _User a list of QtGui.QListWidgetItem or QtGui.QTreeWidgetItem users items
-		@param _profile a root QtGui.QTreeWidgetItem (It'll take the first selected root, if not given)
+		@param _users a list of strings usernames to add to _profile
+		@param _profile a string containing the destiny profile name
 		"""
-		_user = []
-		if not _User:
-			_User = self.Users.usersList.selectedItems()
-		for U in _User:
-			try:
-				_user.append(U.text())
-			except:
-				_user.append(U.text(0))
+		if not _users or not _profile:
+			_users = []
+			for U in self.Users.usersList.selectedItems():
+				try:
+					_users.append(U.text())
+				except:
+					if U.parent():
+						_users.append(U.text(0))
 		if not _profile:
 			for i in self.Users.profilesTree.selectedItems():
 				if not i.parent():
-					_profile = i
+					_profile = i.text(0)
 					break
-			if not _profile:
-				_profile = self.Users.profilesTree.selectedItems()[0]
-		for u in _user:
-			if _profile.parent():
-				_profile = _profile.parent()
-			if self._users[u]['treeItem']:
-				self._users[u]['profileItem'].removeChild(self._users[u]['treeItem'])
-				self._users[u]['treeItem'] = None
-				self._users[u]['profileItem'] = None
-				self._users[u]['profile'] = ''
-			self._users[u]['treeItem'] = QtGui.QTreeWidgetItem(_profile, [u])
-			self._users[u]['profileItem'] = _profile
-			self._users[u]['profile'] = _profile.text(0)
+		if not _profile and self.Users.profilesTree.selectedItems():
+			_profile = self.Users.profilesTree.selectedItems()[0].text(0)
+		if _profile in self._users:
+			_profile = self._users[_profile]['profile']
+		if not _profile:
+			return
 
-	def delUser2Profile(self, _User = None):
+		for u in _users:
+			self._users[u]['profile'] = _profile
+
+		self.profilesRefresh()
+
+	def delUser2Profile(self, _users = []):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main() instance
-		@param _User a QtGui.QTreeWidgetItem list of non root elements. Will pass the roots
+		@param _users A list of strings usernames to remove from profiles
 		"""
-		if not _User:
-			_User = self.Users.profilesTree.selectedItems()
-		for U in _User:
-			U.text(0)
-			if not U.parent():
-				continue
-			else:
-				u = U.text(0)
-			if self._users[u]['treeItem']:
-				self._users[u]['profileItem'].removeChild(self._users[u]['treeItem'])
-				self._users[u]['treeItem'] = None
-				self._users[u]['profileItem'] = None
-				self._users[u]['profile'] = ''
+		if not _users:
+			for U in self.Users.profilesTree.selectedItems():
+				if U.parent():
+					_users.append(U.text(0))
+
+		for U in _users:
+			self._users[U]['profile'] = ''
+
+		self.profilesRefresh()
 
 	def activateTab(self, listItem):
 		""" Hide the current widget on main window and show the widget of selected Tab
@@ -384,6 +404,60 @@ class Main(QtGui.QMainWindow):
 		"Duplicate Profile", self.Edit.ToolBar)
 		self.Edit.ToolBar.addAction(self.Edit.ToolBar.DuplicateAction)
 		self.Edit.horizontalLayout_2.addWidget(self.Edit.ToolBar)
+
+		QtCore.QObject.connect(self.Edit.ToolBar.AddAction, QtCore.SIGNAL("triggered()"), self.addProfile)
+		QtCore.QObject.connect(self.Edit.ToolBar.DeleteAction, QtCore.SIGNAL("triggered()"), self.delProfile)
+		QtCore.QObject.connect(self.Edit.ToolBar.EditAction, QtCore.SIGNAL("triggered()"), self.editProfile)
+		QtCore.QObject.connect(self.Edit.ToolBar.DuplicateAction, QtCore.SIGNAL("triggered()"), self.duplicateProfile)
+
+	def addProfile(self):
+		""" Creates a new profile
+		@param self a Main() instance
+		"""
+		self.new_profiles_count += 1
+		n = 'New Profile {0}'.format(self.new_profiles_count)
+		self._profiles[n] = self._profilesFalse
+		self.profilesRefresh()
+		#self.Edit.profilesList.findItems(n,
+		#	QtCore.Qt.MatchExactly)[0].setSelected(True)
+		#self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
+		#	QtCore.Qt.MatchExactly)[0])
+
+	def delProfile(self):
+		""" Delete a profile
+		@param self a Main() instance
+		"""
+		_profile = self.Edit.profilesList.selectedItems()
+		for p in _profile:
+			try:
+				p = p.text()
+				del self._profiles[p]
+			except: pass
+			for u in self._users:
+				if self._users[u]['profile'] == p:
+					self._users[u]['profile'] = ''
+		self.profilesRefresh()
+
+	def editProfile(self):
+		""" Edit a profile
+		@param self a Main() instance
+		"""
+		# TODO: implement edit profile function
+		pass
+
+	def duplicateProfile(self):
+		""" Creates a new profile from a existing one
+		@param self a Main() instance
+		"""
+		self.new_profiles_count += 1
+		p = self.Edit.profilesList.selectedItems()[0].text()
+		n = '{0}_{1}'.format(p, self.new_profiles_count)
+		self._profiles[n] = self._profiles[p].copy()
+		self.profilesRefresh()
+		#self.Edit.profilesList.findItems('n',
+		#	QtCore.Qt.MatchExactly)[0].setSelected(True)
+		#self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
+		#	QtCore.Qt.MatchExactly)[0])
 
 	def makeListItemWidget(self, parentList, text, icon):
 		""" Create a Widget to put as item in leftList
