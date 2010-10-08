@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'usersWidget.ui'
 #
-# Created: Thu Oct  7 21:40:44 2010
+# Created: Fri Oct  8 01:11:19 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,6 +44,11 @@ class Ui_UsersWidget(object):
 		self.usersLabel.setObjectName(_fromUtf8("usersLabel"))
 		self.verticalLayout_3.addWidget(self.usersLabel)
 		self.usersList = QtGui.QListWidget(self.usersWidget)
+		self.usersList.setDragEnabled(True)
+		self.usersList.setDragDropOverwriteMode(True)
+		self.usersList.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
+		self.usersList.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
+		self.usersList.setSelectionBehavior(QtGui.QAbstractItemView.SelectItems)
 		self.usersList.setObjectName(_fromUtf8("usersList"))
 		self.verticalLayout_3.addWidget(self.usersList)
 		self.horizontalLayout.addWidget(self.usersWidget)
@@ -80,6 +85,10 @@ class Ui_UsersWidget(object):
 		self.profilesLabel.setObjectName(_fromUtf8("profilesLabel"))
 		self.verticalLayout_4.addWidget(self.profilesLabel)
 		self.profilesTree = QtGui.QTreeWidget(self.profilesWidget)
+		self.profilesTree.setDragEnabled(True)
+		self.profilesTree.setDragDropOverwriteMode(True)
+		self.profilesTree.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
+		self.profilesTree.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
 		self.profilesTree.setObjectName(_fromUtf8("profilesTree"))
 		self.verticalLayout_4.addWidget(self.profilesTree)
 		self.horizontalLayout.addWidget(self.profilesWidget)

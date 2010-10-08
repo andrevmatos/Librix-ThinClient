@@ -44,17 +44,52 @@ class Main(QtGui.QMainWindow):
 
 		self.setupWidgets()
 
+	def _dragEnterEvent(self, event):
+		if event.mimeData().hasFormat('application/x-qabstractitemmodeldatalist'):
+			#event._data = self.
+			event.accept()
+		else:
+			event.ignore()
+
+	def _profilesDropEvent(self, event):
+		if event.source() != self.Users.usersList:
+			return
+		self.addUser2Profile(event.source().selectedItems(), self.Users.profilesTree.itemAt(event.pos()))
+
+	def _userDropEvent(self, event):
+		if event.source() != self.Users.profilesTree:
+			return
+		self.delUser2Profile(event.source().selectedItems())
+
 	def setupWidgets(self):
 		""" Execute the options widgets configuration
 		@param self a Main() instance
 		"""
 		# TODO: implement qt translate, instead of pure strings
+		# User widget configuration routines
 		self.Users = Ui_UsersWidget()
 		self.Users.widget = QtGui.QWidget()
 		self.Users.setupUi(self.Users.widget)
 		self.Users.Tab = self.makeListItemWidget(self.ui.listWidget, 'Users', QtGui.QIcon(":/user_icon/system-users.png"))
 		self.ui.horizontalLayout.addWidget(self.Users.widget)
 		self.Users.widget.hide()
+
+		# Edit widget configuration routines
+		self.Edit = Ui_EditWidget()
+		self.Edit.widget = QtGui.QWidget()
+		self.Edit.setupUi(self.Edit.widget)
+		self.Edit.Tab = self.makeListItemWidget(self.ui.listWidget, 'Edit Profiles', QtGui.QIcon(":/edit_icon/document-edit.png"))
+		self.makeProfilesToolBar()
+		self.ui.horizontalLayout.addWidget(self.Edit.widget)
+		self.Edit.widget.hide()
+
+		# Export widget configuration routines
+		self.Export = Ui_ExportWidget()
+		self.Export.widget = QtGui.QWidget()
+		self.Export.setupUi(self.Export.widget)
+		self.Export.Tab = self.makeListItemWidget(self.ui.listWidget, 'Import/Export', QtGui.QIcon(":/export_icon/fork.png"))
+		self.ui.horizontalLayout.addWidget(self.Export.widget)
+		self.Export.widget.hide()
 
 		_users = list(self._users.keys())
 		_users.sort()
@@ -67,20 +102,11 @@ class Main(QtGui.QMainWindow):
 			self._profiles[i].append(QtGui.QTreeWidgetItem(self.Users.profilesTree, [i]))
 			self._profiles[i][0].setExpanded(True)
 
-		self.Edit = Ui_EditWidget()
-		self.Edit.widget = QtGui.QWidget()
-		self.Edit.setupUi(self.Edit.widget)
-		self.Edit.Tab = self.makeListItemWidget(self.ui.listWidget, 'Edit Profiles', QtGui.QIcon(":/edit_icon/document-edit.png"))
-		self.makeProfilesToolBar()
-		self.ui.horizontalLayout.addWidget(self.Edit.widget)
-		self.Edit.widget.hide()
-
-		self.Export = Ui_ExportWidget()
-		self.Export.widget = QtGui.QWidget()
-		self.Export.setupUi(self.Export.widget)
-		self.Export.Tab = self.makeListItemWidget(self.ui.listWidget, 'Import/Export', QtGui.QIcon(":/export_icon/fork.png"))
-		self.ui.horizontalLayout.addWidget(self.Export.widget)
-		self.Export.widget.hide()
+		self.Users.usersList.setAcceptDrops(True)
+		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
+		self.Users.usersList.dropEvent = self._userDropEvent
+		self.Users.profilesTree.dragEnterEvent = self._dragEnterEvent
+		self.Users.profilesTree.dropEvent = self._profilesDropEvent
 
 		QtCore.QObject.connect(self.ui.listWidget,
 			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
@@ -90,39 +116,51 @@ class Main(QtGui.QMainWindow):
 			QtCore.SIGNAL("clicked()"), self.delUser2Profile)
 
 		self.currentOptionsWidgets = self.Users.widget
-		self.ui.listWidget.item(0).setSelected(1)
+		self.ui.listWidget.item(0).setSelected(True)
 
-	def addUser2Profile(self):
+	def addUser2Profile(self, _User = None, _profile = None):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main( instance
 		"""
-		_user = self.Users.usersList.selectedItems()[0].text()
-		_profile = self.Users.profilesTree.selectedItems()[0]
-		if _profile.parent():
-			_profile = _profile.parent()
-		if self._users[_user]['treeItem']:
-			self._users[_user]['profileItem'].removeChild(self._users[_user]['treeItem'])
-			self._users[_user]['treeItem'] = None
-			self._users[_user]['profileItem'] = None
-			self._users[_user]['profile'] = ''
-		self._users[_user]['treeItem'] = QtGui.QTreeWidgetItem(_profile, [_user])
-		self._users[_user]['profileItem'] = _profile
-		self._users[_user]['profile'] = _profile.text(0)
+		_user = []
+		if not _User:
+			_User = self.Users.usersList.selectedItems()[0]
+		for U in _User:
+			try:
+				_user.append(U.text())
+			except:
+				_user.append(U.text(0))
+		if not _profile:
+			_profile = self.Users.profilesTree.selectedItems()[0]
+		for u in _user:
+			if _profile.parent():
+				_profile = _profile.parent()
+			if self._users[u]['treeItem']:
+				self._users[u]['profileItem'].removeChild(self._users[u]['treeItem'])
+				self._users[u]['treeItem'] = None
+				self._users[u]['profileItem'] = None
+				self._users[u]['profile'] = ''
+			self._users[u]['treeItem'] = QtGui.QTreeWidgetItem(_profile, [u])
+			self._users[u]['profileItem'] = _profile
+			self._users[u]['profile'] = _profile.text(0)
 
-	def delUser2Profile(self):
+	def delUser2Profile(self, _User = None):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main( instance
 		"""
-		_user = self.Users.profilesTree.selectedItems()[0]
-		if not _user.parent():
-			return
-		else:
-			_user = _user.text(0)
-		if self._users[_user]['treeItem']:
-			self._users[_user]['profileItem'].removeChild(self._users[_user]['treeItem'])
-			self._users[_user]['treeItem'] = None
-			self._users[_user]['profileItem'] = None
-			self._users[_user]['profile'] = ''
+		if not _User:
+			_User = self.Users.profilesTree.selectedItems()
+		for U in _User:
+			U.text(0)
+			if not U.parent():
+				return
+			else:
+				u = U.text(0)
+			if self._users[u]['treeItem']:
+				self._users[u]['profileItem'].removeChild(self._users[u]['treeItem'])
+				self._users[u]['treeItem'] = None
+				self._users[u]['profileItem'] = None
+				self._users[u]['profile'] = ''
 
 	def activateTab(self, listItem):
 		""" Hide the current widget on main window and show the widget of selected Tab
