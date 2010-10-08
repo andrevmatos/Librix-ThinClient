@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'usersWidget.ui'
 #
-# Created: Wed Oct  6 21:34:53 2010
+# Created: Thu Oct  7 21:40:44 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,9 +43,9 @@ class Ui_UsersWidget(object):
 		self.usersLabel = QtGui.QLabel(self.usersWidget)
 		self.usersLabel.setObjectName(_fromUtf8("usersLabel"))
 		self.verticalLayout_3.addWidget(self.usersLabel)
-		self.listView = QtGui.QListView(self.usersWidget)
-		self.listView.setObjectName(_fromUtf8("listView"))
-		self.verticalLayout_3.addWidget(self.listView)
+		self.usersList = QtGui.QListWidget(self.usersWidget)
+		self.usersList.setObjectName(_fromUtf8("usersList"))
+		self.verticalLayout_3.addWidget(self.usersList)
 		self.horizontalLayout.addWidget(self.usersWidget)
 		self.buttons = QtGui.QWidget(self.usersAndProfiles)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -53,7 +53,7 @@ class Ui_UsersWidget(object):
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(self.buttons.sizePolicy().hasHeightForWidth())
 		self.buttons.setSizePolicy(sizePolicy)
-		self.buttons.setMaximumSize(QtCore.QSize(25, 57))
+		self.buttons.setMaximumSize(QtCore.QSize(25, 60))
 		self.buttons.setObjectName(_fromUtf8("buttons"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.buttons)
 		self.verticalLayout_2.setMargin(0)
@@ -79,9 +79,9 @@ class Ui_UsersWidget(object):
 		self.profilesLabel = QtGui.QLabel(self.profilesWidget)
 		self.profilesLabel.setObjectName(_fromUtf8("profilesLabel"))
 		self.verticalLayout_4.addWidget(self.profilesLabel)
-		self.treeView = QtGui.QTreeView(self.profilesWidget)
-		self.treeView.setObjectName(_fromUtf8("treeView"))
-		self.verticalLayout_4.addWidget(self.treeView)
+		self.profilesTree = QtGui.QTreeWidget(self.profilesWidget)
+		self.profilesTree.setObjectName(_fromUtf8("profilesTree"))
+		self.verticalLayout_4.addWidget(self.profilesTree)
 		self.horizontalLayout.addWidget(self.profilesWidget)
 		self.verticalLayout.addWidget(self.usersAndProfiles)
 		self.summaryDock = QtGui.QDockWidget(UsersWidget)
@@ -105,6 +105,7 @@ class Ui_UsersWidget(object):
 		UsersWidget.setWindowTitle(QtGui.QApplication.translate("UsersWidget", "Form", None, QtGui.QApplication.UnicodeUTF8))
 		self.usersLabel.setText(QtGui.QApplication.translate("UsersWidget", "Users:", None, QtGui.QApplication.UnicodeUTF8))
 		self.profilesLabel.setText(QtGui.QApplication.translate("UsersWidget", "Profiles:", None, QtGui.QApplication.UnicodeUTF8))
+		self.profilesTree.headerItem().setText(0, QtGui.QApplication.translate("UsersWidget", "Profiles", None, QtGui.QApplication.UnicodeUTF8))
 		self.summaryDock.setWindowTitle(QtGui.QApplication.translate("UsersWidget", "Profile Summary:", None, QtGui.QApplication.UnicodeUTF8))
 
 from . import temp_icons_rc

@@ -46,7 +46,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QListView" name="listView"/>
+          <widget class="QListWidget" name="usersList"/>
          </item>
         </layout>
        </widget>
@@ -102,7 +102,13 @@
           </widget>
          </item>
          <item>
-          <widget class="QTreeView" name="treeView"/>
+          <widget class="QTreeWidget" name="profilesTree">
+           <column>
+            <property name="text">
+             <string>Profiles</string>
+            </property>
+           </column>
+          </widget>
          </item>
         </layout>
        </widget>

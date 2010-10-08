@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="user_icon">
     <file>system-users.png</file>
+    <file>user.png</file>
   </qresource>
   <qresource prefix="profileAction">
     <file>document-close.png</file>

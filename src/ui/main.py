@@ -36,6 +36,12 @@ class Main(QtGui.QMainWindow):
 
 		self.ui = Ui_ThinClient()
 		self.ui.setupUi(self)
+
+		# Demonstration users list
+		_userDict = {'listItem': None, 'treeItem': None, 'profileItem': None, 'profile': ''}
+		self._users = {'andre': dict(_userDict), 'ivan': dict(_userDict), 'roberto': dict(_userDict), 'guilherme': dict(_userDict), 'david': dict(_userDict), 'carvalho': dict(_userDict)}
+		self._profiles = {'Profile 1': [], 'Profile 2': [], 'Profile 3': []}
+
 		self.setupWidgets()
 
 	def setupWidgets(self):
@@ -49,6 +55,17 @@ class Main(QtGui.QMainWindow):
 		self.Users.Tab = self.makeListItemWidget(self.ui.listWidget, 'Users', QtGui.QIcon(":/user_icon/system-users.png"))
 		self.ui.horizontalLayout.addWidget(self.Users.widget)
 		self.Users.widget.hide()
+
+		_users = list(self._users.keys())
+		_users.sort()
+		for i in _users:
+			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
+
+		_profiles = list(self._profiles)
+		_profiles.sort()
+		for i in _profiles:
+			self._profiles[i].append(QtGui.QTreeWidgetItem(self.Users.profilesTree, [i]))
+			self._profiles[i][0].setExpanded(True)
 
 		self.Edit = Ui_EditWidget()
 		self.Edit.widget = QtGui.QWidget()
@@ -67,10 +84,45 @@ class Main(QtGui.QMainWindow):
 
 		QtCore.QObject.connect(self.ui.listWidget,
 			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
+		QtCore.QObject.connect(self.Users.add,
+			QtCore.SIGNAL("clicked()"), self.addUser2Profile)
+		QtCore.QObject.connect(self.Users.remove,
+			QtCore.SIGNAL("clicked()"), self.delUser2Profile)
 
 		self.currentOptionsWidgets = self.Users.widget
 		self.ui.listWidget.item(0).setSelected(1)
-		self.activateTab(self.Users.Tab)
+
+	def addUser2Profile(self):
+		""" Get the user in the self.usersList and add it to self.profilesTree
+		@param self a Main( instance
+		"""
+		_user = self.Users.usersList.selectedItems()[0].text()
+		_profile = self.Users.profilesTree.selectedItems()[0]
+		if _profile.parent():
+			_profile = _profile.parent()
+		if self._users[_user]['treeItem']:
+			self._users[_user]['profileItem'].removeChild(self._users[_user]['treeItem'])
+			self._users[_user]['treeItem'] = None
+			self._users[_user]['profileItem'] = None
+			self._users[_user]['profile'] = ''
+		self._users[_user]['treeItem'] = QtGui.QTreeWidgetItem(_profile, [_user])
+		self._users[_user]['profileItem'] = _profile
+		self._users[_user]['profile'] = _profile.text(0)
+
+	def delUser2Profile(self):
+		""" Get the user in the self.usersList and add it to self.profilesTree
+		@param self a Main( instance
+		"""
+		_user = self.Users.profilesTree.selectedItems()[0]
+		if not _user.parent():
+			return
+		else:
+			_user = _user.text(0)
+		if self._users[_user]['treeItem']:
+			self._users[_user]['profileItem'].removeChild(self._users[_user]['treeItem'])
+			self._users[_user]['treeItem'] = None
+			self._users[_user]['profileItem'] = None
+			self._users[_user]['profile'] = ''
 
 	def activateTab(self, listItem):
 		""" Hide the current widget on main window and show the widget of selected Tab
@@ -117,42 +169,42 @@ class Main(QtGui.QMainWindow):
 		@param text String to use as title of tab
 		@param icon QtGui.QIcon object, to use as icon of tab
 		"""
-		listItem = QtGui.QListWidgetItem(parentList)
-		listItemWidget = QtGui.QWidget(parentList)
-		vboxLayout = QtGui.QVBoxLayout(listItemWidget)
+		_listItem = QtGui.QListWidgetItem(parentList)
+		_listItemWidget = QtGui.QWidget(parentList)
+		_vboxLayout = QtGui.QVBoxLayout(_listItemWidget)
 
-		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
-		sizePolicy.setHorizontalStretch(0)
-		sizePolicy.setVerticalStretch(0)
-		sizePolicy.setHeightForWidth(listItemWidget.sizePolicy().hasHeightForWidth())
+		_sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+		_sizePolicy.setHorizontalStretch(0)
+		_sizePolicy.setVerticalStretch(0)
+		_sizePolicy.setHeightForWidth(_listItemWidget.sizePolicy().hasHeightForWidth())
 
-		sizePolicyM = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
-		sizePolicyM.setHorizontalStretch(0)
-		sizePolicyM.setVerticalStretch(0)
-		sizePolicyM.setHeightForWidth(listItemWidget.sizePolicy().hasHeightForWidth())
+		_sizePolicyM = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
+		_sizePolicyM.setHorizontalStretch(0)
+		_sizePolicyM.setVerticalStretch(0)
+		_sizePolicyM.setHeightForWidth(_listItemWidget.sizePolicy().hasHeightForWidth())
 
-		listItem.setSizeHint(QtCore.QSize(0, 78))
-		listItemWidget.setMinimumSize(QtCore.QSize(0, 78))
+		_listItem.setSizeHint(QtCore.QSize(0, 78))
+		_listItemWidget.setMinimumSize(QtCore.QSize(0, 78))
 
-		listItemWidget.setSizePolicy(sizePolicy)
-		listItemWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
+		_listItemWidget.setSizePolicy(_sizePolicy)
+		_listItemWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
 
-		iconLabel = QtGui.QLabel(listItemWidget)
-		iconLabel.setMaximumSize(QtCore.QSize(300, 48))
-		iconLabel.setAlignment(QtCore.Qt.AlignCenter)
-		iconLabel.setPixmap(icon.pixmap(QtCore.QSize(48, 48)))
-		iconLabel.setSizePolicy(sizePolicyM)
-		vboxLayout.addWidget(iconLabel)
+		_iconLabel = QtGui.QLabel(_listItemWidget)
+		_iconLabel.setMaximumSize(QtCore.QSize(300, 48))
+		_iconLabel.setAlignment(QtCore.Qt.AlignCenter)
+		_iconLabel.setPixmap(icon.pixmap(QtCore.QSize(48, 48)))
+		_iconLabel.setSizePolicy(_sizePolicyM)
+		_vboxLayout.addWidget(_iconLabel)
 
-		nameLabel = QtGui.QLabel('<b>{0}</b>'.format(text), listItemWidget)
-		nameLabel.setMaximumSize(300, 20)
-		nameLabel.setAlignment(QtCore.Qt.AlignCenter)
-		nameLabel.setSizePolicy(sizePolicyM)
-		vboxLayout.addWidget(nameLabel)
+		_nameLabel = QtGui.QLabel('<b>{0}</b>'.format(text), _listItemWidget)
+		_nameLabel.setMaximumSize(300, 20)
+		_nameLabel.setAlignment(QtCore.Qt.AlignCenter)
+		_nameLabel.setSizePolicy(_sizePolicyM)
+		_vboxLayout.addWidget(_nameLabel)
 
-		parentList.setItemWidget(listItem, listItemWidget)
+		parentList.setItemWidget(_listItem, _listItemWidget)
 
-		return listItem
+		return _listItem
 
 
 def main():
