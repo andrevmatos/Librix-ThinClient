@@ -147,7 +147,7 @@
    <item>
     <widget class="QDockWidget" name="summaryDock">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -155,6 +155,18 @@
      <property name="maximumSize">
       <size>
        <width>524287</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>10</width>
+       <height>10</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>150</width>
        <height>150</height>
       </size>
      </property>
@@ -164,7 +176,9 @@
      <property name="windowTitle">
       <string>Profile Summary:</string>
      </property>
-     <widget class="QWidget" name="dockWidgetContents"/>
+     <widget class="QWidget" name="dockWidgetContents">
+      <layout class="QVBoxLayout" name="verticalLayout_5"/>
+     </widget>
     </widget>
    </item>
   </layout>

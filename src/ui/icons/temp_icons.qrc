@@ -18,6 +18,7 @@
     <file>list-remove.png</file>
   </qresource>
   <qresource prefix="edit_icon">
+    <file>profiles.png</file>
     <file>document-edit.png</file>
   </qresource>
   <qresource prefix="export_icon">

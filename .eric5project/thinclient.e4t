@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric5 tasks file for project thinclient -->
-<!-- Saved: 2010-10-07, 21:21:54 -->
+<!-- Saved: 2010-10-08, 01:32:11 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: implement qt translate, instead of pure strings</Summary>
     <Description></Description>
-    <Created>2010-10-07, 21:21:40</Created>
+    <Created>2010-10-08, 01:31:24</Created>
     <Resource>
       <Filename>src/ui/main.py</Filename>
-      <Linenumber>51</Linenumber>
+      <Linenumber>68</Linenumber>
     </Resource>
   </Task>
 </Tasks>

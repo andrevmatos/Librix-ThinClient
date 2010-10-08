@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Librix Thin Client Administration Interface</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons/temp_icons.qrc">
+    <normaloff>:/user_icon/system-users.png</normaloff>:/user_icon/system-users.png</iconset>
   </property>
   <widget class="QWidget" name="widget">
    <layout class="QVBoxLayout" name="verticalLayout">

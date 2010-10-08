@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Fri Oct  8 01:11:18 2010
+# Created: Fri Oct  8 16:27:18 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,6 +18,9 @@ class Ui_ThinClient(object):
 	def setupUi(self, ThinClient):
 		ThinClient.setObjectName(_fromUtf8("ThinClient"))
 		ThinClient.resize(640, 480)
+		icon = QtGui.QIcon()
+		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/user_icon/system-users.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		ThinClient.setWindowIcon(icon)
 		self.widget = QtGui.QWidget(ThinClient)
 		self.widget.setObjectName(_fromUtf8("widget"))
 		self.verticalLayout = QtGui.QVBoxLayout(self.widget)
@@ -102,7 +105,7 @@ class Ui_ThinClient(object):
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
-		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("ThinClient", "<b>Librix Thin Client Administration Tool. Draft release.</b>", None, QtGui.QApplication.UnicodeUTF8))
 
 from . import temp_icons_rc

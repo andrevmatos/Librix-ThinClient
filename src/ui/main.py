@@ -19,12 +19,17 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+from random import choice
 from PyQt4 import QtCore,QtGui
 
 from ui.mainWindow import Ui_ThinClient
 from ui.usersWidget import Ui_UsersWidget
 from ui.editWidget import Ui_EditWidget
 from ui.exportWidget import Ui_ExportWidget
+
+from ui.profileSummary import Ui_Summary
+
+TF = [True, False]
 
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
@@ -37,29 +42,216 @@ class Main(QtGui.QMainWindow):
 		self.ui = Ui_ThinClient()
 		self.ui.setupUi(self)
 
-		# Demonstration users list
+		# Demonstration users and profiles list
 		_userDict = {'listItem': None, 'treeItem': None, 'profileItem': None, 'profile': ''}
-		self._users = {'andre': dict(_userDict), 'ivan': dict(_userDict), 'roberto': dict(_userDict), 'guilherme': dict(_userDict), 'david': dict(_userDict), 'carvalho': dict(_userDict)}
-		self._profiles = {'Profile 1': [], 'Profile 2': [], 'Profile 3': []}
+		self._users = {
+			'andre': _userDict.copy(),
+			'ivan': _userDict.copy(),
+			'roberto': _userDict.copy(),
+			'guilherme': _userDict.copy(),
+			'david': _userDict.copy(),
+			'carvalho': _userDict.copy()
+		}
+
+		self._profilesFalse = {
+			'treeItem': None,
+			'listItem': None,
+			'config': {
+				'hardware': {
+					'option 1': choice(TF),
+					'option 2': choice(TF),
+					'option 3': choice(TF),
+					'option 4': choice(TF)
+				},
+				'software': {
+					'option 5': choice(TF),
+					'option 6': choice(TF),
+					'option 7': choice(TF),
+					'option 8': choice(TF)
+				}
+			}
+		}
+		self._profiles = {
+			'Profile 1': {
+				'treeItem': None,
+				'listItem': None,
+				'config': {
+					'hardware': {
+						'option 1': choice(TF),
+						'option 2': choice(TF),
+						'option 3': choice(TF),
+						'option 4': choice(TF)
+					},
+					'software': {
+						'option 5': choice(TF),
+						'option 6': choice(TF),
+						'option 7': choice(TF),
+						'option 8': choice(TF)
+					}
+				}
+			},
+			'Profile 2': {
+				'treeItem': None,
+				'listItem': None,
+				'config': {
+					'hardware': {
+						'option 1': choice(TF),
+						'option 2': choice(TF),
+						'option 3': choice(TF),
+						'option 4': choice(TF)
+					},
+					'software': {
+						'option 5': choice(TF),
+						'option 6': choice(TF),
+						'option 7': choice(TF),
+						'option 8': choice(TF)
+					}
+				}
+			},
+			'Profile 3': {
+				'treeItem': None,
+				'listItem': None,
+				'config': {
+					'hardware': {
+						'option 1': choice(TF),
+						'option 2': choice(TF),
+						'option 3': choice(TF),
+						'option 4': choice(TF)
+					},
+					'software': {
+						'option 5': choice(TF),
+						'option 6': choice(TF),
+						'option 7': choice(TF),
+						'option 8': choice(TF)
+					}
+				}
+			}
+		}
 
 		self.setupWidgets()
 
 	def _dragEnterEvent(self, event):
+		""" Qt Event of Drag actions
+		@param self a Main() instance
+		@param event a QtGui.QDragEnterEvent object
+		"""
 		if event.mimeData().hasFormat('application/x-qabstractitemmodeldatalist'):
-			#event._data = self.
 			event.accept()
 		else:
 			event.ignore()
 
 	def _profilesDropEvent(self, event):
-		if event.source() != self.Users.usersList:
+		""" Qt Event of Drop actions on profiles tree of Users tab
+		@param self a Main() instance
+		@param event a QtGui.QDropEvent object
+		"""
+		if event.source() not in  [self.Users.usersList, self.Users.profilesTree]:
 			return
 		self.addUser2Profile(event.source().selectedItems(), self.Users.profilesTree.itemAt(event.pos()))
 
 	def _userDropEvent(self, event):
+		""" Qt Event of Drop actions on users list of Users tab
+		@param self a Main() instance
+		@param event a QtGui.QDropEvent object
+		"""
 		if event.source() != self.Users.profilesTree:
 			return
 		self.delUser2Profile(event.source().selectedItems())
+
+
+	def populateLists(self):
+		""" Create the lists and tree in self.Users.usersList, self.Users.profilesTree and self.Edit.profilesList
+		@param self a Main() instance
+		"""
+		_users = list(self._users.keys())
+		_users.sort()
+		for i in _users:
+			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
+
+		_profiles = list(self._profiles)
+		_profiles.sort()
+		for i in _profiles:
+			self._profiles[i]['treeItem'] = QtGui.QTreeWidgetItem(self.Users.profilesTree, [i])
+			self._profiles[i]['treeItem'].setExpanded(True)
+			self._profiles[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/edit_icon/profiles.png"), i, self.Edit.profilesList)
+
+		self.Users.usersList.setAcceptDrops(True)
+		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
+		self.Users.usersList.dropEvent = self._userDropEvent
+		self.Users.profilesTree.dragEnterEvent = self._dragEnterEvent
+		self.Users.profilesTree.dropEvent = self._profilesDropEvent
+
+		self.Users.profileSummaryFrame = self.makeProfileFrame()
+		self.Users.summaryDock.setWidget(self.Users.profileSummaryFrame.widget)
+
+		self.Edit.profileSummaryFrame = self.makeProfileFrame()
+		self.Edit.verticalLayout_4.addWidget(self.Edit.profileSummaryFrame.widget)
+		self.Edit.profilesList.previous = self.Edit.profileSummaryFrame
+
+		QtCore.QObject.connect(self.Users.profilesTree,
+			QtCore.SIGNAL("currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)"), self.activateUserProfileSummary)
+		QtCore.QObject.connect(self.Edit.profilesList,
+			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateEditProfileSummary)
+
+	def activateUserProfileSummary(self, treeItem):
+		""" Show summary when a Profile was selected on self.Users.profilesTree
+		@param self a Main() instance
+		@param listItem a QtGui.QTreeWidgetItem profile object
+		"""
+		if treeItem.parent():
+			treeItem = treeItem.parent()
+		self.setSummary(treeItem.text(0), self.Users.profileSummaryFrame)
+
+
+	def activateEditProfileSummary(self, listItem):
+		""" Show summary when a Profile was selected on self.Edit.profilesList
+		@param self a Main() instance
+		@param listItem a QtGui.QListWidgetItem profile object
+		"""
+		if self.Edit.profilesList.previous != self.Edit.profileSummaryFrame:
+			self.Edit.profilesList.previous.hide()
+			self.Edit.profileSummaryFrame.show()
+		self.setSummary(listItem.text(), self.Edit.profileSummaryFrame)
+
+	def makeProfileFrame(self):
+		""" Create and return a widget with formated text to summary of profile
+		@param self a Main() instance
+		"""
+		_summary = Ui_Summary()
+		_summary.widget = QtGui.QWidget()
+		_summary.setupUi(_summary.widget)
+
+		_summary._configsWidgets = []
+
+		return _summary
+
+	def setSummary(self, _profile, _summary):
+		""" Set the summary of _profile on _label
+		@param self a Main() instance
+		@param _profile a string containing the name of the profile
+		@param _summary a Ui_Summary instance, with a .widget object where the configs will be set
+		"""
+		_summary._title.setText("<h2><b>Name: <font color=blue>{0}</font></h2>\n".format(_profile))
+		# for below: clear _summary.configsWidget widgets
+		for k in _summary._configsWidgets:
+			k.close()
+		_summary._configsWidget = []
+		# for each category, creates a QLabel and add the configurations
+		_l = list(self._profiles[_profile]['config'].keys())
+		_l.sort()
+		for c in _l:
+			_config = "<h4>{0}:</h4>\n".format(c)
+			_m = list(self._profiles[_profile]['config'][c].keys())
+			_m.sort()
+			for i in _m:
+				_config += "<h6> ➜ {0}: ".format(i)
+				if self._profiles[_profile]['config'][c][i]:
+					_config += "<font color=green><b>On</b></font></h6>\n"
+				else:
+					_config += "<font color=red><b>Off</b></font></h6>\n"
+			_summary._configsWidgets.append(QtGui.QLabel(_config))
+			_summary.horizontalLayout.addWidget(_summary._configsWidgets[-1])
+
 
 	def setupWidgets(self):
 		""" Execute the options widgets configuration
@@ -91,22 +283,7 @@ class Main(QtGui.QMainWindow):
 		self.ui.horizontalLayout.addWidget(self.Export.widget)
 		self.Export.widget.hide()
 
-		_users = list(self._users.keys())
-		_users.sort()
-		for i in _users:
-			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
-
-		_profiles = list(self._profiles)
-		_profiles.sort()
-		for i in _profiles:
-			self._profiles[i].append(QtGui.QTreeWidgetItem(self.Users.profilesTree, [i]))
-			self._profiles[i][0].setExpanded(True)
-
-		self.Users.usersList.setAcceptDrops(True)
-		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
-		self.Users.usersList.dropEvent = self._userDropEvent
-		self.Users.profilesTree.dragEnterEvent = self._dragEnterEvent
-		self.Users.profilesTree.dropEvent = self._profilesDropEvent
+		self.populateLists()
 
 		QtCore.QObject.connect(self.ui.listWidget,
 			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
@@ -137,6 +314,8 @@ class Main(QtGui.QMainWindow):
 				if not i.parent():
 					_profile = i
 					break
+			if not _profile:
+				_profile = self.Users.profilesTree.selectedItems()[0]
 		for u in _user:
 			if _profile.parent():
 				_profile = _profile.parent()

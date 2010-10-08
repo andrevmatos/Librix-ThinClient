@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'usersWidget.ui'
 #
-# Created: Fri Oct  8 01:11:19 2010
+# Created: Fri Oct  8 16:27:19 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -94,16 +94,20 @@ class Ui_UsersWidget(object):
 		self.horizontalLayout.addWidget(self.profilesWidget)
 		self.verticalLayout.addWidget(self.usersAndProfiles)
 		self.summaryDock = QtGui.QDockWidget(UsersWidget)
-		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(self.summaryDock.sizePolicy().hasHeightForWidth())
 		self.summaryDock.setSizePolicy(sizePolicy)
-		self.summaryDock.setMaximumSize(QtCore.QSize(524287, 150))
+		self.summaryDock.setMaximumSize(QtCore.QSize(524287, 200))
+		self.summaryDock.setSizeIncrement(QtCore.QSize(10, 10))
+		self.summaryDock.setBaseSize(QtCore.QSize(150, 150))
 		self.summaryDock.setFeatures(QtGui.QDockWidget.DockWidgetClosable)
 		self.summaryDock.setObjectName(_fromUtf8("summaryDock"))
 		self.dockWidgetContents = QtGui.QWidget()
 		self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
+		self.verticalLayout_5 = QtGui.QVBoxLayout(self.dockWidgetContents)
+		self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
 		self.summaryDock.setWidget(self.dockWidgetContents)
 		self.verticalLayout.addWidget(self.summaryDock)
 
