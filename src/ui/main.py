@@ -121,17 +121,22 @@ class Main(QtGui.QMainWindow):
 	def addUser2Profile(self, _User = None, _profile = None):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main( instance
+		@param _User a list of QtGui.QListWidgetItem or QtGui.QTreeWidgetItem users items
+		@param _profile a root QtGui.QTreeWidgetItem (It'll take the first selected root, if not given)
 		"""
 		_user = []
 		if not _User:
-			_User = self.Users.usersList.selectedItems()[0]
+			_User = self.Users.usersList.selectedItems()
 		for U in _User:
 			try:
 				_user.append(U.text())
 			except:
 				_user.append(U.text(0))
 		if not _profile:
-			_profile = self.Users.profilesTree.selectedItems()[0]
+			for i in self.Users.profilesTree.selectedItems():
+				if not i.parent():
+					_profile = i
+					break
 		for u in _user:
 			if _profile.parent():
 				_profile = _profile.parent()
@@ -146,14 +151,15 @@ class Main(QtGui.QMainWindow):
 
 	def delUser2Profile(self, _User = None):
 		""" Get the user in the self.usersList and add it to self.profilesTree
-		@param self a Main( instance
+		@param self a Main() instance
+		@param _User a QtGui.QTreeWidgetItem list of non root elements. Will pass the roots
 		"""
 		if not _User:
 			_User = self.Users.profilesTree.selectedItems()
 		for U in _User:
 			U.text(0)
 			if not U.parent():
-				return
+				continue
 			else:
 				u = U.text(0)
 			if self._users[u]['treeItem']:
