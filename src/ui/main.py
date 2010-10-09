@@ -44,7 +44,7 @@ class Main(QtGui.QMainWindow):
 
 		# Demonstration users and profiles list
 		_userDict = { 'profile': ''}
-		self._users = {
+		self.users = {
 			'andre': _userDict.copy(),
 			'ivan': _userDict.copy(),
 			'roberto': _userDict.copy(),
@@ -54,9 +54,7 @@ class Main(QtGui.QMainWindow):
 		}
 
 		self.new_profiles_count = 0
-		self._profilesFalse = {
-			'treeItem': None,
-			'listItem': None,
+		self.profilesFalse = {
 			'config': {
 				'hardware': {
 					'option 1': False,
@@ -72,7 +70,7 @@ class Main(QtGui.QMainWindow):
 				}
 			}
 		}
-		self._profiles = {
+		self.profiles = {
 			'Profile 1': {
 				'config': {
 					'hardware': {
@@ -170,10 +168,10 @@ class Main(QtGui.QMainWindow):
 		""" Create the lists and tree in self.Users.usersList, self.Users.profilesTree and self.Edit.profilesList
 		@param self a Main() instance
 		"""
-		_users = list(self._users.keys())
-		_users.sort()
-		for i in _users:
-			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
+		users = list(self.users.keys())
+		users.sort()
+		for i in users:
+			QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
 
 		self.Users.usersList.setAcceptDrops(True)
 		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
@@ -238,15 +236,15 @@ class Main(QtGui.QMainWindow):
 		_summary._title.setText("<h2><b>Name: <font color=blue>{0}</font></h2>\n".format(_profile))
 
 		# for each category, creates a QLabel and add the configurations
-		_l = list(self._profiles[_profile]['config'].keys())
+		_l = list(self.profiles[_profile]['config'].keys())
 		_l.sort()
 		for c in _l:
 			_config = "<h4>{0}:</h4>\n".format(c)
-			_m = list(self._profiles[_profile]['config'][c].keys())
+			_m = list(self.profiles[_profile]['config'][c].keys())
 			_m.sort()
 			for i in _m:
 				_config += "<h6> ➜ {0}: ".format(i)
-				if self._profiles[_profile]['config'][c][i]:
+				if self.profiles[_profile]['config'][c][i]:
 					_config += "<font color=green><b>On</b></font></h6>\n"
 				else:
 					_config += "<font color=red><b>Off</b></font></h6>\n"
@@ -307,16 +305,16 @@ class Main(QtGui.QMainWindow):
 		self.Users.profilesTree.clear()
 		while self.Edit.profilesList.count():
 			self.Edit.profilesList.takeItem(0)
-		_profiles = list(self._profiles.keys())
+		_profiles = list(self.profiles.keys())
 		_profiles.sort()
 		_icon = QtGui.QIcon(":/edit_icon/profiles.png")
 		for p in _profiles:
 			QtGui.QTreeWidgetItem(self.Users.profilesTree, [p]).setExpanded(True)
 			QtGui.QListWidgetItem(_icon, p, self.Edit.profilesList)
-		_users = list(self._users.keys())
+		_users = list(self.users.keys())
 		_users.sort()
 		for u in _users:
-			p = self._users[u]['profile']
+			p = self.users[u]['profile']
 			if not p: continue
 			P = self.Users.profilesTree.findItems(p, QtCore.Qt.MatchExactly)[0]
 			QtGui.QTreeWidgetItem(P, [u])
@@ -327,8 +325,7 @@ class Main(QtGui.QMainWindow):
 		@param _users a list of strings usernames to add to _profile
 		@param _profile a string containing the destiny profile name
 		"""
-		if not _users or not _profile:
-			_users = []
+		if not _users:
 			for U in self.Users.usersList.selectedItems():
 				try:
 					_users.append(U.text())
@@ -342,28 +339,32 @@ class Main(QtGui.QMainWindow):
 					break
 		if not _profile and self.Users.profilesTree.selectedItems():
 			_profile = self.Users.profilesTree.selectedItems()[0].text(0)
-		if _profile in self._users:
-			_profile = self._users[_profile]['profile']
+		if _profile in self.users:
+			_profile = self.users[_profile]['profile']
 		if not _profile:
 			return
 
 		for u in _users:
-			self._users[u]['profile'] = _profile
+			self.users[u]['profile'] = _profile
 
 		self.profilesRefresh()
 
-	def delUser2Profile(self, _users = []):
+	def delUser2Profile(self, *_users):
 		""" Get the user in the self.usersList and add it to self.profilesTree
 		@param self a Main() instance
 		@param _users A list of strings usernames to remove from profiles
 		"""
+		if len(_users) == 0:
+			_users = []
+		elif len(_users) == 1:
+			_users = _users[0]
 		if not _users:
 			for U in self.Users.profilesTree.selectedItems():
 				if U.parent():
 					_users.append(U.text(0))
 
 		for U in _users:
-			self._users[U]['profile'] = ''
+			self.users[U]['profile'] = ''
 
 		self.profilesRefresh()
 
@@ -416,7 +417,7 @@ class Main(QtGui.QMainWindow):
 		"""
 		self.new_profiles_count += 1
 		n = 'New Profile {0}'.format(self.new_profiles_count)
-		self._profiles[n] = self._profilesFalse
+		self.profiles[n] = self.profilesFalse
 		self.profilesRefresh()
 		self.Edit.profilesList.findItems(n,
 			QtCore.Qt.MatchExactly)[0].setSelected(True)
@@ -428,19 +429,19 @@ class Main(QtGui.QMainWindow):
 		@param self a Main() instance
 		"""
 		_profile = self.Edit.profilesList.selectedItems()
-		_p = list(self._profiles.keys())
+		_p = list(self.profiles.keys())
 		_p.sort()
 		for p in _profile:
 			try:
 				p = p.text()
 				k = _p.index(p)-1
-				del self._profiles[p]
+				del self.profiles[p]
 			except: pass
-			for u in self._users:
-				if self._users[u]['profile'] == p:
-					self._users[u]['profile'] = ''
+			for u in self.users:
+				if self.users[u]['profile'] == p:
+					self.users[u]['profile'] = ''
 		self.profilesRefresh()
-		_p = list(self._profiles.keys())
+		_p = list(self.profiles.keys())
 		_p.sort()
 		self.Edit.profilesList.findItems(_p[k],
 			QtCore.Qt.MatchExactly)[0].setSelected(True)
@@ -461,7 +462,7 @@ class Main(QtGui.QMainWindow):
 		self.new_profiles_count += 1
 		p = self.Edit.profilesList.selectedItems()[0].text()
 		n = '{0}_{1}'.format(p, self.new_profiles_count)
-		self._profiles[n] = self._profiles[p].copy()
+		self.profiles[n] = self.profiles[p].copy()
 		self.profilesRefresh()
 		self.Edit.profilesList.findItems(n,
 			QtCore.Qt.MatchExactly)[0].setSelected(True)
