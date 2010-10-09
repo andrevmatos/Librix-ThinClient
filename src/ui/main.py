@@ -175,8 +175,6 @@ class Main(QtGui.QMainWindow):
 		for i in _users:
 			self._users[i]['listItem'] = QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), i, self.Users.usersList)
 
-		self.profilesRefresh()
-
 		self.Users.usersList.setAcceptDrops(True)
 		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
 		self.Users.usersList.dropEvent = self._userDropEvent
@@ -188,7 +186,9 @@ class Main(QtGui.QMainWindow):
 
 		self.Edit.profileSummaryFrame = self.makeProfileFrame()
 		self.Edit.verticalLayout_4.addWidget(self.Edit.profileSummaryFrame.widget)
-		self.Edit.profilesList.previous = self.Edit.profileSummaryFrame
+		self.Edit.profilesList.previous = self.Edit.profileSummaryFrame.widget
+
+		self.profilesRefresh()
 
 		QtCore.QObject.connect(self.Users.profilesTree,
 			QtCore.SIGNAL("currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)"), self.activateUserProfileSummary)
@@ -212,9 +212,9 @@ class Main(QtGui.QMainWindow):
 		@param listItem a QtGui.QListWidgetItem profile object
 		"""
 		if not listItem: return
-		if self.Edit.profilesList.previous != self.Edit.profileSummaryFrame:
+		if self.Edit.profilesList.previous != self.Edit.profileSummaryFrame.widget:
 			self.Edit.profilesList.previous.hide()
-			self.Edit.profileSummaryFrame.show()
+			self.Edit.profileSummaryFrame.widget.show()
 		self.setSummary(listItem.text(), self.Edit.profileSummaryFrame)
 
 	def makeProfileFrame(self):
@@ -225,7 +225,7 @@ class Main(QtGui.QMainWindow):
 		_summary.widget = QtGui.QWidget()
 		_summary.setupUi(_summary.widget)
 
-		_summary._configsWidgets = []
+		_summary._configsWidgets = {}
 
 		return _summary
 
@@ -236,10 +236,7 @@ class Main(QtGui.QMainWindow):
 		@param _summary a Ui_Summary instance, with a .widget object where the configs will be set
 		"""
 		_summary._title.setText("<h2><b>Name: <font color=blue>{0}</font></h2>\n".format(_profile))
-		# for below: clear _summary.configsWidget widgets
-		for k in _summary._configsWidgets:
-			k.close()
-		_summary._configsWidget = []
+
 		# for each category, creates a QLabel and add the configurations
 		_l = list(self._profiles[_profile]['config'].keys())
 		_l.sort()
@@ -253,8 +250,10 @@ class Main(QtGui.QMainWindow):
 					_config += "<font color=green><b>On</b></font></h6>\n"
 				else:
 					_config += "<font color=red><b>Off</b></font></h6>\n"
-			_summary._configsWidgets.append(QtGui.QLabel(_config))
-			_summary.horizontalLayout.addWidget(_summary._configsWidgets[-1])
+			if not c in _summary._configsWidgets:
+				_summary._configsWidgets[c] = QtGui.QLabel()
+				_summary.horizontalLayout.addWidget(_summary._configsWidgets[c])
+			_summary._configsWidgets[c].setText(_config)
 
 
 	def setupWidgets(self):
@@ -304,6 +303,7 @@ class Main(QtGui.QMainWindow):
 		""" Repopulate self.Users.profilesTree
 		@param self a Main() instance
 		"""
+
 		self.Users.profilesTree.clear()
 		while self.Edit.profilesList.count():
 			self.Edit.profilesList.takeItem(0)
@@ -418,25 +418,34 @@ class Main(QtGui.QMainWindow):
 		n = 'New Profile {0}'.format(self.new_profiles_count)
 		self._profiles[n] = self._profilesFalse
 		self.profilesRefresh()
-		#self.Edit.profilesList.findItems(n,
-		#	QtCore.Qt.MatchExactly)[0].setSelected(True)
-		#self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
-		#	QtCore.Qt.MatchExactly)[0])
+		self.Edit.profilesList.findItems(n,
+			QtCore.Qt.MatchExactly)[0].setSelected(True)
+		self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
+			QtCore.Qt.MatchExactly)[0])
 
 	def delProfile(self):
 		""" Delete a profile
 		@param self a Main() instance
 		"""
 		_profile = self.Edit.profilesList.selectedItems()
+		_p = list(self._profiles.keys())
+		_p.sort()
 		for p in _profile:
 			try:
 				p = p.text()
+				k = _p.index(p)-1
 				del self._profiles[p]
 			except: pass
 			for u in self._users:
 				if self._users[u]['profile'] == p:
 					self._users[u]['profile'] = ''
 		self.profilesRefresh()
+		_p = list(self._profiles.keys())
+		_p.sort()
+		self.Edit.profilesList.findItems(_p[k],
+			QtCore.Qt.MatchExactly)[0].setSelected(True)
+		self.activateEditProfileSummary(self.Edit.profilesList.findItems(_p[k],
+			QtCore.Qt.MatchExactly)[0])
 
 	def editProfile(self):
 		""" Edit a profile
@@ -454,10 +463,10 @@ class Main(QtGui.QMainWindow):
 		n = '{0}_{1}'.format(p, self.new_profiles_count)
 		self._profiles[n] = self._profiles[p].copy()
 		self.profilesRefresh()
-		#self.Edit.profilesList.findItems('n',
-		#	QtCore.Qt.MatchExactly)[0].setSelected(True)
-		#self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
-		#	QtCore.Qt.MatchExactly)[0])
+		self.Edit.profilesList.findItems(n,
+			QtCore.Qt.MatchExactly)[0].setSelected(True)
+		self.activateEditProfileSummary(self.Edit.profilesList.findItems(n,
+			QtCore.Qt.MatchExactly)[0])
 
 	def makeListItemWidget(self, parentList, text, icon):
 		""" Create a Widget to put as item in leftList
