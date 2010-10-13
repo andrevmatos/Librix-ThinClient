@@ -26,6 +26,7 @@ from ui.mainWindow import Ui_ThinClient
 from ui.usersWidget import Ui_UsersWidget
 from ui.editWidget import Ui_EditWidget
 from ui.exportWidget import Ui_ExportWidget
+from ui.tabItemWidget import Ui_tabWidget
 
 from ui.profileSummary import Ui_Summary
 
@@ -476,42 +477,19 @@ class Main(QtGui.QMainWindow):
 		@param text String to use as title of tab
 		@param icon QtGui.QIcon object, to use as icon of tab
 		"""
-		_listItem = QtGui.QListWidgetItem(parentList)
-		_listItemWidget = QtGui.QWidget(parentList)
-		_vboxLayout = QtGui.QVBoxLayout(_listItemWidget)
+		listItem = QtGui.QListWidgetItem(parentList)
+		tabWidget = Ui_tabWidget()
+		tabWidget.widget = QtGui.QWidget(parentList)
+		tabWidget.setupUi(tabWidget.widget)
 
-		_sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
-		_sizePolicy.setHorizontalStretch(0)
-		_sizePolicy.setVerticalStretch(0)
-		_sizePolicy.setHeightForWidth(_listItemWidget.sizePolicy().hasHeightForWidth())
+		listItem.setSizeHint(tabWidget.widget.size())
 
-		_sizePolicyM = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
-		_sizePolicyM.setHorizontalStretch(0)
-		_sizePolicyM.setVerticalStretch(0)
-		_sizePolicyM.setHeightForWidth(_listItemWidget.sizePolicy().hasHeightForWidth())
+		tabWidget.iconLabel.setPixmap(icon.pixmap(QtCore.QSize(48, 48)))
+		tabWidget.titleLabel.setText('<b>{0}</b>'.format(text))
 
-		_listItem.setSizeHint(QtCore.QSize(0, 78))
-		_listItemWidget.setMinimumSize(QtCore.QSize(0, 78))
+		parentList.setItemWidget(listItem, tabWidget.widget)
 
-		_listItemWidget.setSizePolicy(_sizePolicy)
-		_listItemWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
-
-		_iconLabel = QtGui.QLabel(_listItemWidget)
-		_iconLabel.setMaximumSize(QtCore.QSize(300, 48))
-		_iconLabel.setAlignment(QtCore.Qt.AlignCenter)
-		_iconLabel.setPixmap(icon.pixmap(QtCore.QSize(48, 48)))
-		_iconLabel.setSizePolicy(_sizePolicyM)
-		_vboxLayout.addWidget(_iconLabel)
-
-		_nameLabel = QtGui.QLabel('<b>{0}</b>'.format(text), _listItemWidget)
-		_nameLabel.setMaximumSize(300, 20)
-		_nameLabel.setAlignment(QtCore.Qt.AlignCenter)
-		_nameLabel.setSizePolicy(_sizePolicyM)
-		_vboxLayout.addWidget(_nameLabel)
-
-		parentList.setItemWidget(_listItem, _listItemWidget)
-
-		return _listItem
+		return listItem
 
 
 def main():
