@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# Makefile
 #
 #  Copyright (C) 2010 - Librix Dev Team
 #
@@ -18,6 +18,23 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-__all__ = [
-        'ui'
-]
+# Makefile
+
+SHELL=/bin/bash
+
+.PHONY: compile
+
+compile:
+	for i in $$( find -iname *.ui ); do \
+		echo "Compiling UI: $${i}" ; \
+		pyuic4 --from-imports -x -i 0 "$${i}" -o "$$( dirname $${i} )/Ui_$$( basename $${i} | sed 's/.ui$$/.py/g' )" ; \
+	done ;
+	for i in $$( find -iname *.qrc ); do \
+		echo "Compiling Resource: $${i}" ; \
+		pyrcc4 -py3 "$${i}" -o "$$( dirname $${i} )/../$$( basename $${i} | sed 's/.qrc$$/_rc.py/g' )" ; \
+	done
+
+clean:
+	find ./ -iname \*.pyc -delete ; \
+	find ./ -iname \*Ui_\*py -delete ; \
+	find ./ -iname \*_rc.py -delete
