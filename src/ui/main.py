@@ -22,13 +22,12 @@ import sys
 from random import choice
 from PyQt4 import QtCore,QtGui
 
-from ui.mainWindow import Ui_ThinClient
-from ui.usersWidget import Ui_UsersWidget
-from ui.editWidget import Ui_EditWidget
-from ui.exportWidget import Ui_ExportWidget
-from ui.tabItemWidget import Ui_tabWidget
-
-from ui.profileSummary import Ui_Summary
+from ui.Ui_mainWindow import Ui_ThinClient
+from ui.Ui_usersWidget import Ui_UsersWidget
+from ui.Ui_editWidget import Ui_EditWidget
+from ui.Ui_exportWidget import Ui_ExportWidget
+from ui.Ui_tabItemWidget import Ui_tabWidget
+from ui.Ui_profileSummary import Ui_Summary
 
 TF = [True, False]
 

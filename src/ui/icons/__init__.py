@@ -19,7 +19,5 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 __all__ = [
-        'ui'
+	'temp_icons_rc'
 ]
-
-__path__.append('ui/icons')

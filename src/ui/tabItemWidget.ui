@@ -73,7 +73,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="icons/temp_icons.qrc"/>
+  <include location="./icons/temp_icons.qrc"/>
  </resources>
  <connections/>
 </ui>
