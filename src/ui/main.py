@@ -28,6 +28,8 @@ from ui.Ui_editWidget import Ui_EditWidget
 from ui.Ui_exportWidget import Ui_ExportWidget
 from ui.Ui_tabItemWidget import Ui_tabWidget
 from ui.Ui_profileSummary import Ui_Summary
+from ui.Ui_profileEdit import Ui_EditProfile
+from ui.Ui_configProfileEdit import Ui_configsWidget
 
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
@@ -132,6 +134,7 @@ class Main(QtGui.QMainWindow):
 		""" Repopulate self.Users.profilesTree
 		@param self a Main() instance
 		"""
+		#TODO: merge populateLists and profilesRefresh
 
 		self.Users.profilesTree.clear()
 		while self.Edit.profilesList.count():
@@ -147,8 +150,10 @@ class Main(QtGui.QMainWindow):
 		for u in _users:
 			p = self.users[u]['profile']
 			if not p: continue
-			P = self.Users.profilesTree.findItems(p, QtCore.Qt.MatchExactly)[0]
-			QtGui.QTreeWidgetItem(P, [u])
+			try:
+				P = self.Users.profilesTree.findItems(p, QtCore.Qt.MatchExactly)[0]
+				QtGui.QTreeWidgetItem(P, [u])
+			except: print("@@@@@@@@", p)
 
 	def populateLists(self):
 		""" Create the lists and tree in self.Users.usersList, self.Users.profilesTree and self.Edit.profilesList
@@ -170,7 +175,8 @@ class Main(QtGui.QMainWindow):
 
 		self.Edit.profileSummaryFrame = self.makeProfileFrame()
 		self.Edit.verticalLayout_4.addWidget(self.Edit.profileSummaryFrame.widget)
-		self.Edit.profilesList.previous = self.Edit.profileSummaryFrame.widget
+		self.Edit.current = self.Edit.profileSummaryFrame
+		self.Edit.profileEdit = None
 
 		self.profilesRefresh()
 
@@ -196,9 +202,10 @@ class Main(QtGui.QMainWindow):
 		@param listItem a QtGui.QListWidgetItem profile object
 		"""
 		if not listItem: return
-		if self.Edit.profilesList.previous != self.Edit.profileSummaryFrame.widget:
-			self.Edit.profilesList.previous.hide()
+		if self.Edit.current.widget != self.Edit.profileSummaryFrame.widget:
+			self.Edit.current.widget.hide()
 			self.Edit.profileSummaryFrame.widget.show()
+			self.Edit.current = self.Edit.profileSummaryFrame
 		self.setSummary(listItem.text(), self.Edit.profileSummaryFrame)
 
 	def makeProfileFrame(self):
@@ -347,6 +354,8 @@ class Main(QtGui.QMainWindow):
 		@param self a Main() instance
 		"""
 		_profile = self.Edit.profilesList.selectedItems()
+		if not _profile:
+			return
 		_p = list(self.profiles.keys())
 		_p.sort()
 		for p in _profile:
@@ -370,28 +379,33 @@ class Main(QtGui.QMainWindow):
 		""" Edit a profile
 		@param self a Main() instance
 		"""
-		# TODO: implement edit profile function
-		pass
+		_profile = self.Edit.profilesList.selectedItems()
+		if _profile:
+			_profile = _profile[0].text()
+		else:
+			return
+		self.profileEdit(_profile)
 
 	def duplicateProfile(self):
 		""" Creates a new profile from a existing one
 		@param self a Main() instance
 		"""
 		self.new_profiles_count += 1
-		p = self.Edit.profilesList.selectedItems()[0].text()
+		p = self.Edit.profilesList.selectedItems()
+		if not p:
+			return
+		p = p[0].text()
 		n = '{0}_{1}'.format(p, self.new_profiles_count)
 		title = QtGui.QInputDialog.getText(self.Edit.widget, "Profile Name",
 			"Enter the destination profile name:", text = n)[0]
 		if not title:
 			return
-		self.profiles[title] = self.profiles[p].copy()
+		self.profiles[title] = dict(self.profiles[p])
 		self.profilesRefresh()
 		self.Edit.profilesList.findItems(title,
 			QtCore.Qt.MatchExactly)[0].setSelected(True)
 		self.activateEditProfileSummary(self.Edit.profilesList.findItems(title,
 			QtCore.Qt.MatchExactly)[0])
-
-
 
 	def _dragEnterEvent(self, event):
 		""" Qt Event of Drag actions
@@ -433,6 +447,88 @@ class Main(QtGui.QMainWindow):
 			if U.parent():
 				_users.append(U.text(0))
 		self.delUser2Profile(_users)
+
+
+	def profileEdit(self, profile):
+		""" Build the profile edit widget
+		@param self a Main() instance
+		@param profile a string containing the profile name
+		"""
+
+		if not self.Edit.profileEdit:
+			self.Edit.profileEdit = Ui_EditProfile()
+			self.Edit.profileEdit.widget = QtGui.QWidget()
+			self.Edit.profileEdit.setupUi(self.Edit.profileEdit.widget)
+			self.Edit.profileEdit.page.close()
+
+			self.Edit.profileEdit.configs = {}
+			self.Edit.verticalLayout_4.addWidget(self.Edit.profileEdit.widget)
+			self.Edit.profileEdit.widget.hide()
+
+		self.Edit.profileEdit.profile = profile
+		self.Edit.profileEdit.profileName.setText(profile)
+		while self.Edit.profileEdit.configToolBox.count():
+			self.Edit.profileEdit.configToolBox.removeItem(0)
+
+		for c in self.profiles[profile]:
+			if not c in self.Edit.profileEdit.configs:
+				self.Edit.profileEdit.configs[c] = {'config': None, 'buttons': []}
+			else:
+				for b in self.Edit.profileEdit.configs[c]['buttons']:
+					b.close()
+					self.Edit.profileEdit.configs[c]['buttons'].remove(b)
+				self.Edit.profileEdit.configs[c]['config'].widget.close()
+				self.Edit.profileEdit.configs[c] = {'config': None, 'buttons': []}
+
+			self.Edit.profileEdit.configs[c]['config'] = Ui_configsWidget()
+			self.Edit.profileEdit.configs[c]['config'].widget = QtGui.QWidget()
+			self.Edit.profileEdit.configs[c]['config'].setupUi(self.Edit.profileEdit.configs[c]['config'].widget)
+
+			_options = list(self.profiles[profile][c].keys())
+			_options.sort()
+			for o in _options:
+				button = QtGui.QPushButton(o)
+				button.setCheckable(True)
+				if self.profiles[profile][c][o]:
+					button.setChecked(True)
+				self.Edit.profileEdit.configs[c]['buttons'].append(button)
+				self.Edit.profileEdit.configs[c]['config'].ConfigVerticalLayout.addWidget(button)
+
+			self.Edit.profileEdit.configToolBox.addItem(self.Edit.profileEdit.configs[c]['config'].widget, c)
+
+		QtCore.QObject.connect(self.Edit.profileEdit.buttonBox, QtCore.SIGNAL("clicked(QAbstractButton *)"),
+			self.readProfileConfig)
+
+		if self.Edit.current != self.Edit.profileEdit:
+			self.Edit.current.widget.hide()
+			self.Edit.current = self.Edit.profileEdit
+		self.Edit.profileEdit.widget.show()
+
+	def readProfileConfig(self, button):
+		""" Read and write (or not) configurations on editProfile
+		@param self a Main() instance
+		"""
+		name = self.Edit.profileEdit.profile
+		if not name in self.profiles:
+			return
+		if self.Edit.profileEdit.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Apply:
+			if self.Edit.profileEdit.profileName.text() != name:
+				newname = self.Edit.profileEdit.profileName.text()
+				self.profiles[newname] = self.profiles[name].copy()
+				del self.profiles[name]
+				for u in self.users:
+					if self.users[u]['profile'] == name:
+						self.users[u]['profile'] = newname
+				name = newname
+			for c in self.Edit.profileEdit.configs:
+				for b in self.Edit.profileEdit.configs[c]['buttons']:
+					self.profiles[name][c][b.text()] = b.isChecked()
+
+		self.profilesRefresh()
+		self.Edit.profilesList.findItems(name,
+			QtCore.Qt.MatchExactly)[0].setSelected(True)
+		self.activateEditProfileSummary(self.Edit.profilesList.findItems(name,
+			QtCore.Qt.MatchExactly)[0])
 
 
 def main():
