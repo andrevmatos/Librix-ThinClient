@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/exportWidget.ui'
 #
-# Created: Thu Oct 14 18:17:56 2010
+# Created: Mon Oct 18 15:48:03 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!

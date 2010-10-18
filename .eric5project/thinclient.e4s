@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Session SYSTEM "Session-4.4.dtd">
+<!-- eric5 session file for project thinclient -->
+<!-- This file was generated automatically, do not edit. -->
+<!-- Saved: 2010-10-15, 11:49:33 -->
+<Session version="4.4">
+  <Filenames>
+    <Filename cline="41" cindex="19" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
+    <Filename cline="21" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/Makefile</Filename>
+  </Filenames>
+  <ActiveWindow cline="41" cindex="19">/D/Dev/Librix/thinclient/src/ui/main.py</ActiveWindow>
+  <Breakpoints>
+  </Breakpoints>
+  <Watchexpressions>
+  </Watchexpressions>
+  <DebugInfo>
+    <CommandLine></CommandLine>
+    <WorkingDirectory></WorkingDirectory>
+    <Environment></Environment>
+    <ReportExceptions value="True" />
+    <Exceptions>
+    </Exceptions>
+    <IgnoredExceptions>
+    </IgnoredExceptions>
+    <AutoClearShell value="True" />
+    <TracePython value="False" />
+    <AutoContinue value="True" />
+    <CovexcPattern></CovexcPattern>
+  </DebugInfo>
+  <Bookmarks>
+    <Bookmark>
+      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
+      <Linenumber value="187" />
+    </Bookmark>
+    <Bookmark>
+      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
+      <Linenumber value="220" />
+    </Bookmark>
+    <Bookmark>
+      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
+      <Linenumber value="232" />
+    </Bookmark>
+    <Bookmark>
+      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
+      <Linenumber value="302" />
+    </Bookmark>
+    <Bookmark>
+      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
+      <Linenumber value="420" />
+    </Bookmark>
+  </Bookmarks>
+</Session>

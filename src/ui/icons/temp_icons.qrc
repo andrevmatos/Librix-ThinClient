@@ -3,6 +3,12 @@
     <file>system-users.png</file>
     <file>user.png</file>
   </qresource>
+  <qresource prefix="toolbar">
+    <file>document-new.png</file>
+    <file>document-close.png</file>
+    <file>document-edit.png</file>
+    <file>document-edit-verify.png</file>
+  </qresource>
   <qresource prefix="profileAction">
     <file>document-close.png</file>
     <file>document-edit.png</file>
