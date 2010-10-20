@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2010-10-15, 11:49:33 -->
+<!-- Saved: 2010-10-19, 13:50:50 -->
 <!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language></Language>
@@ -24,8 +24,12 @@
     <Source>src/ui/Ui_usersWidget.py</Source>
     <Source>src/ui/Ui_profileSummary.py</Source>
     <Source>src/ui/Ui_tabItemWidget.py</Source>
-    <Source>src/ui/icons/temp_icons_rc.py</Source>
     <Source>src/ui/icons/__init__.py</Source>
+    <Source>src/ui/temp_icons_rc.py</Source>
+    <Source>src/ui/Ui_profileEdit.py</Source>
+    <Source>src/ui/Ui_configProfileEdit.py</Source>
+    <Source>src/backend/__init__.py</Source>
+    <Source>src/backend/librix_tcd.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/exportWidget.ui</Form>
@@ -34,6 +38,8 @@
     <Form>src/ui/usersWidget.ui</Form>
     <Form>src/ui/profileSummary.ui</Form>
     <Form>src/ui/tabItemWidget.ui</Form>
+    <Form>src/ui/profileEdit.ui</Form>
+    <Form>src/ui/configProfileEdit.ui</Form>
   </Forms>
   <Translations>
   </Translations>
@@ -57,10 +63,10 @@
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS" />
     <FiletypeAssociation pattern="Makefile*" type="OTHERS" />
-    <FiletypeAssociation pattern="*.py3" type="SOURCES" />
     <FiletypeAssociation pattern="*.qrc" type="RESOURCES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
     <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.py3" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

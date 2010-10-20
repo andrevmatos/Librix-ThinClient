@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/profileSummary.ui'
 #
-# Created: Mon Oct 18 18:58:47 2010
+# Created: Tue Oct 19 20:35:03 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,10 +38,10 @@ class Ui_Summary(object):
 		self.content.setObjectName(_fromUtf8("content"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.content)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-		self._title = QtGui.QLabel(self.content)
-		self._title.setText(_fromUtf8(""))
-		self._title.setObjectName(_fromUtf8("_title"))
-		self.verticalLayout_3.addWidget(self._title)
+		self.title = QtGui.QLabel(self.content)
+		self.title.setText(_fromUtf8(""))
+		self.title.setObjectName(_fromUtf8("title"))
+		self.verticalLayout_3.addWidget(self.title)
 		self.configsWidget = QtGui.QWidget(self.content)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 		sizePolicy.setHorizontalStretch(0)
