@@ -41,9 +41,11 @@ class Main(QtGui.QMainWindow):
 		"""
 		QtGui.QMainWindow.__init__(self)
 
+		# Setup main UI
 		self.ui = Ui_ThinClient()
 		self.ui.setupUi(self)
 
+		# Init users and profiles package
 		self.tcd = LibrixTCD()
 
 		# Demonstration users and profiles list
@@ -61,41 +63,72 @@ class Main(QtGui.QMainWindow):
 		self.Users = Ui_UsersWidget()
 		self.Users.widget = QtGui.QWidget()
 		self.Users.setupUi(self.Users.widget)
-		self.Users.Tab = self.makeTabItem(self.ui.listWidget, 'Users', QtGui.QIcon(":/user_icon/system-users.png"))
+		self.Users.Tab = self.makeTabItem(self.ui.listWidget,
+			'Users', QtGui.QIcon(":/user_icon/system-users.png"))
 		self.ui.horizontalLayout.addWidget(self.Users.widget)
 		self.Users.widget.hide()
+			# Drag'nDrop actions
+		self.Users.usersList.setAcceptDrops(True)
+		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
+		self.Users.usersList.dropEvent = self._userDropEvent
+		self.Users.profilesTree.dragEnterEvent = self._dragEnterEvent
+		self.Users.profilesTree.dropEvent = self._profilesDropEvent
+			# Profile summary in Users tab
+		self.Users.profileSummaryFrame = self.makeProfileFrame()
+		self.Users.summaryDock.setWidget(
+			self.Users.profileSummaryFrame.widget)
 
 		# Edit widget configuration routines
 		self.Edit = Ui_EditWidget()
 		self.Edit.widget = QtGui.QWidget()
 		self.Edit.setupUi(self.Edit.widget)
-		self.Edit.Tab = self.makeTabItem(self.ui.listWidget, 'Edit Profiles', QtGui.QIcon(":/edit_icon/document-edit.png"))
+		self.Edit.Tab = self.makeTabItem(
+			self.ui.listWidget, 'Edit Profiles',
+			QtGui.QIcon(":/edit_icon/document-edit.png"))
 		self.ui.horizontalLayout.addWidget(self.Edit.widget)
 		self.Edit.widget.hide()
+			#Profile summary in Edit tab
+		self.Edit.profileSummaryFrame = self.makeProfileFrame()
+		self.Edit.verticalLayout_4.addWidget(
+			self.Edit.profileSummaryFrame.widget)
+		self.Edit.current = self.Edit.profileSummaryFrame
+		self.Edit.profileEdit = None
 
 		# Export widget configuration routines
 		self.Export = Ui_ExportWidget()
 		self.Export.widget = QtGui.QWidget()
 		self.Export.setupUi(self.Export.widget)
-		self.Export.Tab = self.makeTabItem(self.ui.listWidget, 'Import/Export', QtGui.QIcon(":/export_icon/fork.png"))
+		self.Export.Tab = self.makeTabItem(self.ui.listWidget,
+			'Import/Export', QtGui.QIcon(":/export_icon/fork.png"))
 		self.ui.horizontalLayout.addWidget(self.Export.widget)
 		self.Export.widget.hide()
 
-		self.populateLists()
-
 		# Main connects
-		QtCore.QObject.connect(self.ui.listWidget,
-			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateTab)
+		QtCore.QObject.connect(self.ui.listWidget, QtCore.SIGNAL(
+			"currentItemChanged(QListWidgetItem *,QListWidgetItem *)"),
+			self.activateTab)
 		# Users tab connects
 		QtCore.QObject.connect(self.Users.add,
 			QtCore.SIGNAL("clicked()"), self.addUser2Profile)
 		QtCore.QObject.connect(self.Users.remove,
 			QtCore.SIGNAL("clicked()"), self.delUser2Profile)
+		QtCore.QObject.connect(self.Users.profilesTree, QtCore.SIGNAL(
+			"currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)"),
+			self.activateUserProfileSummary)
 		# Edit tab connects
-		QtCore.QObject.connect(self.Edit.addButton, QtCore.SIGNAL("clicked()"), self.addProfile)
-		QtCore.QObject.connect(self.Edit.delButton, QtCore.SIGNAL("clicked()"), self.delProfile)
-		QtCore.QObject.connect(self.Edit.editButton, QtCore.SIGNAL("clicked()"), self.editProfile)
-		QtCore.QObject.connect(self.Edit.duplicateButton, QtCore.SIGNAL("clicked()"), self.duplicateProfile)
+		QtCore.QObject.connect(self.Edit.addButton,
+			QtCore.SIGNAL("clicked()"), self.addProfile)
+		QtCore.QObject.connect(self.Edit.delButton,
+			QtCore.SIGNAL("clicked()"), self.delProfile)
+		QtCore.QObject.connect(self.Edit.editButton,
+			QtCore.SIGNAL("clicked()"), self.editProfile)
+		QtCore.QObject.connect(self.Edit.duplicateButton,
+			QtCore.SIGNAL("clicked()"), self.duplicateProfile)
+		QtCore.QObject.connect(self.Edit.profilesList,
+			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,\
+			QListWidgetItem *)"), self.activateEditProfileSummary)
+
+		self.profilesRefresh()
 
 		self.currentOptionsWidgets = self.Users.widget
 		self.ui.listWidget.item(0).setSelected(True)
@@ -106,53 +139,31 @@ class Main(QtGui.QMainWindow):
 
 		@param	self		A Main() instance
 		"""
-		#TODO: merge populateLists and profilesRefresh
 
 		self.Users.profilesTree.clear()
+		self.Users.usersList.clear()
 		self.Edit.profilesList.clear()
 
 		for p in self.tcd.getProfilesList():
-			QtGui.QTreeWidgetItem(self.Users.profilesTree, [p]).setExpanded(True)
-			QtGui.QListWidgetItem(QtGui.QIcon(":/edit_icon/profiles.png"), p, self.Edit.profilesList)
+			QtGui.QTreeWidgetItem(self.Users.profilesTree,
+				[p]).setExpanded(True)
+			QtGui.QListWidgetItem(
+				QtGui.QIcon(":/edit_icon/profiles.png"),
+				p, self.Edit.profilesList)
 
 		for u in self.tcd.getUsersList():
+			QtGui.QListWidgetItem(
+				QtGui.QIcon(":/user_icon/user.png"),
+				u, self.Users.usersList)
 			p = self.tcd.getUserProfile(u)
 			if not p: continue
-			P = self.Users.profilesTree.findItems(p, QtCore.Qt.MatchExactly)[0]
+			P = self.Users.profilesTree.findItems(p,
+				QtCore.Qt.MatchExactly)[0]
 			QtGui.QTreeWidgetItem(P, [u])
 
-	def populateLists(self):
-		""" Create the lists and tree in self.Users.usersList, self.Users.profilesTree and self.Edit.profilesList
-
-		@param	self		A Main() instance
-		"""
-
-		for u in self.tcd.getUsersList():
-			QtGui.QListWidgetItem(QtGui.QIcon(":/user_icon/user.png"), u, self.Users.usersList)
-
-		self.Users.usersList.setAcceptDrops(True)
-		self.Users.usersList.dragEnterEvent = self._dragEnterEvent
-		self.Users.usersList.dropEvent = self._userDropEvent
-		self.Users.profilesTree.dragEnterEvent = self._dragEnterEvent
-		self.Users.profilesTree.dropEvent = self._profilesDropEvent
-
-		self.Users.profileSummaryFrame = self.makeProfileFrame()
-		self.Users.summaryDock.setWidget(self.Users.profileSummaryFrame.widget)
-
-		self.Edit.profileSummaryFrame = self.makeProfileFrame()
-		self.Edit.verticalLayout_4.addWidget(self.Edit.profileSummaryFrame.widget)
-		self.Edit.current = self.Edit.profileSummaryFrame
-		self.Edit.profileEdit = None
-
-		self.profilesRefresh()
-
-		QtCore.QObject.connect(self.Users.profilesTree,
-			QtCore.SIGNAL("currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)"), self.activateUserProfileSummary)
-		QtCore.QObject.connect(self.Edit.profilesList,
-			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,QListWidgetItem *)"), self.activateEditProfileSummary)
 
 	def activateUserProfileSummary(self, treeItem):
-		""" Show summary when a Profile was selected on self.Users.profilesTree
+		""" Show summary when a Profile was selected on profilesTree
 
 		@param	self		A Main() instance
 		@param	treeItem	A QtGui.QTreeWidgetItem profile object
@@ -160,7 +171,8 @@ class Main(QtGui.QMainWindow):
 		if not treeItem: return
 		if treeItem.parent():
 			treeItem = treeItem.parent()
-		self.setSummary(treeItem.text(0), self.Users.profileSummaryFrame)
+		self.setSummary(treeItem.text(0),
+			self.Users.profileSummaryFrame)
 
 
 	def activateEditProfileSummary(self, profile):
@@ -175,22 +187,21 @@ class Main(QtGui.QMainWindow):
 		if type(profile) == QtGui.QListWidgetItem:
 			profile = profile.text()
 
-		try:
 			self.Edit.profilesList.findItems(profile,
 				QtCore.Qt.MatchExactly)[0].setSelected(True)
-		except: print("###***", profile)
 
-		if self.Edit.current.widget != self.Edit.profileSummaryFrame.widget:
+		if self.Edit.current != self.Edit.profileSummaryFrame:
 			self.Edit.current.widget.hide()
 			self.Edit.current = self.Edit.profileSummaryFrame
 			self.Edit.current.widget.show()
 		self.setSummary(profile, self.Edit.profileSummaryFrame)
 
 	def makeProfileFrame(self):
-		""" Create and return a widget with formated text to summary of profile
+		""" Create and return a widget with formated text to summary
 
 		@param	self		A Main() instance
-		@return			A Ui_Summary() instance with a .widget widget object
+		@return			A Ui_Summary() instance with a
+						.widget widget object
 		"""
 		summary = Ui_Summary()
 		summary.widget = QtGui.QWidget()
@@ -205,9 +216,12 @@ class Main(QtGui.QMainWindow):
 
 		@param	self		A Main() instance
 		@param profile	A string containing the name of the profile
-		@param summary	A Ui_Summary instance, with a .widget object where the configs will be set
+		@param summary	A Ui_Summary instance, with a
+										.widget object where the
+										configs will be set
 		"""
-		summary.title.setText("<h2><b>Name: <font color=blue>{0}</font></b></h2>\n".format(profile))
+		summary.title.setText("<h2><b>Name: \
+			<font color=blue>{0}</font></b></h2>\n".format(profile))
 
 		# for each category, creates a QLabel and add the configurations
 		for c in self.tcd.getProfileCategoriesList(profile):
@@ -223,6 +237,88 @@ class Main(QtGui.QMainWindow):
 				summary.configsWidgets[c] = QtGui.QLabel()
 				summary.horizontalLayout.addWidget(summary.configsWidgets[c])
 			summary.configsWidgets[c].setText(config)
+
+
+	def profileEdit(self, profile):
+		""" Build the profile edit widget
+
+		@param	self		A Main() instance
+		@param	profile	A string containing the profile name
+		"""
+		if not self.Edit.profileEdit:
+			self.Edit.profileEdit = Ui_EditProfile()
+			self.Edit.profileEdit.widget = QtGui.QWidget()
+			self.Edit.profileEdit.setupUi(self.Edit.profileEdit.widget)
+			self.Edit.profileEdit.page.close()
+
+			self.Edit.profileEdit.configs = {}
+			self.Edit.verticalLayout_4.addWidget(self.Edit.profileEdit.widget)
+			self.Edit.profileEdit.widget.hide()
+
+		self.Edit.profileEdit.profile = profile
+		self.Edit.profileEdit.profileName.setText(profile)
+		while self.Edit.profileEdit.configToolBox.count():
+			self.Edit.profileEdit.configToolBox.removeItem(0)
+
+		for c in self.tcd.getProfileCategoriesList(profile):
+			if not c in self.Edit.profileEdit.configs:
+				self.Edit.profileEdit.configs[c] = {
+					'config': None, 'buttons': []}
+			else:
+				for b in self.Edit.profileEdit.configs[c]['buttons']:
+					b.close()
+					self.Edit.profileEdit.configs[c]['buttons'].remove(b)
+				self.Edit.profileEdit.configs[c]['config'].widget.close()
+				self.Edit.profileEdit.configs[c] = {
+					'config': None, 'buttons': []}
+
+			self.Edit.profileEdit.configs[c]['config'] = Ui_configsWidget()
+			self.Edit.profileEdit.configs[c]['config'].widget = QtGui.QWidget()
+			self.Edit.profileEdit.configs[c]['config'].setupUi(
+				self.Edit.profileEdit.configs[c]['config'].widget)
+
+			for o in self.tcd.getOptionsList(profile, c):
+				button = QtGui.QPushButton(o)
+				button.option = o
+				button.setCheckable(True)
+				if self.tcd.getOption(profile, c, o):
+					button.setChecked(True)
+				self.Edit.profileEdit.configs[c]['buttons'].append(button)
+				self.Edit.profileEdit.configs[c]['config'
+					].ConfigVerticalLayout.addWidget(button)
+
+			self.Edit.profileEdit.configToolBox.addItem(
+				self.Edit.profileEdit.configs[c]['config'].widget, c)
+
+		QtCore.QObject.connect(self.Edit.profileEdit.buttonBox,
+			QtCore.SIGNAL("clicked(QAbstractButton *)"), self.readProfileConfig)
+
+		if self.Edit.current != self.Edit.profileEdit:
+			self.Edit.current.widget.hide()
+			self.Edit.current = self.Edit.profileEdit
+		self.Edit.profileEdit.widget.show()
+
+	def readProfileConfig(self, button):
+		""" Read and write (or not) configurations on editProfile
+
+		@param	self		A Main() instance
+		"""
+		name = self.Edit.profileEdit.profile
+		if not name in self.tcd.getProfilesList():
+			return
+		if self.Edit.profileEdit.buttonBox.standardButton(button)\
+			== QtGui.QDialogButtonBox.Apply:
+			if self.Edit.profileEdit.profileName.text() != name:
+				newname = self.Edit.profileEdit.profileName.text()
+				self.tcd.moveProfile(name, newname)
+				name = newname
+			for c in self.Edit.profileEdit.configs:
+				for b in self.Edit.profileEdit.configs[c]['buttons']:
+					self.tcd.setOption(name, c, b.option, b.isChecked())
+
+		self.profilesRefresh()
+		self.activateEditProfileSummary(name)
+
 
 	def addUser2Profile(self, users = [], profile = ''):
 		""" Get the user in the self.usersList and add it to self.profilesTree
@@ -299,7 +395,7 @@ class Main(QtGui.QMainWindow):
 		return listItem
 
 	def activateTab(self, listItem):
-		""" Hide the current widget on main window and show the widget of selected Tab
+		""" Show the widget of selected Tab
 
 		@param	self		A Main() instance
 		@param	listItem	A QtGui.QListWidgetItem object
@@ -361,7 +457,8 @@ class Main(QtGui.QMainWindow):
 
 	def duplicateProfile(self):
 		""" Creates a new profile from a existing one
-		@param self a Main() instance
+
+		@param	self		A Main() instance
 		"""
 		self.new_profiles_count += 1
 		p = self.Edit.profilesList.selectedItems()
@@ -380,18 +477,21 @@ class Main(QtGui.QMainWindow):
 
 	def _dragEnterEvent(self, event):
 		""" Qt Event of Drag actions
+
 		@param self a Main() instance
 		@param event a QtGui.QDragEnterEvent object
 		"""
-		if event.mimeData().hasFormat('application/x-qabstractitemmodeldatalist'):
+		if event.mimeData().hasFormat(
+			'application/x-qabstractitemmodeldatalist'):
 			event.accept()
 		else:
 			event.ignore()
 
 	def _profilesDropEvent(self, event):
 		""" Qt Event of Drop actions on profiles tree of Users tab
-		@param self a Main() instance
-		@param event a QtGui.QDropEvent object
+
+		@param	self		A Main() instance
+		@param	event	A QtGui.QDropEvent object
 		"""
 		users = []
 		if event.source() == self.Users.usersList:
@@ -418,80 +518,6 @@ class Main(QtGui.QMainWindow):
 			if U.parent():
 				users.append(U.text(0))
 		self.delUser2Profile(users)
-
-	def profileEdit(self, profile):
-		""" Build the profile edit widget
-
-		@param	self		A Main() instance
-		@param	profile	A string containing the profile name
-		"""
-		if not self.Edit.profileEdit:
-			self.Edit.profileEdit = Ui_EditProfile()
-			self.Edit.profileEdit.widget = QtGui.QWidget()
-			self.Edit.profileEdit.setupUi(self.Edit.profileEdit.widget)
-			self.Edit.profileEdit.page.close()
-
-			self.Edit.profileEdit.configs = {}
-			self.Edit.verticalLayout_4.addWidget(self.Edit.profileEdit.widget)
-			self.Edit.profileEdit.widget.hide()
-
-		self.Edit.profileEdit.profile = profile
-		self.Edit.profileEdit.profileName.setText(profile)
-		while self.Edit.profileEdit.configToolBox.count():
-			self.Edit.profileEdit.configToolBox.removeItem(0)
-
-		for c in self.tcd.getProfileCategoriesList(profile):
-			if not c in self.Edit.profileEdit.configs:
-				self.Edit.profileEdit.configs[c] = {'config': None, 'buttons': []}
-			else:
-				for b in self.Edit.profileEdit.configs[c]['buttons']:
-					b.close()
-					self.Edit.profileEdit.configs[c]['buttons'].remove(b)
-				self.Edit.profileEdit.configs[c]['config'].widget.close()
-				self.Edit.profileEdit.configs[c] = {'config': None, 'buttons': []}
-
-			self.Edit.profileEdit.configs[c]['config'] = Ui_configsWidget()
-			self.Edit.profileEdit.configs[c]['config'].widget = QtGui.QWidget()
-			self.Edit.profileEdit.configs[c]['config'].setupUi(self.Edit.profileEdit.configs[c]['config'].widget)
-
-			for o in self.tcd.getOptionsList(profile, c):
-				button = QtGui.QPushButton(o)
-				button.option = o
-				button.setCheckable(True)
-				if self.tcd.getOption(profile, c, o):
-					button.setChecked(True)
-				self.Edit.profileEdit.configs[c]['buttons'].append(button)
-				self.Edit.profileEdit.configs[c]['config'].ConfigVerticalLayout.addWidget(button)
-
-			self.Edit.profileEdit.configToolBox.addItem(self.Edit.profileEdit.configs[c]['config'].widget, c)
-
-		QtCore.QObject.connect(self.Edit.profileEdit.buttonBox, QtCore.SIGNAL("clicked(QAbstractButton *)"),
-			self.readProfileConfig)
-
-		if self.Edit.current != self.Edit.profileEdit:
-			self.Edit.current.widget.hide()
-			self.Edit.current = self.Edit.profileEdit
-		self.Edit.profileEdit.widget.show()
-
-	def readProfileConfig(self, button):
-		""" Read and write (or not) configurations on editProfile
-
-		@param	self		A Main() instance
-		"""
-		name = self.Edit.profileEdit.profile
-		if not name in self.tcd.getProfilesList():
-			return
-		if self.Edit.profileEdit.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Apply:
-			if self.Edit.profileEdit.profileName.text() != name:
-				newname = self.Edit.profileEdit.profileName.text()
-				self.tcd.moveProfile(name, newname)
-				name = newname
-			for c in self.Edit.profileEdit.configs:
-				for b in self.Edit.profileEdit.configs[c]['buttons']:
-					self.tcd.setOption(name, c, b.option, b.isChecked())
-
-		self.profilesRefresh()
-		self.activateEditProfileSummary(name)
 
 
 def main():
