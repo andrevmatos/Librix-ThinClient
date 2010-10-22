@@ -187,14 +187,14 @@ class Main(QtGui.QMainWindow):
 		if type(profile) == QtGui.QListWidgetItem:
 			profile = profile.text()
 
-			self.Edit.profilesList.findItems(profile,
-				QtCore.Qt.MatchExactly)[0].setSelected(True)
-
 		if self.Edit.current != self.Edit.profileSummaryFrame:
 			self.Edit.current.widget.hide()
 			self.Edit.current = self.Edit.profileSummaryFrame
 			self.Edit.current.widget.show()
 		self.setSummary(profile, self.Edit.profileSummaryFrame)
+
+		self.Edit.profilesList.findItems(profile,
+			QtCore.Qt.MatchExactly)[0].setSelected(True)
 
 	def makeProfileFrame(self):
 		""" Create and return a widget with formated text to summary

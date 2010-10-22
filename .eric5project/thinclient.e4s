@@ -2,15 +2,15 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2010-10-20, 17:03:35 -->
+<!-- Saved: 2010-10-20, 22:25:01 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="313" cindex="8" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
+    <Filename cline="37" cindex="65" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
     <Filename cline="21" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/Makefile</Filename>
     <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/__init__.py</Filename>
-    <Filename cline="40" cindex="28" folds="" zoom="0">/D/Dev/Librix/thinclient/src/backend/librix_tcd.py</Filename>
+    <Filename cline="119" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/backend/librix_tcd.py</Filename>
   </Filenames>
-  <ActiveWindow cline="40" cindex="28">/D/Dev/Librix/thinclient/src/backend/librix_tcd.py</ActiveWindow>
+  <ActiveWindow cline="37" cindex="65">/D/Dev/Librix/thinclient/src/ui/main.py</ActiveWindow>
   <Breakpoints>
   </Breakpoints>
   <Watchexpressions>
@@ -32,15 +32,11 @@
   <Bookmarks>
     <Bookmark>
       <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
-      <Linenumber value="54" />
+      <Linenumber value="56" />
     </Bookmark>
     <Bookmark>
       <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
-      <Linenumber value="121" />
-    </Bookmark>
-    <Bookmark>
-      <BmFilename>/D/Dev/Librix/thinclient/src/ui/main.py</BmFilename>
-      <Linenumber value="479" />
+      <Linenumber value="178" />
     </Bookmark>
   </Bookmarks>
 </Session>
