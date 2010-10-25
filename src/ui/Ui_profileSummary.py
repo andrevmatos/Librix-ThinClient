@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/profileSummary.ui'
 #
-# Created: Fri Oct 22 16:54:15 2010
+# Created: Mon Oct 25 16:13:01 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Summary(object):
 	def setupUi(self, Summary):
 		Summary.setObjectName(_fromUtf8("Summary"))
-		Summary.resize(306, 433)
+		Summary.resize(450, 550)
 		self.verticalLayout = QtGui.QVBoxLayout(Summary)
 		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 		self.frame = QtGui.QFrame(Summary)
@@ -34,7 +34,7 @@ class Ui_Summary(object):
 		self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
 		self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
 		self.content = QtGui.QWidget(self.scrollArea)
-		self.content.setGeometry(QtCore.QRect(0, 0, 290, 417))
+		self.content.setGeometry(QtCore.QRect(0, 0, 434, 534))
 		self.content.setObjectName(_fromUtf8("content"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.content)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))

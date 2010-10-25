@@ -177,33 +177,40 @@ class Main(QtGui.QMainWindow):
 			self.Users.profileSummaryFrame)
 
 
-	def activateEditProfileSummary(self, profile):
+	def activateEditProfileSummary(self, profile=''):
 		""" Show summary of a profile
 
 		@param	self		A Main() instance
 		@param	profile	A profile name string to show
-						or a QtGui.QListWidgetItem
+									or a QtGui.QListWidgetItem
 		"""
 		if not profile:
-			return
-		if type(profile) == QtGui.QListWidgetItem:
-			profile = profile.text()
+			_profile = self.Edit.profilesList.selectedItems()
+			if _profile:
+				_profile = _profile[0]
+			else:
+				return
+		else:
+			_profile = profile
+
+		if type(_profile) == QtGui.QListWidgetItem:
+			_profile = _profile.text()
 
 		if self.Edit.current != self.Edit.profileSummaryFrame:
 			self.Edit.current.widget.hide()
 			self.Edit.current = self.Edit.profileSummaryFrame
 			self.Edit.current.widget.show()
-		self.setSummary(profile, self.Edit.profileSummaryFrame)
+		self.setSummary(_profile, self.Edit.profileSummaryFrame)
 
-		self.Edit.profilesList.findItems(profile,
+		self.Edit.profilesList.findItems(_profile,
 			QtCore.Qt.MatchExactly)[0].setSelected(True)
 
 	def makeProfileFrame(self):
 		""" Create and return a widget with formated text to summary
 
 		@param	self		A Main() instance
-		@return			A Ui_Summary() instance with a
-						.widget widget object
+		@return				A Ui_Summary() instance with a
+									.widget widget object
 		"""
 		summary = Ui_Summary()
 		summary.widget = QtGui.QWidget()
@@ -293,30 +300,33 @@ class Main(QtGui.QMainWindow):
 				self.Edit.profileEdit.configs[c]['config'].widget, c)
 
 		QtCore.QObject.connect(self.Edit.profileEdit.buttonBox,
-			QtCore.SIGNAL("clicked(QAbstractButton *)"), self.readProfileConfig)
+			QtCore.SIGNAL("accepted()"), self.readProfileConfig)
+		QtCore.QObject.connect(self.Edit.profileEdit.buttonBox,
+			QtCore.SIGNAL("rejected()"), self.activateEditProfileSummary)
+
 
 		if self.Edit.current != self.Edit.profileEdit:
 			self.Edit.current.widget.hide()
 			self.Edit.current = self.Edit.profileEdit
 		self.Edit.profileEdit.widget.show()
 
-	def readProfileConfig(self, button):
+	def readProfileConfig(self):
 		""" Read and write (or not) configurations on editProfile
 
+		Called by QButtonBox in editProfile box
 		@param	self		A Main() instance
+		@param	button	A QAbstractButton object, refering to clicked button
 		"""
 		name = self.Edit.profileEdit.profile
 		if not name in self.tcd.getProfilesList():
 			return
-		if self.Edit.profileEdit.buttonBox.standardButton(button)\
-			== QtGui.QDialogButtonBox.Apply:
-			if self.Edit.profileEdit.profileName.text() != name:
-				newname = self.Edit.profileEdit.profileName.text()
-				self.tcd.moveProfile(name, newname)
-				name = newname
-			for c in self.Edit.profileEdit.configs:
-				for b in self.Edit.profileEdit.configs[c]['buttons']:
-					self.tcd.setOption(name, c, b.option, b.isChecked())
+		if self.Edit.profileEdit.profileName.text() != name:
+			newname = self.Edit.profileEdit.profileName.text()
+			self.tcd.moveProfile(name, newname)
+			name = newname
+		for c in self.Edit.profileEdit.configs:
+			for b in self.Edit.profileEdit.configs[c]['buttons']:
+				self.tcd.setOption(name, c, b.option, b.isChecked())
 
 		self.profilesRefresh()
 		self.activateEditProfileSummary(name)
@@ -351,22 +361,20 @@ class Main(QtGui.QMainWindow):
 
 		self.profilesRefresh()
 
-	def delUser2Profile(self, *users):
-		""" Get the user in the self.usersList and add it to self.profilesTree
+	def delUser2Profile(self, users=[]):
+		"""Clean users profile of selected items in self.Users.profilesTree
 
-		@param self a Main() instance
-		@param _users A list of strings usernames to remove from profiles
+		@param 	self 		A Main() instance
+		@param 	users	A list of strings usernames to remove from profiles
 		"""
-		if len(users) == 0:
-			users = []
-		elif len(users) == 1:
-			users = users[0]
-		if not users:
+		_users = deepcopy(users)
+
+		if not _users:
 			for U in self.Users.profilesTree.selectedItems():
 				if U.parent():
-					users.append(U.text(0))
+					_users.append(U.text(0))
 
-		for u in users:
+		for u in _users:
 			self.tcd.setUserProfile(u)
 
 		self.profilesRefresh()
@@ -378,7 +386,7 @@ class Main(QtGui.QMainWindow):
 		@param	parentList	QtGui.QListWidget object
 		@param	text		String to use as title of tab
 		@param	icon		QtGui.QIcon object, to use as icon of tab
-		@return			a QtGui.QListWidgetItem object
+		@return				A QtGui.QListWidgetItem object
 		"""
 		listItem = QtGui.QListWidgetItem(parentList)
 		tabWidget = Ui_tabWidget()
@@ -414,6 +422,7 @@ class Main(QtGui.QMainWindow):
 	def addProfile(self):
 		""" Creates a new profile
 
+		Called by editProfile toolbar buttons
 		@param	self		a Main() instance
 		"""
 		self.new_profiles_count += 1
@@ -429,6 +438,7 @@ class Main(QtGui.QMainWindow):
 	def delProfile(self):
 		""" Delete a profile
 
+		Called by editProfile toolbar buttons
 		@param	self		a Main() instance
 		"""
 		profile = self.Edit.profilesList.selectedItems()
@@ -444,8 +454,9 @@ class Main(QtGui.QMainWindow):
 		self.activateEditProfileSummary(_p[k])
 
 	def editProfile(self):
-		""" Edit a profile
+		""" Edit a profile.
 
+		Called by editProfile toolbar buttons
 		@param	self		A Main() instance
 		"""
 		profile = self.Edit.profilesList.selectedItems()
@@ -456,8 +467,9 @@ class Main(QtGui.QMainWindow):
 		self.profileEdit(profile)
 
 	def duplicateProfile(self):
-		""" Creates a new profile from a existing one
+		""" Creates a new profile from a existing one.
 
+		Called by editProfile toolbar buttons
 		@param	self		A Main() instance
 		"""
 		self.new_profiles_count += 1
@@ -478,8 +490,8 @@ class Main(QtGui.QMainWindow):
 	def _dragEnterEvent(self, event):
 		""" Qt Event of Drag actions
 
-		@param self a Main() instance
-		@param event a QtGui.QDragEnterEvent object
+		@param	self		A Main() instance
+		@param	event	A QtGui.QDragEnterEvent object
 		"""
 		if event.mimeData().hasFormat(
 			'application/x-qabstractitemmodeldatalist'):
@@ -510,8 +522,9 @@ class Main(QtGui.QMainWindow):
 
 	def _userDropEvent(self, event):
 		""" Qt Event of Drop actions on users list of Users tab
-		@param self a Main() instance
-		@param event a QtGui.QDropEvent object
+
+		@param	self		A Main() instance
+		@param 	event	A QtGui.QDropEvent object
 		"""
 		if event.source() != self.Users.profilesTree:
 			return

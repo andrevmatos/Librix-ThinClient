@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/profileEdit.ui'
 #
-# Created: Fri Oct 22 16:54:14 2010
+# Created: Mon Oct 25 16:13:01 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_EditProfile(object):
 	def setupUi(self, EditProfile):
 		EditProfile.setObjectName(_fromUtf8("EditProfile"))
-		EditProfile.resize(306, 433)
+		EditProfile.resize(450, 550)
 		self.MainVerticalLayout = QtGui.QVBoxLayout(EditProfile)
 		self.MainVerticalLayout.setMargin(0)
 		self.MainVerticalLayout.setObjectName(_fromUtf8("MainVerticalLayout"))
@@ -31,7 +31,7 @@ class Ui_EditProfile(object):
 		self.configToolBox = QtGui.QToolBox(self.configBox)
 		self.configToolBox.setObjectName(_fromUtf8("configToolBox"))
 		self.page = QtGui.QWidget()
-		self.page.setGeometry(QtCore.QRect(0, 0, 282, 303))
+		self.page.setGeometry(QtCore.QRect(0, 0, 426, 420))
 		self.page.setObjectName(_fromUtf8("page"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.page)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
@@ -40,7 +40,7 @@ class Ui_EditProfile(object):
 		self.scrollArea.setWidgetResizable(True)
 		self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
 		self.scrollAreaWidgetContents = QtGui.QWidget(self.scrollArea)
-		self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 274, 295))
+		self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 418, 412))
 		self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
@@ -53,7 +53,7 @@ class Ui_EditProfile(object):
 		self.verticalLayout.addWidget(self.configToolBox)
 		self.MainVerticalLayout.addWidget(self.configBox)
 		self.buttonBox = QtGui.QDialogButtonBox(EditProfile)
-		self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Apply|QtGui.QDialogButtonBox.Cancel)
+		self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
 		self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
 		self.MainVerticalLayout.addWidget(self.buttonBox)
 

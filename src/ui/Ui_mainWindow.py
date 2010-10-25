@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Fri Oct 22 16:54:14 2010
+# Created: Mon Oct 25 16:13:01 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_ThinClient(object):
 	def setupUi(self, ThinClient):
 		ThinClient.setObjectName(_fromUtf8("ThinClient"))
-		ThinClient.resize(640, 480)
+		ThinClient.resize(800, 600)
 		icon = QtGui.QIcon()
 		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/user_icon/system-users.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		ThinClient.setWindowIcon(icon)

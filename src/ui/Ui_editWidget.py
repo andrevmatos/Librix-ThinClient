@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/editWidget.ui'
 #
-# Created: Fri Oct 22 16:54:14 2010
+# Created: Mon Oct 25 16:13:01 2010
 #      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_EditWidget(object):
 	def setupUi(self, EditWidget):
 		EditWidget.setObjectName(_fromUtf8("EditWidget"))
-		EditWidget.resize(500, 430)
+		EditWidget.resize(650, 550)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)

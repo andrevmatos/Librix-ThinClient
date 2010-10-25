@@ -49,7 +49,7 @@ class LibrixTCD(object):
 					option.attributes["name"] = o
 					option.attributes["type"] = "bool"
 					option.appendChild(self.xml.createTextNode(\
-						str(False).lower()))
+						str(False)))
 					category.appendChild(option)
 
 		self.profiles = self.xml.createElement("profiles")
@@ -86,8 +86,9 @@ class LibrixTCD(object):
 		self.configfile = join(dirname(abspath(__file__)), self.configfile)
 
 		try:
-			self.xml = minidom.parse(self.configfile)
-			self.norm(self.xml)
+			with open(self.configfile, 'r') as xmlfile:
+				self.xml = minidom.parseString(
+					str().join([l.strip() for l in xmlfile]))
 			self.config = self.xml.getElementsByTagName("librix_tcd_config")[0]
 			self.profiles = self.config.getElementsByTagName("profiles")[0]
 			self.profileFalse = self.config.getElementsByTagName(\
@@ -97,23 +98,14 @@ class LibrixTCD(object):
 		except:
 			self.makeTestConfigs()
 
-	def norm(self, dom):
-		for i in dom.childNodes:
-			if type(i) == minidom.Text:
-				i.data = i.data.strip()
-				#if not i.data:
-				#	dom.removeChild(i)
-			else:
-				self.norm(i)
-
-
 	def syncConfigs(self):
 		"""Sync self.xml with self.configfile
 
 		@param	self		A LibrixTCD instance
 		"""
-		self.xml.writexml(open(self.configfile, 'w'), indent="\t", addindent="\t",
-			newl="\n", encoding="UTF-8")
+		with open(self.configfile, 'w') as xmlfile:
+			self.xml.writexml(xmlfile, indent="\t", addindent="\t",
+				newl="\n", encoding="UTF-8")
 
 	def getUsersList(self):
 		"""Return the users list
@@ -354,7 +346,7 @@ class LibrixTCD(object):
 						O.attributes["name"].value == option:
 						o = O
 
-		o.attributes["type"] = str(type(value)).lower()
+		o.attributes["type"] = type(value).__name__.lower()
 		o.firstChild.data = str(value).strip()
 		self.syncConfigs()
 
