@@ -19,6 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+from copy import deepcopy
 from PyQt4 import QtCore,QtGui
 
 from ui.Ui_mainWindow import Ui_ThinClient
@@ -152,9 +153,10 @@ class Main(QtGui.QMainWindow):
 				p, self.Edit.profilesList)
 
 		for u in self.tcd.getUsersList():
-			QtGui.QListWidgetItem(
+			U = QtGui.QListWidgetItem(
 				QtGui.QIcon(":/user_icon/user.png"),
 				u, self.Users.usersList)
+			U.setToolTip("Profile: <b>{0}</b>".format(self.tcd.getUserProfile(u)))
 			p = self.tcd.getUserProfile(u)
 			if not p: continue
 			P = self.Users.profilesTree.findItems(p,
@@ -327,26 +329,24 @@ class Main(QtGui.QMainWindow):
 		@param	users	A list of strings usernames to add to _profile
 		@param	profile	A string containing the destiny profile name
 		"""
-		if not users:
+		_users = deepcopy(users)
+		if not _users:
 			for U in self.Users.usersList.selectedItems():
 				try:
-					users.append(U.text())
+					_users.append(U.text())
 				except:
 					if U.parent():
-						users.append(U.text(0))
+						_users.append(U.text(0))
 		if not profile:
 			for P in self.Users.profilesTree.selectedItems():
 				if not P.parent():
 					profile = P.text(0)
-					break
-		if not profile and self.Users.profilesTree.selectedItems():
-			profile = self.Users.profilesTree.selectedItems()[0].text(0)
-		if profile in self.tcd.getUsersList():
-			profile = self.tcd.getUserProfile(profile)
+				else:
+					profile = P.parent().text(0)
 		if not profile:
 			return
 
-		for u in users:
+		for u in _users:
 			self.tcd.setUserProfile(u, profile)
 
 		self.profilesRefresh()
@@ -495,16 +495,18 @@ class Main(QtGui.QMainWindow):
 		"""
 		users = []
 		if event.source() == self.Users.usersList:
-			for U in event.source().selectedItems():
+			for U in self.Users.usersList.selectedItems():
 				users.append(U.text())
 		elif event.source() == self.Users.profilesTree:
-			for U in event.source().selectedItems():
-				if U.parent():
-					users.append(U.text(0))
+			[users.append(U.text(0)) for U in self.Users.profilesTree.\
+			selectedItems() if U.parent()]
+
 		else:
 			return
-		profile = self.Users.profilesTree.itemAt(event.pos()).text(0)
-		self.addUser2Profile(users, profile)
+		profile = self.Users.profilesTree.itemAt(event.pos())
+		if profile.parent():
+			profile = profile.parent()
+		self.addUser2Profile(users, profile.text(0))
 
 	def _userDropEvent(self, event):
 		""" Qt Event of Drop actions on users list of Users tab
@@ -514,9 +516,9 @@ class Main(QtGui.QMainWindow):
 		if event.source() != self.Users.profilesTree:
 			return
 		users = []
-		for U in event.source().selectedItems():
-			if U.parent():
-				users.append(U.text(0))
+		[users.append(U.text(0)) for U in event.source().selectedItems() \
+			if U.parent()]
+
 		self.delUser2Profile(users)
 
 

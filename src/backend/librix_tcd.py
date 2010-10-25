@@ -87,31 +87,33 @@ class LibrixTCD(object):
 
 		try:
 			self.xml = minidom.parse(self.configfile)
+			self.norm(self.xml)
 			self.config = self.xml.getElementsByTagName("librix_tcd_config")[0]
 			self.profiles = self.config.getElementsByTagName("profiles")[0]
 			self.profileFalse = self.config.getElementsByTagName(\
 				"profileFalse")[0]
 			self.users = self.config.getElementsByTagName("users")[0]
-			self.norm(self.xml)
 			self.syncConfigs()
 		except:
 			self.makeTestConfigs()
 
-	def norm(self, xml):
-		for i in xml.childNodes:
+	def norm(self, dom):
+		for i in dom.childNodes:
 			if type(i) == minidom.Text:
 				i.data = i.data.strip()
+				#if not i.data:
+				#	dom.removeChild(i)
 			else:
 				self.norm(i)
+
 
 	def syncConfigs(self):
 		"""Sync self.xml with self.configfile
 
 		@param	self		A LibrixTCD instance
 		"""
-		file = open(self.configfile, 'w')
-		file.write(self.xml.toprettyxml(encoding="UTF-8").decode("utf-8"))
-		file.close()
+		self.xml.writexml(open(self.configfile, 'w'), indent="\t", addindent="\t",
+			newl="\n", encoding="UTF-8")
 
 	def getUsersList(self):
 		"""Return the users list
