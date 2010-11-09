@@ -27,9 +27,14 @@ from ui.Ui_usersWidget import Ui_UsersWidget
 from ui.Ui_editWidget import Ui_EditWidget
 from ui.Ui_exportWidget import Ui_ExportWidget
 from ui.Ui_tabItemWidget import Ui_tabWidget
+
 from ui.Ui_profileSummary import Ui_Summary
 from ui.Ui_profileEdit import Ui_EditProfile
 from ui.Ui_configProfileEdit import Ui_configsWidget
+from ui.Ui_localImportWidget import Ui_localImport
+from ui.Ui_localExportWidget import Ui_localExport
+from ui.Ui_remoteImportWidget import Ui_remoteImport
+from ui.Ui_remoteExportWidget import Ui_remoteExport
 
 from backend.librix_tcd import LibrixTCD
 
@@ -128,6 +133,13 @@ class Main(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.Edit.profilesList,
 			QtCore.SIGNAL("currentItemChanged(QListWidgetItem *,\
 			QListWidgetItem *)"), self.activateEditProfileSummary)
+		# Export tab connects
+		QtCore.QObject.connect(self.Export.localList, QtCore.SIGNAL(
+			"itemActivated(QListWidgetItem *)"), self.importExportClicked)
+		QtCore.QObject.connect(self.Export.remoteList, QtCore.SIGNAL(
+			"itemActivated(QListWidgetItem *)"), self.importExportClicked)
+		QtCore.QObject.connect(self.Export.backButton, QtCore.SIGNAL(
+			"clicked()"), self.exportBackClicked)
 
 		self.profilesRefresh()
 
@@ -486,6 +498,46 @@ class Main(QtGui.QMainWindow):
 		self.tcd.moveProfile(p, title, copy=True)
 		self.profilesRefresh()
 		self.activateEditProfileSummary(title)
+
+	def importExportClicked(self, listItem):
+		""" Hide import/export selection and show selected option
+
+		@param	self		A Main() instance
+		@param	listItem	A QListWidgetItem object
+		"""
+		self.Export.optionsPanel.hide()
+		self.Export.backButton.setEnabled(True)
+		if listItem is self.Export.localList.item(0):
+			self.Export.current = self.Export.localImport = Ui_localImport()
+			self.Export.localImport.widget = QtGui.QWidget()
+			self.Export.localImport.setupUi(self.Export.localImport.widget)
+			self.Export.mainVLayout.addWidget(self.Export.localImport.widget)
+		elif listItem is self.Export.localList.item(1):
+			self.Export.current = self.Export.localExport = Ui_localExport()
+			self.Export.localExport.widget = QtGui.QWidget()
+			self.Export.localExport.setupUi(self.Export.localExport.widget)
+			self.Export.mainVLayout.addWidget(self.Export.localExport.widget)
+		elif listItem is self.Export.remoteList.item(0):
+			self.Export.current = self.Export.remoteImport = Ui_remoteImport()
+			self.Export.remoteImport.widget = QtGui.QWidget()
+			self.Export.remoteImport.setupUi(self.Export.remoteImport.widget)
+			self.Export.mainVLayout.addWidget(self.Export.remoteImport.widget)
+		elif listItem is self.Export.remoteList.item(1):
+			self.Export.current = self.Export.remoteExport = Ui_remoteExport()
+			self.Export.remoteExport.widget = QtGui.QWidget()
+			self.Export.remoteExport.setupUi(self.Export.remoteExport.widget)
+			self.Export.mainVLayout.addWidget(self.Export.remoteExport.widget)
+
+	def exportBackClicked(self):
+		""" Previous page on Import/Export tab
+
+		@param	self		A Main() instance
+		"""
+		self.Export.current.widget.close()
+		del self.Export.current
+		self.Export.optionsPanel.show()
+		self.Export.backButton.setEnabled(False)
+
 
 	def _dragEnterEvent(self, event):
 		""" Qt Event of Drag actions

@@ -3,6 +3,12 @@
     <file>system-users.png</file>
     <file>user.png</file>
   </qresource>
+  <qresource prefix="tab">
+    <file>import.png</file>
+    <file>export.png</file>
+    <file>harddisk.png</file>
+    <file>network.png</file>
+  </qresource>
   <qresource prefix="toolbar">
     <file>document-new.png</file>
     <file>document-close.png</file>
@@ -28,6 +34,11 @@
     <file>document-edit.png</file>
   </qresource>
   <qresource prefix="export_icon">
+    <file>back.png</file>
+    <file>go-down.png</file>
+    <file>go-up.png</file>
+    <file>net-up.png</file>
+    <file>net-down.png</file>
     <file>fork.png</file>
   </qresource>
 </RCC>

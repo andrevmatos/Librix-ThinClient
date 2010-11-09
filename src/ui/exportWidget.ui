@@ -19,19 +19,312 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="mainVLayout">
+   <property name="margin">
+    <number>4</number>
+   </property>
    <item>
-    <widget class="QTabWidget" name="tabWidget">
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Tab 1</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Tab 2</string>
-      </attribute>
-     </widget>
+    <widget class="QWidget" name="toolBar" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>64</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="backButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons/temp_icons.qrc">
+          <normaloff>:/export_icon/back.png</normaloff>:/export_icon/back.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="optionsPanel">
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+	background-color: rgba(255, 255, 255, 255);
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="localBox">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+	font-weight: bold;
+	border: 1px solid darkgray;
+	border-radius: 3px;
+	border-top-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(255, 255, 255, 0));
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(255, 255, 255, 0));
+	border-bottom-color: rgba(255,255,255,0);
+	border-right-color: rgba(255,255,255,0);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.347212, y2:0.483, stop:0 rgba(196, 196, 196, 128), stop:1 rgba(255, 255, 255, 0));
+}
+
+QGroupBox::title {
+	subcontrol-origin: margin;
+	subcontrol-position: top left;
+	color: rgb(100, 100, 100);
+	top: 5px;
+	left: 5px;
+}</string>
+        </property>
+        <property name="title">
+         <string>Local</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QListWidget" name="localList">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(0,0,0,0);
+font-weight: bold;
+padding: 30px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="autoScrollMargin">
+            <number>0</number>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::NoDragDrop</enum>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="textElideMode">
+            <enum>Qt::ElideNone</enum>
+           </property>
+           <property name="movement">
+            <enum>QListView::Static</enum>
+           </property>
+           <property name="flow">
+            <enum>QListView::LeftToRight</enum>
+           </property>
+           <property name="layoutMode">
+            <enum>QListView::SinglePass</enum>
+           </property>
+           <property name="gridSize">
+            <size>
+             <width>120</width>
+             <height>96</height>
+            </size>
+           </property>
+           <property name="viewMode">
+            <enum>QListView::IconMode</enum>
+           </property>
+           <property name="uniformItemSizes">
+            <bool>false</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>Local Import</string>
+            </property>
+            <property name="icon">
+             <iconset resource="icons/temp_icons.qrc">
+              <normaloff>:/export_icon/go-down.png</normaloff>
+              <selectedoff>:/export_icon/go-down.png</selectedoff>:/export_icon/go-down.png</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Local Export</string>
+            </property>
+            <property name="icon">
+             <iconset resource="icons/temp_icons.qrc">
+              <normaloff>:/export_icon/go-up.png</normaloff>
+              <selectedoff>:/export_icon/go-up.png</selectedoff>:/export_icon/go-up.png</iconset>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="remoteBox">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+	font-weight: bold;
+	border: 1px solid darkgray;
+	border-radius: 3px;
+	border-top-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(255, 255, 255, 0));
+	border-left-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(255, 255, 255, 0));
+	border-bottom-color: rgba(255,255,255,0);
+	border-right-color: rgba(255,255,255,0);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.347212, y2:0.483, stop:0 rgba(196, 196, 196, 128), stop:1 rgba(255, 255, 255, 0));
+}
+
+QGroupBox::title {
+	subcontrol-origin: margin;
+	subcontrol-position: top left;
+	color: rgb(100, 100, 100);
+	top: 5px;
+	left: 5px;
+}</string>
+        </property>
+        <property name="title">
+         <string>Remote</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QListWidget" name="remoteList">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(0,0,0,0);
+font-weight: bold;
+padding: 30px;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="autoScrollMargin">
+            <number>0</number>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::NoDragDrop</enum>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="textElideMode">
+            <enum>Qt::ElideNone</enum>
+           </property>
+           <property name="movement">
+            <enum>QListView::Static</enum>
+           </property>
+           <property name="flow">
+            <enum>QListView::LeftToRight</enum>
+           </property>
+           <property name="resizeMode">
+            <enum>QListView::Adjust</enum>
+           </property>
+           <property name="gridSize">
+            <size>
+             <width>120</width>
+             <height>96</height>
+            </size>
+           </property>
+           <property name="viewMode">
+            <enum>QListView::IconMode</enum>
+           </property>
+           <property name="uniformItemSizes">
+            <bool>false</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>Remote Import</string>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="icon">
+             <iconset resource="icons/temp_icons.qrc">
+              <normaloff>:/export_icon/net-down.png</normaloff>
+              <selectedoff>:/export_icon/net-down.png</selectedoff>:/export_icon/net-down.png</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Remote Export</string>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="icon">
+             <iconset resource="icons/temp_icons.qrc">
+              <normaloff>:/export_icon/net-up.png</normaloff>
+              <selectedoff>:/export_icon/net-up.png</selectedoff>:/export_icon/net-up.png</iconset>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
@@ -39,5 +332,70 @@
  <resources>
   <include location="icons/temp_icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>localList</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>remoteList</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>206</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>remoteList</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>localList</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>remoteList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>localList</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>381</x>
+     <y>330</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>localList</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>remoteList</receiver>
+   <slot>clearSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>407</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>301</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
