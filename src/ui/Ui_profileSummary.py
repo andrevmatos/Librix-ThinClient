@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/profileSummary.ui'
 #
-# Created: Mon Nov  8 19:22:24 2010
+# Created: Tue Nov 23 11:41:14 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!

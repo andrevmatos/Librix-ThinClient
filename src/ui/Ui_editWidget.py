@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/editWidget.ui'
 #
-# Created: Mon Nov  8 19:22:23 2010
+# Created: Tue Nov 23 11:41:13 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,20 +23,9 @@ class Ui_EditWidget(object):
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(EditWidget.sizePolicy().hasHeightForWidth())
 		EditWidget.setSizePolicy(sizePolicy)
-		self.verticalLayout = QtGui.QVBoxLayout(EditWidget)
-		self.verticalLayout.setMargin(0)
-		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-		self.editWidget = QtGui.QWidget(EditWidget)
-		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-		sizePolicy.setHorizontalStretch(0)
-		sizePolicy.setVerticalStretch(0)
-		sizePolicy.setHeightForWidth(self.editWidget.sizePolicy().hasHeightForWidth())
-		self.editWidget.setSizePolicy(sizePolicy)
-		self.editWidget.setObjectName(_fromUtf8("editWidget"))
-		self.horizontalLayout = QtGui.QHBoxLayout(self.editWidget)
-		self.horizontalLayout.setMargin(0)
+		self.horizontalLayout = QtGui.QHBoxLayout(EditWidget)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-		self.profilesListWidget = QtGui.QWidget(self.editWidget)
+		self.profilesListWidget = QtGui.QWidget(EditWidget)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
@@ -100,7 +89,7 @@ class Ui_EditWidget(object):
 		self.horizontalLayout_2.addItem(spacerItem)
 		self.verticalLayout_3.addWidget(self.EditToolBarWidget)
 		self.horizontalLayout.addWidget(self.profilesListWidget)
-		self.editProfilesWidget = QtGui.QWidget(self.editWidget)
+		self.editProfilesWidget = QtGui.QWidget(EditWidget)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
@@ -111,9 +100,13 @@ class Ui_EditWidget(object):
 		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
 		self.horizontalLayout.addWidget(self.editProfilesWidget)
-		self.verticalLayout.addWidget(self.editWidget)
 
 		self.retranslateUi(EditWidget)
+		QtCore.QObject.connect(self.profilesList, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), EditWidget.activateProfileSummary)
+		QtCore.QObject.connect(self.delButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.delProfile)
+		QtCore.QObject.connect(self.editButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.editProfile)
+		QtCore.QObject.connect(self.duplicateButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.duplicateProfile)
+		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.addProfile)
 		QtCore.QMetaObject.connectSlotsByName(EditWidget)
 
 	def retranslateUi(self, EditWidget):

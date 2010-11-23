@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Mon Nov  8 19:22:23 2010
+# Created: Tue Nov 23 11:41:13 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -102,6 +102,7 @@ class Ui_ThinClient(object):
 		ThinClient.setStatusBar(self.statusbar)
 
 		self.retranslateUi(ThinClient)
+		QtCore.QObject.connect(self.listWidget, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), ThinClient.activateTab)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):

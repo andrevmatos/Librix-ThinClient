@@ -97,5 +97,41 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>EditProfile</receiver>
+   <slot>readProfileConfig()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-2</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>EditProfile</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>272</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-3</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>readProfileConfig()</slot>
+ </slots>
 </ui>

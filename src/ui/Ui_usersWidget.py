@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/usersWidget.ui'
 #
-# Created: Mon Nov  8 19:22:23 2010
+# Created: Tue Nov 23 11:41:13 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,6 +44,7 @@ class Ui_UsersWidget(object):
 		self.usersLabel.setObjectName(_fromUtf8("usersLabel"))
 		self.verticalLayout_3.addWidget(self.usersLabel)
 		self.usersList = QtGui.QListWidget(self.usersWidget)
+		self.usersList.setAcceptDrops(True)
 		self.usersList.setDragEnabled(True)
 		self.usersList.setDragDropOverwriteMode(True)
 		self.usersList.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
@@ -85,6 +86,7 @@ class Ui_UsersWidget(object):
 		self.profilesLabel.setObjectName(_fromUtf8("profilesLabel"))
 		self.verticalLayout_4.addWidget(self.profilesLabel)
 		self.profilesTree = QtGui.QTreeWidget(self.profilesWidget)
+		self.profilesTree.setAcceptDrops(True)
 		self.profilesTree.setDragEnabled(True)
 		self.profilesTree.setDragDropOverwriteMode(True)
 		self.profilesTree.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
@@ -112,6 +114,9 @@ class Ui_UsersWidget(object):
 		self.verticalLayout.addWidget(self.summaryDock)
 
 		self.retranslateUi(UsersWidget)
+		QtCore.QObject.connect(self.add, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.addUsers)
+		QtCore.QObject.connect(self.remove, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.delUsers)
+		QtCore.QObject.connect(self.profilesTree, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)")), UsersWidget.activateProfileSummary)
 		QtCore.QMetaObject.connectSlotsByName(UsersWidget)
 
 	def retranslateUi(self, UsersWidget):

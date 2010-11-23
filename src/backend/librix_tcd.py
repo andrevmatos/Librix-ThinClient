@@ -244,23 +244,20 @@ class LibrixTCD(object):
 
 		self.syncConfigs()
 
-	def getProfileCategoriesList(self, profile):
+	def getCategoriesList(self):
 		"""Return a list of categories in profile
 
 		@param	self		A LibrixTCD() instance
-		@param	profile	A profile name string.
 		@return				A list of strings with the
-									categories names in profile
+							categories names
 		"""
-		if not profile in self.getProfilesList():
-			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
 		_c = [c.attributes["name"].value for c in \
-			self._findProfile(profile).childNodes if c.nodeName == 'category']
+			self.profileFalse.childNodes if c.nodeName == 'category']
 		_c.sort()
 		return(_c)
 
-	def getOptionsList(self, profile, category):
+	def getOptionsList(self, category):
 		"""Return a list of options in category of profile
 
 		@param	self		A LibrixTCD() instance
@@ -269,13 +266,11 @@ class LibrixTCD(object):
 		@return			A list of strings with the options names
 								in category in profile
 		"""
-		if not profile in self.getProfilesList():
-			raise IndexError("\"{0}\" not in profiles list".format(profile))
-		if not category in self.getProfileCategoriesList(profile):
-			raise IndexError("\"{0}\" not in \"{1}\
-				\" category list".format(category, profile))
+		if not category in self.getCategoriesList():
+			raise IndexError("\"{0}\" not in \
+				category list".format(category))
 
-		for c in [c for c in self._findProfile(profile).childNodes \
+		for c in [c for c in self.profileFalse.childNodes \
 			if c.nodeName == 'category']:
 			if c.attributes["name"].value == category:
 				_o = [o.attributes["name"].value for o in c.childNodes \
@@ -295,12 +290,12 @@ class LibrixTCD(object):
 		"""
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
-		if not category in self.getProfileCategoriesList(profile):
+		if not category in self.getCategoriesList():
 			raise IndexError("\"{0}\" not in \"{1}\
 				\" profile category list".format(category, profile))
-		if not option in self.getOptionsList(profile, category):
-			raise IndexError("\"{0}\" not in \"{1}\" category of \
-				{2} profile options list".format(option, category, profile))
+		if not option in self.getOptionsList(category):
+			raise IndexError("\"{0}\" not in \"{1}\" \
+				category options list".format(option, category))
 
 		for C in self._findProfile(profile).childNodes:
 			if C.nodeName == 'category' and \
@@ -331,12 +326,11 @@ class LibrixTCD(object):
 		"""
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
-		if not category in self.getProfileCategoriesList(profile):
-			raise IndexError("\"{0}\" not in \"{1}\
-				\" profile category list".format(category, profile))
-		if not option in self.getOptionsList(profile, category):
-			raise IndexError("\"{0}\" not in \"{1}\" category of \
-				{2} profile options list".format(option, category, profile))
+		if not category in self.getCategoriesList():
+			raise IndexError("\"{0}\" not in category list".format(category))
+		if not option in self.getOptionsList(category):
+			raise IndexError("\"{0}\" not in \"{1}\" \
+			category options list".format(option, category))
 
 		for C in self._findProfile(profile).childNodes:
 			if C.nodeName == 'category' and \

@@ -159,5 +159,25 @@
  <resources>
   <include location="icons/temp_icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>ThinClient</receiver>
+   <slot>activateTab()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>activateTab()</slot>
+ </slots>
 </ui>

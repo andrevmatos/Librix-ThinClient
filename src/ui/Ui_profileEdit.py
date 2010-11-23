@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/profileEdit.ui'
 #
-# Created: Mon Nov  8 19:22:24 2010
+# Created: Tue Nov 23 11:41:13 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -59,6 +59,8 @@ class Ui_EditProfile(object):
 
 		self.retranslateUi(EditProfile)
 		self.configToolBox.setCurrentIndex(0)
+		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), EditProfile.readProfileConfig)
+		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), EditProfile.hide)
 		QtCore.QMetaObject.connectSlotsByName(EditProfile)
 
 	def retranslateUi(self, EditProfile):

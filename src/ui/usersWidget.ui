@@ -47,6 +47,9 @@
          </item>
          <item>
           <widget class="QListWidget" name="usersList">
+           <property name="acceptDrops">
+            <bool>true</bool>
+           </property>
            <property name="dragEnabled">
             <bool>true</bool>
            </property>
@@ -119,6 +122,9 @@
          </item>
          <item>
           <widget class="QTreeWidget" name="profilesTree">
+           <property name="acceptDrops">
+            <bool>true</bool>
+           </property>
            <property name="dragEnabled">
             <bool>true</bool>
            </property>
@@ -186,5 +192,59 @@
  <resources>
   <include location="icons/temp_icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>add</sender>
+   <signal>clicked()</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>addUsers()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>remove</sender>
+   <signal>clicked()</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>delUsers()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>profilesTree</sender>
+   <signal>currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>activateProfileSummary()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>493</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addUsers()</slot>
+  <slot>delUsers()</slot>
+  <slot>activateProfileSummary()</slot>
+ </slots>
 </ui>
