@@ -67,8 +67,11 @@ class UsersPage(QtGui.QWidget):
 			P = QtGui.QTreeWidgetItem(self.ui.profilesTree,
 				[p])
 			P.setExpanded(True)
+			P.setIcon(0, QtGui.QIcon(":/edit_icon/profiles.png"))
 			for u in self.tcd.getProfileUsersList(p):
-				QtGui.QTreeWidgetItem(P, [u])
+				QtGui.QTreeWidgetItem(P, [u], 1000).setIcon(0,
+					QtGui.QIcon(":/user_icon/user.png"))
+
 
 		for u in self.tcd.getUsersList():
 			U = QtGui.QListWidgetItem(

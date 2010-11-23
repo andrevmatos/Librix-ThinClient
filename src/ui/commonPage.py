@@ -31,7 +31,7 @@ def passwdGen(size=8):
 
 	@param	size		The string lenght
 	"""
-	return(''.join([choice(string.letters + string.digits)
+	return(''.join([choice(string.ascii_letters + string.digits)\
 		for i in range(size)]))
 
 

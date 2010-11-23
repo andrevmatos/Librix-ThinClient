@@ -93,6 +93,7 @@ class ProfileEdit(QtGui.QWidget):
 
 		self.profile = profile
 		if not profile:
+			print("12345", profile)
 			return
 		self.ui.profileName.setText(profile)
 
@@ -100,6 +101,8 @@ class ProfileEdit(QtGui.QWidget):
 			for o in self.tcd.getOptionsList(c):
 				if self.tcd.getOption(profile, c, o):
 					self.pages[c].buttons[o].setChecked(True)
+				else:
+					self.pages[c].buttons[o].setChecked(False)
 
 	def readProfileConfig(self):
 		""" Read and write configurations on EditProfile
@@ -224,7 +227,7 @@ class EditPage(QtGui.QWidget):
 		Called by editProfile toolbar buttons
 		@param	self		a EditPage instance
 		"""
-		n = 'New Profile \+{0}'.format(passwdGen(4))
+		n = 'New Profile +{0}'.format(passwdGen(4))
 		title = QtGui.QInputDialog.getText(self, "Profile Name",
 			"Enter the new profile name:", text = n)[0]
 		if not title:
@@ -283,7 +286,7 @@ class EditPage(QtGui.QWidget):
 		else:
 			return
 
-		n = '{0} \+{1}'.format(p, passwdGen(2))
+		n = '{0} +{1}'.format(p, passwdGen(2))
 		title = QtGui.QInputDialog.getText(self, "Profile Name",
 			"Enter the destination profile name:", text = n)[0]
 		if not title:

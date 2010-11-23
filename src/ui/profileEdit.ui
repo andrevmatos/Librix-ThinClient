@@ -74,6 +74,10 @@
                 <property name="text">
                  <string>PushButton</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="icons/temp_icons.qrc">
+                  <normaloff>:/edit_icon/ok.png</normaloff>:/edit_icon/ok.png</iconset>
+                </property>
                </widget>
               </item>
              </layout>
@@ -96,7 +100,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons/temp_icons.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
