@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/profileEdit.ui'
+# Form implementation generated from reading ui file './ui/edit/profileEdit.ui'
 #
-# Created: Tue Nov 23 11:41:13 2010
+# Created: Fri Nov 26 13:36:01 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,6 +45,9 @@ class Ui_EditProfile(object):
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.pushButton = QtGui.QPushButton(self.scrollAreaWidgetContents)
+		icon = QtGui.QIcon()
+		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/ok.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.pushButton.setIcon(icon)
 		self.pushButton.setObjectName(_fromUtf8("pushButton"))
 		self.verticalLayout_3.addWidget(self.pushButton)
 		self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -71,6 +74,7 @@ class Ui_EditProfile(object):
 		self.pushButton.setText(QtGui.QApplication.translate("EditProfile", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
 		self.configToolBox.setItemText(self.configToolBox.indexOf(self.page), QtGui.QApplication.translate("EditProfile", "Page 1", None, QtGui.QApplication.UnicodeUTF8))
 
+from ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys

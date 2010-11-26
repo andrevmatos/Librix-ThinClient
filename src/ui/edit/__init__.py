@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 #
 #  Copyright (C) 2010 - Librix Dev Team
 #
@@ -18,29 +18,11 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui
-from ui.Ui_exportWidget import Ui_ExportWidget
-from ui.commonPage import *
-
-
-class ExportPage(QtGui.QWidget):
-	""" Creates the main Export page """
-	def __init__(self, tcd, leftList, parent=None):
-		""" Instantiate a ExportPage object
-
-		@param	self		A ExportPage instance
-		@param	tcd			A librix_tcd instance
-		@param	leftList	The leftMenu QListWidget, to create the tab
-		@param	parent		A QtGui.QWidget parent object
-		"""
-		self.tcd = tcd
-		self.leftList = leftList
-		self.parent = parent
-
-		QtGui.QWidget.__init__(self, parent)
-
-		self.ui = Ui_ExportWidget()
-		self.ui.setupUi(self)
-
-		self.tab = LeftMenuItem(leftList, 'Import/Export',
-			QtGui.QIcon(":/export_icon/fork.png"))
+__all__ = [
+	'editPage',
+	'ProfileEdit',
+	'ConfigProfileEdit',
+	'Ui_editWidget',
+	'Ui_profileEdit',
+	'Ui_configProfileEdit',
+]

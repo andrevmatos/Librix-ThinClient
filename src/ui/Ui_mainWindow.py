@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Tue Nov 23 11:41:13 2010
+# Created: Fri Nov 26 13:36:01 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -109,7 +109,7 @@ class Ui_ThinClient(object):
 		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("ThinClient", "<b>Librix Thin Client Administration Tool. Draft release.</b>", None, QtGui.QApplication.UnicodeUTF8))
 
-from . import temp_icons_rc
+from ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys

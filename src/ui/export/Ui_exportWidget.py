@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/exportWidget.ui'
+# Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Tue Nov 23 11:41:13 2010
+# Created: Fri Nov 26 13:36:01 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_ExportWidget(object):
 	def retranslateUi(self, ExportWidget):
 		ExportWidget.setWindowTitle(QtGui.QApplication.translate("ExportWidget", "Form", None, QtGui.QApplication.UnicodeUTF8))
 
-from . import temp_icons_rc
+from ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys

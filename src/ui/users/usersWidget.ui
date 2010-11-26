@@ -91,7 +91,7 @@
          <item>
           <widget class="QPushButton" name="add">
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/add_icon/arrow-right-double.png</normaloff>:/add_icon/arrow-right-double.png</iconset>
            </property>
           </widget>
@@ -99,7 +99,7 @@
          <item>
           <widget class="QPushButton" name="remove">
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/remove_icon/arrow-left-double.png</normaloff>:/remove_icon/arrow-left-double.png</iconset>
            </property>
           </widget>
@@ -190,7 +190,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="icons/temp_icons.qrc"/>
+  <include location="../icons/temp_icons.qrc"/>
  </resources>
  <connections>
   <connection>

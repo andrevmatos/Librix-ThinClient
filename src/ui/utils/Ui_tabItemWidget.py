@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/tabItemWidget.ui'
+# Form implementation generated from reading ui file './ui/utils/tabItemWidget.ui'
 #
-# Created: Tue Nov 23 11:41:14 2010
+# Created: Fri Nov 26 13:36:01 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,7 +56,7 @@ class Ui_tabWidget(object):
 	def retranslateUi(self, tabWidget):
 		tabWidget.setWindowTitle(QtGui.QApplication.translate("tabWidget", "Form", None, QtGui.QApplication.UnicodeUTF8))
 
-from . import temp_icons_rc
+from ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys

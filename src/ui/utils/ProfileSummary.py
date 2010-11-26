@@ -18,48 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-import string
-from random import choice
-
 from PyQt4 import QtCore,QtGui
+from ui.utils.Ui_profileSummary import Ui_Summary
 
-from ui.Ui_profileSummary import Ui_Summary
-from ui.Ui_tabItemWidget import Ui_tabWidget
-
-def passwdGen(size=8):
-	""" Generates a password (random letters and digits string) of size lenght
-
-	@param	size		The string lenght
-	"""
-	return(''.join([choice(string.ascii_letters + string.digits)\
-		for i in range(size)]))
-
-
-class LeftMenuItem(QtGui.QListWidgetItem):
-	""" Creates a item on leftMenu """
-	def __init__(self, parent, text, icon):
-		""" Instantiate a LeftMenuItem object
-
-		@param	self		A LeftMenuItem instance
-		@param	parent		A QListWidget widget object
-		@param	text		A string to use as name of the item
-		@param	icon		A QIcon object, to use in interface
-		"""
-		self.parent = parent
-
-		QtGui.QListWidgetItem.__init__(self, self.parent)
-
-		self.ui = Ui_tabWidget()
-		self.tabWidget = QtGui.QWidget()
-		self.ui.setupUi(self.tabWidget)
-		self.setSizeHint(self.tabWidget.size())
-
-		self.ui.iconLabel.setPixmap(icon.pixmap(QtCore.QSize(48, 48)))
-		self.ui.titleLabel.setText('<b>{0}</b>'.format(text))
-
-		self.parent.setItemWidget(self, self.tabWidget)
-
-class ProfilesSummary(QtGui.QWidget):
+class ProfileSummary(QtGui.QWidget):
 	""" Creates a frame with profile summary """
 	def __init__(self, tcd, parent=None):
 		""" Instantiate a ProfilesSummary object

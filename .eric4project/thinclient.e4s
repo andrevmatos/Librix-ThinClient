@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Session SYSTEM "Session-4.4.dtd">
+<!-- eric4 session file for project thinclient -->
+<!-- This file was generated automatically, do not edit. -->
+<!-- Saved: 2010-11-26, 11:44:10 -->
+<Session version="4.4">
+  <Filenames>
+    <Filename cline="24" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
+    <Filename cline="75" cindex="13" folds="" zoom="0">/D/Dev/Librix/thinclient/src/build.py</Filename>
+  </Filenames>
+  <ActiveWindow cline="24" cindex="0">/D/Dev/Librix/thinclient/src/init.py</ActiveWindow>
+  <Breakpoints>
+  </Breakpoints>
+  <Watchexpressions>
+  </Watchexpressions>
+  <DebugInfo>
+    <CommandLine>/usr/bin/python init.py</CommandLine>
+    <WorkingDirectory>/D/Dev/Librix/thinclient/src/</WorkingDirectory>
+    <Environment></Environment>
+    <ReportExceptions value="True" />
+    <Exceptions>
+    </Exceptions>
+    <IgnoredExceptions>
+    </IgnoredExceptions>
+    <AutoClearShell value="True" />
+    <TracePython value="False" />
+    <AutoContinue value="True" />
+    <CovexcPattern></CovexcPattern>
+  </DebugInfo>
+  <Bookmarks>
+  </Bookmarks>
+</Session>

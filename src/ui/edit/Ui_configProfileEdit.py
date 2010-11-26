@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/configProfileEdit.ui'
+# Form implementation generated from reading ui file './ui/edit/configProfileEdit.ui'
 #
-# Created: Tue Nov 23 11:41:14 2010
+# Created: Fri Nov 26 13:36:01 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!

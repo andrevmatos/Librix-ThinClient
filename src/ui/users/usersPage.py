@@ -20,8 +20,10 @@
 
 from copy import deepcopy
 from PyQt4 import QtGui
-from ui.Ui_usersWidget import Ui_UsersWidget
-from ui.commonPage import *
+
+from ui.users.Ui_usersWidget import Ui_UsersWidget
+from ui.utils.LeftMenuItem import LeftMenuItem
+from ui.utils.ProfileSummary import ProfileSummary
 
 class UsersPage(QtGui.QWidget):
 	""" Creates the main users page """
@@ -45,7 +47,7 @@ class UsersPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, 'Users',
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
-		self.summary = ProfilesSummary(tcd, self.ui.dockWidgetContents)
+		self.summary = ProfileSummary(tcd, self.ui.dockWidgetContents)
 		self.ui.verticalLayout_5.addWidget(self.summary)
 
 		self.ui.usersList.dragEnterEvent = self.dragEnterEvent
@@ -96,7 +98,7 @@ class UsersPage(QtGui.QWidget):
 		@param	treeItem	A QtGui.QTreeWidgetItem profile object
 		"""
 		if not treeItem: return
-		if treeItem.parent():
+		while treeItem.parent():
 			treeItem = treeItem.parent()
 
 		self.summary.setSummary(treeItem.text(0))
@@ -118,10 +120,9 @@ class UsersPage(QtGui.QWidget):
 						_users.append(U.text(0))
 		if not profile:
 			for P in self.ui.profilesTree.selectedItems():
-				if not P.parent():
-					profile = P.text(0)
-				else:
-					profile = P.parent().text(0)
+				while P.parent():
+					P = P.parent()
+				profile = P.text(0)
 				break
 
 		if not profile:
@@ -180,7 +181,7 @@ class UsersPage(QtGui.QWidget):
 			return
 
 		profile = self.ui.profilesTree.itemAt(event.pos())
-		if profile.parent():
+		while profile.parent():
 			profile = profile.parent()
 
 		self.addUsers(users, profile.text(0))

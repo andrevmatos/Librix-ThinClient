@@ -25,15 +25,7 @@ SHELL=/bin/bash
 .PHONY: compile
 
 compile:
-	for i in $$( find -iname *.ui ); do \
-		echo "Compiling UI: $${i}" ; \
-		pyuic4 --from-imports -x -i 0 "$${i}" -o "$$( dirname $${i} )/Ui_$$( basename $${i} | sed 's/.ui$$/.py/g' )" ; \
-	done ;
-	for i in $$( find -iname *.qrc ); do \
-		echo "Compiling Resource: $${i}" ; \
-		pyrcc4 -py3 "$${i}" -o "$$( dirname $${i} )/../$$( basename $${i} | sed 's/.qrc$$/_rc.py/g' )" ; \
-	done
-
+	/usr/bin/python3 build.py
 clean:
 	find ./ -iname \*.pyc -delete ; \
 	find ./ -iname \*Ui_\*py -delete ; \

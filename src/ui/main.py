@@ -23,9 +23,9 @@ from PyQt4 import QtGui
 
 from ui.Ui_mainWindow import Ui_ThinClient
 
-from ui.usersPage import UsersPage
-from ui.editPage import EditPage
-from ui.exportPage import ExportPage
+from ui.users.usersPage import UsersPage
+from ui.edit.editPage import EditPage
+from ui.export.exportPage import ExportPage
 
 from backend.librix_tcd import LibrixTCD
 

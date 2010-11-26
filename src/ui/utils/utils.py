@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 #
 #  Copyright (C) 2010 - Librix Dev Team
 #
@@ -18,12 +18,13 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-__all__ = [
-	'icons',
-	'main',
-	'Ui_mainWindow',
-	'users',
-	'edit',
-	'export',
-	'utils',
-]
+import string
+from random import choice
+
+def passwdGen(size=8):
+	""" Generates a password (random letters and digits string) of size lenght
+
+	@param	size		The string lenght
+	"""
+	return(''.join([choice(string.ascii_letters + string.digits)\
+		for i in range(size)]))

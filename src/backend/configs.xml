@@ -61,36 +61,6 @@
 					</option>
 				</category>
 			</profile>
-			<profile name="Profile 2">
-				<category name="hardware">
-					<option name="hardware option 1" type="bool">
-						True
-					</option>
-					<option name="hardware option 2" type="bool">
-						True
-					</option>
-					<option name="hardware option 3" type="bool">
-						False
-					</option>
-					<option name="hardware option 4" type="bool">
-						False
-					</option>
-				</category>
-				<category name="software">
-					<option name="software option 1" type="bool">
-						True
-					</option>
-					<option name="software option 2" type="bool">
-						True
-					</option>
-					<option name="software option 3" type="bool">
-						False
-					</option>
-					<option name="software option 4" type="bool">
-						False
-					</option>
-				</category>
-			</profile>
 			<profile name="Profile 3">
 				<category name="hardware">
 					<option name="hardware option 1" type="bool">
@@ -115,6 +85,36 @@
 					</option>
 					<option name="software option 3" type="bool">
 						True
+					</option>
+					<option name="software option 4" type="bool">
+						False
+					</option>
+				</category>
+			</profile>
+			<profile name="Profile 2">
+				<category name="hardware">
+					<option name="hardware option 1" type="bool">
+						True
+					</option>
+					<option name="hardware option 2" type="bool">
+						True
+					</option>
+					<option name="hardware option 3" type="bool">
+						False
+					</option>
+					<option name="hardware option 4" type="bool">
+						False
+					</option>
+				</category>
+				<category name="software">
+					<option name="software option 1" type="bool">
+						True
+					</option>
+					<option name="software option 2" type="bool">
+						True
+					</option>
+					<option name="software option 3" type="bool">
+						False
 					</option>
 					<option name="software option 4" type="bool">
 						False

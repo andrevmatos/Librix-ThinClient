@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
-<!-- eric5 project file for project thinclient -->
-<!-- Saved: 2010-10-19, 13:50:50 -->
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project thinclient -->
+<!-- Saved: 2010-11-25, 22:37:21 -->
 <!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
-<Project version="5.1">
-  <Language></Language>
-  <Hash>26f80a42ccf8e360ad699deda386a40ab67c0fa1</Hash>
+<Project version="4.6">
+  <Language>en</Language>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
   <ProjectType>Qt4</ProjectType>
-  <Description>Initial version of Librix Thin Client Administration Interface</Description>
+  <Description></Description>
   <Version>0.1</Version>
   <Author>Librix Dev Team</Author>
   <Email>tutooprog@las.ic.unicamp.br</Email>
   <Sources>
-    <Source>__init__.py</Source>
     <Source>src/init.py</Source>
-    <Source>src/__init__.py</Source>
-    <Source>src/ui/main.py</Source>
-    <Source>src/ui/__init__.py</Source>
-    <Source>src/ui/Ui_exportWidget.py</Source>
-    <Source>src/ui/Ui_mainWindow.py</Source>
-    <Source>src/ui/Ui_editWidget.py</Source>
-    <Source>src/ui/Ui_usersWidget.py</Source>
-    <Source>src/ui/Ui_profileSummary.py</Source>
-    <Source>src/ui/Ui_tabItemWidget.py</Source>
-    <Source>src/ui/icons/__init__.py</Source>
     <Source>src/ui/temp_icons_rc.py</Source>
-    <Source>src/ui/Ui_profileEdit.py</Source>
-    <Source>src/ui/Ui_configProfileEdit.py</Source>
-    <Source>src/backend/__init__.py</Source>
+    <Source>src/ui/users/usersWidget.py</Source>
+    <Source>src/ui/users/__init__.py</Source>
+    <Source>src/ui/users/Ui_usersWidget.py</Source>
+    <Source>src/ui/users/usersPage.py</Source>
+    <Source>src/ui/main.py</Source>
+    <Source>src/ui/edit/Ui_profileEdit.py</Source>
+    <Source>src/ui/edit/editPage.py</Source>
+    <Source>src/ui/edit/__init__.py</Source>
+    <Source>src/ui/edit/Ui_editWidget.py</Source>
+    <Source>src/ui/edit/Ui_configProfileEdit.py</Source>
+    <Source>src/ui/export/__init__.py</Source>
+    <Source>src/ui/export/Ui_exportWidget.py</Source>
+    <Source>src/ui/export/exportPage.py</Source>
+    <Source>src/ui/icons/__init__.py</Source>
+    <Source>src/ui/__init__.py</Source>
+    <Source>src/ui/utils/Ui_tabItemWidget.py</Source>
+    <Source>src/ui/utils/Ui_profileSummary.py</Source>
+    <Source>src/ui/utils/commonPage.py</Source>
+    <Source>src/ui/utils/__init__.py</Source>
+    <Source>src/ui/Ui_mainWindow.py</Source>
+    <Source>src/__init__.py</Source>
     <Source>src/backend/librix_tcd.py</Source>
+    <Source>src/backend/__init__.py</Source>
+    <Source>src/build.py</Source>
+    <Source>__init__.py</Source>
   </Sources>
   <Forms>
-    <Form>src/ui/exportWidget.ui</Form>
+    <Form>src/ui/users/usersWidget.ui</Form>
+    <Form>src/ui/edit/editWidget.ui</Form>
+    <Form>src/ui/edit/profileEdit.ui</Form>
+    <Form>src/ui/edit/configProfileEdit.ui</Form>
+    <Form>src/ui/export/exportWidget.ui</Form>
     <Form>src/ui/mainWindow.ui</Form>
-    <Form>src/ui/editWidget.ui</Form>
-    <Form>src/ui/usersWidget.ui</Form>
-    <Form>src/ui/profileSummary.ui</Form>
-    <Form>src/ui/tabItemWidget.ui</Form>
-    <Form>src/ui/profileEdit.ui</Form>
-    <Form>src/ui/configProfileEdit.ui</Form>
+    <Form>src/ui/utils/tabItemWidget.ui</Form>
+    <Form>src/ui/utils/profileSummary.ui</Form>
   </Forms>
   <Translations>
   </Translations>
@@ -49,24 +58,19 @@
   <Interfaces>
   </Interfaces>
   <Others>
-    <Other>src/init.py</Other>
-    <Other>.issues</Other>
-    <Other>src/Makefile</Other>
   </Others>
   <MainScript>src/init.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.pyw3" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS" />
-    <FiletypeAssociation pattern="Makefile*" type="OTHERS" />
     <FiletypeAssociation pattern="*.qrc" type="RESOURCES" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
     <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS" />
-    <FiletypeAssociation pattern="*.py3" type="SOURCES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

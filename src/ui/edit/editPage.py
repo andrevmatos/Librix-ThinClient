@@ -19,125 +19,13 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui,QtCore
-from ui.Ui_editWidget import Ui_EditWidget
-from ui.Ui_profileEdit import Ui_EditProfile
-from ui.Ui_configProfileEdit import Ui_configsWidget
-from ui.commonPage import *
 
-#class ButtonConfigProfileEdit(QtGui.QPushButton):
-#	def __init__(self, text, parent=None):
-#
-#		QtGui.QPushButton.__init__(self, text, parent)
-#		self.setCheckable(True)
+from ui.edit.Ui_editWidget import Ui_EditWidget
+from ui.edit.ProfileEdit import ProfileEdit
 
-class ConfigProfileEdit(QtGui.QWidget):
-	""" Creates the config page of a category in profile """
-	def __init__(self, tcd, category, parent=None):
-		""" Instantiate a ConfigProfileEdit widget
-
-		containing category options
-		@param	self		A ConfigProfileEdit instance
-		@param	tcd			A librix_tcd instance
-		@param	category	A string containing the category name
-		@param	parent		Parent QtGui.QWidget
-		"""
-		self.tcd = tcd
-		self.category = category
-		self.parent = parent
-
-		QtGui.QWidget.__init__(self, parent)
-
-		self.ui = Ui_configsWidget()
-		self.ui.setupUi(self)
-
-		self.buttons = {}
-
-		for o in tcd.getOptionsList(category):
-			self.buttons[o] = QtGui.QPushButton(o, self)
-			self.buttons[o].setCheckable(True)
-			self.ui.ConfigVerticalLayout.addWidget(self.buttons[o])
-
-class ProfileEdit(QtGui.QWidget):
-	""" Creates the page to edit profile, into EditPage """
-	def __init__(self, tcd, parent=None):
-		""" Instantiate ProfileEdit widget
-
-		@param	self	A ProfileEdit instance
-		@param	tcd		A librix_tcd instance
-		@param	parent	Parent QtGui.QWidget
-		"""
-		self.parent = parent
-		self.tcd = tcd
-
-		QtGui.QWidget.__init__(self, parent)
-
-		self.ui = Ui_EditProfile()
-		self.ui.setupUi(self)
-
-		self.ui.page.close()
-		self.ui.configToolBox.removeItem(0)
-
-		self.pages = {}
-		self.profile = ''
-
-		for c in tcd.getCategoriesList():
-			self.pages[c] = ConfigProfileEdit(tcd, c, None)
-			self.ui.configToolBox.addItem(self.pages[c], c)
-
-	def setProfile(self, profile):
-		""" Populates ProfileEdit widget with 'profile' informations
-
-		@param	self		A ProfileEdit instance
-		@param	profile		A string containing the profile name
-		"""
-
-		self.profile = profile
-		if not profile:
-			print("12345", profile)
-			return
-		self.ui.profileName.setText(profile)
-
-		for c in self.tcd.getCategoriesList():
-			for o in self.tcd.getOptionsList(c):
-				if self.tcd.getOption(profile, c, o):
-					self.pages[c].buttons[o].setChecked(True)
-				else:
-					self.pages[c].buttons[o].setChecked(False)
-
-	def readProfileConfig(self):
-		""" Read and write configurations on EditProfile
-
-		Called by QButtonBox in EditProfile box
-		@param	self		A EditProfile instance
-		"""
-		name = self.profile	# Original name
-		if not name in self.tcd.getProfilesList():
-			return
-
-		if self.ui.profileName.text() != name:	# if name has changed
-			newname = self.ui.profileName.text()
-			self.tcd.moveProfile(name, newname)
-			name = newname
-
-		for c in self.tcd.getCategoriesList():
-			for o in self.tcd.getOptionsList(c):
-				self.tcd.setOption(name, c, o,
-					self.pages[c].buttons[o].isChecked())
-
-		self.parent.updateLists()
-		self.parent.activateProfileSummary(name)
-
-	def show(self):
-		""" Reimplementation of QtGui.QWidget.show method """
-
-		self.parent.summary.hide()
-		QtGui.QWidget.show(self)
-
-	def hide(self):
-		""" Reimplementation of QtGui.QWidget.hide method """
-		self.parent.summary.show()
-		QtGui.QWidget.hide(self)
-
+import ui.utils.utils
+from ui.utils.LeftMenuItem import LeftMenuItem
+from ui.utils.ProfileSummary import ProfileSummary
 
 class EditPage(QtGui.QWidget):
 	""" Creates the main Edit page """
@@ -161,7 +49,7 @@ class EditPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, 'Edit Profiles',
 			QtGui.QIcon(":/edit_icon/document-edit.png"))
 
-		self.summary = ProfilesSummary(tcd, self)
+		self.summary = ProfileSummary(tcd, self)
 		self.ui.verticalLayout_4.addWidget(self.summary)
 		self.current = self.summary
 
