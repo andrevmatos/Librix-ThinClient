@@ -46,7 +46,7 @@ class EditPage(QtGui.QWidget):
 		self.ui = Ui_EditWidget()
 		self.ui.setupUi(self)
 
-		self.tab = LeftMenuItem(leftList, 'Edit Profiles',
+		self.tab = LeftMenuItem(leftList, 'Profiles',
 			QtGui.QIcon(":/edit_icon/document-edit.png"))
 
 		self.summary = ProfileSummary(tcd, self)

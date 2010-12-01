@@ -2,20 +2,20 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric4 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2010-11-26, 11:44:10 -->
+<!-- Saved: 2010-11-30, 12:53:54 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="24" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
-    <Filename cline="75" cindex="13" folds="" zoom="0">/D/Dev/Librix/thinclient/src/build.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
   </Filenames>
-  <ActiveWindow cline="24" cindex="0">/D/Dev/Librix/thinclient/src/init.py</ActiveWindow>
+  <ActiveWindow cline="0" cindex="0">/D/Dev/Librix/thinclient/src/ui/main.py</ActiveWindow>
   <Breakpoints>
   </Breakpoints>
   <Watchexpressions>
   </Watchexpressions>
   <DebugInfo>
-    <CommandLine>/usr/bin/python init.py</CommandLine>
-    <WorkingDirectory>/D/Dev/Librix/thinclient/src/</WorkingDirectory>
+    <CommandLine></CommandLine>
+    <WorkingDirectory></WorkingDirectory>
     <Environment></Environment>
     <ReportExceptions value="True" />
     <Exceptions>

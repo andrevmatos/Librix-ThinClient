@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project thinclient -->
-<!-- Saved: 2010-11-25, 22:37:21 -->
+<!-- Saved: 2010-11-27, 10:18:06 -->
 <!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -13,8 +13,6 @@
   <Email>tutooprog@las.ic.unicamp.br</Email>
   <Sources>
     <Source>src/init.py</Source>
-    <Source>src/ui/temp_icons_rc.py</Source>
-    <Source>src/ui/users/usersWidget.py</Source>
     <Source>src/ui/users/__init__.py</Source>
     <Source>src/ui/users/Ui_usersWidget.py</Source>
     <Source>src/ui/users/usersPage.py</Source>
@@ -31,7 +29,6 @@
     <Source>src/ui/__init__.py</Source>
     <Source>src/ui/utils/Ui_tabItemWidget.py</Source>
     <Source>src/ui/utils/Ui_profileSummary.py</Source>
-    <Source>src/ui/utils/commonPage.py</Source>
     <Source>src/ui/utils/__init__.py</Source>
     <Source>src/ui/Ui_mainWindow.py</Source>
     <Source>src/__init__.py</Source>
@@ -39,6 +36,12 @@
     <Source>src/backend/__init__.py</Source>
     <Source>src/build.py</Source>
     <Source>__init__.py</Source>
+    <Source>src/ui/icons/temp_icons_rc.py</Source>
+    <Source>src/ui/utils/utils.py</Source>
+    <Source>src/ui/utils/LeftMenuItem.py</Source>
+    <Source>src/ui/utils/ProfileSummary.py</Source>
+    <Source>src/ui/edit/ProfileEdit.py</Source>
+    <Source>src/ui/edit/ConfigProfileEdit.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

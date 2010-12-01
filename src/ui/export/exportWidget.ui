@@ -23,10 +23,284 @@
    <property name="margin">
     <number>4</number>
    </property>
+   <item>
+    <widget class="QTabWidget" name="localremoteTab">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <widget class="QWidget" name="localTab">
+      <attribute name="icon">
+       <iconset resource="../icons/temp_icons.qrc">
+        <normaloff>:/tab/harddisk.png</normaloff>:/tab/harddisk.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Local</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QGroupBox" name="localImportBox">
+         <property name="title">
+          <string>Import local file:</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QWidget" name="localImportPathSelect" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="pathlabel">
+               <property name="text">
+                <string>File Path:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="pathLineEdit">
+               <property name="text">
+                <string notr="true">/etc/thinclient.conf</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="browseButton">
+               <property name="text">
+                <string>Browse</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../icons/temp_icons.qrc">
+                 <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDialogButtonBox" name="localImportButtonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Apply|QDialogButtonBox::Reset</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="localExportBox">
+         <property name="title">
+          <string>Export local file:</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QWidget" name="localExportPathSelect" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="pathlabel_2">
+               <property name="text">
+                <string>File Path:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="pathLineEdit_2">
+               <property name="text">
+                <string notr="true">/etc/thinclient.conf</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="saveButton">
+               <property name="text">
+                <string>Browse</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../icons/temp_icons.qrc">
+                 <normaloff>:/export_icon/save.png</normaloff>:/export_icon/save.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="autoRaise">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDialogButtonBox" name="localExportButtonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="remoteTab">
+      <attribute name="icon">
+       <iconset resource="../icons/temp_icons.qrc">
+        <normaloff>:/tab/network.png</normaloff>:/tab/network.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Remote</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="remoteImportBox">
+         <property name="title">
+          <string>Remote Import Configuration:</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5"/>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="remoteExportBox">
+         <property name="title">
+          <string>Export to Network:</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6"/>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>
-  <include location="icons/temp_icons.qrc"/>
+  <include location="../icons/temp_icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>browseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localImportBrowseFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>localImportButtonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localImportClickedButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pathLineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localImportCheckFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>336</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localExportBrowseFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>localExportButtonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localExportClickedButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>516</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pathLineEdit_2</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>localExportCheckFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>336</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>localImportBrowseFiles()</slot>
+  <slot>localImportClickedButton()</slot>
+  <slot>localImportCheckFile()</slot>
+  <slot>localExportBrowseFiles()</slot>
+  <slot>localExportClickedButton()</slot>
+  <slot>localExportCheckFile()</slot>
+ </slots>
 </ui>

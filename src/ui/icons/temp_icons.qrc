@@ -36,6 +36,8 @@
     <file>document-edit.png</file>
   </qresource>
   <qresource prefix="export_icon">
+    <file>save.png</file>
+    <file>open.png</file>
     <file>back.png</file>
     <file>go-down.png</file>
     <file>go-up.png</file>
