@@ -24,9 +24,9 @@ from ui.edit.Ui_profileEdit import Ui_EditProfile
 from ui.edit.ConfigProfileEdit import ConfigProfileEdit
 
 class ProfileEdit(QtGui.QWidget):
-	""" Creates the page to edit profile, into EditPage """
+	"""Creates the page to edit profile, into EditPage"""
 	def __init__(self, tcd, parent=None):
-		""" Instantiate ProfileEdit widget
+		"""Instantiate ProfileEdit widget
 
 		@param	self	A ProfileEdit instance
 		@param	tcd		A librix_tcd instance
@@ -51,7 +51,7 @@ class ProfileEdit(QtGui.QWidget):
 			self.ui.configToolBox.addItem(self.pages[c], c)
 
 	def setProfile(self, profile):
-		""" Populates ProfileEdit widget with 'profile' informations
+		"""Populates ProfileEdit widget with 'profile' informations
 
 		@param	self		A ProfileEdit instance
 		@param	profile		A string containing the profile name
@@ -70,7 +70,7 @@ class ProfileEdit(QtGui.QWidget):
 					self.pages[c].buttons[o].setChecked(False)
 
 	def readProfileConfig(self):
-		""" Read and write configurations on EditProfile
+		"""Read and write configurations on EditProfile
 
 		Called by QButtonBox in EditProfile box
 		@param	self		A EditProfile instance
@@ -93,12 +93,12 @@ class ProfileEdit(QtGui.QWidget):
 		self.parent.activateProfileSummary(name)
 
 	def show(self):
-		""" Reimplementation of QtGui.QWidget.show method """
+		"""Reimplementation of QtGui.QWidget.show method"""
 
 		self.parent.summary.hide()
 		QtGui.QWidget.show(self)
 
 	def hide(self):
-		""" Reimplementation of QtGui.QWidget.hide method """
+		"""Reimplementation of QtGui.QWidget.hide method"""
 		self.parent.summary.show()
 		QtGui.QWidget.hide(self)

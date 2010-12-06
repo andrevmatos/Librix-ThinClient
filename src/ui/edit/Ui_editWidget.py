@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/editWidget.ui'
 #
-# Created: Mon Nov 29 17:15:35 2010
+# Created: Mon Dec  6 18:13:54 2010
 #      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!

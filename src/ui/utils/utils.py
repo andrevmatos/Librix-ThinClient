@@ -22,7 +22,7 @@ import string
 from random import choice
 
 def passwdGen(size=8):
-	""" Generates a password (random letters and digits string) of size lenght
+	"""Generates a password (random letters and digits string) of size lenght
 
 	@param	size		The string lenght
 	"""

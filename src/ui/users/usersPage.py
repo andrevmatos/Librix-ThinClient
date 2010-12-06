@@ -26,9 +26,9 @@ from ui.utils.LeftMenuItem import LeftMenuItem
 from ui.utils.ProfileSummary import ProfileSummary
 
 class UsersPage(QtGui.QWidget):
-	""" Creates the main users page """
+	"""Creates the main users page"""
 	def __init__(self, tcd, leftList, parent=None):
-		""" Instantiate a UsersPage object
+		"""Instantiate a UsersPage object
 
 		@param	self		A UsersPage instance
 		@param	tcd			A librix_tcd instance
@@ -56,7 +56,7 @@ class UsersPage(QtGui.QWidget):
 		self.ui.profilesTree.dropEvent = self.profilesDropEvent
 
 	def updateLists(self):
-		""" Update users list and profiles tree
+		"""Update users list and profiles tree
 
 		@param	self		A UsersPage instance
 		"""
@@ -84,7 +84,7 @@ class UsersPage(QtGui.QWidget):
 
 
 	def show(self):
-		""" Show self widget
+		"""Show self widget
 
 		@param	self		A UsersPage instance
 		"""
@@ -92,7 +92,7 @@ class UsersPage(QtGui.QWidget):
 		QtGui.QWidget.show(self)
 
 	def activateProfileSummary(self, treeItem):
-		""" Show summary when a Profile was selected on self.profilesTree
+		"""Show summary when a Profile was selected on self.profilesTree
 
 		@param	self		A UsersPage instance
 		@param	treeItem	A QtGui.QTreeWidgetItem profile object
@@ -104,7 +104,7 @@ class UsersPage(QtGui.QWidget):
 		self.summary.setSummary(treeItem.text(0))
 
 	def addUsers(self, users = [], profile = ''):
-		""" Get the user in the self.usersList and add it to self.profilesTree
+		"""Get the user in the self.usersList and add it to self.profilesTree
 
 		@param 	self		A UsersPage instance
 		@param	users		A list of strings usernames to add to profile
@@ -153,7 +153,7 @@ class UsersPage(QtGui.QWidget):
 
 
 	def dragEnterEvent(self, event):
-		""" Qt Event of Drag actions
+		"""Qt Event of Drag actions
 
 		@param	self		A Main() instance
 		@param	event	A QtGui.QDragEnterEvent object
@@ -165,7 +165,7 @@ class UsersPage(QtGui.QWidget):
 			event.ignore()
 
 	def profilesDropEvent(self, event):
-		""" Qt Event of Drop actions on profiles tree of Users tab
+		"""Qt Event of Drop actions on profiles tree of Users tab
 
 		@param	self		A Main() instance
 		@param	event	A QtGui.QDropEvent object
@@ -187,7 +187,7 @@ class UsersPage(QtGui.QWidget):
 		self.addUsers(users, profile.text(0))
 
 	def usersDropEvent(self, event):
-		""" Qt Event of Drop actions on users list of Users tab
+		"""Qt Event of Drop actions on users list of Users tab
 
 		@param	self		A Main() instance
 		@param 	event		A QtGui.QDropEvent object

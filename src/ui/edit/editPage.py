@@ -28,9 +28,9 @@ from ui.utils.LeftMenuItem import LeftMenuItem
 from ui.utils.ProfileSummary import ProfileSummary
 
 class EditPage(QtGui.QWidget):
-	""" Creates the main Edit page """
+	"""Creates the main Edit page"""
 	def __init__(self, tcd, leftList, parent=None):
-		""" Instantiate a EditPage object
+		"""Instantiate a EditPage object
 
 		@param	self		A EditPage instance
 		@param	tcd			A librix_tcd instance
@@ -59,7 +59,7 @@ class EditPage(QtGui.QWidget):
 
 
 	def updateLists(self):
-		""" Update profiles list
+		"""Update profiles list
 
 		@param	self		A EditPage instance
 		"""
@@ -73,7 +73,7 @@ class EditPage(QtGui.QWidget):
 		self.summary.hide()
 
 	def show(self):
-		""" Show self widget
+		"""Show self widget
 
 		@param	self		A EditPage instance
 		"""
@@ -83,7 +83,7 @@ class EditPage(QtGui.QWidget):
 		QtGui.QWidget.show(self)
 
 	def activateProfileSummary(self, profile=''):
-		""" Show summary of a profile
+		"""Show summary of a profile
 
 		@param	self		A EditPage instance
 		@param	profile		A profile name string to show
@@ -110,7 +110,7 @@ class EditPage(QtGui.QWidget):
 
 
 	def addProfile(self):
-		""" Creates a new profile
+		"""Creates a new profile
 
 		Called by editProfile toolbar buttons
 		@param	self		a EditPage instance
@@ -125,7 +125,7 @@ class EditPage(QtGui.QWidget):
 		self.activateProfileSummary(title)
 
 	def delProfile(self):
-		""" Delete a profile
+		"""Delete a profile
 
 		Called by editProfile toolbar buttons
 		@param	self		a Main() instance
@@ -146,7 +146,7 @@ class EditPage(QtGui.QWidget):
 		self.activateProfileSummary(_p[k] if k>0 else _p[0])
 
 	def editProfile(self):
-		""" Edit a profile.
+		"""Edit a profile.
 
 		Called by editProfile toolbar buttons
 		@param	self		A Main() instance
@@ -161,7 +161,7 @@ class EditPage(QtGui.QWidget):
 		self.profileEdit.show()
 
 	def duplicateProfile(self):
-		""" Creates a new profile from a existing one.
+		"""Creates a new profile from a existing one.
 
 		Called by editProfile toolbar buttons
 		@param	self		A Main() instance

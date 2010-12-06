@@ -20,5 +20,5 @@
 
 __all__ = [
 	'ui',
-	'backend',
+	'lib',
 ]

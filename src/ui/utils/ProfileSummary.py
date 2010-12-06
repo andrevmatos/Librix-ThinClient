@@ -22,9 +22,9 @@ from PyQt4 import QtCore,QtGui
 from ui.utils.Ui_profileSummary import Ui_Summary
 
 class ProfileSummary(QtGui.QWidget):
-	""" Creates a frame with profile summary """
+	"""Creates a frame with profile summary"""
 	def __init__(self, tcd, parent=None):
-		""" Instantiate a ProfilesSummary object
+		"""Instantiate a ProfilesSummary object
 
 		@param	self		A ProfilesSummary instance
 		"""
@@ -39,7 +39,7 @@ class ProfileSummary(QtGui.QWidget):
 		self.configsWidgets = {}
 
 	def setSummary(self, profile=''):
-		""" Set the summary of _profile on _label
+		"""Set the summary of _profile on _label
 
 		@param	self		A ProfilesSummary instance
 		@param	profile		A string containing the name of the profile
@@ -70,7 +70,7 @@ class ProfileSummary(QtGui.QWidget):
 				self.configsWidgets[c].setText(config)
 
 	def show(self):
-		""" Reimplementation of QtGui.QWidget.show method """
+		"""Reimplementation of QtGui.QWidget.show method"""
 		if self.parent.current:
 			self.parent.current.hide()
 

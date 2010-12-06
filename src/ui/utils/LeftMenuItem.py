@@ -22,9 +22,9 @@ from PyQt4 import QtGui, QtCore
 from ui.utils.Ui_tabItemWidget import Ui_tabWidget
 
 class LeftMenuItem(QtGui.QListWidgetItem):
-	""" Creates a item on leftMenu """
+	"""Creates a item on leftMenu"""
 	def __init__(self, parent, text, icon):
-		""" Instantiate a LeftMenuItem object
+		"""Instantiate a LeftMenuItem object
 
 		@param	self		A LeftMenuItem instance
 		@param	parent		A QListWidget widget object

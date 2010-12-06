@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project thinclient -->
-<!-- Saved: 2010-11-27, 10:18:06 -->
+<!-- Saved: 2010-12-01, 17:39:05 -->
 <!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -42,6 +42,7 @@
     <Source>src/ui/utils/ProfileSummary.py</Source>
     <Source>src/ui/edit/ProfileEdit.py</Source>
     <Source>src/ui/edit/ConfigProfileEdit.py</Source>
+    <Source>src/ui/export/localTab.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

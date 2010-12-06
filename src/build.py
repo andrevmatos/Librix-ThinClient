@@ -33,7 +33,7 @@ def uicompile(dirpath, filename):
 	return(uifile, pyfile)
 
 def resourcecompile(dirpath, filename):
-	""" Compile resources
+	"""Compile resources
 
 	@return	a tuple containing dirpath and pyfile
 	"""
@@ -58,7 +58,7 @@ def fix_from_imports(filepath, resources):
 		f.write(cont)
 
 def main(dir='.'):
-	""" UI and resources compiler """
+	"""UI and resources compiler"""
 	resources = {}
 
 	for dirpath, dirnames, filenames in os.walk(dir):

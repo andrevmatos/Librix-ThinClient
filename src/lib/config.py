@@ -20,14 +20,24 @@
 
 from random import choice
 from xml.dom import minidom
-from os.path import join, dirname,abspath
+import os
+
 
 class LibrixTCD(object):
-	def makeTestConfigs(self):
+	"""LibrixTCD class to manipulate XML configuration file
+	to Librix Thin Client Administration Interface"""
+
+	def __init__(self):
+		"""Instantiate LibrixTCD
+
+		@param	self		A LibrixTCD instance
+		"""
+		pass
+
+	def makeTestConfigs(self, file):
 		"""Make test configs
 
-		Effect: creates self.xml, self.config, self.profiles and self.users
-			DOM objects, with default test configs
+		Write some random configurations to tests librix TCAI
 		@param	self		A LibrixTCD instance
 		"""
 		self.xml = minidom.getDOMImplementation().createDocument(None,
@@ -75,35 +85,50 @@ class LibrixTCD(object):
 				user.attributes["profile"] = choice(self.getProfilesList())
 				self.users.appendChild(user)
 
-		self.syncConfigs()
+		self.backupfile = file
+		self.syncConfig()
+		del self.backupfile
 
-	def __init__(self):
-		"""Instantiate LibrixTCD
+	def readConfigFile(self, file=''):
+		"""Parse a configfile
 
 		@param	self		A LibrixTCD instance
+		@param	file		A filepath string. Default is self.configfile
 		"""
-		self.configfile = "configs.xml"
-		self.configfile = join(dirname(abspath(__file__)), self.configfile)
+		if not file: file = self.configfile
+		self.configfile = file
+		self.backupfile = file + '~'
 
-		try:
-			with open(self.configfile, 'r') as xmlfile:
-				self.xml = minidom.parseString(
-					str().join([l.strip() for l in xmlfile]))
-			self.config = self.xml.getElementsByTagName("librix_tcd_config")[0]
-			self.profiles = self.config.getElementsByTagName("profiles")[0]
-			self.profileFalse = self.config.getElementsByTagName(\
-				"profileFalse")[0]
-			self.users = self.config.getElementsByTagName("users")[0]
-			self.syncConfigs()
-		except:
-			self.makeTestConfigs()
+		with open(file, 'r') as xmlfile:
+			self.xml = minidom.parseString(
+				str().join([l.strip() for l in xmlfile]))
+		self.config = self.xml.getElementsByTagName("librix_tcd_config")[0]
+		self.profiles = self.config.getElementsByTagName("profiles")[0]
+		self.profileFalse = self.config.getElementsByTagName(\
+			"profileFalse")[0]
+		self.users = self.config.getElementsByTagName("users")[0]
+
+	def writeConfigFile(self, file=''):
+		"""Write configurations from self.backupfile to file
+
+		@param	self		A LibrixTCD instance
+		@param	file		A filepath string. Default is self.configfile
+		"""
+		if not file: file = self.configfile
+		if not os.path.isfile(self.backupfile): return
+
+		with open(file, 'w') as destfile, open(self.backupfile, 'r') as backup:
+			destfile.write(backup.read())
+
+		os.remove(self.backupfile)
+		self.readConfigFile(file)
 
 	def syncConfigs(self):
-		"""Sync self.xml with self.configfile
+		"""Sync self.xml with self.backupfile
 
 		@param	self		A LibrixTCD instance
 		"""
-		with open(self.configfile, 'w') as xmlfile:
+		with open(self.backupfile, 'w') as xmlfile:
 			self.xml.writexml(xmlfile, indent="\t", addindent="\t",
 				newl="\n", encoding="UTF-8")
 
