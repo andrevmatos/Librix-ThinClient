@@ -20,6 +20,7 @@
 
 import string
 from random import choice
+from hashlib import sha512
 
 def passwdGen(size=8):
 	"""Generates a password (random letters and digits string) of size lenght
@@ -28,3 +29,11 @@ def passwdGen(size=8):
 	"""
 	return(''.join([choice(string.ascii_letters + string.digits)\
 		for i in range(size)]))
+
+def sha512sum(filepath):
+	"""Generates a sha512 hex digest of filepath
+
+	@param	filepath	A filepath string
+	"""
+	with open(filepath, 'r') as f:
+		return(sha512(f.read().encode('utf-8')).hexdigest())

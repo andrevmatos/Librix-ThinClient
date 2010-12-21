@@ -19,11 +19,15 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+import signal
 
 if __name__ == "__main__":
+	signal.signal(signal.SIGINT, signal.SIG_DFL)
+
 	# TODO: basic argument parser, make it better
 	if "-c" in sys.argv:
 		from ui.main import main
 		main()
 	elif "-d" in sys.argv:
-		from daemon.tcd import test
+		from daemon.tcd import run
+		run()

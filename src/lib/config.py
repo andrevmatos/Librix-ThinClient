@@ -21,7 +21,7 @@
 import os
 
 from xml.dom import minidom
-from hashlib import sha512
+from lib.utils import sha512sum
 
 class LTCConfigParser(object):
 	"""LTCConfigParser class to manipulate XML configuration file
@@ -102,8 +102,7 @@ class LTCConfigParser(object):
 
 		# Register mtime and sha512sum
 		self.st_mtime = os.stat(file).st_mtime
-		with open(file, 'r') as xmlfile:
-			self.hash = sha512(xmlfile.read()).hexdigest()
+		self.hash = sha512sum(file)
 
 		with open(file, 'r') as xmlfile:
 			self.xml = minidom.parseString(
