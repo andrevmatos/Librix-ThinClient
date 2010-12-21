@@ -25,5 +25,5 @@ __all__ = [
 	'users',
 	'edit',
 	'export',
-	'utils',
+	'common',
 ]

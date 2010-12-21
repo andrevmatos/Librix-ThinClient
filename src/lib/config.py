@@ -18,27 +18,28 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from random import choice
-from xml.dom import minidom
 import os
 
+from xml.dom import minidom
+from hashlib import sha512
 
-class LibrixTCD(object):
-	"""LibrixTCD class to manipulate XML configuration file
+class LTCConfigParser(object):
+	"""LTCConfigParser class to manipulate XML configuration file
 	to Librix Thin Client Administration Interface"""
 
 	def __init__(self):
-		"""Instantiate LibrixTCD
+		"""Instantiate LTCConfigParser
 
-		@param	self		A LibrixTCD instance
+		@param	self		A LTCConfigParser instance
 		"""
-		pass
+		self.st_mtime = 0
+		self.hash = 0
 
 	def makeTestConfigs(self, file):
 		"""Make test configs
 
 		Write some random configurations to tests librix TCAI
-		@param	self		A LibrixTCD instance
+		@param	self		A LTCConfigParser instance
 		"""
 		self.xml = minidom.getDOMImplementation().createDocument(None,
 				"librix_tcd_config", None)
@@ -92,12 +93,17 @@ class LibrixTCD(object):
 	def readConfigFile(self, file=''):
 		"""Parse a configfile
 
-		@param	self		A LibrixTCD instance
+		@param	self		A LTCConfigParser instance
 		@param	file		A filepath string. Default is self.configfile
 		"""
 		if not file: file = self.configfile
 		self.configfile = file
 		self.backupfile = file + '~'
+
+		# Register mtime and sha512sum
+		self.st_mtime = os.stat(file).st_mtime
+		with open(file, 'r') as xmlfile:
+			self.hash = sha512(xmlfile.read()).hexdigest()
 
 		with open(file, 'r') as xmlfile:
 			self.xml = minidom.parseString(
@@ -111,7 +117,7 @@ class LibrixTCD(object):
 	def writeConfigFile(self, file=''):
 		"""Write configurations from self.backupfile to file
 
-		@param	self		A LibrixTCD instance
+		@param	self		A LTCConfigParser instance
 		@param	file		A filepath string. Default is self.configfile
 		"""
 		if not file: file = self.configfile
@@ -126,7 +132,7 @@ class LibrixTCD(object):
 	def syncConfigs(self):
 		"""Sync self.xml with self.backupfile
 
-		@param	self		A LibrixTCD instance
+		@param	self		A LTCConfigParser instance
 		"""
 		with open(self.backupfile, 'w') as xmlfile:
 			self.xml.writexml(xmlfile, indent="\t", addindent="\t",
@@ -135,7 +141,7 @@ class LibrixTCD(object):
 	def getUsersList(self):
 		"""Return the users list
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@return				A list of existing users
 		"""
 		_u = [u.attributes["name"].value for u in self.users.childNodes\
@@ -146,7 +152,7 @@ class LibrixTCD(object):
 	def getProfilesList(self):
 		"""Return the profiles list
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@return				A list of existing profiles
 		"""
 		_p = [p.attributes["name"].value for p in self.profiles.childNodes \
@@ -157,7 +163,7 @@ class LibrixTCD(object):
 	def getUserProfile(self, user):
 		"""Return the profile of a given user
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	user		A user name string
 		@return				A string containing the profile of user
 		"""
@@ -171,7 +177,7 @@ class LibrixTCD(object):
 	def setUserProfile(self, user, profile=''):
 		"""Set the profile of a given user to profile
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	user		A user name string
 		@param	profile	Optional. A profile name string.
 									Clear the user profile if profile not given
@@ -190,7 +196,7 @@ class LibrixTCD(object):
 	def getProfileUsersList(self, profile):
 		"""Return the users list in a profile
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	profile	A profile name string
 		@return				A list of users in profile
 		"""
@@ -205,7 +211,7 @@ class LibrixTCD(object):
 	def _findProfile(self, profile):
 		"""Take the Element object of profile
 
-		@param	self			A LibrixTCD() instance
+		@param	self			A LTCConfigParser() instance
 		@param	profile		A 'from' profile name string
 		@return					A Element DOM object of profile
 		"""
@@ -220,7 +226,7 @@ class LibrixTCD(object):
 	def _deleteProfile(self, profile):
 		"""Delete and return profile from profiles list
 
-		@param	self			A LibrixTCD() instance
+		@param	self			A LTCConfigParser() instance
 		@param	profile		A profile name string to remove
 		@return					A Element object of profile
 		"""
@@ -240,7 +246,7 @@ class LibrixTCD(object):
 		If newprofile not given, delete oldprofile
 		If newprofile already exists, overwrite it
 
-		@param	self			A LibrixTCD() instance
+		@param	self			A LTCConfigParser() instance
 		@param	oldprofile	A 'from' profile name string
 		@param	newprofile	A 'to' profile name string.
 		@param	copy	If False (default), delete oldprofile after copy it to
@@ -272,7 +278,7 @@ class LibrixTCD(object):
 	def getCategoriesList(self):
 		"""Return a list of categories in profile
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@return				A list of strings with the
 							categories names
 		"""
@@ -285,7 +291,7 @@ class LibrixTCD(object):
 	def getOptionsList(self, category):
 		"""Return a list of options in category of profile
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	profile	A profile name string.
 		@param	category	A category name string.
 		@return			A list of strings with the options names
@@ -307,7 +313,7 @@ class LibrixTCD(object):
 	def getOption(self, profile, category, option):
 		"""Return the value of option in category in profile
 
-		@param	self			A LibrixTCD() instance
+		@param	self			A LTCConfigParser() instance
 		@param	profile		A profile name string.
 		@param	category	A category name string.
 		@param	option		A option name string.
@@ -343,7 +349,7 @@ class LibrixTCD(object):
 	def setOption(self, profile, category, option, value):
 		"""Set the option in category in profile to value
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	profile	A profile name string.
 		@param	category	A category name string.
 		@param	option	A option name string.
@@ -372,7 +378,7 @@ class LibrixTCD(object):
 	def newProfile(self, profile):
 		"""Set the option in category in profile to value
 
-		@param	self		A LibrixTCD() instance
+		@param	self		A LTCConfigParser() instance
 		@param	profile	A profile name string.
 		"""
 		if not profile:
@@ -388,4 +394,5 @@ class LibrixTCD(object):
 		self.syncConfigs()
 
 if __name__ == '__main__':
-	LibrixTCD()
+	configparser = LTCConfigParser()
+	configparser.makeTestConfigs('thinclient.config')

@@ -20,21 +20,21 @@
 
 from PyQt4 import QtGui
 from ui.export.Ui_exportWidget import Ui_ExportWidget
-from ui.utils.LeftMenuItem import LeftMenuItem
+from ui.common.LeftMenuItem import LeftMenuItem
 
 from ui.export.localTab import LocalTab
 
 class ExportPage(QtGui.QWidget, LocalTab):
 	"""Creates the main Export page"""
-	def __init__(self, tcd, leftList, parent=None):
+	def __init__(self, configparser, leftList, parent=None):
 		"""Instantiate a ExportPage object
 
 		@param	self		A ExportPage instance
-		@param	tcd			A librix_tcd instance
+		@param	configparser			A LTCConfigParser instance
 		@param	leftList	The leftMenu QListWidget, to create the tab
 		@param	parent		A QtGui.QWidget parent object
 		"""
-		self.tcd = tcd
+		self.configparser = configparser
 		self.leftList = leftList
 		self.parent = parent
 

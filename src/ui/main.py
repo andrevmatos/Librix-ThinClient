@@ -28,7 +28,7 @@ from ui.users.usersPage import UsersPage
 from ui.edit.editPage import EditPage
 from ui.export.exportPage import ExportPage
 
-from lib.config import LibrixTCD
+from lib.config import LTCConfigParser
 
 configfile = 'thinclient.conf'
 
@@ -47,21 +47,21 @@ class Main(QtGui.QMainWindow):
 		self.hide()
 
 		# Init users and profiles package
-		self.tcd = LibrixTCD()
+		self.configparser = LTCConfigParser()
 		self.openConfigFile()
 
 		# TODO: implement qt translate, instead of pure strings
-		self.Users = UsersPage(self.tcd, self.ui.listWidget, self)
+		self.Users = UsersPage(self.configparser, self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Users)
 		#self.Users.hide()
 
 		# Edit widget configuration routines
-		self.Edit = EditPage(self.tcd, self.ui.listWidget, self)
+		self.Edit = EditPage(self.configparser, self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Edit)
 		self.Edit.hide()
 
 		# Export widget configuration routines
-		self.Export = ExportPage(self.tcd, self.ui.listWidget, self)
+		self.Export = ExportPage(self.configparser, self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Export)
 		self.Export.hide()
 
@@ -89,9 +89,9 @@ class Main(QtGui.QMainWindow):
 	def closeEvent(self, event):
 		"""Reimplementation of closeEvent Qt event
 
-		Exec writeConfigFile in self.tcd before close main window
+		Exec writeConfigFile in self.configparser before close main window
 		"""
-		self.tcd.writeConfigFile()
+		self.configparser.writeConfigFile()
 		event.accept()
 
 	def openConfigFile(self, file=configfile):
@@ -108,7 +108,7 @@ class Main(QtGui.QMainWindow):
 			try: os.remove(file + '~')
 			except: pass
 
-		self.tcd.readConfigFile(file)
+		self.configparser.readConfigFile(file)
 
 
 def main():

@@ -23,21 +23,21 @@ from PyQt4 import QtGui,QtCore
 from ui.edit.Ui_editWidget import Ui_EditWidget
 from ui.edit.ProfileEdit import ProfileEdit
 
-import ui.utils.utils
-from ui.utils.LeftMenuItem import LeftMenuItem
-from ui.utils.ProfileSummary import ProfileSummary
+from lib.utils import passwdGen
+from ui.common.LeftMenuItem import LeftMenuItem
+from ui.common.ProfileSummary import ProfileSummary
 
 class EditPage(QtGui.QWidget):
 	"""Creates the main Edit page"""
-	def __init__(self, tcd, leftList, parent=None):
+	def __init__(self, configparser, leftList, parent=None):
 		"""Instantiate a EditPage object
 
 		@param	self		A EditPage instance
-		@param	tcd			A librix_tcd instance
+		@param	configparser			A LTCConfigParser instance
 		@param	leftList	The leftMenu QListWidget, to create the tab
 		@param	parent		A QtGui.QWidget parent object
 		"""
-		self.tcd = tcd
+		self.configparser = configparser
 		self.leftList = leftList
 		self.parent = parent
 
@@ -49,11 +49,11 @@ class EditPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, 'Profiles',
 			QtGui.QIcon(":/edit_icon/document-edit.png"))
 
-		self.summary = ProfileSummary(tcd, self)
+		self.summary = ProfileSummary(configparser, self)
 		self.ui.verticalLayout_4.addWidget(self.summary)
 		self.current = self.summary
 
-		self.profileEdit = ProfileEdit(tcd, self)
+		self.profileEdit = ProfileEdit(configparser, self)
 		self.ui.verticalLayout_4.addWidget(self.profileEdit)
 		self.profileEdit.hide()
 
@@ -65,7 +65,7 @@ class EditPage(QtGui.QWidget):
 		"""
 		self.ui.profilesList.clear()
 
-		for p in self.tcd.getProfilesList():
+		for p in self.configparser.getProfilesList():
 			QtGui.QListWidgetItem(QtGui.QIcon(":/edit_icon/profiles.png"),
 				p, self.ui.profilesList)
 
@@ -78,8 +78,8 @@ class EditPage(QtGui.QWidget):
 		@param	self		A EditPage instance
 		"""
 		self.updateLists()
-		if self.tcd.getProfilesList():
-			self.activateProfileSummary(self.tcd.getProfilesList()[0])
+		if self.configparser.getProfilesList():
+			self.activateProfileSummary(self.configparser.getProfilesList()[0])
 		QtGui.QWidget.show(self)
 
 	def activateProfileSummary(self, profile=''):
@@ -120,7 +120,7 @@ class EditPage(QtGui.QWidget):
 			"Enter the new profile name:", text = n)[0]
 		if not title:
 			return
-		self.tcd.newProfile(title)
+		self.configparser.newProfile(title)
 		self.updateLists()
 		self.activateProfileSummary(title)
 
@@ -134,15 +134,15 @@ class EditPage(QtGui.QWidget):
 
 		if not profile:
 			return
-		_p = self.tcd.getProfilesList()
+		_p = self.configparser.getProfilesList()
 
 		for p in profile:
 			p = p.text()
-			self.tcd.moveProfile(p)
+			self.configparser.moveProfile(p)
 			k = _p.index(p)-1
 
 		self.updateLists()
-		_p = self.tcd.getProfilesList()
+		_p = self.configparser.getProfilesList()
 		self.activateProfileSummary(_p[k] if k>0 else _p[0])
 
 	def editProfile(self):
@@ -180,6 +180,6 @@ class EditPage(QtGui.QWidget):
 		if not title:
 			return
 
-		self.tcd.moveProfile(p, title, copy=True)
+		self.configparser.moveProfile(p, title, copy=True)
 		self.updateLists()
 		self.activateProfileSummary(title)

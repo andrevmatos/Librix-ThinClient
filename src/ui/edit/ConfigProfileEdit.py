@@ -24,16 +24,16 @@ from ui.edit.Ui_configProfileEdit import Ui_configsWidget
 
 class ConfigProfileEdit(QtGui.QWidget):
 	"""Creates the config page of a category in profile"""
-	def __init__(self, tcd, category, parent=None):
+	def __init__(self, configparser, category, parent=None):
 		"""Instantiate a ConfigProfileEdit widget
 
 		containing category options
 		@param	self		A ConfigProfileEdit instance
-		@param	tcd			A librix_tcd instance
+		@param	configparser			A LTCConfigParser instance
 		@param	category	A string containing the category name
 		@param	parent		Parent QtGui.QWidget
 		"""
-		self.tcd = tcd
+		self.configparser = configparser
 		self.category = category
 		self.parent = parent
 
@@ -44,7 +44,7 @@ class ConfigProfileEdit(QtGui.QWidget):
 
 		self.buttons = {}
 
-		for o in tcd.getOptionsList(category):
+		for o in configparser.getOptionsList(category):
 			self.buttons[o] = QtGui.QPushButton(o, self)
 			self.buttons[o].setCheckable(True)
 			self.ui.ConfigVerticalLayout.addWidget(self.buttons[o])

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project thinclient -->
-<!-- Saved: 2010-12-01, 17:39:05 -->
+<!-- Saved: 2010-12-20, 20:01:12 -->
 <!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -14,35 +14,29 @@
   <Sources>
     <Source>src/init.py</Source>
     <Source>src/ui/users/__init__.py</Source>
-    <Source>src/ui/users/Ui_usersWidget.py</Source>
     <Source>src/ui/users/usersPage.py</Source>
     <Source>src/ui/main.py</Source>
-    <Source>src/ui/edit/Ui_profileEdit.py</Source>
     <Source>src/ui/edit/editPage.py</Source>
     <Source>src/ui/edit/__init__.py</Source>
-    <Source>src/ui/edit/Ui_editWidget.py</Source>
-    <Source>src/ui/edit/Ui_configProfileEdit.py</Source>
     <Source>src/ui/export/__init__.py</Source>
-    <Source>src/ui/export/Ui_exportWidget.py</Source>
     <Source>src/ui/export/exportPage.py</Source>
     <Source>src/ui/icons/__init__.py</Source>
     <Source>src/ui/__init__.py</Source>
-    <Source>src/ui/utils/Ui_tabItemWidget.py</Source>
-    <Source>src/ui/utils/Ui_profileSummary.py</Source>
-    <Source>src/ui/utils/__init__.py</Source>
-    <Source>src/ui/Ui_mainWindow.py</Source>
     <Source>src/__init__.py</Source>
-    <Source>src/backend/librix_tcd.py</Source>
-    <Source>src/backend/__init__.py</Source>
     <Source>src/build.py</Source>
     <Source>__init__.py</Source>
-    <Source>src/ui/icons/temp_icons_rc.py</Source>
-    <Source>src/ui/utils/utils.py</Source>
-    <Source>src/ui/utils/LeftMenuItem.py</Source>
-    <Source>src/ui/utils/ProfileSummary.py</Source>
     <Source>src/ui/edit/ProfileEdit.py</Source>
     <Source>src/ui/edit/ConfigProfileEdit.py</Source>
     <Source>src/ui/export/localTab.py</Source>
+    <Source>src/lib/utils.py</Source>
+    <Source>src/lib/__init__.py</Source>
+    <Source>src/lib/config.py</Source>
+    <Source>src/lib/daemon.py</Source>
+    <Source>src/ui/common/__init__.py</Source>
+    <Source>src/ui/common/LeftMenuItem.py</Source>
+    <Source>src/ui/common/ProfileSummary.py</Source>
+    <Source>src/daemon/__init__.py</Source>
+    <Source>src/daemon/tcd.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -51,8 +45,8 @@
     <Form>src/ui/edit/configProfileEdit.ui</Form>
     <Form>src/ui/export/exportWidget.ui</Form>
     <Form>src/ui/mainWindow.ui</Form>
-    <Form>src/ui/utils/tabItemWidget.ui</Form>
-    <Form>src/ui/utils/profileSummary.ui</Form>
+    <Form>src/ui/common/tabItemWidget.ui</Form>
+    <Form>src/ui/common/profileSummary.ui</Form>
   </Forms>
   <Translations>
   </Translations>

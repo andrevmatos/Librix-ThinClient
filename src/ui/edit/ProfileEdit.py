@@ -25,15 +25,15 @@ from ui.edit.ConfigProfileEdit import ConfigProfileEdit
 
 class ProfileEdit(QtGui.QWidget):
 	"""Creates the page to edit profile, into EditPage"""
-	def __init__(self, tcd, parent=None):
+	def __init__(self, configparser, parent=None):
 		"""Instantiate ProfileEdit widget
 
 		@param	self	A ProfileEdit instance
-		@param	tcd		A librix_tcd instance
+		@param	configparser		A LTCConfigParser instance
 		@param	parent	Parent QtGui.QWidget
 		"""
 		self.parent = parent
-		self.tcd = tcd
+		self.configparser = configparser
 
 		QtGui.QWidget.__init__(self, parent)
 
@@ -46,8 +46,8 @@ class ProfileEdit(QtGui.QWidget):
 		self.pages = {}
 		self.profile = ''
 
-		for c in tcd.getCategoriesList():
-			self.pages[c] = ConfigProfileEdit(tcd, c, None)
+		for c in configparser.getCategoriesList():
+			self.pages[c] = ConfigProfileEdit(configparser, c, None)
 			self.ui.configToolBox.addItem(self.pages[c], c)
 
 	def setProfile(self, profile):
@@ -62,9 +62,9 @@ class ProfileEdit(QtGui.QWidget):
 			return
 		self.ui.profileName.setText(profile)
 
-		for c in self.tcd.getCategoriesList():
-			for o in self.tcd.getOptionsList(c):
-				if self.tcd.getOption(profile, c, o):
+		for c in self.configparser.getCategoriesList():
+			for o in self.configparser.getOptionsList(c):
+				if self.configparser.getOption(profile, c, o):
 					self.pages[c].buttons[o].setChecked(True)
 				else:
 					self.pages[c].buttons[o].setChecked(False)
@@ -76,17 +76,17 @@ class ProfileEdit(QtGui.QWidget):
 		@param	self		A EditProfile instance
 		"""
 		name = self.profile	# Original name
-		if not name in self.tcd.getProfilesList():
+		if not name in self.configparser.getProfilesList():
 			return
 
 		if self.ui.profileName.text() != name:	# if name has changed
 			newname = self.ui.profileName.text()
-			self.tcd.moveProfile(name, newname)
+			self.configparser.moveProfile(name, newname)
 			name = newname
 
-		for c in self.tcd.getCategoriesList():
-			for o in self.tcd.getOptionsList(c):
-				self.tcd.setOption(name, c, o,
+		for c in self.configparser.getCategoriesList():
+			for o in self.configparser.getOptionsList(c):
+				self.configparser.setOption(name, c, o,
 					self.pages[c].buttons[o].isChecked())
 
 		self.parent.updateLists()

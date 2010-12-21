@@ -22,20 +22,20 @@ from copy import deepcopy
 from PyQt4 import QtGui
 
 from ui.users.Ui_usersWidget import Ui_UsersWidget
-from ui.utils.LeftMenuItem import LeftMenuItem
-from ui.utils.ProfileSummary import ProfileSummary
+from ui.common.LeftMenuItem import LeftMenuItem
+from ui.common.ProfileSummary import ProfileSummary
 
 class UsersPage(QtGui.QWidget):
 	"""Creates the main users page"""
-	def __init__(self, tcd, leftList, parent=None):
+	def __init__(self, configparser, leftList, parent=None):
 		"""Instantiate a UsersPage object
 
 		@param	self		A UsersPage instance
-		@param	tcd			A librix_tcd instance
+		@param	configparser			A LTCConfigParser instance
 		@param	leftList	The leftMenu QListWidget, to create the tab
 		@param	parent		A QtGui.QWidget parent object
 		"""
-		self.tcd = tcd
+		self.configparser = configparser
 		self.leftList = leftList
 		self.parent = parent
 
@@ -47,7 +47,7 @@ class UsersPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, 'Users',
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
-		self.summary = ProfileSummary(tcd, self.ui.dockWidgetContents)
+		self.summary = ProfileSummary(configparser, self.ui.dockWidgetContents)
 		self.ui.verticalLayout_5.addWidget(self.summary)
 
 		self.ui.usersList.dragEnterEvent = self.dragEnterEvent
@@ -65,21 +65,21 @@ class UsersPage(QtGui.QWidget):
 
 		self.summary.setSummary()
 
-		for p in self.tcd.getProfilesList():
+		for p in self.configparser.getProfilesList():
 			P = QtGui.QTreeWidgetItem(self.ui.profilesTree,
 				[p])
 			P.setExpanded(True)
 			P.setIcon(0, QtGui.QIcon(":/edit_icon/profiles.png"))
-			for u in self.tcd.getProfileUsersList(p):
+			for u in self.configparser.getProfileUsersList(p):
 				QtGui.QTreeWidgetItem(P, [u], 1000).setIcon(0,
 					QtGui.QIcon(":/user_icon/user.png"))
 
 
-		for u in self.tcd.getUsersList():
+		for u in self.configparser.getUsersList():
 			U = QtGui.QListWidgetItem(
 				QtGui.QIcon(":/user_icon/user.png"),
 				u, self.ui.usersList)
-			p = self.tcd.getUserProfile(u)
+			p = self.configparser.getUserProfile(u)
 			U.setToolTip("Profile: <b>{0}</b>".format(p if p else "None"))
 
 
@@ -129,7 +129,7 @@ class UsersPage(QtGui.QWidget):
 			return
 
 		for u in _users:
-			self.tcd.setUserProfile(u, profile)
+			self.configparser.setUserProfile(u, profile)
 
 		self.updateLists()
 
@@ -147,7 +147,7 @@ class UsersPage(QtGui.QWidget):
 					_users.append(U.text(0))
 
 		for u in _users:
-			self.tcd.setUserProfile(u)
+			self.configparser.setUserProfile(u)
 
 		self.updateLists()
 

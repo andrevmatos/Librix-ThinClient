@@ -18,7 +18,12 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from ui.main import main
+import sys
 
 if __name__ == "__main__":
-	main()
+	# TODO: basic argument parser, make it better
+	if "-c" in sys.argv:
+		from ui.main import main
+		main()
+	elif "-d" in sys.argv:
+		from daemon.tcd import test

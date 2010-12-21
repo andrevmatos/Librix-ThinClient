@@ -19,17 +19,17 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtCore,QtGui
-from ui.utils.Ui_profileSummary import Ui_Summary
+from ui.common.Ui_profileSummary import Ui_Summary
 
 class ProfileSummary(QtGui.QWidget):
 	"""Creates a frame with profile summary"""
-	def __init__(self, tcd, parent=None):
+	def __init__(self, configparser, parent=None):
 		"""Instantiate a ProfilesSummary object
 
 		@param	self		A ProfilesSummary instance
 		"""
 		self.parent = parent
-		self.tcd = tcd
+		self.configparser = configparser
 
 		QtGui.QWidget.__init__(self, parent)
 
@@ -53,12 +53,12 @@ class ProfileSummary(QtGui.QWidget):
 				<font color=blue>{0}</font></b></h2>\n".format(profile))
 
 			# for each category, creates a QLabel and add the configurations
-			for c in self.tcd.getCategoriesList():
+			for c in self.configparser.getCategoriesList():
 				config = "<h4>{0}:</h4>\n".format(c)
 
-				for o in self.tcd.getOptionsList(c):
+				for o in self.configparser.getOptionsList(c):
 					config += "<h6> ➜ {0}: ".format(o)
-					if self.tcd.getOption(profile, c, o):
+					if self.configparser.getOption(profile, c, o):
 						config += "<font color=green><b>On</b></font></h6>\n"
 					else:
 						config += "<font color=red><b>Off</b></font></h6>\n"

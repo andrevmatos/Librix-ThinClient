@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui, QtCore
-from ui.utils.Ui_tabItemWidget import Ui_tabWidget
+from ui.common.Ui_tabItemWidget import Ui_tabWidget
 
 class LeftMenuItem(QtGui.QListWidgetItem):
 	"""Creates a item on leftMenu"""

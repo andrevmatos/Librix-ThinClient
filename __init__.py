@@ -19,5 +19,5 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 __all__ = [
-        'src'
+	'src'
 ]
