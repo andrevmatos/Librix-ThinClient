@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project thinclient -->
-<!-- Saved: 2010-12-20, 20:01:12 -->
-<!-- Copyright (C) 2010 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
+<!-- Saved: 2011-01-03, 13:41:48 -->
+<!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="4.6">
   <Language>en</Language>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
@@ -37,6 +37,22 @@
     <Source>src/ui/common/ProfileSummary.py</Source>
     <Source>src/daemon/__init__.py</Source>
     <Source>src/daemon/tcd.py</Source>
+    <Source>src/test.py</Source>
+    <Source>src/ui/users/Ui_usersWidget.py</Source>
+    <Source>src/ui/Ui_mainWindow.py</Source>
+    <Source>src/ui/edit/Ui_profileEdit.py</Source>
+    <Source>src/ui/edit/Ui_editWidget.py</Source>
+    <Source>src/ui/edit/Ui_configProfileEdit.py</Source>
+    <Source>src/ui/export/Ui_exportWidget.py</Source>
+    <Source>src/ui/icons/temp_icons_rc.py</Source>
+    <Source>src/ui/common/Ui_tabItemWidget.py</Source>
+    <Source>src/ui/common/Ui_profileSummary.py</Source>
+    <Source>src/daemon/filechecker.py</Source>
+    <Source>src/daemon/userchecker.py</Source>
+    <Source>src/modules/__init__.py</Source>
+    <Source>src/lib/modules.py</Source>
+    <Source>src/modules/test/main.py</Source>
+    <Source>src/modules/test/__init__.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

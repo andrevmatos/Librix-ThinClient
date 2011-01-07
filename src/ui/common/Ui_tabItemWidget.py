@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file './ui/common/tabItemWidget.ui'
 #
-# Created: Tue Dec 21 19:38:59 2010
-#      by: PyQt4 UI code generator 4.8.1
+# Created: Fri Jan  7 09:15:53 2011
+#      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
 

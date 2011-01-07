@@ -21,4 +21,6 @@
 __all__ = [
 	'ui',
 	'lib',
+	'daemon',
+	'modules',
 ]

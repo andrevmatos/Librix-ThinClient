@@ -19,11 +19,12 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from PyQt4.QtCore import *
+from PyQt4.QtCore import SIGNAL, QThread
 from lib.utils import sha512sum
 
 class FileChecker(QThread):
 	"""Check if configfile was modifyed and reload it"""
+
 	def __init__(self, configparser):
 		"""Thread init routine
 

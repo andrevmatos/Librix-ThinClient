@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Tue Dec 21 19:38:59 2010
-#      by: PyQt4 UI code generator 4.8.1
+# Created: Fri Jan  7 09:15:53 2011
+#      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -34,6 +34,7 @@ class Ui_ThinClient(object):
 		self.topBar.setMaximumSize(QtCore.QSize(16777215, 28))
 		self.topBar.setObjectName(_fromUtf8("topBar"))
 		self.horizontalLayout_4 = QtGui.QHBoxLayout(self.topBar)
+		self.horizontalLayout_4.setMargin(0)
 		self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
 		self.label = QtGui.QLabel(self.topBar)
 		self.label.setObjectName(_fromUtf8("label"))
@@ -48,6 +49,7 @@ class Ui_ThinClient(object):
 		self.main.setObjectName(_fromUtf8("main"))
 		self.horizontalLayout_3 = QtGui.QHBoxLayout(self.main)
 		self.horizontalLayout_3.setMargin(0)
+		self.horizontalLayout_3.setMargin(0)
 		self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
 		self.leftList = QtGui.QWidget(self.main)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -58,6 +60,7 @@ class Ui_ThinClient(object):
 		self.leftList.setMaximumSize(QtCore.QSize(150, 16777215))
 		self.leftList.setObjectName(_fromUtf8("leftList"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.leftList)
+		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.listWidget = QtGui.QListWidget(self.leftList)
@@ -93,6 +96,7 @@ class Ui_ThinClient(object):
 		self.options.setSizePolicy(sizePolicy)
 		self.options.setObjectName(_fromUtf8("options"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.options)
+		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.horizontalLayout_3.addWidget(self.options)
 		self.verticalLayout.addWidget(self.main)

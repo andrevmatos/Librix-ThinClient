@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from PyQt4.QtCore import *
+from PyQt4.QtCore import SIGNAL, QThread
 
 class UserChecker(QThread):
 	"""Check if a user in configfile is logged and apply rules"""

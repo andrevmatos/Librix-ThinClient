@@ -20,7 +20,7 @@
 
 import sys
 
-from PyQt4.QtCore import *
+from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
 
 from daemon.filechecker import FileChecker
 from daemon.userchecker import UserChecker
@@ -39,19 +39,23 @@ class LibrixTCDaemon(QObject):
 		"""
 		QObject.__init__(self)
 
+		# Init LTCConfigParser
 		self.configparser = LTCConfigParser()
 		self.configparser.readConfigFile(configfile)
 
+		# Init FileChecker instance and timer
 		self.checkFile = FileChecker(self.configparser)
 		self.checkFileTimer = QTimer(self)
 		self.connect(self.checkFileTimer,
 			SIGNAL("timeout()"), self.checkFile.start)
 
+		# Init UserChecker instance and timer
 		self.checkUsers = UserChecker(self.configparser)
 		self.checkUsersTimer = QTimer(self)
 		self.connect(self.checkUsersTimer,
 			SIGNAL("timeout()"), self.checkUsers.start)
 
+		# Start timers
 		self.checkFileTimer.start(5000)
 		self.checkUsersTimer.start(2000)
 

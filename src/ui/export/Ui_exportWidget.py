@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Tue Dec 21 19:38:59 2010
-#      by: PyQt4 UI code generator 4.8.1
+# Created: Fri Jan  7 09:15:53 2011
+#      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -40,6 +40,7 @@ class Ui_ExportWidget(object):
 		self.localImportPathSelect = QtGui.QWidget(self.localImportBox)
 		self.localImportPathSelect.setObjectName(_fromUtf8("localImportPathSelect"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.localImportPathSelect)
+		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.pathlabel = QtGui.QLabel(self.localImportPathSelect)
 		self.pathlabel.setObjectName(_fromUtf8("pathlabel"))
@@ -70,6 +71,7 @@ class Ui_ExportWidget(object):
 		self.localExportPathSelect = QtGui.QWidget(self.localExportBox)
 		self.localExportPathSelect.setObjectName(_fromUtf8("localExportPathSelect"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.localExportPathSelect)
+		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.pathlabel_2 = QtGui.QLabel(self.localExportPathSelect)
 		self.pathlabel_2.setObjectName(_fromUtf8("pathlabel_2"))
