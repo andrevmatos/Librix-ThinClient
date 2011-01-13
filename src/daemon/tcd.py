@@ -26,6 +26,7 @@ from daemon.filechecker import FileChecker
 from daemon.userchecker import UserChecker
 from lib.daemon import Daemon
 from lib.config import LTCConfigParser
+from lib.modules import LTCModuleParser
 
 pidfile = '/var/run/thinclient.pid'
 configfile = 'thinclient.conf'
@@ -42,6 +43,10 @@ class LibrixTCDaemon(QObject):
 		# Init LTCConfigParser
 		self.configparser = LTCConfigParser()
 		self.configparser.readConfigFile(configfile)
+
+		# Init LTCModuleParser
+		self.moduleparser = LTCModuleParser()
+		self.moduleparser.parseModules()
 
 		# Init FileChecker instance and timer
 		self.checkFile = FileChecker(self.configparser)

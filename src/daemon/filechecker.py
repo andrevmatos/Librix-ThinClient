@@ -36,6 +36,8 @@ class FileChecker(QThread):
 		self.configparser = configparser
 		self.configfile = configparser.configfile
 
+		self.moduleparser = moduleparser
+
 	def run(self):
 		"""Thread main routine
 
@@ -44,10 +46,10 @@ class FileChecker(QThread):
 		If yes, reload configs
 		@param	self		A FileChecker instance
 		"""
-		print('__run FileChecker', end=' ')
+		#print('__run FileChecker', end=' ')
 		if os.stat(self.configfile).st_mtime != self.configparser.st_mtime:
 			hash = sha512sum(self.configfile)
 			if hash != self.configparser.hash:
 				self.configparser.readConfigFile()
 				self.emit(SIGNAL("refreshConfigs()"))
-		print('__end FileChecker')
+		#print('__end FileChecker')

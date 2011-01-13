@@ -23,7 +23,7 @@ from PyQt4.QtCore import SIGNAL, QThread
 
 class UserChecker(QThread):
 	"""Check if a user in configfile is logged and apply rules"""
-	def __init__(self, configparser):
+	def __init__(self, configparser, moduleparser):
 		"""Thread init routine
 
 		@param	self		A UserChecker instance
@@ -32,6 +32,9 @@ class UserChecker(QThread):
 		QThread.__init__(self)
 
 		self.configparser = configparser
+		self.moduleparser = moduleparser
+
+		self.currentuser = None
 
 	def run(self):
 		"""Thread main routine
@@ -40,13 +43,26 @@ class UserChecker(QThread):
 		users list. If yes, apply configurations
 		@param	self		A UserChecker instance
 		"""
-		print('__run UserChecker', end=' ')
+		#print('__run UserChecker', end=' ')
 		with os.popen('users') as U:
 			loggedUsers = list(set(U.read().strip().split()))
 			loggedUsers.sort()
-		for u in self.configparser.getUsersList():
-			if u in loggedUsers:
-				# TODO: actually apply rules. Depend: modules. PS: threaded
-				print("###", u)
-				pass
-		print('__end UserChecker')
+
+		if self.currentuser:
+			if self.currentuser not in loggedUsers:
+				for o in self.moduleparser.getModulesList():
+					self.moduleparser.stopModule(o)
+				self.currentuser = None
+		else:
+			for u in self.configparser.getUsersList():
+				if u in loggedUsers:
+					p = self.configparser.getUserProfile(u)
+					for o in self.moduleparser.getModulesList():
+						# Atention: modules would be responsible
+						# by check if itself is already started or stoped
+						if self.configparser.getOption(p, o):
+							self.moduleparser.startModule(o)
+						else:
+							self.moduleparser.stopModule(o)
+					self.currentuser = u
+		#print('__end UserChecker')

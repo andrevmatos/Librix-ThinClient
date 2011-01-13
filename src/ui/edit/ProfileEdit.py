@@ -64,7 +64,7 @@ class ProfileEdit(QtGui.QWidget):
 
 		for c in self.configparser.getCategoriesList():
 			for o in self.configparser.getOptionsList(c):
-				if self.configparser.getOption(profile, c, o):
+				if self.configparser.getOption(profile, o):
 					self.pages[c].buttons[o].setChecked(True)
 				else:
 					self.pages[c].buttons[o].setChecked(False)
@@ -86,7 +86,7 @@ class ProfileEdit(QtGui.QWidget):
 
 		for c in self.configparser.getCategoriesList():
 			for o in self.configparser.getOptionsList(c):
-				self.configparser.setOption(name, c, o,
+				self.configparser.setOption(name, o,
 					self.pages[c].buttons[o].isChecked())
 
 		self.parent.updateLists()

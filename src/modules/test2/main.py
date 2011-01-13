@@ -23,19 +23,19 @@
 #__mainclass__ = "Test"
 
 class Main(object):
-	"""Test module"""
+	"""Test module 2"""
 	def __init__(self):
 		"""Init module"""
 
 		# self.prettyname should be a string containing a pretty name of module
-		self.prettyname = "Test Module"
+		self.prettyname = "Test Module 2"
 		# self.description should be a string containing a description of module
 		self.description = "A test description\n\
 Now, this dont want to mean something"
 		# self.configurable should be a bool True if module has config options
-		self.configurable = True
+		self.configurable = False
 		# self.category should be a string containing category name of module
-		self.cateogory = 'software'
+		self.cateogory = 'hardware'
 
 		# self.th will be a QThread instance
 		self.th = None

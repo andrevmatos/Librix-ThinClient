@@ -20,4 +20,10 @@
 
 __all__ = [
 	'test',
+	'test2'
 ]
+
+for m in __all__:
+	exec("from . import {0}".format(m))
+
+del m

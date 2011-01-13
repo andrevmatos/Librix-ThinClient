@@ -58,7 +58,7 @@ class ProfileSummary(QtGui.QWidget):
 
 				for o in self.configparser.getOptionsList(c):
 					config += "<h6> ➜ {0}: ".format(o)
-					if self.configparser.getOption(profile, c, o):
+					if self.configparser.getOption(profile, o):
 						config += "<font color=green><b>On</b></font></h6>\n"
 					else:
 						config += "<font color=red><b>Off</b></font></h6>\n"

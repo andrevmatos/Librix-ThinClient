@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project thinclient -->
-<!-- Saved: 2011-01-06, 22:46:17 -->
+<!-- Saved: 2011-01-12, 18:12:43 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: implement qt translate, instead of pure strings</Summary>
@@ -31,18 +31,9 @@
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: actually apply rules. Depend: modules. PS: threaded</Summary>
-    <Description></Description>
-    <Created>2010-12-21, 22:34:49</Created>
-    <Resource>
-      <Filename>src/daemon/userchecker.py</Filename>
-      <Linenumber>49</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: basic argument parser, make it better</Summary>
     <Description></Description>
-    <Created>2011-01-05, 09:45:35</Created>
+    <Created>2011-01-10, 11:27:30</Created>
     <Resource>
       <Filename>src/init.py</Filename>
       <Linenumber>28</Linenumber>

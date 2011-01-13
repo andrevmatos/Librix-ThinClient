@@ -22,7 +22,7 @@ from lxml import etree as ET
 from copy import deepcopy
 from random import choice
 
-from utils import sha512sum
+from lib.utils import sha512sum
 
 class LTCConfigParser(object):
 	"""LTCConfigParser class to manipulate XML configuration file
@@ -35,44 +35,44 @@ class LTCConfigParser(object):
 		"""
 		self.st_mtime = 0
 		self.hash = 0
-		self.parser = ET.XMLParser(encoding=str, remove_blank_text=True)
+		self._parser = ET.XMLParser(encoding="utf-8", remove_blank_text=True)
 
-	def makeTestConfigs(self, file):
+	def _makeTestConfigs(self, file):
 		"""Make test configs
 
 		Write some random configurations to tests librix TCAI
 		@param	self		A LTCConfigParser instance
 		"""
-		self.config = ET.Element("librix_tcd_config")
+		self._config = ET.Element("librix_tcd_config")
 
-		self.profileFalse = ET.SubElement(self.config, "profileFalse",
+		self._profileFalse = ET.SubElement(self._config, "profileFalse",
 			attrib={"name": "profileFalse"})
 
 		for c in ["hardware", "software"]:
-				category = ET.SubElement(self.profileFalse, "category",
+				category = ET.SubElement(self._profileFalse, "category",
 					attrib={"name": c})
 				for o in range(1, 5):
 					o = "{0} option {1}".format(c, o)
 					option = ET.SubElement(category, "option",
 						attrib={"name": o, "on": "false"})
 
-		self.profiles = ET.SubElement(self.config, "profiles")
+		self._profiles = ET.SubElement(self._config, "profiles")
 
 		for p in ["Profile 1", "Profile 2", "Profile 3"]:
-			profile = deepcopy(self.profileFalse)
+			profile = deepcopy(self._profileFalse)
 			profile.tag = "profile"
 			profile.attrib["name"] = p
-			self.profiles.append(profile)
+			self._profiles.append(profile)
 			for c in profile:
 				if c.tag == 'category':
 					for o in c:
 						if o.tag == 'option':
 							o.attrib["on"] = str(choice([False, True])).lower()
 
-		self.users = ET.SubElement(self.config, "users")
+		self._users = ET.SubElement(self._config, "users")
 		for u in ['andre', 'ivan', 'roberto', 'guilherme',
 			'david', 'carvalho']:
-				user = ET.SubElement(self.users, "user",
+				user = ET.SubElement(self._users, "user",
 					attrib={"name": u, "profile": choice(self.getProfilesList())})
 
 		self.backupfile = file
@@ -93,11 +93,11 @@ class LTCConfigParser(object):
 		self.st_mtime = os.stat(file).st_mtime
 		self.hash = sha512sum(file)
 
-		self.config = ET.parse(file, parser=self.parser).getroot()
+		self._config = ET.parse(file, parser=self._parser).getroot()
 
-		self.profiles = self.config.find("profiles")
-		self.profileFalse = self.config.find("profileFalse")
-		self.users = self.config.find("users")
+		self._profiles = self._config.find("profiles")
+		self._profileFalse = self._config.find("profileFalse")
+		self._users = self._config.find("users")
 
 	def writeConfigFile(self, file=''):
 		"""Write configurations from self.backupfile to file
@@ -114,12 +114,12 @@ class LTCConfigParser(object):
 		os.remove(self.backupfile)
 		self.readConfigFile(file)
 
-	def syncConfigs(self):
+	def _syncConfigs(self):
 		"""Sync self.xml with self.backupfile
 
 		@param	self		A LTCConfigParser instance
 		"""
-		self.config.getroottree().write(self.backupfile, pretty_print=True)
+		self._config.getroottree().write(self.backupfile, pretty_print=True)
 
 	def getUsersList(self):
 		"""Return the users list
@@ -128,7 +128,7 @@ class LTCConfigParser(object):
 		@return				A list of existing users
 		"""
 
-		_u = [u.get("name") for u in self.users.findall("user")]
+		_u = [u.get("name") for u in self._users.findall("user")]
 		_u.sort()
 		return(_u)
 
@@ -138,7 +138,7 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser() instance
 		@return				A list of existing profiles
 		"""
-		_p = [p.get("name") for p in self.profiles.findall("profile")]
+		_p = [p.get("name") for p in self._profiles.findall("profile")]
 		_p.sort()
 		return(_p)
 
@@ -152,7 +152,7 @@ class LTCConfigParser(object):
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
 
-		return(self.users.find("user[@name='{0}']".format(user)).get("profile"))
+		return(self._users.find("user[@name='{0}']".format(user)).get("profile"))
 
 	def setUserProfile(self, user, profile=''):
 		"""Set the profile of a given user to profile
@@ -167,8 +167,8 @@ class LTCConfigParser(object):
 		if profile and not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
-		self.users.find("user[@name='{0}']".format(user)).set("profile", profile)
-		self.syncConfigs()
+		self._users.find("user[@name='{0}']".format(user)).set("profile", profile)
+		self._syncConfigs()
 
 	def getProfileUsersList(self, profile):
 		"""Return the users list in a profile
@@ -180,7 +180,7 @@ class LTCConfigParser(object):
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
-		_u = [u.get("name") for u in self.users.findall(
+		_u = [u.get("name") for u in self._users.findall(
 			"user[@profile='{0}']".format(profile))]
 		_u.sort()
 
@@ -196,7 +196,7 @@ class LTCConfigParser(object):
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
-		return(self.profiles.find("profile[@name='{0}']".format(profile)))
+		return(self._profiles.find("profile[@name='{0}']".format(profile)))
 
 	def _deleteProfile(self, profile):
 		"""Delete and return profile from profiles list
@@ -207,8 +207,8 @@ class LTCConfigParser(object):
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
-		self.profiles.remove(
-			self.profiles.find("profile[@name='{0}']".format(profile)))
+		self._profiles.remove(
+			self._profiles.find("profile[@name='{0}']".format(profile)))
 
 	def moveProfile(self, oldprofile, newprofile='', copy=False):
 		"""Move the 'oldprofile' to 'newprofile'
@@ -219,9 +219,8 @@ class LTCConfigParser(object):
 		@param	self			A LTCConfigParser() instance
 		@param	oldprofile	A 'from' profile name string
 		@param	newprofile	A 'to' profile name string.
-		@param	copy	If False (default), delete oldprofile after copy it to
-									newprofile and move all users from
-									oldprofile to newprofile
+		@param	copy	If True, make a copy and keep users on oldprofile,
+							instead a move.
 		"""
 
 		if not oldprofile in self.getProfilesList():
@@ -229,14 +228,14 @@ class LTCConfigParser(object):
 
 		if not newprofile:
 			self._deleteProfile(oldprofile)
-			self.syncConfigs()
+			self._syncConfigs()
 			return
 		elif newprofile in self.getProfilesList():
 			self._deleteProfile(newprofile)
 
 		profile = deepcopy(self._findProfile(oldprofile))
 		profile.set("name", newprofile)
-		self.profiles.append(profile)
+		self._profiles.append(profile)
 
 		# Remove oldprofile
 		if not copy:
@@ -244,7 +243,25 @@ class LTCConfigParser(object):
 				self.setUserProfile(u, newprofile)
 			self._deleteProfile(oldprofile)
 
-		self.syncConfigs()
+		self._syncConfigs()
+
+	def newProfile(self, profile):
+		"""Creates a new profile based on profileFalse
+
+		@param	self		A LTCConfigParser() instance
+		@param	profile		A profile name string.
+		"""
+		if not profile:
+			return
+
+		if profile in self.getProfilesList():
+			self._deleteProfile(self._findProfile(profile))
+
+		p = deepcopy(self._profileFalse)
+		p.tag = "profile"
+		p.set("name", profile)
+		self._profiles.append(p)
+		self._syncConfigs()
 
 	def getCategoriesList(self):
 		"""Return a list of categories in profile
@@ -254,94 +271,127 @@ class LTCConfigParser(object):
 							categories names
 		"""
 
-		_c = [c.get("name") for c in self.profileFalse.findall("category")]
+		_c = [c.get("name") for c in self._profileFalse.findall("category")]
 		_c.sort()
 		return(_c)
 
-	def getOptionsList(self, category):
+	def getOptionsList(self, category=''):
 		"""Return a list of options in category of profile
 
+		If category not given, all options are listed
 		@param	self		A LTCConfigParser() instance
 		@param	profile		A profile name string.
 		@param	category	A category name string.
 		@return				A list of strings with the options names
-								in category in profile
+								in category
 		"""
-		if not category in self.getCategoriesList():
+		if category and not category in self.getCategoriesList():
 			raise IndexError("\"{0}\" not in \
 				category list".format(category))
 
-		_o = [o.get("name") for o in self.profileFalse.find(
-			"category[@name='{0}']/option".format(category))]
+		if category:
+			_o = [o.get("name") for o in self._profileFalse.findall(
+				"category[@name='{0}']/option".format(category))]
+		else:
+			_o = [o.get("name") for o in self._profileFalse.findall(
+				"category/option".format(category))]
 		_o.sort()
 		return(_o)
 
-	def getOption(self, profile, category, option):
-		"""Return the value of option in category in profile
+	def getActiveOptions(self, profile):
+		"""Return a list of options in category of profile
 
+		If category not given, all options are listed
 		@param	self		A LTCConfigParser() instance
 		@param	profile		A profile name string.
 		@param	category	A category name string.
+		@return				A list of strings with the options names
+								in category
+		"""
+
+
+	def getOption(self, profile, option):
+		"""Return the value of option in profile
+
+		@param	self		A LTCConfigParser() instance
+		@param	profile		A profile name string.
 		@param	option		A option name string.
 		@return				The bool value of option
 		"""
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
-		if not category in self.getCategoriesList():
-			raise IndexError("\"{0}\" not in \"{1}\
-				\" profile category list".format(category, profile))
-		if not option in self.getOptionsList(category):
-			raise IndexError("\"{0}\" not in \"{1}\" \
-				category options list".format(option, category))
+		if not option in self.getOptionsList():
+			raise IndexError("\"{0}\" not in options list".format(option))
 
-		o = self.profiles.find("profile[@name='{0}']/category[@name='{1}']/\
-			option[@name='{2}']".format(profile, category, option))
-		if o.get("on").lower() in ["false", "off", "no", "0"]:
+		o = self._profiles.find(("profile[@name='{0}']/category/"+
+			"option[@name='{2}']").format(profile, option))
+		# Using string to match partial names, like F and no, to false
+		if o.get("on").lower() in "false off not 0":
 			return(False)
 		else:
 			return(True)
 
-	def setOption(self, profile, category, option, value):
-		"""Set the option in category in profile to value
+	def setOption(self, profile, option, value):
+		"""Set the option in profile to value
 
 		@param	self		A LTCConfigParser() instance
 		@param	profile	A profile name string.
-		@param	category	A category name string.
 		@param	option	A option name string.
 		@param	value	A new bool value.
 		"""
 		if not profile in self.getProfilesList():
 			raise IndexError("\"{0}\" not in profiles list".format(profile))
-		if not category in self.getCategoriesList():
-			raise IndexError("\"{0}\" not in category list".format(category))
-		if not option in self.getOptionsList(category):
-			raise IndexError("\"{0}\" not in \"{1}\" \
-			category options list".format(option, category))
+		if not option in self.getOptionsList():
+			raise IndexError("\"{0}\" not in options list".format(option))
 
-		o = self.profiles.find("profile[@name='{0}']/category[@name='{1}']/"+\
-			"option[@name='{2}']".format(profile, category, option))
+		o = self._profiles.find(("profile[@name='{0}']/category/"+
+			"option[@name='{2}']").format(profile, option))
 		o.set("on", str(value).lower())
-		self.syncConfigs()
+		self._syncConfigs()
 
-	def newProfile(self, profile):
-		"""Set the option in category in profile to value
+	def getConfig(self, profile, option):
+		"""Get XML object based config information of an option
 
 		@param	self		A LTCConfigParser() instance
-		@param	profile	A profile name string.
+		@param	profile		A profile name string.
+		@param	option		A option name string.
+		@return				A lxml.etree.Element object
 		"""
-		if not profile:
-			return
+		if not profile in self.getProfilesList():
+			raise IndexError("\"{0}\" not in profiles list".format(profile))
+		if not option in self.getOptionsList():
+			raise IndexError("\"{0}\" not in options list".format(option))
 
-		if profile in self.getProfilesList():
-			self._deleteProfile(self._findProfile(profile))
+		return(deepcopy(
+			self._profiles.find(("profile[@name='{0}']/category/"+
+			"option[@name='{2}']").format(profile, option))))
 
-		p = deepcopy(self.profileFalse)
-		p.tag = "profile"
-		p.set["name"] = profile
-		self.profiles.append(p)
-		self.syncConfigs()
+	def setConfig(self, profile, option, config):
+		"""Get XML object based config information of an option
+
+		@param	self		A LTCConfigParser() instance
+		@param	profile		A profile name string.
+		@param	option		A option name string.
+		@param	config		A lxml.etree.Element object to be stored
+		"""
+		if not profile in self.getProfilesList():
+			raise IndexError("\"{0}\" not in profiles list".format(profile))
+		if not option in self.getOptionsList():
+			raise IndexError("\"{0}\" not in options list".format(option))
+
+		O = self._profiles.find(("profile[@name='{0}']/category/"+
+			"option[@name='{2}']").format(profile, option))
+		att = deepcopy(O.attrib)
+		O.getparent().replace(O, config)
+
+		self._profiles.find(("profile[@name='{0}']/category/"+
+		"option[@name='{2}']").format(profile, option)).attrib = att
+
+		self._syncConfigs()
+		del att
+		del O
 
 if __name__ == '__main__':
 	from sys import argv
 	configparser = LTCConfigParser()
-	configparser.makeTestConfigs(argv[1])
+	configparser._makeTestConfigs(argv[1])

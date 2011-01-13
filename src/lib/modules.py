@@ -29,42 +29,83 @@ class LTCModuleParser(object):
 		"""
 		QThread.__init__(self)
 
-		self.modules = {}
-		self.parseModules()
+		self._modules = {}
 
 	def parseModules(self):
 		"""Import and parse modules
 
 		@param	self		A LTCModuleParser instance
 		"""
-		from modules.__init__ import __all__ as modlist
+		if 'Mod' in vars():
+			del Mod
+		import modules as Mod
 
-		for m in modlist:
-			# Attention with modules path
-			exec("from modules.{0}.main import __mainclass__ as classname"\
-				.format(m))
-			exec("from modules.{0}.main import {1}".format(m, classname))
-			self.modules[m] = exec("{0}()".format(classname))
-			self.modules[m].th = QThread()
-			del classname
+		for m in Mod.__all__:
+			self._modules[m] = exec("Mod.{0}.Main()".format(m))
+			self._modules[m].th = QThread()
 
-	def getModulesList(self):
-		"""Returns a list of all modules
+	def getCategoryList(self):
+		"""Returns a list of all categories
 
 		@param	self		A LTCModuleParser instance
+		@return				A list of categories
+		"""
+		c = []
+		for m in self._modules:
+			if self._modules[m].category not in c:
+				c.append(self._modules[m].category)
+		c.sort()
+		return(c)
+
+	def getModulesList(self, category=''):
+		"""Returns a list of all modules in category
+
+		If category is '', return all modules
+		@param	self		A LTCModuleParser instance
+		@param	category	A category name. If null, return all modules
 		@return				A list of modules
 		"""
-		return(list(self.modules))
+		M = [m for m in self._modules \
+			if not category or self._modules[m].category == category]
+		M.sort()
+		return(M)
 
-	def getModuleStatus(self, module, conf):
+	def getModulePrettyName(self, module):
+		"""Get module pretty name
+
+		@param	self		A LTCModuleParser instance
+		@param	module		Module name
+		@return				A string containing module pretty name
+		"""
+		return(self._modules[module].prettyname)
+
+	def getModuleDescription(self, module):
+		"""Get module description
+
+		@param	self		A LTCModuleParser instance
+		@param	module		Module name
+		@return				A string containing module description
+		"""
+		return(self._modules[module].description)
+
+	def getModuleConfigurable(self, module):
+		"""Get if module has configuration dialog
+
+		@param	self		A LTCModuleParser instance
+		@param	module		Module name
+		@return				Bool. True if module is configurable
+		"""
+		return(self._modules[module].configurable)
+
+	def getModuleStatus(self, module, conf=None):
 		"""Return true if module is active WITH conf
 
 		@param	self		A LTCModuleParser instance
 		@param	module		Module name
-		@param	conf		String containing config of module
-		@return				Bool
+		@param	conf		lxml.etree.Element object of module config
+		@return				True if module is activated WITH conf
 		"""
-		return(self.modules[module].status(conf))
+		return(self._modules[module].status(conf))
 
 	def startModule(self, module):
 		"""Threaded method to start a module
@@ -72,8 +113,8 @@ class LTCModuleParser(object):
 		@param	self		A LTCModuleParser instance
 		@param	module		Module name
 		"""
-		self.modules[module].th.run = self.modules[module].start
-		self.modules[module].th.start()
+		self._modules[module].th.run = self._modules[module].start
+		self._modules[module].th.start()
 
 	def stopModule(self, module):
 		"""Threaded method to stop a module
@@ -81,5 +122,5 @@ class LTCModuleParser(object):
 		@param	self		A LTCModuleParser instance
 		@param	module		Module name
 		"""
-		self.modules[module].th.run = self.modules[module].stop
-		self.modules[module].th.start()
+		self._modules[module].th.run = self._modules[module].stop
+		self._modules[module].th.start()
