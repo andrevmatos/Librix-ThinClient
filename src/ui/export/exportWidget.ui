@@ -24,172 +24,195 @@
     <number>4</number>
    </property>
    <item>
-    <widget class="QTabWidget" name="localremoteTab">
-     <property name="currentIndex">
-      <number>0</number>
+    <widget class="QGroupBox" name="targetsBox">
+     <property name="title">
+      <string>Targets</string>
      </property>
-     <property name="iconSize">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QWidget" name="IPsWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QTreeWidget" name="treeWidget">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="animated">
+            <bool>true</bool>
+           </property>
+           <attribute name="headerCascadingSectionResizes">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="headerDefaultSectionSize">
+            <number>400</number>
+           </attribute>
+           <attribute name="headerShowSortIndicator" stdset="0">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Address</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Version</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="targetsToolBar" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QToolButton" name="addButton">
+              <property name="toolTip">
+               <string>Add Targets Manually</string>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../icons/temp_icons.qrc">
+                <normaloff>:/add_icon/list-add.png</normaloff>:/add_icon/list-add.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButton">
+              <property name="toolTip">
+               <string>Remove Selected Targets</string>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../icons/temp_icons.qrc">
+                <normaloff>:/remove_icon/list-remove.png</normaloff>:/remove_icon/list-remove.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>24</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="privKeyBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
       <size>
-       <width>24</width>
-       <height>24</height>
+       <width>0</width>
+       <height>100</height>
       </size>
      </property>
-     <widget class="QWidget" name="localTab">
-      <attribute name="icon">
-       <iconset resource="../icons/temp_icons.qrc">
-        <normaloff>:/tab/harddisk.png</normaloff>:/tab/harddisk.png</iconset>
-      </attribute>
-      <attribute name="title">
-       <string>Local</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QGroupBox" name="localImportBox">
-         <property name="title">
-          <string>Import local file:</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QWidget" name="localImportPathSelect" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QLabel" name="pathlabel">
-               <property name="text">
-                <string>File Path:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="pathLineEdit">
-               <property name="text">
-                <string notr="true">/etc/thinclient.conf</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="browseButton">
-               <property name="text">
-                <string>Browse</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../icons/temp_icons.qrc">
-                 <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="autoRaise">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDialogButtonBox" name="localImportButtonBox">
-            <property name="standardButtons">
-             <set>QDialogButtonBox::Apply|QDialogButtonBox::Reset</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="localExportBox">
-         <property name="title">
-          <string>Export local file:</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QWidget" name="localExportPathSelect" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QLabel" name="pathlabel_2">
-               <property name="text">
-                <string>File Path:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="pathLineEdit_2">
-               <property name="text">
-                <string notr="true">/etc/thinclient.conf</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="saveButton">
-               <property name="text">
-                <string>Browse</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../icons/temp_icons.qrc">
-                 <normaloff>:/export_icon/save.png</normaloff>:/export_icon/save.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="autoRaise">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDialogButtonBox" name="localExportButtonBox">
-            <property name="standardButtons">
-             <set>QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="remoteTab">
-      <attribute name="icon">
-       <iconset resource="../icons/temp_icons.qrc">
-        <normaloff>:/tab/network.png</normaloff>:/tab/network.png</iconset>
-      </attribute>
-      <attribute name="title">
-       <string>Remote</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QGroupBox" name="remoteImportBox">
-         <property name="title">
-          <string>Remote Import Configuration:</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_5"/>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="remoteExportBox">
-         <property name="title">
-          <string>Export to Network:</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6"/>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Admin SSH Private Key</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="privKeyLabel">
+        <property name="text">
+         <string>SSH Private Key:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="privKeyPath">
+        <property name="text">
+         <string>/root/.ssh/id_rsa</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="openButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Reset</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -199,46 +222,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>browseButton</sender>
-   <signal>clicked()</signal>
-   <receiver>ExportWidget</receiver>
-   <slot>localImportBrowseFiles()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>610</x>
-     <y>161</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>324</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>localImportButtonBox</sender>
-   <signal>clicked(QAbstractButton*)</signal>
-   <receiver>ExportWidget</receiver>
-   <slot>localImportClickedButton()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>324</x>
-     <y>268</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>324</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pathLineEdit</sender>
+   <sender>privKeyPath</sender>
    <signal>textChanged(QString)</signal>
    <receiver>ExportWidget</receiver>
-   <slot>localImportCheckFile()</slot>
+   <slot>checkPrivKeyFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>336</x>
-     <y>161</y>
+     <x>358</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -247,14 +238,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>saveButton</sender>
+   <sender>openButton</sender>
    <signal>clicked()</signal>
    <receiver>ExportWidget</receiver>
-   <slot>localExportBrowseFiles()</slot>
+   <slot>browsePrivKeyFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>610</x>
-     <y>411</y>
+     <x>622</x>
+     <y>477</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -263,44 +254,25 @@
    </hints>
   </connection>
   <connection>
-   <sender>localExportButtonBox</sender>
-   <signal>clicked(QAbstractButton*)</signal>
+   <sender>addButton</sender>
+   <signal>clicked()</signal>
    <receiver>ExportWidget</receiver>
-   <slot>localExportClickedButton()</slot>
+   <slot>addTargetsClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>324</x>
-     <y>516</y>
+     <x>609</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
-     <x>324</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pathLineEdit_2</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>ExportWidget</receiver>
-   <slot>localExportCheckFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>336</x>
-     <y>411</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>324</x>
-     <y>274</y>
+     <x>400</x>
+     <y>-2</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>localImportBrowseFiles()</slot>
-  <slot>localImportClickedButton()</slot>
-  <slot>localImportCheckFile()</slot>
-  <slot>localExportBrowseFiles()</slot>
-  <slot>localExportClickedButton()</slot>
-  <slot>localExportCheckFile()</slot>
+  <slot>checkPrivKeyFile()</slot>
+  <slot>browsePrivKeyFile()</slot>
+  <slot>addTargetsClicked()</slot>
  </slots>
 </ui>

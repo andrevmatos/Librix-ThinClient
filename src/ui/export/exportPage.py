@@ -18,13 +18,15 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui,QtCore
+import os
+
 from ui.export.Ui_exportWidget import Ui_ExportWidget
 from ui.common.LeftMenuItem import LeftMenuItem
+from ui.export.addTargets import AddTargets
+from ui.export.scanTargets import ScanTargets
 
-from ui.export.localTab import LocalTab
-
-class ExportPage(QtGui.QWidget, LocalTab):
+class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""
 	def __init__(self, configparser, leftList, parent=None):
 		"""Instantiate a ExportPage object
@@ -38,19 +40,74 @@ class ExportPage(QtGui.QWidget, LocalTab):
 		self.leftList = leftList
 		self.parent = parent
 
-		self.defaultconfigdir = "/etc"
+		self.targets = []
 
 		QtGui.QWidget.__init__(self, parent)
 
 		self.ui = Ui_ExportWidget()
 		self.ui.setupUi(self)
 
-		self.tab = LeftMenuItem(leftList, 'Import/Export',
+		self.tab = LeftMenuItem(leftList, 'Export',
 			QtGui.QIcon(":/export_icon/fork.png"))
 
 		self.fscompleter = QtGui.QCompleter(self)
 		self.fscompleter.setModel(QtGui.QDirModel(self.fscompleter))
-		self.ui.pathLineEdit.setCompleter(self.fscompleter)
+		self.ui.privKeyPath.setCompleter(self.fscompleter)
 
-		self.localImportCheckFile(self.ui.pathLineEdit.text())
-		self.localExportCheckFile(self.ui.pathLineEdit_2.text())
+		self.checkPrivKeyFile(self.ui.privKeyPath.text())
+
+	def browsePrivKeyFile(self):
+		"""Browse files and set ui.pathLineEdit with given path
+
+		@param  self            A ExportPage instance
+		"""
+		filepath = QtGui.QFileDialog.getOpenFileName(self, "Import File",
+			os.path.expanduser('~root/.ssh'))
+		if filepath:
+			self.ui.privKeyPath.setText(filepath)
+
+	def checkPrivKeyFile(self, path):
+		"""Verify if path on self.ui.pathLineEdit exists
+
+		and set lineedit text color as red and apply button disabled if not
+		@param	self		A ExportPage instance
+		@param	path		A filepath string
+		"""
+		if os.path.isfile(path):
+			# Set lineedit text color to default
+			self.ui.privKeyPath.setStyleSheet("")
+			# Set Apply button enabled
+			for b in self.ui.buttonBox.buttons():
+				if self.ui.buttonBox.standardButton(b)\
+					== QtGui.QDialogButtonBox.Apply:
+					b.setEnabled(True)
+		else:
+			# Set lineedit text color as red
+			self.ui.privKeyPath.setStyleSheet("color: red;")
+			# Set Apply button disabled
+			for b in self.ui.buttonBox.buttons():
+				if self.ui.buttonBox.standardButton(b)\
+					== QtGui.QDialogButtonBox.Apply:
+					b.setEnabled(False)
+
+	def addTargetsClicked(self):
+		"""Launch dialog to add targets to scan list
+
+		@param	self		A ExportPage instance
+		"""
+		addTargetsDialog = AddTargets(self)
+		scanTargetsDialog = ScanTargets(self.targets, self)
+		addTargetsDialog.setupNext(scanTargetsDialog)
+		scanTargetsDialog.setupBack(addTargetsDialog)
+
+		self.connect(scanTargetsDialog, QtCore.SIGNAL("accepted()"), self.refreshTargets)
+		addTargetsDialog.exec_()
+
+		print("%%%", self.targets)
+
+	def refreshTargets(self):
+		print("__refreshed")
+		self.ui.treeWidget.clear()
+		for i in self.targets:
+			QtGui.QTreeWidgetItem(self.ui.treeWidget, [i, "Online"])
+

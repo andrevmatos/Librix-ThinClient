@@ -294,7 +294,7 @@ class LTCConfigParser(object):
 				"category[@name='{0}']/option".format(category))]
 		else:
 			_o = [o.get("name") for o in self._profileFalse.findall(
-				"category/option".format(category))]
+				"category/option")]
 		_o.sort()
 		return(_o)
 
@@ -308,6 +308,7 @@ class LTCConfigParser(object):
 		@return				A list of strings with the options names
 								in category
 		"""
+		pass
 
 
 	def getOption(self, profile, option):
@@ -324,7 +325,7 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in options list".format(option))
 
 		o = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{2}']").format(profile, option))
+			"option[@name='{1}']").format(profile, option))
 		# Using string to match partial names, like F and no, to false
 		if o.get("on").lower() in "false off not 0":
 			return(False)
@@ -345,7 +346,7 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in options list".format(option))
 
 		o = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{2}']").format(profile, option))
+			"option[@name='{1}']").format(profile, option))
 		o.set("on", str(value).lower())
 		self._syncConfigs()
 
@@ -364,7 +365,7 @@ class LTCConfigParser(object):
 
 		return(deepcopy(
 			self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{2}']").format(profile, option))))
+			"option[@name='{1}']").format(profile, option))))
 
 	def setConfig(self, profile, option, config):
 		"""Get XML object based config information of an option
@@ -380,12 +381,12 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in options list".format(option))
 
 		O = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{2}']").format(profile, option))
+			"option[@name='{1}']").format(profile, option))
 		att = deepcopy(O.attrib)
 		O.getparent().replace(O, config)
 
 		self._profiles.find(("profile[@name='{0}']/category/"+
-		"option[@name='{2}']").format(profile, option)).attrib = att
+		"option[@name='{1}']").format(profile, option)).attrib = att
 
 		self._syncConfigs()
 		del att

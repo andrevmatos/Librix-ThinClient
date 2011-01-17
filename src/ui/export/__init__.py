@@ -20,6 +20,8 @@
 
 __all__ = [
 	'exportPage',
+	'addTargets',
 	'Ui_exportWidget',
-	'localTab',
+	'Ui_addTargetsDialog',
+	'Ui_scanTargetsDialog',
 ]

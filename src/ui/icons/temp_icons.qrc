@@ -36,6 +36,7 @@
     <file>document-edit.png</file>
   </qresource>
   <qresource prefix="export_icon">
+    <file>export-find.png</file>
     <file>save.png</file>
     <file>open.png</file>
     <file>back.png</file>

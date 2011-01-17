@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project thinclient -->
-<!-- Saved: 2011-01-03, 13:41:48 -->
+<!-- Saved: 2011-01-14, 11:49:59 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -27,7 +27,6 @@
     <Source>__init__.py</Source>
     <Source>src/ui/edit/ProfileEdit.py</Source>
     <Source>src/ui/edit/ConfigProfileEdit.py</Source>
-    <Source>src/ui/export/localTab.py</Source>
     <Source>src/lib/utils.py</Source>
     <Source>src/lib/__init__.py</Source>
     <Source>src/lib/config.py</Source>
@@ -53,6 +52,13 @@
     <Source>src/lib/modules.py</Source>
     <Source>src/modules/test/main.py</Source>
     <Source>src/modules/test/__init__.py</Source>
+    <Source>src/modules/test2/main.py</Source>
+    <Source>src/modules/test2/__init__.py</Source>
+    <Source>src/ui/export/Ui_addTargetsDialog.py</Source>
+    <Source>src/ui/export/addTargets.py</Source>
+    <Source>src/ui/export/Ui_scanTargetsDialog.py</Source>
+    <Source>src/ui/export/scanTargets.py</Source>
+    <Source>src/lib/ping.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -63,6 +69,8 @@
     <Form>src/ui/mainWindow.ui</Form>
     <Form>src/ui/common/tabItemWidget.ui</Form>
     <Form>src/ui/common/profileSummary.ui</Form>
+    <Form>src/ui/export/addTargetsDialog.ui</Form>
+    <Form>src/ui/export/scanTargetsDialog.ui</Form>
   </Forms>
   <Translations>
   </Translations>

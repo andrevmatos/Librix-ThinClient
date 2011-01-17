@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddTargetsDialog</class>
+ <widget class="QDialog" name="AddTargetsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>570</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add targets - Step 1/2</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Select an option. Default values are examples:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="targetsWidget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="singleRadio">
+        <property name="text">
+         <string>Single IP:</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="singleWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="singleIpLine">
+           <property name="inputMethodHints">
+            <set>Qt::ImhNone</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="hostnameRadio">
+        <property name="text">
+         <string>Hostname:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="hostnameWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="hostnameLine">
+           <property name="inputMethodHints">
+            <set>Qt::ImhUrlCharactersOnly</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rangeRadio">
+        <property name="text">
+         <string>IP Range:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="rangeWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLineEdit" name="fromIPLine"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="separatorLabel">
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="toIPLine"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="subnetRadio">
+        <property name="text">
+         <string>Sub-network:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="subnetWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLineEdit" name="IPLine"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="twodotsLabel">
+           <property name="text">
+            <string>:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="netmaskLine"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="buttonBox" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>35</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancelButton">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/edit_icon/close.png</normaloff>:/edit_icon/close.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="nextButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/add_icon/arrow-right-double.png</normaloff>:/add_icon/arrow-right-double.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../icons/temp_icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>singleRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>optClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>115</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hostnameRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>optClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rangeRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>optClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>184</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>subnetRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>optClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nextButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>529</x>
+     <y>344</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>singleIpLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hostnameLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>-14</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromIPLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>571</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toIPLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>IPLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>247</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>571</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>netmaskLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>parseTargets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>569</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>optClicked()</slot>
+  <slot>singleEdited()</slot>
+  <slot>nextClicked()</slot>
+  <slot>parseTargets()</slot>
+ </slots>
+</ui>

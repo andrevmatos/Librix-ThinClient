@@ -21,4 +21,5 @@
 __all__ = [
 	'config',
 	'utils',
+	'ping',
 ]
