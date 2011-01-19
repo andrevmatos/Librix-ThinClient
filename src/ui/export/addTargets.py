@@ -35,14 +35,14 @@ class AddTargets(QtGui.QDialog):
 
 		self.targets = []
 
-		self.addUi = Ui_AddTargetsDialog()
-		self.addUi.setupUi(self)
+		self.ui = Ui_AddTargetsDialog()
+		self.ui.setupUi(self)
 
 		self.opts = {
-			self.addUi.singleRadio: self.addUi.singleWidget,
-			self.addUi.hostnameRadio: self.addUi.hostnameWidget,
-			self.addUi.rangeRadio: self.addUi.rangeWidget,
-			self.addUi.subnetRadio: self.addUi.subnetWidget,
+			self.ui.singleRadio: self.ui.singleWidget,
+			self.ui.hostnameRadio: self.ui.hostnameWidget,
+			self.ui.rangeRadio: self.ui.rangeWidget,
+			self.ui.subnetRadio: self.ui.subnetWidget,
 		}
 
 		self.optClicked()
@@ -53,12 +53,12 @@ class AddTargets(QtGui.QDialog):
 		self.urlValidator = QtGui.QRegExpValidator(QtCore.QRegExp(
 			r"^[\x20-\x7E]*$"), self)
 
-		self.addUi.singleIpLine.setValidator(self.ipValidator)
-		self.addUi.fromIPLine.setValidator(self.ipValidator)
-		self.addUi.toIPLine.setValidator(self.ipValidator)
-		self.addUi.IPLine.setValidator(self.ipValidator)
-		self.addUi.netmaskLine.setValidator(self.ipValidator)
-		self.addUi.hostnameLine.setValidator(self.urlValidator)
+		self.ui.singleIpLine.setValidator(self.ipValidator)
+		self.ui.fromIPLine.setValidator(self.ipValidator)
+		self.ui.toIPLine.setValidator(self.ipValidator)
+		self.ui.IPLine.setValidator(self.ipValidator)
+		self.ui.netmaskLine.setValidator(self.ipValidator)
+		self.ui.hostnameLine.setValidator(self.urlValidator)
 
 	def optClicked(self):
 		"""An new option was selected on Dialog
@@ -94,6 +94,10 @@ class AddTargets(QtGui.QDialog):
 	def accept(self):
 		if self.targets:
 			QtGui.QDialog.accept(self)
+#
+#	def close(self):
+#		self.targets = []
+#		QtGui.QDialog.close(self)
 
 	def exec_(self):
 		"""Reimplemented exec_ function from QtGui.QDialog
@@ -101,23 +105,25 @@ class AddTargets(QtGui.QDialog):
 		@param	self		A AddTargets instance
 		@return				A list containing IP address
 		"""
-		QtGui.QDialog.exec_(self)
-		return(self.targets)
+		r = QtGui.QDialog.exec_(self)
+
+		if r: return(self.targets)
+		else: return([])
 
 	def parseTargets(self, text):
-		#self.targets = []
+		self.targets = []
 
-		if self.addUi.singleRadio.isChecked():
-			t = self.addUi.singleIpLine.text()
+		if self.ui.singleRadio.isChecked():
+			t = self.ui.singleIpLine.text()
 			if self.ipValidator.validate(t, len(t))[0] == 2:
 				self.targets.append(t)
-		elif self.addUi.hostnameRadio.isChecked():
-			t = self.addUi.hostnameLine.text()
+		elif self.ui.hostnameRadio.isChecked():
+			t = self.ui.hostnameLine.text()
 			if self.urlValidator.validate(t, len(t))[0] == 2:
 				self.targets.append(t)
-		elif self.addUi.rangeRadio.isChecked():
-			f = self.addUi.fromIPLine.text()
-			t = self.addUi.toIPLine.text()
+		elif self.ui.rangeRadio.isChecked():
+			f = self.ui.fromIPLine.text()
+			t = self.ui.toIPLine.text()
 			if self.ipValidator.validate(f, len(f))[0] == \
 				self.ipValidator.validate(t, len(t))[0] == 2:
 				F = f.split('.')
@@ -129,9 +135,9 @@ class AddTargets(QtGui.QDialog):
 							for d in range(int(F[3]), int(T[3])+1):
 								self.targets.append('.'.join([str(a),
 									str(b), str(c), str(d)]))
-		elif self.addUi.subnetRadio.isChecked():
-			i = self.addUi.IPLine.text()
-			n = self.addUi.netmaskLine.text()
+		elif self.ui.subnetRadio.isChecked():
+			i = self.ui.IPLine.text()
+			n = self.ui.netmaskLine.text()
 			if self.ipValidator.validate(i, len(i))[0] == \
 				self.ipValidator.validate(n, len(n))[0] == 2:
 				f, t = subnetwork(i, n)
@@ -145,7 +151,7 @@ class AddTargets(QtGui.QDialog):
 									str(b), str(c), str(d)]))
 
 		if self.targets:
-			self.addUi.nextButton.setEnabled(True)
+			self.ui.nextButton.setEnabled(True)
 		else:
-			self.addUi.nextButton.setEnabled(False)
+			self.ui.nextButton.setEnabled(False)
 

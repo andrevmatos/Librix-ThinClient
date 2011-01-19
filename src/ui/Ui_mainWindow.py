@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Wed Jan 19 17:31:16 2011
+# Created: Wed Jan 19 19:07:45 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -104,14 +104,67 @@ class Ui_ThinClient(object):
 		self.statusbar = QtGui.QStatusBar(ThinClient)
 		self.statusbar.setObjectName(_fromUtf8("statusbar"))
 		ThinClient.setStatusBar(self.statusbar)
+		self.menuBar = QtGui.QMenuBar(ThinClient)
+		self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+		self.menuBar.setObjectName(_fromUtf8("menuBar"))
+		self.menuFile = QtGui.QMenu(self.menuBar)
+		self.menuFile.setObjectName(_fromUtf8("menuFile"))
+		self.menuView = QtGui.QMenu(self.menuBar)
+		self.menuView.setObjectName(_fromUtf8("menuView"))
+		ThinClient.setMenuBar(self.menuBar)
+		self.actionOpen = QtGui.QAction(ThinClient)
+		icon1 = QtGui.QIcon()
+		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionOpen.setIcon(icon1)
+		self.actionOpen.setObjectName(_fromUtf8("actionOpen"))
+		self.actionSave = QtGui.QAction(ThinClient)
+		icon2 = QtGui.QIcon()
+		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/save.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionSave.setIcon(icon2)
+		self.actionSave.setObjectName(_fromUtf8("actionSave"))
+		self.actionSave_as = QtGui.QAction(ThinClient)
+		icon3 = QtGui.QIcon()
+		icon3.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/save-as.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionSave_as.setIcon(icon3)
+		self.actionSave_as.setObjectName(_fromUtf8("actionSave_as"))
+		self.actionQuit = QtGui.QAction(ThinClient)
+		icon4 = QtGui.QIcon()
+		icon4.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/close.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionQuit.setIcon(icon4)
+		self.actionQuit.setObjectName(_fromUtf8("actionQuit"))
+		self.actionShow_users_profile_summary = QtGui.QAction(ThinClient)
+		self.actionShow_users_profile_summary.setCheckable(True)
+		self.actionShow_users_profile_summary.setChecked(True)
+		self.actionShow_users_profile_summary.setObjectName(_fromUtf8("actionShow_users_profile_summary"))
+		self.menuFile.addAction(self.actionOpen)
+		self.menuFile.addAction(self.actionSave)
+		self.menuFile.addAction(self.actionSave_as)
+		self.menuFile.addSeparator()
+		self.menuFile.addAction(self.actionQuit)
+		self.menuView.addAction(self.actionShow_users_profile_summary)
+		self.menuBar.addAction(self.menuFile.menuAction())
+		self.menuBar.addAction(self.menuView.menuAction())
 
 		self.retranslateUi(ThinClient)
 		QtCore.QObject.connect(self.listWidget, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), ThinClient.activateTab)
+		QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.close)
+		QtCore.QObject.connect(self.actionOpen, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.openConfigFile)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
 		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("ThinClient", "<b>Librix Thin Client Administration Tool. Draft release.</b>", None, QtGui.QApplication.UnicodeUTF8))
+		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
+		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionOpen.setText(QtGui.QApplication.translate("ThinClient", "Open", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionOpen.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+O", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave.setText(QtGui.QApplication.translate("ThinClient", "Save", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+S", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setText(QtGui.QApplication.translate("ThinClient", "Save as", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+Shift+S", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionQuit.setText(QtGui.QApplication.translate("ThinClient", "Quit", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionQuit.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+Q", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionShow_users_profile_summary.setText(QtGui.QApplication.translate("ThinClient", "Show users profile summary", None, QtGui.QApplication.UnicodeUTF8))
 
 from ui.icons import temp_icons_rc
 

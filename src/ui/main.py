@@ -94,13 +94,15 @@ class Main(QtGui.QMainWindow):
 		self.configparser.writeConfigFile()
 		event.accept()
 
-	def openConfigFile(self, file=configfile):
+	def openConfigFile(self):
+		file = QtGui.QFileDialog.getOpenFileName(self, "Open Config File",
+			os.path.abspath("thinclient.conf"))
 		if os.path.isfile(file + '~'):
 			reply = QtGui.QMessageBox.question(self, 'Backup file found',
             "A backup file of <b>{0}</b> was found.\nDo you want to restore it?"\
 			.format(file), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
 			QtGui.QMessageBox.No)
-			# If yes, move backup to file
+			# If yes, write backup to file
 			if reply == QtGui.QMessageBox.Yes:
 				with open(file, 'w') as orig, open(file + '~', 'r') as bkp:
 					orig.write(bkp.read())

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/addTargetsDialog.ui'
 #
-# Created: Wed Jan 19 17:31:16 2011
+# Created: Wed Jan 19 19:07:45 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -122,6 +122,7 @@ class Ui_AddTargetsDialog(object):
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/arrow-right-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.nextButton.setIcon(icon1)
+		self.nextButton.setDefault(True)
 		self.nextButton.setObjectName(_fromUtf8("nextButton"))
 		self.horizontalLayout.addWidget(self.nextButton)
 		self.verticalLayout.addWidget(self.buttonBox)

@@ -72,6 +72,10 @@ class ScanTargets(QtGui.QDialog):
 				self.targets.append(i.text(0))
 		print("@@@", self.targets)
 		QtGui.QDialog.accept(self)
+#
+#	def close(self):
+#		self.targets = []
+#		QtGui.QDialog.close(self)
 
 	def exec_(self, targets):
 		"""Reimplemented exec_ function from QtGui.QDialog
@@ -80,9 +84,14 @@ class ScanTargets(QtGui.QDialog):
 		@param	targets		A list containing IP address
 		@return				A list containing IP address
 		"""
+		if not targets:
+			return([])
+
 		self.scan(targets)
-		QtGui.QDialog.exec_(self)
-		return(self.targets)
+		r = QtGui.QDialog.exec_(self)
+
+		if r: return(self.targets)
+		else: return([])
 
 class TreeElement(QtGui.QTreeWidgetItem):
 	def __init__(self, address, total, parent=None):

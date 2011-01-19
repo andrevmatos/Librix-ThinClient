@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/scanTargetsDialog.ui'
 #
-# Created: Wed Jan 19 17:31:16 2011
+# Created: Wed Jan 19 19:07:45 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -53,6 +53,7 @@ class Ui_ScanTargetsDialog(object):
 		icon = QtGui.QIcon()
 		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/refresh.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.refreshButton.setIcon(icon)
+		self.refreshButton.setAutoDefault(True)
 		self.refreshButton.setObjectName(_fromUtf8("refreshButton"))
 		self.horizontalLayout.addWidget(self.refreshButton)
 		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -62,6 +63,7 @@ class Ui_ScanTargetsDialog(object):
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/close.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.cancelButton.setIcon(icon1)
+		self.cancelButton.setAutoDefault(True)
 		self.cancelButton.setObjectName(_fromUtf8("cancelButton"))
 		self.horizontalLayout.addWidget(self.cancelButton)
 		self.okButton = QtGui.QPushButton(self.buttonBox)
@@ -69,6 +71,7 @@ class Ui_ScanTargetsDialog(object):
 		icon2 = QtGui.QIcon()
 		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/ok.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.okButton.setIcon(icon2)
+		self.okButton.setDefault(True)
 		self.okButton.setObjectName(_fromUtf8("okButton"))
 		self.horizontalLayout.addWidget(self.okButton)
 		self.verticalLayout.addWidget(self.buttonBox)
