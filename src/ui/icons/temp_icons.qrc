@@ -4,10 +4,7 @@
     <file>user.png</file>
   </qresource>
   <qresource prefix="tab">
-    <file>import.png</file>
-    <file>export.png</file>
-    <file>harddisk.png</file>
-    <file>network.png</file>
+    <file>refresh.png</file>
   </qresource>
   <qresource prefix="toolbar">
     <file>document-new.png</file>

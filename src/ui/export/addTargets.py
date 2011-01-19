@@ -33,6 +33,8 @@ class AddTargets(QtGui.QDialog):
 		"""
 		QtGui.QDialog.__init__(self, parent)
 
+		self.targets = []
+
 		self.addUi = Ui_AddTargetsDialog()
 		self.addUi.setupUi(self)
 
@@ -69,27 +71,41 @@ class AddTargets(QtGui.QDialog):
 				self.opts[i].setEnabled(True)
 			else:
 				self.opts[i].setEnabled(False)
-
-	def setupNext(self, next):
-		"""Setup next dialog
-
-		@param	self		A AddTargets instance
-		@param	back		A QtGui.QDialog instance
-		"""
-		self.next = next
+#
+#	def setupNext(self, next):
+#		"""Setup next dialog
+#
+#		@param	self		A AddTargets instance
+#		@param	back		A QtGui.QDialog instance
+#		"""
+#		self.next = next
+#
+#	def accept(self):
+#		"""Execute scan dialog when next was clicked on addTargets dialog
+#
+#		@param	self		An AddTargets instance
+#		"""
+#		if self.targets:
+#			self.hide()
+#			self.next.exec_()
+#		#self.next.scan()
+#		#self.close()
 
 	def accept(self):
-		"""Execute scan dialog when next was clicked on addTargets dialog
+		if self.targets:
+			QtGui.QDialog.accept(self)
 
-		@param	self		An AddTargets instance
+	def exec_(self):
+		"""Reimplemented exec_ function from QtGui.QDialog
+
+		@param	self		A AddTargets instance
+		@return				A list containing IP address
 		"""
-		self.hide()
-		self.next.exec_()
-		#self.next.scan()
-		#self.close()
+		QtGui.QDialog.exec_(self)
+		return(self.targets)
 
 	def parseTargets(self, text):
-		self.targets = []
+		#self.targets = []
 
 		if self.addUi.singleRadio.isChecked():
 			t = self.addUi.singleIpLine.text()

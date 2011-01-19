@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/addTargetsDialog.ui'
 #
-# Created: Mon Jan 17 15:43:14 2011
+# Created: Wed Jan 19 17:31:16 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -73,6 +73,7 @@ class Ui_AddTargetsDialog(object):
 		self.fromIPLine.setObjectName(_fromUtf8("fromIPLine"))
 		self.horizontalLayout_4.addWidget(self.fromIPLine)
 		self.separatorLabel = QtGui.QLabel(self.rangeWidget)
+		self.separatorLabel.setText(_fromUtf8("-"))
 		self.separatorLabel.setObjectName(_fromUtf8("separatorLabel"))
 		self.horizontalLayout_4.addWidget(self.separatorLabel)
 		self.toIPLine = QtGui.QLineEdit(self.rangeWidget)
@@ -91,6 +92,7 @@ class Ui_AddTargetsDialog(object):
 		self.IPLine.setObjectName(_fromUtf8("IPLine"))
 		self.horizontalLayout_5.addWidget(self.IPLine)
 		self.twodotsLabel = QtGui.QLabel(self.subnetWidget)
+		self.twodotsLabel.setText(_fromUtf8(":"))
 		self.twodotsLabel.setObjectName(_fromUtf8("twodotsLabel"))
 		self.horizontalLayout_5.addWidget(self.twodotsLabel)
 		self.netmaskLine = QtGui.QLineEdit(self.subnetWidget)
@@ -137,6 +139,13 @@ class Ui_AddTargetsDialog(object):
 		QtCore.QObject.connect(self.toIPLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
 		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
 		QtCore.QObject.connect(self.netmaskLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
+		QtCore.QObject.connect(self.singleIpLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.hostnameLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.fromIPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.toIPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.netmaskLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
 		QtCore.QMetaObject.connectSlotsByName(AddTargetsDialog)
 
 	def retranslateUi(self, AddTargetsDialog):
@@ -145,9 +154,7 @@ class Ui_AddTargetsDialog(object):
 		self.singleRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Single IP:", None, QtGui.QApplication.UnicodeUTF8))
 		self.hostnameRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Hostname:", None, QtGui.QApplication.UnicodeUTF8))
 		self.rangeRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "IP Range:", None, QtGui.QApplication.UnicodeUTF8))
-		self.separatorLabel.setText(QtGui.QApplication.translate("AddTargetsDialog", "-", None, QtGui.QApplication.UnicodeUTF8))
 		self.subnetRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Sub-network:", None, QtGui.QApplication.UnicodeUTF8))
-		self.twodotsLabel.setText(QtGui.QApplication.translate("AddTargetsDialog", ":", None, QtGui.QApplication.UnicodeUTF8))
 		self.cancelButton.setText(QtGui.QApplication.translate("AddTargetsDialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 		self.nextButton.setText(QtGui.QApplication.translate("AddTargetsDialog", "Next", None, QtGui.QApplication.UnicodeUTF8))
 

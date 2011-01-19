@@ -27,7 +27,7 @@ from random import random
 
 class ScanTargets(QtGui.QDialog):
 	"""Creates scan targets dialog"""
-	def __init__(self, targets, parent=None):
+	def __init__(self, parent=None):
 		"""Instantiate a ScanTargets object
 
 		@param	self		A ScanTargets instance
@@ -35,47 +35,54 @@ class ScanTargets(QtGui.QDialog):
 		"""
 		QtGui.QDialog.__init__(self, parent)
 
-		self.scanUi = Ui_ScanTargetsDialog()
-		self.scanUi.setupUi(self)
+		self.ui = Ui_ScanTargetsDialog()
+		self.ui.setupUi(self)
 
 		self.targets = []
-		self.parentTargets = targets
+		self.tree = []
+		self.total = 0
 
-	def scan(self):
+	def scan(self, targets):
 		#for i in self.targets:
 		#	self.targets.remove(i)
 		#self.targets = []
-		for i in self.back.targets:
-			self.targets.append(TreeElement(i,
-				len(self.back.targets), self.scanUi.targetsTree))
+		self.ui.progressBar.setValue(0)
+		self.total = len(targets)
+		for i in targets:
+			T = TreeElement(i, len(targets), self.ui.targetsTree)
+			self.tree.append(T)
+			self.connect(T.thread, QtCore.SIGNAL("pingFinished()"), self.increaseProgress)
 
-	def setupBack(self, back):
-		"""Setup previous dialog
+	def rescan(self):
+		self.ui.progressBar.setValue(0)
+		for i in self.tree:
+			i.setSelected(False)
+			i.thread.start()
 
-		@param	self		A ScanTargets instance
-		@param	back		A QtGui.QDialog instance
-		"""
-		self.back = back
+	def increaseProgress(self):
+		p = self.ui.progressBar
+		p.setValue(p.value() + int(round(100.0/self.total)))
 
 	def backClicked(self):
-		"""Execute add dialog when back was clicked on scanTargets dialog
-
-		@param	self		A ScanTargets instance
-		"""
-		self.hide()
-		self.back.show()
+		pass
 
 	def accept(self):
-		for i in self.targets:
+		for i in self.tree:
 			if i.isSelected():
-				self.parentTargets.append(i.text(0))
-				#self.parent.refreshTargets()
-		#self.close()
+				self.targets.append(i.text(0))
+		print("@@@", self.targets)
 		QtGui.QDialog.accept(self)
 
-	def exec_(self):
-		self.scan()
+	def exec_(self, targets):
+		"""Reimplemented exec_ function from QtGui.QDialog
+
+		@param	self		A ScanTargets instance
+		@param	targets		A list containing IP address
+		@return				A list containing IP address
+		"""
+		self.scan(targets)
 		QtGui.QDialog.exec_(self)
+		return(self.targets)
 
 class TreeElement(QtGui.QTreeWidgetItem):
 	def __init__(self, address, total, parent=None):
@@ -90,12 +97,11 @@ class TreeElement(QtGui.QTreeWidgetItem):
 		self.thread = QtCore.QThread()
 		self.thread.element = self
 		self.thread.run = self.run
-
-		self.setText(1, "Scanning")
 		self.thread.start()
 
 	def run(self):
-		self.thread.msleep(int(2000*random()))
+		self.setText(1, "Scanning")
+		#self.thread.msleep(int(2000*random()))
 		self.on = subprocess.Popen("ping -c 4 {0}".format(self.address).split(),
 			stdout=subprocess.PIPE)
 		if not self.on.wait():
@@ -104,5 +110,6 @@ class TreeElement(QtGui.QTreeWidgetItem):
 		else:
 			self.setSelected(False)
 			self.setText(1, "Seens Offline")
+		self.thread.emit(QtCore.SIGNAL("pingFinished()"))
 		#self.progressBar.setValue(self.progressBar.value()+
 		#	int(100.0/self.total))

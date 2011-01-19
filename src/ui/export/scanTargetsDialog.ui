@@ -63,6 +63,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QWidget" name="buttonBox" native="true">
      <property name="maximumSize">
       <size>
@@ -75,13 +82,13 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="backButton">
+       <widget class="QPushButton" name="refreshButton">
         <property name="text">
-         <string>Back</string>
+         <string>Rescan</string>
         </property>
         <property name="icon">
          <iconset resource="../icons/temp_icons.qrc">
-          <normaloff>:/remove_icon/arrow-left-double.png</normaloff>:/remove_icon/arrow-left-double.png</iconset>
+          <normaloff>:/tab/refresh.png</normaloff>:/tab/refresh.png</iconset>
         </property>
        </widget>
       </item>
@@ -116,7 +123,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="nextButton">
+       <widget class="QPushButton" name="okButton">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -158,23 +165,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>backButton</sender>
-   <signal>clicked()</signal>
-   <receiver>ScanTargetsDialog</receiver>
-   <slot>backClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>72</x>
-     <y>334</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>225</x>
-     <y>-4</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>nextButton</sender>
+   <sender>okButton</sender>
    <signal>clicked()</signal>
    <receiver>ScanTargetsDialog</receiver>
    <slot>accept()</slot>
@@ -189,11 +180,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>refreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ScanTargetsDialog</receiver>
+   <slot>rescan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>optClicked()</slot>
   <slot>singleEdited()</slot>
   <slot>backClicked()</slot>
   <slot>okClicked()</slot>
+  <slot>rescan()</slot>
  </slots>
 </ui>

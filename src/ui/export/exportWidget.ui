@@ -34,6 +34,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QTreeWidget" name="treeWidget">
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+           </property>
            <property name="sortingEnabled">
             <bool>true</bool>
            </property>
@@ -269,10 +272,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>removeTargetsClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>626</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>601</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>checkPrivKeyFile()</slot>
   <slot>browsePrivKeyFile()</slot>
   <slot>addTargetsClicked()</slot>
+  <slot>removeTargetsClicked()</slot>
  </slots>
 </ui>

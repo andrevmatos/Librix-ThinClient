@@ -96,14 +96,29 @@ class ExportPage(QtGui.QWidget):
 		@param	self		A ExportPage instance
 		"""
 		addTargetsDialog = AddTargets(self)
-		scanTargetsDialog = ScanTargets(self.targets, self)
-		addTargetsDialog.setupNext(scanTargetsDialog)
-		scanTargetsDialog.setupBack(addTargetsDialog)
+		scanTargetsDialog = ScanTargets(self)
+		#addTargetsDialog.setupNext(scanTargetsDialog)
+		#scanTargetsDialog.setupBack(addTargetsDialog)
 
-		self.connect(scanTargetsDialog, QtCore.SIGNAL("accepted()"), self.refreshTargets)
-		addTargetsDialog.exec_()
+		#self.connect(scanTargetsDialog, QtCore.SIGNAL("accepted()"), self.refreshTargets)
+		targets = addTargetsDialog.exec_()
+		targets = scanTargetsDialog.exec_(targets)
 
-		print("%%%", self.targets)
+		self.targets.extend(targets)
+		self.refreshTargets()
+
+		print("%%%", targets)
+
+	def removeTargetsClicked(self):
+		"""Remove selected targets from targets list
+
+		@param	self		A ExportPage instance
+		"""
+		for i in self.ui.treeWidget.selectedItems():
+			if i.isSelected():
+				try: self.targets.remove(i.text(0))
+				except Exception as e: print("This must not be happened:", e)
+		self.refreshTargets()
 
 	def refreshTargets(self):
 		print("__refreshed")

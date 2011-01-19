@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/scanTargetsDialog.ui'
 #
-# Created: Mon Jan 17 15:43:14 2011
+# Created: Wed Jan 19 17:31:16 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,6 +38,10 @@ class Ui_ScanTargetsDialog(object):
 		self.targetsTree.header().setDefaultSectionSize(400)
 		self.horizontalLayout_2.addWidget(self.targetsTree)
 		self.verticalLayout.addWidget(self.mainWidget)
+		self.progressBar = QtGui.QProgressBar(ScanTargetsDialog)
+		self.progressBar.setProperty(_fromUtf8("value"), 0)
+		self.progressBar.setObjectName(_fromUtf8("progressBar"))
+		self.verticalLayout.addWidget(self.progressBar)
 		self.buttonBox = QtGui.QWidget(ScanTargetsDialog)
 		self.buttonBox.setMaximumSize(QtCore.QSize(16777215, 35))
 		self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
@@ -45,12 +49,12 @@ class Ui_ScanTargetsDialog(object):
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-		self.backButton = QtGui.QPushButton(self.buttonBox)
+		self.refreshButton = QtGui.QPushButton(self.buttonBox)
 		icon = QtGui.QIcon()
-		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/arrow-left-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.backButton.setIcon(icon)
-		self.backButton.setObjectName(_fromUtf8("backButton"))
-		self.horizontalLayout.addWidget(self.backButton)
+		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/refresh.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.refreshButton.setIcon(icon)
+		self.refreshButton.setObjectName(_fromUtf8("refreshButton"))
+		self.horizontalLayout.addWidget(self.refreshButton)
 		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
 		self.horizontalLayout.addItem(spacerItem)
 		self.cancelButton = QtGui.QPushButton(self.buttonBox)
@@ -60,19 +64,19 @@ class Ui_ScanTargetsDialog(object):
 		self.cancelButton.setIcon(icon1)
 		self.cancelButton.setObjectName(_fromUtf8("cancelButton"))
 		self.horizontalLayout.addWidget(self.cancelButton)
-		self.nextButton = QtGui.QPushButton(self.buttonBox)
-		self.nextButton.setMinimumSize(QtCore.QSize(100, 0))
+		self.okButton = QtGui.QPushButton(self.buttonBox)
+		self.okButton.setMinimumSize(QtCore.QSize(100, 0))
 		icon2 = QtGui.QIcon()
 		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/ok.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.nextButton.setIcon(icon2)
-		self.nextButton.setObjectName(_fromUtf8("nextButton"))
-		self.horizontalLayout.addWidget(self.nextButton)
+		self.okButton.setIcon(icon2)
+		self.okButton.setObjectName(_fromUtf8("okButton"))
+		self.horizontalLayout.addWidget(self.okButton)
 		self.verticalLayout.addWidget(self.buttonBox)
 
 		self.retranslateUi(ScanTargetsDialog)
 		QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ScanTargetsDialog.close)
-		QtCore.QObject.connect(self.backButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ScanTargetsDialog.backClicked)
-		QtCore.QObject.connect(self.nextButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ScanTargetsDialog.accept)
+		QtCore.QObject.connect(self.okButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ScanTargetsDialog.accept)
+		QtCore.QObject.connect(self.refreshButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ScanTargetsDialog.rescan)
 		QtCore.QMetaObject.connectSlotsByName(ScanTargetsDialog)
 
 	def retranslateUi(self, ScanTargetsDialog):
@@ -81,9 +85,9 @@ class Ui_ScanTargetsDialog(object):
 		self.targetsTree.setSortingEnabled(True)
 		self.targetsTree.headerItem().setText(0, QtGui.QApplication.translate("ScanTargetsDialog", "Address", None, QtGui.QApplication.UnicodeUTF8))
 		self.targetsTree.headerItem().setText(1, QtGui.QApplication.translate("ScanTargetsDialog", "Version", None, QtGui.QApplication.UnicodeUTF8))
-		self.backButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Back", None, QtGui.QApplication.UnicodeUTF8))
+		self.refreshButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Rescan", None, QtGui.QApplication.UnicodeUTF8))
 		self.cancelButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
-		self.nextButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Ok", None, QtGui.QApplication.UnicodeUTF8))
+		self.okButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Ok", None, QtGui.QApplication.UnicodeUTF8))
 
 from ui.icons import temp_icons_rc
 

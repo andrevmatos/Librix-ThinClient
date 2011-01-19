@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Mon Jan 17 15:43:14 2011
+# Created: Wed Jan 19 17:31:16 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,6 +36,7 @@ class Ui_ExportWidget(object):
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.treeWidget = QtGui.QTreeWidget(self.IPsWidget)
+		self.treeWidget.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
 		self.treeWidget.setAnimated(True)
 		self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
 		self.treeWidget.header().setCascadingSectionResizes(True)
@@ -106,6 +107,7 @@ class Ui_ExportWidget(object):
 		QtCore.QObject.connect(self.privKeyPath, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), ExportWidget.checkPrivKeyFile)
 		QtCore.QObject.connect(self.openButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.browsePrivKeyFile)
 		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.addTargetsClicked)
+		QtCore.QObject.connect(self.toolButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.removeTargetsClicked)
 		QtCore.QMetaObject.connectSlotsByName(ExportWidget)
 
 	def retranslateUi(self, ExportWidget):
