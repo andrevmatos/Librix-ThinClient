@@ -55,6 +55,8 @@ class UsersPage(QtGui.QWidget):
 		self.ui.profilesTree.dragEnterEvent = self.dragEnterEvent
 		self.ui.profilesTree.dropEvent = self.profilesDropEvent
 
+		self.updateLists()
+
 	def updateLists(self):
 		"""Update users list and profiles tree
 

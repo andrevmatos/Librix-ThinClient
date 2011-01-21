@@ -2,17 +2,15 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric4 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-01-17, 14:47:58 -->
+<!-- Saved: 2011-01-20, 21:57:10 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="12" cindex="29" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/export/exportPage.py</Filename>
-    <Filename cline="87" cindex="17" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/export/addTargets.py</Filename>
-    <Filename cline="45" cindex="53" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/export/scanTargets.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/export/Ui_addTargetsDialog.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/export/Ui_scanTargetsDialog.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
+    <Filename cline="103" cindex="34" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
+    <Filename cline="111" cindex="15" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/Ui_mainWindow.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/users/usersPage.py</Filename>
   </Filenames>
-  <ActiveWindow cline="45" cindex="53">/D/Dev/Librix/thinclient/src/ui/export/scanTargets.py</ActiveWindow>
+  <ActiveWindow cline="0" cindex="0">/D/Dev/Librix/thinclient/src/ui/users/usersPage.py</ActiveWindow>
   <Breakpoints>
   </Breakpoints>
   <Watchexpressions>

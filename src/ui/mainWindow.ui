@@ -41,6 +41,44 @@
          </property>
         </widget>
        </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="nameEdit">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Enter config name/version here</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Enter config name/version here</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -178,7 +216,6 @@
     <property name="title">
      <string>View</string>
     </property>
-    <addaction name="actionShow_users_profile_summary"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -295,9 +332,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>nameEdit</sender>
+   <signal>editingFinished()</signal>
+   <receiver>ThinClient</receiver>
+   <slot>configNameChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>642</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>activateTab()</slot>
   <slot>openConfigFile()</slot>
+  <slot>configNameChanged()</slot>
  </slots>
 </ui>

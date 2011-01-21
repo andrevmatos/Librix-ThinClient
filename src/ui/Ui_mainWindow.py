@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Wed Jan 19 19:07:45 2011
+# Created: Thu Jan 20 22:02:11 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,6 +39,14 @@ class Ui_ThinClient(object):
 		self.label = QtGui.QLabel(self.topBar)
 		self.label.setObjectName(_fromUtf8("label"))
 		self.horizontalLayout_4.addWidget(self.label)
+		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+		self.horizontalLayout_4.addItem(spacerItem)
+		self.nameEdit = QtGui.QLineEdit(self.topBar)
+		self.nameEdit.setMinimumSize(QtCore.QSize(250, 0))
+		self.nameEdit.setMaximumSize(QtCore.QSize(16777215, 16777215))
+		self.nameEdit.setText(_fromUtf8(""))
+		self.nameEdit.setObjectName(_fromUtf8("nameEdit"))
+		self.horizontalLayout_4.addWidget(self.nameEdit)
 		self.verticalLayout.addWidget(self.topBar)
 		self.main = QtGui.QWidget(self.widget)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
@@ -141,7 +149,6 @@ class Ui_ThinClient(object):
 		self.menuFile.addAction(self.actionSave_as)
 		self.menuFile.addSeparator()
 		self.menuFile.addAction(self.actionQuit)
-		self.menuView.addAction(self.actionShow_users_profile_summary)
 		self.menuBar.addAction(self.menuFile.menuAction())
 		self.menuBar.addAction(self.menuView.menuAction())
 
@@ -149,11 +156,14 @@ class Ui_ThinClient(object):
 		QtCore.QObject.connect(self.listWidget, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), ThinClient.activateTab)
 		QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.close)
 		QtCore.QObject.connect(self.actionOpen, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.openConfigFile)
+		QtCore.QObject.connect(self.nameEdit, QtCore.SIGNAL(_fromUtf8("editingFinished()")), ThinClient.configNameChanged)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
 		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("ThinClient", "<b>Librix Thin Client Administration Tool. Draft release.</b>", None, QtGui.QApplication.UnicodeUTF8))
+		self.nameEdit.setToolTip(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
+		self.nameEdit.setPlaceholderText(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setText(QtGui.QApplication.translate("ThinClient", "Open", None, QtGui.QApplication.UnicodeUTF8))

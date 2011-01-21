@@ -50,6 +50,9 @@ class Main(QtGui.QMainWindow):
 		self.configparser = LTCConfigParser()
 		self.openConfigFile()
 
+		# Set config file name
+		self.ui.nameEdit.setText(self.configparser.getName())
+
 		# TODO: implement qt translate, instead of pure strings
 		self.Users = UsersPage(self.configparser, self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Users)
@@ -64,6 +67,10 @@ class Main(QtGui.QMainWindow):
 		self.Export = ExportPage(self.configparser, self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Export)
 		self.Export.hide()
+
+		summaryAction = self.Users.ui.summaryDock.toggleViewAction()
+		summaryAction.setText("Show users profile summary")
+		self.ui.menuView.addAction(summaryAction)
 
 		self.current = self.Users
 		self.ui.listWidget.item(0).setSelected(True)
@@ -86,18 +93,29 @@ class Main(QtGui.QMainWindow):
 			self.Export.show()
 			self.current = self.Export
 
+	def configNameChanged(self):
+		"""When config file name was changed, set it to configfile
+
+		Qt Slot, called by UI
+		@param	self		A Main window instance
+		"""
+		text = self.ui.nameEdit.text()
+		if text:
+			self.configparser.setName(text)
+
 	def closeEvent(self, event):
 		"""Reimplementation of closeEvent Qt event
 
 		Exec writeConfigFile in self.configparser before close main window
 		"""
+		# TODO: implement confirmation dialog
 		self.configparser.writeConfigFile()
 		event.accept()
 
 	def openConfigFile(self):
 		file = QtGui.QFileDialog.getOpenFileName(self, "Open Config File",
 			os.path.abspath("thinclient.conf"))
-		if os.path.isfile(file + '~'):
+		if file and os.path.isfile(file + '~'):
 			reply = QtGui.QMessageBox.question(self, 'Backup file found',
             "A backup file of <b>{0}</b> was found.\nDo you want to restore it?"\
 			.format(file), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,

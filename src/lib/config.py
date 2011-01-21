@@ -18,6 +18,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+from time import strftime as time
 from lxml import etree as ET
 from copy import deepcopy
 from random import choice
@@ -44,6 +45,8 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		"""
 		self._config = ET.Element("librix_tcd_config")
+		self._name = ET.SubElement(self._config, "name")
+		self._name.text = "Example Config File {0}".format(time('%Y%m%d %H%M'))
 
 		self._profileFalse = ET.SubElement(self._config, "profileFalse",
 			attrib={"name": "profileFalse"})
@@ -63,11 +66,8 @@ class LTCConfigParser(object):
 			profile.tag = "profile"
 			profile.attrib["name"] = p
 			self._profiles.append(profile)
-			for c in profile:
-				if c.tag == 'category':
-					for o in c:
-						if o.tag == 'option':
-							o.attrib["on"] = str(choice([False, True])).lower()
+			for o in profile.findall("category/option"):
+				o.attrib["on"] = str(choice([False, True])).lower()
 
 		self._users = ET.SubElement(self._config, "users")
 		for u in ['andre', 'ivan', 'roberto', 'guilherme',
@@ -76,7 +76,7 @@ class LTCConfigParser(object):
 					attrib={"name": u, "profile": choice(self.getProfilesList())})
 
 		self.backupfile = file
-		self.syncConfigs()
+		self._syncConfigs()
 		del self.backupfile
 
 	def readConfigFile(self, file=''):
@@ -95,6 +95,7 @@ class LTCConfigParser(object):
 
 		self._config = ET.parse(file, parser=self._parser).getroot()
 
+		self._name = self._config.find("name")
 		self._profiles = self._config.find("profiles")
 		self._profileFalse = self._config.find("profileFalse")
 		self._users = self._config.find("users")
@@ -120,6 +121,23 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		"""
 		self._config.getroottree().write(self.backupfile, pretty_print=True)
+
+	def getName(self):
+		"""Return config file name
+
+		@param	self		A LTCConfigParser instance
+		@return				A string containing config file name
+		"""
+		return(self._name.text)
+
+	def setName(self, name):
+		"""Set config file name
+
+		@param	self		A LTCConfigParser instance
+		@param	name		A string containing config file name
+		"""
+		self._name.text = name
+		self._syncConfigs()
 
 	def getUsersList(self):
 		"""Return the users list
@@ -159,8 +177,8 @@ class LTCConfigParser(object):
 
 		@param	self		A LTCConfigParser() instance
 		@param	user		A user name string
-		@param	profile	Optional. A profile name string.
-									Clear the user profile if profile not given
+		@param	profile		Optional. A profile name string.
+								Clear the user profile if profile not given
 		"""
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
@@ -233,15 +251,15 @@ class LTCConfigParser(object):
 		elif newprofile in self.getProfilesList():
 			self._deleteProfile(newprofile)
 
-		profile = deepcopy(self._findProfile(oldprofile))
-		profile.set("name", newprofile)
-		self._profiles.append(profile)
-
-		# Remove oldprofile
-		if not copy:
+		if copy:
+			profile = deepcopy(self._findProfile(oldprofile))
+			self._profiles.append(profile)
+		else:
+			profile = self._findProfile(oldprofile)
 			for u in self.getProfileUsersList(oldprofile):
 				self.setUserProfile(u, newprofile)
-			self._deleteProfile(oldprofile)
+
+		profile.set("name", newprofile)
 
 		self._syncConfigs()
 
@@ -308,6 +326,7 @@ class LTCConfigParser(object):
 		@return				A list of strings with the options names
 								in category
 		"""
+		#TODO: implement
 		pass
 
 
