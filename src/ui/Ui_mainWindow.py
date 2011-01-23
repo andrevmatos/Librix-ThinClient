@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Sun Jan 23 14:41:08 2011
+# Created: Sun Jan 23 19:22:04 2011
 #      by: PyQt4 UI code generator 4.8.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -144,6 +144,12 @@ class Ui_ThinClient(object):
 		self.actionShow_users_profile_summary.setCheckable(True)
 		self.actionShow_users_profile_summary.setChecked(True)
 		self.actionShow_users_profile_summary.setObjectName(_fromUtf8("actionShow_users_profile_summary"))
+		self.actionNew = QtGui.QAction(ThinClient)
+		icon5 = QtGui.QIcon()
+		icon5.addPixmap(QtGui.QPixmap(_fromUtf8(":/profileAction/document-new.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionNew.setIcon(icon5)
+		self.actionNew.setObjectName(_fromUtf8("actionNew"))
+		self.menuFile.addAction(self.actionNew)
 		self.menuFile.addAction(self.actionOpen)
 		self.menuFile.addAction(self.actionSave)
 		self.menuFile.addAction(self.actionSave_as)
@@ -157,24 +163,48 @@ class Ui_ThinClient(object):
 		QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.close)
 		QtCore.QObject.connect(self.actionOpen, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.openConfigFile)
 		QtCore.QObject.connect(self.nameEdit, QtCore.SIGNAL(_fromUtf8("editingFinished()")), ThinClient.configNameChanged)
+		QtCore.QObject.connect(self.actionSave, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveConfigFile)
+		QtCore.QObject.connect(self.actionSave_as, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveAsConfigFile)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
 		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
-		self.label.setText(QtGui.QApplication.translate("ThinClient", "<b>Librix Thin Client Administration Tool. Draft release.</b>", None, QtGui.QApplication.UnicodeUTF8))
+		self.label.setText(QtGui.QApplication.translate("ThinClient", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'DejaVu Sans [unknown]\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Librix Thin Client Management Tool. Alpha release.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 		self.nameEdit.setToolTip(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.nameEdit.setPlaceholderText(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setText(QtGui.QApplication.translate("ThinClient", "Open", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionOpen.setToolTip(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionOpen.setStatusTip(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionOpen.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+O", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionSave.setText(QtGui.QApplication.translate("ThinClient", "Save", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave.setToolTip(QtGui.QApplication.translate("ThinClient", "Save current file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave.setStatusTip(QtGui.QApplication.translate("ThinClient", "Save current file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Save current file", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionSave.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+S", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionSave_as.setText(QtGui.QApplication.translate("ThinClient", "Save as", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setIconText(QtGui.QApplication.translate("ThinClient", "Save as", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setToolTip(QtGui.QApplication.translate("ThinClient", "Save current file as another file name", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setStatusTip(QtGui.QApplication.translate("ThinClient", "Save current file as another file name", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionSave_as.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Save current file as another file name", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionSave_as.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+Shift+S", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionQuit.setText(QtGui.QApplication.translate("ThinClient", "Quit", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionQuit.setToolTip(QtGui.QApplication.translate("ThinClient", "Quit Librix Thin Client", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionQuit.setStatusTip(QtGui.QApplication.translate("ThinClient", "Quit Librix Thin Client", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionQuit.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Quit Librix Thin Client", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionQuit.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+Q", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionShow_users_profile_summary.setText(QtGui.QApplication.translate("ThinClient", "Show users profile summary", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionNew.setText(QtGui.QApplication.translate("ThinClient", "New", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionNew.setToolTip(QtGui.QApplication.translate("ThinClient", "Creates a new empty config file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionNew.setStatusTip(QtGui.QApplication.translate("ThinClient", "Creates a new empty config file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionNew.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Creates a new empty config file", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionNew.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+N", None, QtGui.QApplication.UnicodeUTF8))
 
 from ui.icons import temp_icons_rc
 

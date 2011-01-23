@@ -112,14 +112,36 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		@param	file		A filepath string. Default is self.configfile
 		"""
-		if not file: file = self.configfile
-		if not os.path.isfile(self.backupfile): return
+		if not file:
+			file = self.configfile
+			backupfile = self.backupfile
+			if self.saved(): return
+		else:
+			backupfile = self.configfile
 
-		with open(file, 'w') as destfile, open(self.backupfile, 'r') as backup:
+		if file == backupfile: return
+
+		with open(file, 'w') as destfile, open(backupfile, 'r') as backup:
 			destfile.write(backup.read())
 
-		os.remove(self.backupfile)
+		if not self.saved():
+			os.remove(self.backupfile)
 		self.readConfigFile(file)
+
+	def saved(self, file=''):
+		"""Tell if file is saved
+
+		Return true if all changes in file are saved (there's no backupfile)
+		and False otherwise
+		@param	self		A LTCConfigParser instance
+		@param	file		Optional argument. If not given, use self.backupfile
+		@return				A bool value
+		"""
+		if not file:
+			file = self.backupfile
+		else:
+			file += '~'
+		return(not os.path.isfile(file))
 
 	def _syncConfigs(self):
 		"""Sync self.xml with self.backupfile

@@ -109,13 +109,37 @@ class Main(QtGui.QMainWindow):
 		Exec writeConfigFile in self.configparser before close main window
 		"""
 		# TODO: implement confirmation dialog
-		self.configparser.writeConfigFile()
-		event.accept()
+		#self.configparser.writeConfigFile()
+		#
+		if self.configparser.saved():
+			event.accept()
+		else:
+			msgbox = QtGui.QMessageBox(self)
+			msgbox.setWindowTitle("LTMT")
+			msgbox.setText("The configuration file has been modified.")
+			msgbox.setInformativeText("Do you want to save your changes?")
+			msgbox.setStandardButtons(QtGui.QMessageBox.Save |\
+				QtGui.QMessageBox.Discard | QtGui.QMessageBox.Cancel)
+			msgbox.setDefaultButton(QtGui.QMessageBox.Save)
+			ret = msgbox.exec_()
+			if ret == QtGui.QMessageBox.Save:
+				self.saveConfigFile()
+				event.accept()
+			elif ret == QtGui.QMessageBox.Discard:
+				os.remove(self.configparser.backupfile)
+				event.accept()
+			else:
+				event.ignore()
 
 	def openConfigFile(self):
+		"""Open file dialog to select a file and open this file
+
+		If there is a backup file, ask if admin want to recover it
+		@param	self		A Main window instance
+		"""
 		file = QtGui.QFileDialog.getOpenFileName(self, "Open Config File",
 			os.path.abspath("thinclient.conf"))
-		if file and os.path.isfile(file + '~'):
+		if file and not self.configparser.saved(file):
 			reply = QtGui.QMessageBox.question(self, 'Backup file found',
             "A backup file of <b>{0}</b> was found.\nDo you want to restore it?"\
 			.format(file), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
@@ -128,11 +152,34 @@ class Main(QtGui.QMainWindow):
 			try: os.remove(file + '~')
 			except: pass
 
-		#if file:
-		self.configparser.readConfigFile(file)
-		#else:
-			#self.close()
+		if file:
+			self.configparser.readConfigFile(file)
+			self.ui.statusbar.showMessage("Editing file: {0}".format(file), 0)
+		else:
+			self.close()
 
+	def saveConfigFile(self):
+		"""Save current opened config file
+
+		@param	self		 A Main window instance
+		"""
+		self.configparser.writeConfigFile()
+		self.ui.statusbar.showMessage('File "{0}" saved!'.format(
+			self.configparser.configfile), 5000)
+
+	def saveAsConfigFile(self):
+		"""Open Save as dialog to choose where to save current config file
+
+		@param	self		 A Main window instance
+		"""
+		# TODO: change work dir of save dialog to /etc
+		file = QtGui.QFileDialog.getSaveFileName(self, "Save Config File as",
+			"thinclient.conf", "Conf files (*.conf) (*.conf);;"+
+			" XML files (*.xml) (*.xml);; All files (*) (*)")
+		if file:
+			self.configparser.writeConfigFile(file)
+			self.ui.statusbar.showMessage('File "{0}" saved!'.format(
+				self.configparser.configfile), 5000)
 
 def main():
 	"""The program main loop"""
