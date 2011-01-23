@@ -166,7 +166,6 @@ class EditPage(QtGui.QWidget):
 		Called by editProfile toolbar buttons
 		@param	self		A Main() instance
 		"""
-		self.new_profiles_count += 1
 		p = self.ui.profilesList.selectedItems()
 
 		if p:

@@ -68,6 +68,8 @@ class ProfileEdit(QtGui.QWidget):
 					self.pages[c].buttons[o].setChecked(True)
 				else:
 					self.pages[c].buttons[o].setChecked(False)
+			self.pages[c].buttonToggled()
+
 
 	def readProfileConfig(self):
 		"""Read and write configurations on EditProfile

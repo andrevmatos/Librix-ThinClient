@@ -128,7 +128,10 @@ class Main(QtGui.QMainWindow):
 			try: os.remove(file + '~')
 			except: pass
 
+		#if file:
 		self.configparser.readConfigFile(file)
+		#else:
+			#self.close()
 
 
 def main():

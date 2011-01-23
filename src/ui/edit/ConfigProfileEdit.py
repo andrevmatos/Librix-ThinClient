@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui,QtCore
 
 from ui.edit.Ui_configProfileEdit import Ui_configsWidget
 
@@ -48,3 +48,13 @@ class ConfigProfileEdit(QtGui.QWidget):
 			self.buttons[o] = QtGui.QPushButton(o, self)
 			self.buttons[o].setCheckable(True)
 			self.ui.ConfigVerticalLayout.addWidget(self.buttons[o])
+			self.connect(self.buttons[o], QtCore.SIGNAL("clicked()"), self.buttonToggled)
+
+		#self.buttonToggled()
+
+	def buttonToggled(self):
+		for b in self.buttons:
+			if self.buttons[b].isChecked():
+				self.buttons[b].setStyleSheet("background-color: rgb(140, 255, 140);")
+			else:
+				self.buttons[b].setStyleSheet("background-color: rgb(255, 140, 140);")

@@ -2,15 +2,12 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric4 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-01-20, 21:57:10 -->
+<!-- Saved: 2011-01-23, 11:31:31 -->
 <Session version="4.4">
   <Filenames>
     <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/init.py</Filename>
-    <Filename cline="103" cindex="34" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/main.py</Filename>
-    <Filename cline="111" cindex="15" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/Ui_mainWindow.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/D/Dev/Librix/thinclient/src/ui/users/usersPage.py</Filename>
   </Filenames>
-  <ActiveWindow cline="0" cindex="0">/D/Dev/Librix/thinclient/src/ui/users/usersPage.py</ActiveWindow>
+  <ActiveWindow cline="0" cindex="0">/D/Dev/Librix/thinclient/src/init.py</ActiveWindow>
   <Breakpoints>
   </Breakpoints>
   <Watchexpressions>

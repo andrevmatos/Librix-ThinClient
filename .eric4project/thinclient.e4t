@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project thinclient -->
-<!-- Saved: 2011-01-20, 21:57:10 -->
+<!-- Saved: 2011-01-23, 11:31:31 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: file export methods</Summary>
@@ -22,18 +22,18 @@
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: basic argument parser, make it better</Summary>
+    <Summary>TODO: implement</Summary>
     <Description></Description>
-    <Created>2011-01-20, 15:32:59</Created>
+    <Created>2011-01-20, 21:55:04</Created>
     <Resource>
-      <Filename>src/init.py</Filename>
-      <Linenumber>28</Linenumber>
+      <Filename>src/lib/config.py</Filename>
+      <Linenumber>329</Linenumber>
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: implement qt translate, instead of pure strings</Summary>
     <Description></Description>
-    <Created>2011-01-20, 21:50:28</Created>
+    <Created>2011-01-20, 22:01:23</Created>
     <Resource>
       <Filename>src/ui/main.py</Filename>
       <Linenumber>56</Linenumber>
@@ -42,19 +42,19 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: implement confirmation dialog</Summary>
     <Description></Description>
-    <Created>2011-01-20, 21:50:28</Created>
+    <Created>2011-01-20, 22:01:23</Created>
     <Resource>
       <Filename>src/ui/main.py</Filename>
       <Linenumber>111</Linenumber>
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: implement</Summary>
+    <Summary>TODO: basic argument parser, make it better</Summary>
     <Description></Description>
-    <Created>2011-01-20, 21:55:04</Created>
+    <Created>2011-01-23, 11:20:49</Created>
     <Resource>
-      <Filename>src/lib/config.py</Filename>
-      <Linenumber>329</Linenumber>
+      <Filename>src/init.py</Filename>
+      <Linenumber>28</Linenumber>
     </Resource>
   </Task>
 </Tasks>

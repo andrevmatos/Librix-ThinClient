@@ -36,6 +36,7 @@ class LTCConfigParser(object):
 		"""
 		self.st_mtime = 0
 		self.hash = 0
+		self.configfile = ''
 		self._parser = ET.XMLParser(encoding="utf-8", remove_blank_text=True)
 
 	def _makeTestConfigs(self, file):
@@ -85,7 +86,11 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		@param	file		A filepath string. Default is self.configfile
 		"""
-		if not file: file = self.configfile
+		print("__readConfigFile:", file)
+		if not file and self.configfile:
+			file = self.configfile
+		elif not file and not self.configfile:
+			return
 		self.configfile = file
 		self.backupfile = file + '~'
 
@@ -103,6 +108,7 @@ class LTCConfigParser(object):
 	def writeConfigFile(self, file=''):
 		"""Write configurations from self.backupfile to file
 
+		Then load file as configfile
 		@param	self		A LTCConfigParser instance
 		@param	file		A filepath string. Default is self.configfile
 		"""
@@ -136,8 +142,9 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		@param	name		A string containing config file name
 		"""
-		self._name.text = name
-		self._syncConfigs()
+		if name != self.getName():
+			self._name.text = name
+			self._syncConfigs()
 
 	def getUsersList(self):
 		"""Return the users list
