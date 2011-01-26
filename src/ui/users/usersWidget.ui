@@ -81,7 +81,7 @@
         <property name="maximumSize">
          <size>
           <width>25</width>
-          <height>60</height>
+          <height>200</height>
          </size>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -89,7 +89,92 @@
           <number>0</number>
          </property>
          <item>
+          <widget class="QToolButton" name="addUserButton">
+           <property name="toolTip">
+            <string>Add user</string>
+           </property>
+           <property name="statusTip">
+            <string>Add user</string>
+           </property>
+           <property name="whatsThis">
+            <string>Add user</string>
+           </property>
+           <property name="text">
+            <string>Add user</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons/temp_icons.qrc">
+             <normaloff>:/edit_users/add-user.png</normaloff>:/edit_users/add-user.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="delUserButton">
+           <property name="toolTip">
+            <string>Remove user</string>
+           </property>
+           <property name="statusTip">
+            <string>Remove user</string>
+           </property>
+           <property name="whatsThis">
+            <string>Remove user</string>
+           </property>
+           <property name="text">
+            <string>Remove user</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons/temp_icons.qrc">
+             <normaloff>:/edit_users/remove-user.png</normaloff>:/edit_users/remove-user.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton">
+           <property name="toolTip">
+            <string>Edit user</string>
+           </property>
+           <property name="statusTip">
+            <string>Edit user</string>
+           </property>
+           <property name="whatsThis">
+            <string>Edit user</string>
+           </property>
+           <property name="text">
+            <string>Edit user</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons/temp_icons.qrc">
+             <normaloff>:/edit_users/user-properties.png</normaloff>:/edit_users/user-properties.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="add">
+           <property name="toolTip">
+            <string>Add user to profile</string>
+           </property>
+           <property name="statusTip">
+            <string>Add user to profile</string>
+           </property>
+           <property name="whatsThis">
+            <string>Add user to profile</string>
+           </property>
            <property name="icon">
             <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/add_icon/arrow-right-double.png</normaloff>:/add_icon/arrow-right-double.png</iconset>
@@ -98,6 +183,15 @@
          </item>
          <item>
           <widget class="QPushButton" name="remove">
+           <property name="toolTip">
+            <string>Remove user from profile</string>
+           </property>
+           <property name="statusTip">
+            <string>Remove user from profile</string>
+           </property>
+           <property name="whatsThis">
+            <string>Remove user from profile</string>
+           </property>
            <property name="icon">
             <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/remove_icon/arrow-left-double.png</normaloff>:/remove_icon/arrow-left-double.png</iconset>
@@ -197,7 +291,7 @@
    <sender>add</sender>
    <signal>clicked()</signal>
    <receiver>UsersWidget</receiver>
-   <slot>addUsers()</slot>
+   <slot>addUsersToProfile()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>325</x>
@@ -213,7 +307,7 @@
    <sender>remove</sender>
    <signal>clicked()</signal>
    <receiver>UsersWidget</receiver>
-   <slot>delUsers()</slot>
+   <slot>delUsersFromProfile()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>325</x>
@@ -243,8 +337,8 @@
   </connection>
  </connections>
  <slots>
-  <slot>addUsers()</slot>
-  <slot>delUsers()</slot>
+  <slot>addUsersToProfile()</slot>
+  <slot>delUsersFromProfile()</slot>
   <slot>activateProfileSummary()</slot>
  </slots>
 </ui>

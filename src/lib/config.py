@@ -440,6 +440,27 @@ class LTCConfigParser(object):
 		del att
 		del O
 
+	def addUser(self, username):
+		"""Add a user to configfile
+
+		@param	self		A LTCConfigParser instance
+		@param	username	A string containing user's username
+		"""
+		if username in self.getUsersList():
+			return
+		ET.SubElement(self._users, "user", attrib={"name": username,
+			"profile": "", "sync": "false"})
+
+	def delUser(self, username):
+		"""Remove user of configfile
+
+		@param	self		A LTCConfigParser instance
+		@param	username	A string containining user's username
+		"""
+		if not username in self.getUsersList():
+			raise IndexError("\"{0}\" not in users list".format(username))
+		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
+
 if __name__ == '__main__':
 	from sys import argv
 	configparser = LTCConfigParser()

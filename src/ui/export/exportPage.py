@@ -47,7 +47,7 @@ class ExportPage(QtGui.QWidget):
 		self.ui = Ui_ExportWidget()
 		self.ui.setupUi(self)
 
-		self.tab = LeftMenuItem(leftList, 'Export',
+		self.tab = LeftMenuItem(leftList, self.tr("Export"),
 			QtGui.QIcon(":/export_icon/fork.png"))
 
 		self.fscompleter = QtGui.QCompleter(self)
@@ -61,7 +61,7 @@ class ExportPage(QtGui.QWidget):
 
 		@param  self            A ExportPage instance
 		"""
-		filepath = QtGui.QFileDialog.getOpenFileName(self, "Import File",
+		filepath = QtGui.QFileDialog.getOpenFileName(self, self.tr("Import File"),
 			os.path.expanduser('~root/.ssh'))
 		if filepath:
 			self.ui.privKeyPath.setText(filepath)
@@ -97,17 +97,12 @@ class ExportPage(QtGui.QWidget):
 		"""
 		addTargetsDialog = AddTargets(self)
 		scanTargetsDialog = ScanTargets(self)
-		#addTargetsDialog.setupNext(scanTargetsDialog)
-		#scanTargetsDialog.setupBack(addTargetsDialog)
 
-		#self.connect(scanTargetsDialog, QtCore.SIGNAL("accepted()"), self.refreshTargets)
 		targets = addTargetsDialog.exec_()
 		targets = scanTargetsDialog.exec_(targets)
 
 		self.targets.extend(targets)
 		self.refreshTargets()
-
-		print("%%%", targets)
 
 	def removeTargetsClicked(self):
 		"""Remove selected targets from targets list
@@ -117,7 +112,7 @@ class ExportPage(QtGui.QWidget):
 		for i in self.ui.treeWidget.selectedItems():
 			if i.isSelected():
 				try: self.targets.remove(i.text(0))
-				except Exception as e: print("This must not be happened:", e)
+				except Exception as e: print("This must not been happened:", e)
 		self.refreshTargets()
 
 	def refreshTargets(self):

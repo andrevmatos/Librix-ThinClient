@@ -23,6 +23,7 @@ import sys
 import subprocess
 from PyQt4 import uic
 
+
 def uicompile(dirpath, filename):
 	uifile = os.path.join(dirpath, filename)
 	pyfile = os.path.join(dirpath, 'Ui_' + filename.replace('.ui', '.py'))
@@ -44,6 +45,16 @@ def resourcecompile(dirpath, filename):
 	S.wait()
 
 	return(dirpath, pyfile.split('/')[-1]) # return dirpath and py filename
+
+def translatecompile(dirpath, filename):
+	"""Compile translations (.ts) files"""
+
+	S = subprocess.Popen("pylupdate4 {0}".format(os.path.join(dirpath, filename)), shell=True)
+	S.wait()
+	S = subprocess.Popen("lrelease {0}".format(os.path.join(dirpath, filename)), shell=True)
+	S.wait()
+
+#	return(dirpath, pyfile.split('/')[-1]) # return dirpath and py filename
 
 def fix_from_imports(filepath, resources):
 
@@ -73,6 +84,10 @@ def main(dir='.'):
 				u = uicompile(dirpath, f)
 				fix_from_imports(u[1], resources)
 				print("# UI Compile:", f, "=>", u[1])
+	for dirpath, dirnames, filenames in os.walk(dir):
+		for f in filenames:
+			if '.pro' in f:
+				translatecompile(dirpath, f)
 
 if __name__ == '__main__':
 	main()

@@ -33,4 +33,4 @@ if __name__ == "__main__":
 		from daemon.tcd import run
 		run()
 	else:
-		sys.stderr.write("Alternativa invalida!\n")
+		sys.stderr.write("Invalid option!\n")

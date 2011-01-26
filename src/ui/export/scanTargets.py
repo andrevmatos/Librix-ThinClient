@@ -70,12 +70,7 @@ class ScanTargets(QtGui.QDialog):
 		for i in self.tree:
 			if i.isSelected():
 				self.targets.append(i.text(0))
-		print("@@@", self.targets)
 		QtGui.QDialog.accept(self)
-#
-#	def close(self):
-#		self.targets = []
-#		QtGui.QDialog.close(self)
 
 	def exec_(self, targets):
 		"""Reimplemented exec_ function from QtGui.QDialog
@@ -109,16 +104,14 @@ class TreeElement(QtGui.QTreeWidgetItem):
 		self.thread.start()
 
 	def run(self):
-		self.setText(1, "Scanning")
+		self.setText(1, self.tr("Scanning", "a host or IP on add targets dialog"))
 		#self.thread.msleep(int(2000*random()))
 		self.on = subprocess.Popen("ping -c 4 {0}".format(self.address).split(),
 			stdout=subprocess.PIPE)
 		if not self.on.wait():
 			self.setSelected(True)
-			self.setText(1, "Online")
+			self.setText(1, self.tr("Online", "host connected"))
 		else:
 			self.setSelected(False)
-			self.setText(1, "Seens Offline")
+			self.setText(1, self.tr("Seens Offline", "if the host has not been answered"))
 		self.thread.emit(QtCore.SIGNAL("pingFinished()"))
-		#self.progressBar.setValue(self.progressBar.value()+
-		#	int(100.0/self.total))

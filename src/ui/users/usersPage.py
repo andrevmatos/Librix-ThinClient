@@ -44,7 +44,7 @@ class UsersPage(QtGui.QWidget):
 		self.ui = Ui_UsersWidget()
 		self.ui.setupUi(self)
 
-		self.tab = LeftMenuItem(leftList, 'Users',
+		self.tab = LeftMenuItem(leftList, self.tr("Users"),
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
 		self.summary = ProfileSummary(configparser, self.ui.dockWidgetContents)
@@ -82,7 +82,7 @@ class UsersPage(QtGui.QWidget):
 				QtGui.QIcon(":/user_icon/user.png"),
 				u, self.ui.usersList)
 			p = self.configparser.getUserProfile(u)
-			U.setToolTip("Profile: <b>{0}</b>".format(p if p else "None"))
+			U.setToolTip(self.tr("Profile: <b>{0}</b>").format(p if p else "None"))
 
 
 	def show(self):
@@ -105,7 +105,7 @@ class UsersPage(QtGui.QWidget):
 
 		self.summary.setSummary(treeItem.text(0))
 
-	def addUsers(self, users = [], profile = ''):
+	def addUsersToProfile(self, users = [], profile = ''):
 		"""Get the user in the self.usersList and add it to self.profilesTree
 
 		@param 	self		A UsersPage instance
@@ -135,7 +135,7 @@ class UsersPage(QtGui.QWidget):
 
 		self.updateLists()
 
-	def delUsers(self, users=[]):
+	def delUsersFromProfile(self, users=[]):
 		"""Clean users profile of selected items in self.Users.profilesTree
 
 		@param 	self 		A Main() instance
@@ -186,7 +186,7 @@ class UsersPage(QtGui.QWidget):
 		while profile.parent():
 			profile = profile.parent()
 
-		self.addUsers(users, profile.text(0))
+		self.addUsersToProfile(users, profile.text(0))
 
 	def usersDropEvent(self, event):
 		"""Qt Event of Drop actions on users list of Users tab
@@ -199,4 +199,4 @@ class UsersPage(QtGui.QWidget):
 
 		users = [U.text(0) for U in event.source().selectedItems() \
 			if U.parent()]
-		self.delUsers(users)
+		self.delUsersFromProfile(users)

@@ -49,8 +49,8 @@ class ProfileSummary(QtGui.QWidget):
 			for c in self.configsWidgets:
 				self.configsWidgets[c].setText('')
 		else:
-			self.ui.title.setText("<h2><b>Name: \
-				<font color=blue>{0}</font></b></h2>\n".format(profile))
+			self.ui.title.setText(self.tr("<h2><b>Name: "+
+				"<font color=blue>{0}</font></b></h2>\n").format(profile))
 
 			# for each category, creates a QLabel and add the configurations
 			for c in self.configparser.getCategoriesList():
@@ -59,9 +59,11 @@ class ProfileSummary(QtGui.QWidget):
 				for o in self.configparser.getOptionsList(c):
 					config += "<h6> ➜ {0}: ".format(o)
 					if self.configparser.getOption(profile, o):
-						config += "<font color=green><b>On</b></font></h6>\n"
+						config += self.tr("<font color=green><b>On</b></font></h6>\n",
+							"if option is activated on profile")
 					else:
-						config += "<font color=red><b>Off</b></font></h6>\n"
+						config += self.tr("<font color=red><b>Off</b></font></h6>\n",
+							"if option is deactivated on profile")
 
 				if not c in self.configsWidgets:
 					self.configsWidgets[c] = QtGui.QLabel(self.ui.configsWidget)

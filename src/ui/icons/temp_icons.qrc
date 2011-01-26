@@ -3,6 +3,11 @@
     <file>system-users.png</file>
     <file>user.png</file>
   </qresource>
+  <qresource prefix="edit_users">
+    <file>add-user.png</file>
+    <file>remove-user.png</file>
+    <file>user-properties.png</file>
+  </qresource>
   <qresource prefix="tab">
     <file>refresh.png</file>
   </qresource>

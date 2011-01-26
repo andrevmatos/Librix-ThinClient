@@ -46,7 +46,7 @@ class EditPage(QtGui.QWidget):
 		self.ui = Ui_EditWidget()
 		self.ui.setupUi(self)
 
-		self.tab = LeftMenuItem(leftList, 'Profiles',
+		self.tab = LeftMenuItem(leftList, self.tr("Profiles"),
 			QtGui.QIcon(":/edit_icon/document-edit.png"))
 
 		self.summary = ProfileSummary(configparser, self)
@@ -115,9 +115,9 @@ class EditPage(QtGui.QWidget):
 		Called by editProfile toolbar buttons
 		@param	self		a EditPage instance
 		"""
-		n = 'New Profile +{0}'.format(passwdGen(4))
-		title = QtGui.QInputDialog.getText(self, "Profile Name",
-			"Enter the new profile name:", text = n)[0]
+		n = self.tr("New Profile +{0}").format(passwdGen(4))
+		title = QtGui.QInputDialog.getText(self, self.tr("Profile Name"),
+			self.tr("Enter the new profile name:"), text = n)[0]
 		if not title:
 			return
 		self.configparser.newProfile(title)
@@ -174,8 +174,8 @@ class EditPage(QtGui.QWidget):
 			return
 
 		n = '{0} +{1}'.format(p, passwdGen(2))
-		title = QtGui.QInputDialog.getText(self, "Profile Name",
-			"Enter the destination profile name:", text = n)[0]
+		title = QtGui.QInputDialog.getText(self, self.tr("Profile Name"),
+			self.tr("Enter the destination profile name:"), text = n)[0]
 		if not title:
 			return
 

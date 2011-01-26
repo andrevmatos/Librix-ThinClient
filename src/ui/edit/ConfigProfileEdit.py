@@ -50,11 +50,9 @@ class ConfigProfileEdit(QtGui.QWidget):
 			self.ui.ConfigVerticalLayout.addWidget(self.buttons[o])
 			self.connect(self.buttons[o], QtCore.SIGNAL("clicked()"), self.buttonToggled)
 
-		#self.buttonToggled()
-
 	def buttonToggled(self):
 		for b in self.buttons:
 			if self.buttons[b].isChecked():
-				self.buttons[b].setStyleSheet("background-color: rgb(140, 255, 140);")
+				self.buttons[b].setStyleSheet("background-color: rgb(180, 255, 180);")
 			else:
-				self.buttons[b].setStyleSheet("background-color: rgb(255, 140, 140);")
+				self.buttons[b].setStyleSheet("background-color: rgb(255, 180, 180);")

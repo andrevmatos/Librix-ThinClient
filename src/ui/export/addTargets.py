@@ -71,33 +71,10 @@ class AddTargets(QtGui.QDialog):
 				self.opts[i].setEnabled(True)
 			else:
 				self.opts[i].setEnabled(False)
-#
-#	def setupNext(self, next):
-#		"""Setup next dialog
-#
-#		@param	self		A AddTargets instance
-#		@param	back		A QtGui.QDialog instance
-#		"""
-#		self.next = next
-#
-#	def accept(self):
-#		"""Execute scan dialog when next was clicked on addTargets dialog
-#
-#		@param	self		An AddTargets instance
-#		"""
-#		if self.targets:
-#			self.hide()
-#			self.next.exec_()
-#		#self.next.scan()
-#		#self.close()
 
 	def accept(self):
 		if self.targets:
 			QtGui.QDialog.accept(self)
-#
-#	def close(self):
-#		self.targets = []
-#		QtGui.QDialog.close(self)
 
 	def exec_(self):
 		"""Reimplemented exec_ function from QtGui.QDialog
