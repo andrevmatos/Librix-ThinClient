@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Tue Feb  1 13:41:25 2011
+# Created: Tue Feb  1 14:08:56 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -120,6 +120,11 @@ class Ui_ThinClient(object):
 		self.menuView = QtGui.QMenu(self.menuBar)
 		self.menuView.setObjectName(_fromUtf8("menuView"))
 		ThinClient.setMenuBar(self.menuBar)
+		self.toolBar = QtGui.QToolBar(ThinClient)
+		self.toolBar.setIconSize(QtCore.QSize(22, 22))
+		self.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
+		self.toolBar.setObjectName(_fromUtf8("toolBar"))
+		ThinClient.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 		self.actionOpen = QtGui.QAction(ThinClient)
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -157,6 +162,13 @@ class Ui_ThinClient(object):
 		self.menuFile.addAction(self.actionQuit)
 		self.menuBar.addAction(self.menuFile.menuAction())
 		self.menuBar.addAction(self.menuView.menuAction())
+		self.toolBar.addAction(self.actionNew)
+		self.toolBar.addAction(self.actionOpen)
+		self.toolBar.addAction(self.actionSave)
+		self.toolBar.addAction(self.actionSave_as)
+		self.toolBar.addSeparator()
+		self.toolBar.addAction(self.actionQuit)
+		self.toolBar.addSeparator()
 
 		self.retranslateUi(ThinClient)
 		QtCore.QObject.connect(self.listWidget, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), ThinClient.activateTab)
@@ -178,6 +190,7 @@ class Ui_ThinClient(object):
 		self.nameEdit.setPlaceholderText(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
+		self.toolBar.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Main Tool Bar", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setText(QtGui.QApplication.translate("ThinClient", "Open", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setToolTip(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setStatusTip(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))

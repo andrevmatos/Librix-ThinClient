@@ -57,7 +57,7 @@ class LTCConfigParser(object):
 					attrib={"name": c})
 				for o in range(1, 5):
 					o = "{0} option {1}".format(c, o)
-					option = ET.SubElement(category, "option",
+					ET.SubElement(category, "option",
 						attrib={"name": o, "on": "false"})
 
 		self._profiles = ET.SubElement(self._config, "profiles")
@@ -73,7 +73,7 @@ class LTCConfigParser(object):
 		self._users = ET.SubElement(self._config, "users")
 		for u in ['andre', 'ivan', 'roberto', 'guilherme',
 			'david', 'carvalho']:
-				user = ET.SubElement(self._users, "user",
+				ET.SubElement(self._users, "user",
 					attrib={"name": u, "profile": choice(self.getProfilesList())})
 
 		self.backupfile = file

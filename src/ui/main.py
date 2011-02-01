@@ -46,6 +46,12 @@ class Main(QtGui.QMainWindow):
 		self.ui.setupUi(self)
 		self.hide()
 
+#		self.ui.toolBar.addWidget(QtGui.QSpacerItem(40, 20,
+#			QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum))
+		self.ui.toolBar.addWidget(self.ui.nameEdit)
+
+		self.ui.topBar.close()
+
 		# Init users and profiles package
 		self.configparser = LTCConfigParser()
 		self.openConfigFile()

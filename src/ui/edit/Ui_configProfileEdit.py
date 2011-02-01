@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/configProfileEdit.ui'
 #
-# Created: Tue Feb  1 13:41:25 2011
+# Created: Tue Feb  1 14:08:56 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
