@@ -289,7 +289,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="62"/>
+        <location filename="common/ProfileSummary.py" line="67"/>
         <source>&lt;font color=green&gt;&lt;b&gt;On&lt;/b&gt;&lt;/font&gt;&lt;/h6&gt;
 </source>
         <comment>if option is activated on profile</comment>
@@ -297,7 +297,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="65"/>
+        <location filename="common/ProfileSummary.py" line="70"/>
         <source>&lt;font color=red&gt;&lt;b&gt;Off&lt;/b&gt;&lt;/font&gt;&lt;/h6&gt;
 </source>
         <comment>if option is deactivated on profile</comment>
@@ -305,7 +305,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="52"/>
+        <location filename="common/ProfileSummary.py" line="57"/>
         <source>&lt;h2&gt;&lt;b&gt;Name: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
 </source>
         <translation>&lt;h2&gt;&lt;b&gt;Nome: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
@@ -363,7 +363,7 @@ Deseja restaurá-la?</translation>
     <message>
         <location filename="Ui_mainWindow.py" line="171"/>
         <source>Librix Thin Client Administration Interface</source>
-        <translation>Interface de Administração do Librix Thin Client</translation>
+        <translation type="obsolete">Interface de Administração do Librix Thin Client</translation>
     </message>
     <message>
         <location filename="Ui_mainWindow.py" line="172"/>
@@ -473,6 +473,11 @@ p, li { white-space: pre-wrap; }
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="171"/>
+        <source>LTMT</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TreeElement</name>
@@ -503,60 +508,82 @@ p, li { white-space: pre-wrap; }
         <translation>Usuários</translation>
     </message>
     <message>
-        <location filename="users/usersPage.py" line="85"/>
+        <location filename="users/usersPage.py" line="86"/>
         <source>Profile: &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>Perfil: &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="users/usersPage.py" line="162"/>
+        <source>Add user</source>
+        <translation>Adicionar usuário</translation>
+    </message>
+    <message>
+        <location filename="users/usersPage.py" line="162"/>
+        <source>Enter the new user name here:</source>
+        <translation>Insira o nome do novo usuário aqui:</translation>
+    </message>
+    <message>
+        <location filename="users/usersPage.py" line="174"/>
+        <source>Remove users</source>
+        <translation>Remover usuários</translation>
+    </message>
+    <message>
+        <location filename="users/usersPage.py" line="174"/>
+        <source>Are you sure you want to delete these users?
+</source>
+        <translation>Você tem certeza de que quer deletar estes usuários?
+</translation>
     </message>
 </context>
 <context>
     <name>UsersWidget</name>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="153"/>
+        <location filename="users/Ui_usersWidget.py" line="148"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="154"/>
+        <location filename="users/Ui_usersWidget.py" line="149"/>
         <source>Users:</source>
         <translation>Usuários:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="158"/>
+        <location filename="users/Ui_usersWidget.py" line="153"/>
         <source>Add user</source>
         <translation>Adicionar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="162"/>
+        <location filename="users/Ui_usersWidget.py" line="157"/>
         <source>Remove user</source>
         <translation>Remover usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="166"/>
+        <location filename="users/Ui_usersWidget.py" line="168"/>
         <source>Edit user</source>
-        <translation>Editar usuário</translation>
+        <translation type="obsolete">Editar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="169"/>
+        <location filename="users/Ui_usersWidget.py" line="160"/>
         <source>Add user to profile</source>
         <translation>Adicionar usuário ao perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="172"/>
+        <location filename="users/Ui_usersWidget.py" line="163"/>
         <source>Remove user from profile</source>
         <translation>Remover usuário do perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="173"/>
+        <location filename="users/Ui_usersWidget.py" line="164"/>
         <source>Profiles:</source>
         <translation>Perfis:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="174"/>
+        <location filename="users/Ui_usersWidget.py" line="165"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="175"/>
+        <location filename="users/Ui_usersWidget.py" line="166"/>
         <source>Profile Summary:</source>
         <translation>Resumo do Perfil:</translation>
     </message>

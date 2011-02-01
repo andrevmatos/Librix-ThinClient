@@ -449,7 +449,8 @@ class LTCConfigParser(object):
 		if username in self.getUsersList():
 			return
 		ET.SubElement(self._users, "user", attrib={"name": username,
-			"profile": "", "sync": "false"})
+			"profile": ""})
+		self._syncConfigs()
 
 	def delUser(self, username):
 		"""Remove user of configfile
@@ -460,6 +461,27 @@ class LTCConfigParser(object):
 		if not username in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(username))
 		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
+		self._syncConfigs()
+
+#	def getUserOption(self, username, option):
+#		"""Get a option in user's key
+#
+#		@param	self		A LTCConfigParser instance
+#		@param	username	A string containing user's name
+#		@param	option		A string containing option's name
+#		@return				String stored on option in username
+#		"""
+#		return(self._users.find("user[@name='{0}']".format(username)).get(option))
+#
+#	def setUserOption(self, username, option, value):
+#		"""Set a option in user's key
+#
+#		@param	self		A LTCConfigParser instance
+#		@param	username	A string containing user's name
+#		@param	option		A string containing option's name
+#		@param	value		String to be stored on option in username
+#		"""
+#		self._users.find("user[@name='{0}']".format(username).set(option, value))
 
 if __name__ == '__main__':
 	from sys import argv

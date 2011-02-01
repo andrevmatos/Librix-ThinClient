@@ -47,7 +47,8 @@ class UsersPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, self.tr("Users"),
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
-		self.summary = ProfileSummary(configparser, self.ui.dockWidgetContents)
+		self.summary = ProfileSummary(configparser, False,
+			self.ui.dockWidgetContents)
 		self.ui.verticalLayout_5.addWidget(self.summary)
 
 		self.ui.usersList.dragEnterEvent = self.dragEnterEvent
@@ -153,6 +154,29 @@ class UsersPage(QtGui.QWidget):
 
 		self.updateLists()
 
+	def addUser(self):
+		"""Ask for a username and add it to user's list
+
+		@param	self		 A UsersPage instance
+		"""
+		username = QtGui.QInputDialog.getText(self, self.tr("Add user"),
+			self.tr("Enter the new user name here:"))[0]
+		if username:
+			self.configparser.addUser(username)
+		self.updateLists()
+
+	def delUser(self):
+		"""Delete selected user from config file
+
+		@param	self		A UsersPage
+		"""
+		users = [u.text() for u in self.ui.usersList.selectedItems()]
+		if users and QtGui.QMessageBox.warning(self, self.tr("Remove users"),
+			self.tr("Are you sure you want to delete these users?\n")
+			+','.join(users), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+			QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
+				[self.configparser.delUser(u) for u in users]
+		self.updateLists()
 
 	def dragEnterEvent(self, event):
 		"""Qt Event of Drag actions

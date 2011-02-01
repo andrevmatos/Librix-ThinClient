@@ -171,8 +171,8 @@ class Main(QtGui.QMainWindow):
 		"""
 		# TODO: change work dir of save dialog to /etc
 		file = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save Config File as"),
-			"thinclient.conf", self.tr("Conf files (*.conf) (*.conf);;"+
-			" XML files (*.xml) (*.xml);; All files (*) (*)"))
+			"thinclient.conf", self.tr("Conf files (*.conf) (*.conf);; "+
+			"XML files (*.xml) (*.xml);; All files (*) (*)"))
 		if file:
 			self.configparser.writeConfigFile(file)
 			self.ui.statusbar.showMessage(self.tr("File \"{0}\" saved!").format(

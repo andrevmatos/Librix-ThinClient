@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
-<!-- eric4 project file for project thinclient -->
-<!-- Saved: 2011-01-20, 21:57:10 -->
+<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!-- eric5 project file for project thinclient -->
+<!-- Saved: 2011-01-27, 10:14:36 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
-<Project version="4.6">
+<Project version="5.1">
   <Language>en</Language>
+  <Hash>a5f28f2db94a899d9a140142115327229344260d</Hash>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
   <ProjectType>Qt4</ProjectType>
   <Description></Description>
@@ -72,26 +73,26 @@
     <Form>src/ui/export/scanTargetsDialog.ui</Form>
   </Forms>
   <Translations>
+    <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
+    <Translation>src/ui/i18n/app_pt_BR.ts</Translation>
   </Translations>
   <Resources>
     <Resource>src/ui/icons/temp_icons.qrc</Resource>
   </Resources>
-  <Interfaces>
-  </Interfaces>
-  <Others>
-  </Others>
+  <Interfaces/>
+  <Others/>
   <MainScript>src/init.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS" />
-    <FiletypeAssociation pattern="*.qrc" type="RESOURCES" />
-    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
-    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
   </FiletypeAssociations>
 </Project>

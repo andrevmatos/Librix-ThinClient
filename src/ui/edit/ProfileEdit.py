@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui,QtCore
+from PyQt4 import QtGui
 
 from ui.edit.Ui_profileEdit import Ui_EditProfile
 from ui.edit.ConfigProfileEdit import ConfigProfileEdit
@@ -99,8 +99,10 @@ class ProfileEdit(QtGui.QWidget):
 
 		self.parent.summary.hide()
 		QtGui.QWidget.show(self)
+		self.parent.ui.profilesListWidget.hide()
 
 	def hide(self):
 		"""Reimplementation of QtGui.QWidget.hide method"""
-		self.parent.summary.show()
 		QtGui.QWidget.hide(self)
+		self.parent.ui.profilesListWidget.show()
+		self.parent.summary.show()

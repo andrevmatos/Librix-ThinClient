@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file './ui/users/usersWidget.ui'
 #
-# Created: Wed Jan 26 01:10:58 2011
-#      by: PyQt4 UI code generator 4.8.2
+# Created: Tue Feb  1 13:41:25 2011
+#      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -81,28 +81,21 @@ class Ui_UsersWidget(object):
 		self.delUserButton.setAutoRaise(True)
 		self.delUserButton.setObjectName(_fromUtf8("delUserButton"))
 		self.verticalLayout_2.addWidget(self.delUserButton)
-		self.toolButton = QtGui.QToolButton(self.buttons)
-		icon2 = QtGui.QIcon()
-		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_users/user-properties.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.toolButton.setIcon(icon2)
-		self.toolButton.setAutoRaise(True)
-		self.toolButton.setObjectName(_fromUtf8("toolButton"))
-		self.verticalLayout_2.addWidget(self.toolButton)
 		self.line = QtGui.QFrame(self.buttons)
 		self.line.setFrameShape(QtGui.QFrame.HLine)
 		self.line.setFrameShadow(QtGui.QFrame.Sunken)
 		self.line.setObjectName(_fromUtf8("line"))
 		self.verticalLayout_2.addWidget(self.line)
 		self.add = QtGui.QPushButton(self.buttons)
-		icon3 = QtGui.QIcon()
-		icon3.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/arrow-right-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.add.setIcon(icon3)
+		icon2 = QtGui.QIcon()
+		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/arrow-right-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.add.setIcon(icon2)
 		self.add.setObjectName(_fromUtf8("add"))
 		self.verticalLayout_2.addWidget(self.add)
 		self.remove = QtGui.QPushButton(self.buttons)
-		icon4 = QtGui.QIcon()
-		icon4.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/arrow-left-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.remove.setIcon(icon4)
+		icon3 = QtGui.QIcon()
+		icon3.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/arrow-left-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.remove.setIcon(icon3)
 		self.remove.setObjectName(_fromUtf8("remove"))
 		self.verticalLayout_2.addWidget(self.remove)
 		self.horizontalLayout.addWidget(self.buttons)
@@ -147,6 +140,8 @@ class Ui_UsersWidget(object):
 		QtCore.QObject.connect(self.add, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.addUsersToProfile)
 		QtCore.QObject.connect(self.remove, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.delUsersFromProfile)
 		QtCore.QObject.connect(self.profilesTree, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)")), UsersWidget.activateProfileSummary)
+		QtCore.QObject.connect(self.addUserButton, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.addUser)
+		QtCore.QObject.connect(self.delUserButton, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.delUser)
 		QtCore.QMetaObject.connectSlotsByName(UsersWidget)
 
 	def retranslateUi(self, UsersWidget):
@@ -160,10 +155,6 @@ class Ui_UsersWidget(object):
 		self.delUserButton.setStatusTip(QtGui.QApplication.translate("UsersWidget", "Remove user", None, QtGui.QApplication.UnicodeUTF8))
 		self.delUserButton.setWhatsThis(QtGui.QApplication.translate("UsersWidget", "Remove user", None, QtGui.QApplication.UnicodeUTF8))
 		self.delUserButton.setText(QtGui.QApplication.translate("UsersWidget", "Remove user", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setToolTip(QtGui.QApplication.translate("UsersWidget", "Edit user", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setStatusTip(QtGui.QApplication.translate("UsersWidget", "Edit user", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setWhatsThis(QtGui.QApplication.translate("UsersWidget", "Edit user", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setText(QtGui.QApplication.translate("UsersWidget", "Edit user", None, QtGui.QApplication.UnicodeUTF8))
 		self.add.setToolTip(QtGui.QApplication.translate("UsersWidget", "Add user to profile", None, QtGui.QApplication.UnicodeUTF8))
 		self.add.setStatusTip(QtGui.QApplication.translate("UsersWidget", "Add user to profile", None, QtGui.QApplication.UnicodeUTF8))
 		self.add.setWhatsThis(QtGui.QApplication.translate("UsersWidget", "Add user to profile", None, QtGui.QApplication.UnicodeUTF8))

@@ -18,15 +18,17 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtCore,QtGui
+from PyQt4 import QtGui
 from ui.common.Ui_profileSummary import Ui_Summary
 
 class ProfileSummary(QtGui.QWidget):
 	"""Creates a frame with profile summary"""
-	def __init__(self, configparser, parent=None):
+	def __init__(self, configparser, vert=False, parent=None):
 		"""Instantiate a ProfilesSummary object
 
 		@param	self		A ProfilesSummary instance
+		@param	configparser	A LTCConfigParser instance
+		@param	vert		Bool. Vertical alignment of categories
 		"""
 		self.parent = parent
 		self.configparser = configparser
@@ -35,6 +37,9 @@ class ProfileSummary(QtGui.QWidget):
 
 		self.ui = Ui_Summary()
 		self.ui.setupUi(self)
+
+		if vert:
+			self.ui.horizontalLayout.setDirection(QtGui.QBoxLayout.TopToBottom)
 
 		self.configsWidgets = {}
 

@@ -135,29 +135,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="toolButton">
-           <property name="toolTip">
-            <string>Edit user</string>
-           </property>
-           <property name="statusTip">
-            <string>Edit user</string>
-           </property>
-           <property name="whatsThis">
-            <string>Edit user</string>
-           </property>
-           <property name="text">
-            <string>Edit user</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons/temp_icons.qrc">
-             <normaloff>:/edit_users/user-properties.png</normaloff>:/edit_users/user-properties.png</iconset>
-           </property>
-           <property name="autoRaise">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="Line" name="line">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -294,8 +271,8 @@
    <slot>addUsersToProfile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>157</y>
+     <x>337</x>
+     <y>223</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -310,8 +287,8 @@
    <slot>delUsersFromProfile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>188</y>
+     <x>337</x>
+     <y>259</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -335,10 +312,44 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>addUserButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>addUser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delUserButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>delUser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>531</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addUsersToProfile()</slot>
   <slot>delUsersFromProfile()</slot>
   <slot>activateProfileSummary()</slot>
+  <slot>addUser()</slot>
+  <slot>delUser()</slot>
  </slots>
 </ui>

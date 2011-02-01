@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Wed Jan 26 01:10:58 2011
-#      by: PyQt4 UI code generator 4.8.2
+# Created: Tue Feb  1 13:41:25 2011
+#      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -113,7 +113,7 @@ class Ui_ThinClient(object):
 		self.statusbar.setObjectName(_fromUtf8("statusbar"))
 		ThinClient.setStatusBar(self.statusbar)
 		self.menuBar = QtGui.QMenuBar(ThinClient)
-		self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+		self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 23))
 		self.menuBar.setObjectName(_fromUtf8("menuBar"))
 		self.menuFile = QtGui.QMenu(self.menuBar)
 		self.menuFile.setObjectName(_fromUtf8("menuFile"))
@@ -168,7 +168,7 @@ class Ui_ThinClient(object):
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
-		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Librix Thin Client Administration Interface", None, QtGui.QApplication.UnicodeUTF8))
+		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "LTMT", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("ThinClient", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
