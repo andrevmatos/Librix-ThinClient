@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Tue Feb  1 14:08:56 2011
+# Created: Tue Feb  1 16:00:46 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -187,7 +187,6 @@ class Ui_ThinClient(object):
 "</style></head><body style=\" font-family:\'DejaVu Sans [unknown]\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Librix Thin Client Management Tool. Alpha release.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 		self.nameEdit.setToolTip(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
-		self.nameEdit.setPlaceholderText(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
 		self.toolBar.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Main Tool Bar", None, QtGui.QApplication.UnicodeUTF8))
