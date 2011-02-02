@@ -23,7 +23,6 @@ from PyQt4 import QtGui,QtCore
 from ui.edit.Ui_editWidget import Ui_EditWidget
 from ui.edit.ProfileEdit import ProfileEdit
 
-from lib.utils import passwdGen
 from ui.common.LeftMenuItem import LeftMenuItem
 from ui.common.ProfileSummary import ProfileSummary
 
@@ -116,14 +115,18 @@ class EditPage(QtGui.QWidget):
 		Called by editProfile toolbar buttons
 		@param	self		a EditPage instance
 		"""
-		n = self.tr("New Profile +{0}").format(passwdGen(4))
 		title = QtGui.QInputDialog.getText(self, self.tr("Profile Name"),
-			self.tr("Enter the new profile name:"), text = n)[0]
-		if not title:
-			return
-		self.configparser.newProfile(title)
-		self.updateLists()
-		self.activateProfileSummary(title)
+			self.tr("Enter the new profile name:"))[0]
+
+		# Confirm overwriting if title already in profiles list
+		if title and (title not in self.configparser.getProfilesList() or \
+			QtGui.QMessageBox.warning(self, self.tr("Replace profile"),
+			self.tr("Are you sure you want to overwrite \"{0}\" profile?\n")\
+			.format(title), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+			QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes):
+				self.configparser.newProfile(title)
+				self.updateLists()
+				self.activateProfileSummary(title)
 
 	def delProfile(self):
 		"""Delete a profile
@@ -139,7 +142,12 @@ class EditPage(QtGui.QWidget):
 
 		for p in profile:
 			p = p.text()
-			self.configparser.moveProfile(p)
+			# Confirm profile deletion
+			if QtGui.QMessageBox.warning(self, self.tr("Remove profile"),
+				self.tr("Are you sure you want to delete \"{0}\" profile?\n")\
+				.format(p), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+				QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
+				self.configparser.moveProfile(p)
 			k = _p.index(p)-1
 
 		self.updateLists()
@@ -158,7 +166,6 @@ class EditPage(QtGui.QWidget):
 		else:
 			return
 		self.profileEdit.setProfile(profile)
-		#self.summary.hide()
 		self.profileEdit.show()
 
 	def duplicateProfile(self):
@@ -174,12 +181,19 @@ class EditPage(QtGui.QWidget):
 		else:
 			return
 
-		n = '{0} +{1}'.format(p, passwdGen(2))
+		# Get target profile name
 		title = QtGui.QInputDialog.getText(self, self.tr("Profile Name"),
-			self.tr("Enter the destination profile name:"), text = n)[0]
-		if not title:
-			return
+			self.tr("Enter the destination profile name:"))[0]
 
-		self.configparser.moveProfile(p, title, copy=True)
-		self.updateLists()
-		self.activateProfileSummary(title)
+		# Confirm profile overwriting
+		if title in self.configparser.getProfilesList() and not \
+			QtGui.QMessageBox.warning(self, self.tr("Replace profile"),
+			self.tr("Are you sure you want to overwrite \"{0}\" profile?\n")\
+			.format(title), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+			QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
+				return
+
+		if title:
+			self.configparser.moveProfile(p, title, copy=True)
+			self.updateLists()
+			self.activateProfileSummary(title)

@@ -46,29 +46,53 @@
 <context>
     <name>EditPage</name>
     <message>
-        <location filename="edit/editPage.py" line="50"/>
+        <location filename="edit/editPage.py" line="49"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
         <location filename="edit/editPage.py" line="119"/>
         <source>New Profile +{0}</source>
-        <translation>Novo Perfil +{0}</translation>
+        <translation type="obsolete">Novo Perfil +{0}</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="178"/>
+        <location filename="edit/editPage.py" line="185"/>
         <source>Profile Name</source>
         <translation>Nome do Perfil</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="120"/>
+        <location filename="edit/editPage.py" line="118"/>
         <source>Enter the new profile name:</source>
         <translation>Insira o nome do novo perfil:</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="178"/>
+        <location filename="edit/editPage.py" line="185"/>
         <source>Enter the destination profile name:</source>
         <translation>Insira o nome do perfil de destino:</translation>
+    </message>
+    <message>
+        <location filename="edit/editPage.py" line="146"/>
+        <source>Remove profile</source>
+        <translation>Apagar perfil</translation>
+    </message>
+    <message>
+        <location filename="edit/editPage.py" line="190"/>
+        <source>Replace profile</source>
+        <translation>Substituir perfil</translation>
+    </message>
+    <message>
+        <location filename="edit/editPage.py" line="190"/>
+        <source>Are you sure you want to overwrite &quot;{0}&quot; profile?
+</source>
+        <translation>Você tem certeza de que deseja sobrescrever o perfil &quot;{0}&quot;?
+</translation>
+    </message>
+    <message>
+        <location filename="edit/editPage.py" line="146"/>
+        <source>Are you sure you want to delete &quot;{0}&quot; profile?
+</source>
+        <translation>Você tem certeza de que deseja apagar o perfil &quot;{0}&quot;?
+</translation>
     </message>
 </context>
 <context>
@@ -106,12 +130,12 @@
     <message>
         <location filename="edit/Ui_profileEdit.py" line="56"/>
         <source>Tab 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Aba 1</translation>
     </message>
     <message>
         <location filename="edit/Ui_profileEdit.py" line="57"/>
         <source>Tab 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Aba 2</translation>
     </message>
 </context>
 <context>
@@ -290,7 +314,7 @@ Deseja restaurá-la?</translation>
     <message>
         <location filename="main.py" line="160"/>
         <source>Backup found</source>
-        <translation type="unfinished"></translation>
+        <translation>Cópia de segurança encontrada</translation>
     </message>
 </context>
 <context>
@@ -491,12 +515,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Ui_mainWindow.py" line="183"/>
         <source>LTMT</source>
-        <translation type="unfinished"></translation>
+        <translation>LTMT</translation>
     </message>
     <message>
         <location filename="Ui_mainWindow.py" line="192"/>
         <source>Main Tool Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barra de Ferramentas Principal</translation>
     </message>
 </context>
 <context>
@@ -618,7 +642,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="edit/Ui_configProfileEdit.py" line="63"/>
         <source>Modules:</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulos:</translation>
     </message>
 </context>
 <context>

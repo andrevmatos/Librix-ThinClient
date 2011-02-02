@@ -23,7 +23,7 @@ from PyQt4 import QtGui
 from ui.edit.Ui_listItemWidget import Ui_listItemWidget
 
 class ListItemWidget(QtGui.QWidget):
-	"""Creates the config page of a category in profile"""
+	"""Creates the QListWidgetItem widget of a module into cateogory"""
 	def __init__(self, prettyname, description, configurable, parent=None):
 		"""Instantiate a ListItemWidget widget
 
@@ -82,6 +82,8 @@ class ListItemWidget(QtGui.QWidget):
 	def setExpanded(self, value=None):
 		"""Set if a item is expanded or not
 
+		Expand are set hiding self.ui.collapsedWid and showing
+		self.ui.expandedWid. This widgets have fixed vertical sizePolicy set.
 		@param	self		A ListItemWidget instance
 		@param	value		Bool. If true, set item expanded
 		"""

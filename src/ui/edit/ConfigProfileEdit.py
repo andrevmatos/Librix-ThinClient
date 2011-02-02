@@ -24,7 +24,7 @@ from ui.edit.Ui_configProfileEdit import Ui_configsWidget
 from ui.edit.ListItemWidget import ListItemWidget
 
 class ConfigProfileEdit(QtGui.QWidget):
-	"""Creates the config page of a category in profile"""
+	"""Creates the config tab of a category in profile"""
 	def __init__(self, configparser, moduleparser, category, parent=None):
 		"""Instantiate a ConfigProfileEdit widget
 
