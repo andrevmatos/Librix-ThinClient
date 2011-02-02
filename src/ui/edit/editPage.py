@@ -29,7 +29,7 @@ from ui.common.ProfileSummary import ProfileSummary
 
 class EditPage(QtGui.QWidget):
 	"""Creates the main Edit page"""
-	def __init__(self, configparser, leftList, parent=None):
+	def __init__(self, configparser, moduleparser, leftList, parent=None):
 		"""Instantiate a EditPage object
 
 		@param	self		A EditPage instance
@@ -37,6 +37,7 @@ class EditPage(QtGui.QWidget):
 		@param	leftList	The leftMenu QListWidget, to create the tab
 		@param	parent		A QtGui.QWidget parent object
 		"""
+		self.moduleparser = moduleparser
 		self.configparser = configparser
 		self.leftList = leftList
 		self.parent = parent
@@ -49,11 +50,11 @@ class EditPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, self.tr("Profiles"),
 			QtGui.QIcon(":/edit_icon/document-edit.png"))
 
-		self.summary = ProfileSummary(configparser, True, self)
+		self.summary = ProfileSummary(configparser, moduleparser, True, self)
 		self.ui.verticalLayout_4.addWidget(self.summary)
 		self.current = self.summary
 
-		self.profileEdit = ProfileEdit(configparser, self)
+		self.profileEdit = ProfileEdit(configparser, moduleparser, self)
 		self.ui.verticalLayout_4.addWidget(self.profileEdit)
 		self.profileEdit.hide()
 

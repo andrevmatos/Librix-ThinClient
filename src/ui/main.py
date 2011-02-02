@@ -29,6 +29,7 @@ from ui.edit.editPage import EditPage
 from ui.export.exportPage import ExportPage
 
 from lib.config import LTCConfigParser
+from lib.modules import LTCModuleParser
 
 configfile = 'thinclient.conf'
 
@@ -53,24 +54,30 @@ class Main(QtGui.QMainWindow):
 		self.ui.topBar.close()
 
 		# Init users and profiles package
-		self.configparser = LTCConfigParser()
-		self.openConfigFile()
+		self.moduleparser = LTCModuleParser()
+		self.configparser = LTCConfigParser(self.moduleparser)
+
+		#self.openConfigFile()
+		self.newConfigFile()
 
 		# Set config file name
 		self.ui.nameEdit.setText(self.configparser.getName())
 
 		# Users widget configuration routines
-		self.Users = UsersPage(self.configparser, self.ui.listWidget, self)
+		self.Users = UsersPage(self.configparser, self.moduleparser,
+			self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Users)
 		#self.Users.hide()
 
 		# Edit widget configuration routines
-		self.Edit = EditPage(self.configparser, self.ui.listWidget, self)
+		self.Edit = EditPage(self.configparser, self.moduleparser,
+			self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Edit)
 		self.Edit.hide()
 
 		# Export widget configuration routines
-		self.Export = ExportPage(self.configparser, self.ui.listWidget, self)
+		self.Export = ExportPage(self.configparser, self.moduleparser,
+			self.ui.listWidget, self)
 		self.ui.horizontalLayout.addWidget(self.Export)
 		self.Export.hide()
 
@@ -114,7 +121,7 @@ class Main(QtGui.QMainWindow):
 
 		Exec writeConfigFile in self.configparser before close main window
 		"""
-		if self.configparser.saved():
+		if not self.configparser.modified():
 			event.accept()
 		else:
 			msgbox = QtGui.QMessageBox(self)
@@ -134,16 +141,23 @@ class Main(QtGui.QMainWindow):
 			else:
 				event.ignore()
 
+	def newConfigFile(self):
+		"""Creates a new config file
+
+		@param	self		A Main window instance
+		"""
+		self.configparser.newConfigFile()
+
 	def openConfigFile(self):
-		"""Open file dialog to select a file and open this file
+		"""Open file dialog to select and open a configuration
 
 		If there is a backup file, ask if admin want to recover it
 		@param	self		A Main window instance
 		"""
-		file = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open Config File"),
-			os.path.abspath("thinclient.conf"))
-		if file and not self.configparser.saved(file):
-			reply = QtGui.QMessageBox.question(self, self.tr("Backup file found"),
+		file = QtGui.QFileDialog.getOpenFileName(self,
+			self.tr("Open Config File"), os.path.abspath("thinclient.conf"))
+		if file and self.configparser.modified(file)==1:
+			reply = QtGui.QMessageBox.question(self, self.tr("Backup found"),
             self.tr("A backup file of <b>{0}</b> was found.\n"+
 				"Do you want to restore it?")\
 			.format(file), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
@@ -158,17 +172,23 @@ class Main(QtGui.QMainWindow):
 
 		if file:
 			self.configparser.readConfigFile(file)
+			self.ui.nameEdit.setText(self.configparser.getName())
 			self.ui.statusbar.showMessage(self.tr("Editing file: {0}")\
 				.format(file), 0)
+			self.Users.updateLists()
+			self.Edit.updateLists()
 
 	def saveConfigFile(self):
 		"""Save current opened config file
 
 		@param	self		 A Main window instance
 		"""
-		self.configparser.writeConfigFile()
-		self.ui.statusbar.showMessage(self.tr("File \"{0}\" saved!").format(
-			self.configparser.configfile), 5000)
+		if self.configparser.modified()==1:
+			self.configparser.writeConfigFile()
+			self.ui.statusbar.showMessage(self.tr("File \"{0}\" saved!").format(
+				self.configparser.configfile), 5000)
+		elif self.configparser.modified()==2:
+			self.saveAsConfigFile()
 
 	def saveAsConfigFile(self):
 		"""Open Save as dialog to choose where to save current config file

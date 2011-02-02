@@ -37,6 +37,11 @@
     <file>profiles.png</file>
     <file>document-edit.png</file>
   </qresource>
+  <qresource prefix="profile_edit">
+    <file>configure.png</file>
+    <file>arrow-down.png</file>
+    <file>arrow-right.png</file>
+  </qresource>
   <qresource prefix="export_icon">
     <file>save-as.png</file>
     <file>export-find.png</file>

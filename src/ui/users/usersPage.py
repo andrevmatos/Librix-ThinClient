@@ -27,7 +27,7 @@ from ui.common.ProfileSummary import ProfileSummary
 
 class UsersPage(QtGui.QWidget):
 	"""Creates the main users page"""
-	def __init__(self, configparser, leftList, parent=None):
+	def __init__(self, configparser, moduleparser, leftList, parent=None):
 		"""Instantiate a UsersPage object
 
 		@param	self		A UsersPage instance
@@ -47,7 +47,7 @@ class UsersPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, self.tr("Users"),
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
-		self.summary = ProfileSummary(configparser, False,
+		self.summary = ProfileSummary(configparser, moduleparser, False,
 			self.ui.dockWidgetContents)
 		self.ui.verticalLayout_5.addWidget(self.summary)
 

@@ -23,7 +23,7 @@ from ui.common.Ui_profileSummary import Ui_Summary
 
 class ProfileSummary(QtGui.QWidget):
 	"""Creates a frame with profile summary"""
-	def __init__(self, configparser, vert=False, parent=None):
+	def __init__(self, configparser, moduleparser, vert=False, parent=None):
 		"""Instantiate a ProfilesSummary object
 
 		@param	self		A ProfilesSummary instance
@@ -31,6 +31,7 @@ class ProfileSummary(QtGui.QWidget):
 		@param	vert		Bool. Vertical alignment of categories
 		"""
 		self.parent = parent
+		self.moduleparser = moduleparser
 		self.configparser = configparser
 
 		QtGui.QWidget.__init__(self, parent)
@@ -58,10 +59,10 @@ class ProfileSummary(QtGui.QWidget):
 				"<font color=blue>{0}</font></b></h2>\n").format(profile))
 
 			# for each category, creates a QLabel and add the configurations
-			for c in self.configparser.getCategoriesList():
+			for c in self.moduleparser.getCategoriesList():
 				config = "<h4>{0}:</h4>\n".format(c)
 
-				for o in self.configparser.getOptionsList(c):
+				for o in self.moduleparser.getModulesList(c):
 					config += "<h6> ➜ {0}: ".format(o)
 					if self.configparser.getOption(profile, o):
 						config += self.tr("<font color=green><b>On</b></font></h6>\n",

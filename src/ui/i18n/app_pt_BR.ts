@@ -46,27 +46,27 @@
 <context>
     <name>EditPage</name>
     <message>
-        <location filename="edit/editPage.py" line="49"/>
+        <location filename="edit/editPage.py" line="50"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="118"/>
+        <location filename="edit/editPage.py" line="119"/>
         <source>New Profile +{0}</source>
         <translation>Novo Perfil +{0}</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="177"/>
+        <location filename="edit/editPage.py" line="178"/>
         <source>Profile Name</source>
         <translation>Nome do Perfil</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="119"/>
+        <location filename="edit/editPage.py" line="120"/>
         <source>Enter the new profile name:</source>
         <translation>Insira o nome do novo perfil:</translation>
     </message>
     <message>
-        <location filename="edit/editPage.py" line="177"/>
+        <location filename="edit/editPage.py" line="178"/>
         <source>Enter the destination profile name:</source>
         <translation>Insira o nome do perfil de destino:</translation>
     </message>
@@ -74,34 +74,44 @@
 <context>
     <name>EditProfile</name>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="70"/>
+        <location filename="edit/Ui_profileEdit.py" line="53"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="71"/>
+        <location filename="edit/Ui_profileEdit.py" line="54"/>
         <source>Profile Name</source>
         <translation>Nome do Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="72"/>
+        <location filename="edit/Ui_profileEdit.py" line="55"/>
         <source>profileName</source>
         <translation>nomeDoPerfil</translation>
     </message>
     <message>
         <location filename="edit/Ui_profileEdit.py" line="73"/>
         <source>Profile Configuration</source>
-        <translation>Configuração do Perfil</translation>
+        <translation type="obsolete">Configuração do Perfil</translation>
     </message>
     <message>
         <location filename="edit/Ui_profileEdit.py" line="75"/>
         <source>Page 1</source>
-        <translation>Página 1</translation>
+        <translation type="obsolete">Página 1</translation>
     </message>
     <message>
         <location filename="edit/Ui_profileEdit.py" line="74"/>
         <source>PushButton</source>
-        <translation>Botão</translation>
+        <translation type="obsolete">Botão</translation>
+    </message>
+    <message>
+        <location filename="edit/Ui_profileEdit.py" line="56"/>
+        <source>Tab 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="edit/Ui_profileEdit.py" line="57"/>
+        <source>Tab 2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -160,12 +170,12 @@
 <context>
     <name>ExportPage</name>
     <message>
-        <location filename="export/exportPage.py" line="50"/>
+        <location filename="export/exportPage.py" line="51"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="export/exportPage.py" line="64"/>
+        <location filename="export/exportPage.py" line="65"/>
         <source>Import File</source>
         <translation>Importar Arquivo</translation>
     </message>
@@ -226,56 +236,61 @@
 <context>
     <name>Main</name>
     <message>
-        <location filename="main.py" line="78"/>
+        <location filename="main.py" line="85"/>
         <source>Show user&apos;s profile summary</source>
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="main.py" line="122"/>
+        <location filename="main.py" line="129"/>
         <source>The configuration file has been modified.</source>
         <translation>O arquivo de configuração foi modificado.</translation>
     </message>
     <message>
-        <location filename="main.py" line="123"/>
+        <location filename="main.py" line="130"/>
         <source>Do you want to save your changes?</source>
         <translation>Deseja salvar suas modificações?</translation>
     </message>
     <message>
-        <location filename="main.py" line="143"/>
+        <location filename="main.py" line="157"/>
         <source>Open Config File</source>
         <translation>Abrir Arquivo de Configuração</translation>
     </message>
     <message>
-        <location filename="main.py" line="146"/>
+        <location filename="main.py" line="152"/>
         <source>Backup file found</source>
-        <translation>Cópia de segurança encontrada</translation>
+        <translation type="obsolete">Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="146"/>
+        <location filename="main.py" line="160"/>
         <source>A backup file of &lt;b&gt;{0}&lt;/b&gt; was found.
 Do you want to restore it?</source>
         <translation>Uma cópia de segurança de &lt;b&gt;{0}&lt;/b&gt; foi encontrada.
 Deseja restaurá-la?</translation>
     </message>
     <message>
-        <location filename="main.py" line="161"/>
+        <location filename="main.py" line="176"/>
         <source>Editing file: {0}</source>
         <translation>Editando arquivo: {0}</translation>
     </message>
     <message>
-        <location filename="main.py" line="184"/>
+        <location filename="main.py" line="204"/>
         <source>File &quot;{0}&quot; saved!</source>
         <translation>Arquivo &quot;{0}&quot; salvo!</translation>
     </message>
     <message>
-        <location filename="main.py" line="179"/>
+        <location filename="main.py" line="199"/>
         <source>Save Config File as</source>
         <translation>Salvar Arquivo de Configuração como</translation>
     </message>
     <message>
-        <location filename="main.py" line="179"/>
+        <location filename="main.py" line="199"/>
         <source>Conf files (*.conf) (*.conf);; XML files (*.xml) (*.xml);; All files (*) (*)</source>
         <translation>Arquivos Conf (*.conf) (*.conf);; Arquivos XML (*.xml) (*.xml);; Todos os Arquivos (*) (*)</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="160"/>
+        <source>Backup found</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -289,7 +304,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="67"/>
+        <location filename="common/ProfileSummary.py" line="68"/>
         <source>&lt;font color=green&gt;&lt;b&gt;On&lt;/b&gt;&lt;/font&gt;&lt;/h6&gt;
 </source>
         <comment>if option is activated on profile</comment>
@@ -297,7 +312,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="70"/>
+        <location filename="common/ProfileSummary.py" line="71"/>
         <source>&lt;font color=red&gt;&lt;b&gt;Off&lt;/b&gt;&lt;/font&gt;&lt;/h6&gt;
 </source>
         <comment>if option is deactivated on profile</comment>
@@ -305,7 +320,7 @@ Deseja restaurá-la?</translation>
 </translation>
     </message>
     <message>
-        <location filename="common/ProfileSummary.py" line="57"/>
+        <location filename="common/ProfileSummary.py" line="58"/>
         <source>&lt;h2&gt;&lt;b&gt;Name: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
 </source>
         <translation>&lt;h2&gt;&lt;b&gt;Nome: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
@@ -379,97 +394,97 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ferramenta de Gerenciamento do Librix Thin Client. Versão Alpha.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="190"/>
+        <location filename="Ui_mainWindow.py" line="189"/>
         <source>Enter config name/version here</source>
         <translation>Insira nome ou versão da configuração aqui</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="191"/>
+        <location filename="Ui_mainWindow.py" line="190"/>
         <source>File</source>
         <translation>Arquivo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="192"/>
+        <location filename="Ui_mainWindow.py" line="191"/>
         <source>View</source>
         <translation>Exibir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="194"/>
+        <location filename="Ui_mainWindow.py" line="193"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="197"/>
+        <location filename="Ui_mainWindow.py" line="196"/>
         <source>Open config file</source>
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="198"/>
+        <location filename="Ui_mainWindow.py" line="197"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="199"/>
+        <location filename="Ui_mainWindow.py" line="198"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="202"/>
+        <location filename="Ui_mainWindow.py" line="201"/>
         <source>Save current file</source>
         <translation>Salvar arquivo atual</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="203"/>
+        <location filename="Ui_mainWindow.py" line="202"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="205"/>
+        <location filename="Ui_mainWindow.py" line="204"/>
         <source>Save as</source>
         <translation>Salvar como</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="208"/>
+        <location filename="Ui_mainWindow.py" line="207"/>
         <source>Save current file as another file name</source>
         <translation>Salvar arquivo atual com outro nome</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="209"/>
+        <location filename="Ui_mainWindow.py" line="208"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="210"/>
+        <location filename="Ui_mainWindow.py" line="209"/>
         <source>Quit</source>
         <translation>Sair</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="213"/>
+        <location filename="Ui_mainWindow.py" line="212"/>
         <source>Quit Librix Thin Client</source>
         <translation>Sair do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="214"/>
+        <location filename="Ui_mainWindow.py" line="213"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="215"/>
+        <location filename="Ui_mainWindow.py" line="214"/>
         <source>Show users profile summary</source>
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="216"/>
+        <location filename="Ui_mainWindow.py" line="215"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="219"/>
+        <location filename="Ui_mainWindow.py" line="218"/>
         <source>Creates a new empty config file</source>
         <translation>Criar um novo arquivo de configuração vazio</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="220"/>
+        <location filename="Ui_mainWindow.py" line="219"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
@@ -479,7 +494,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="193"/>
+        <location filename="Ui_mainWindow.py" line="192"/>
         <source>Main Tool Bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -596,9 +611,14 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>configsWidget</name>
     <message>
-        <location filename="edit/Ui_configProfileEdit.py" line="45"/>
+        <location filename="edit/Ui_configProfileEdit.py" line="62"/>
         <source>Form</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="edit/Ui_configProfileEdit.py" line="63"/>
+        <source>Modules:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

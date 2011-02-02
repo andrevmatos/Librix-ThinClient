@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4.QtCore import SIGNAL, QThread
+from PyQt4.QtCore import QThread
 
 class LTCModuleParser(object):
 	"""Parse and compile information about Librix Thin Client modules"""
@@ -27,9 +27,10 @@ class LTCModuleParser(object):
 
 		@param	self		A LTCModuleParser instance
 		"""
-		QThread.__init__(self)
+		#QThread.__init__(self)
 
 		self._modules = {}
+		self.parseModules()
 
 	def parseModules(self):
 		"""Import and parse modules
@@ -41,10 +42,10 @@ class LTCModuleParser(object):
 		import modules as Mod
 
 		for m in Mod.__all__:
-			self._modules[m] = exec("Mod.{0}.Main()".format(m))
+			self._modules[m] = eval("Mod.{0}.Main()".format(m))
 			self._modules[m].th = QThread()
 
-	def getCategoryList(self):
+	def getCategoriesList(self):
 		"""Returns a list of all categories
 
 		@param	self		A LTCModuleParser instance

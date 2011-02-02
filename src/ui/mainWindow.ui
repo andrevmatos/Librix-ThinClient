@@ -78,9 +78,6 @@ p, li { white-space: pre-wrap; }
          <property name="text">
           <string/>
          </property>
-         <property name="placeholderText">
-          <string>Enter config name/version here</string>
-         </property>
         </widget>
        </item>
       </layout>
@@ -431,8 +428,8 @@ p, li { white-space: pre-wrap; }
    <slot>configNameChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>642</x>
-     <y>39</y>
+     <x>783</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
      <x>606</x>

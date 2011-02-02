@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-01-27, 10:14:36 -->
+<!-- Saved: 2011-02-01, 20:06:19 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -59,6 +59,8 @@
     <Source>src/ui/export/Ui_scanTargetsDialog.py</Source>
     <Source>src/ui/export/scanTargets.py</Source>
     <Source>src/lib/ping.py</Source>
+    <Source>src/ui/edit/ListItemWidget.py</Source>
+    <Source>src/ui/edit/Ui_listItemWidget.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -71,6 +73,7 @@
     <Form>src/ui/common/profileSummary.ui</Form>
     <Form>src/ui/export/addTargetsDialog.ui</Form>
     <Form>src/ui/export/scanTargetsDialog.ui</Form>
+    <Form>src/ui/edit/listItemWidget.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>

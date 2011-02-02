@@ -18,21 +18,23 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui,QtCore
+from PyQt4 import QtGui
 
 from ui.edit.Ui_configProfileEdit import Ui_configsWidget
+from ui.edit.ListItemWidget import ListItemWidget
 
 class ConfigProfileEdit(QtGui.QWidget):
 	"""Creates the config page of a category in profile"""
-	def __init__(self, configparser, category, parent=None):
+	def __init__(self, configparser, moduleparser, category, parent=None):
 		"""Instantiate a ConfigProfileEdit widget
 
 		containing category options
 		@param	self		A ConfigProfileEdit instance
-		@param	configparser			A LTCConfigParser instance
+		@param	configparser	A LTCConfigParser instance
 		@param	category	A string containing the category name
 		@param	parent		Parent QtGui.QWidget
 		"""
+		self.moduleparser = moduleparser
 		self.configparser = configparser
 		self.category = category
 		self.parent = parent
@@ -42,17 +44,21 @@ class ConfigProfileEdit(QtGui.QWidget):
 		self.ui = Ui_configsWidget()
 		self.ui.setupUi(self)
 
-		self.buttons = {}
+		self.modules_widgets = {}
 
-		for o in configparser.getOptionsList(category):
-			self.buttons[o] = QtGui.QPushButton(o, self)
-			self.buttons[o].setCheckable(True)
-			self.ui.ConfigVerticalLayout.addWidget(self.buttons[o])
-			self.connect(self.buttons[o], QtCore.SIGNAL("clicked()"), self.buttonToggled)
+		for m in moduleparser.getModulesList(category):
+			self.modules_widgets[m] = ListItemWidget(
+				moduleparser.getModulePrettyName(m),
+				moduleparser.getModuleDescription(m),
+				moduleparser.getModuleConfigurable(m),
+				self.ui.listWidget)
 
-	def buttonToggled(self):
-		for b in self.buttons:
-			if self.buttons[b].isChecked():
-				self.buttons[b].setStyleSheet("background-color: rgb(180, 255, 180);")
-			else:
-				self.buttons[b].setStyleSheet("background-color: rgb(255, 180, 180);")
+	def setProfile(self, profile):
+		"""Set modules options according with profile's config
+
+		@param	self		A ConfigProfileEdit instance
+		@param	profile		A string containing profile's name
+		"""
+		for m in self.modules_widgets:
+			self.modules_widgets[m].setActivated(
+				self.configparser.getOption(profile, m))

@@ -25,7 +25,7 @@ from ui.edit.ConfigProfileEdit import ConfigProfileEdit
 
 class ProfileEdit(QtGui.QWidget):
 	"""Creates the page to edit profile, into EditPage"""
-	def __init__(self, configparser, parent=None):
+	def __init__(self, configparser, moduleparser, parent=None):
 		"""Instantiate ProfileEdit widget
 
 		@param	self	A ProfileEdit instance
@@ -33,6 +33,7 @@ class ProfileEdit(QtGui.QWidget):
 		@param	parent	Parent QtGui.QWidget
 		"""
 		self.parent = parent
+		self.moduleparser = moduleparser
 		self.configparser = configparser
 
 		QtGui.QWidget.__init__(self, parent)
@@ -40,15 +41,17 @@ class ProfileEdit(QtGui.QWidget):
 		self.ui = Ui_EditProfile()
 		self.ui.setupUi(self)
 
-		self.ui.page.close()
-		self.ui.configToolBox.removeItem(0)
+		# Clean default tabs
+		while self.ui.classTabs.count():
+			self.ui.classTabs.removeTab(0)
 
-		self.pages = {}
+		self.tabs = {}
 		self.profile = ''
 
-		for c in configparser.getCategoriesList():
-			self.pages[c] = ConfigProfileEdit(configparser, c, None)
-			self.ui.configToolBox.addItem(self.pages[c], c)
+		# Add one tab for each category
+		for c in moduleparser.getCategoriesList():
+			self.tabs[c] = ConfigProfileEdit(configparser, moduleparser, c, self)
+			self.ui.classTabs.addTab(self.tabs[c], c)
 
 	def setProfile(self, profile):
 		"""Populates ProfileEdit widget with 'profile' informations
@@ -61,14 +64,10 @@ class ProfileEdit(QtGui.QWidget):
 		if not profile:
 			return
 		self.ui.profileName.setText(profile)
+		#return
 
-		for c in self.configparser.getCategoriesList():
-			for o in self.configparser.getOptionsList(c):
-				if self.configparser.getOption(profile, o):
-					self.pages[c].buttons[o].setChecked(True)
-				else:
-					self.pages[c].buttons[o].setChecked(False)
-			self.pages[c].buttonToggled()
+		for c in self.tabs:
+			self.tabs[c].setProfile(profile)
 
 
 	def readProfileConfig(self):
@@ -86,10 +85,10 @@ class ProfileEdit(QtGui.QWidget):
 			self.configparser.moveProfile(name, newname)
 			name = newname
 
-		for c in self.configparser.getCategoriesList():
-			for o in self.configparser.getOptionsList(c):
+		for c in self.moduleparser.getCategoriesList():
+			for o in self.moduleparser.getModulesList(c):
 				self.configparser.setOption(name, o,
-					self.pages[c].buttons[o].isChecked())
+					self.tabs[c].modules_widgets[o].activated)
 
 		self.parent.updateLists()
 		self.parent.activateProfileSummary(name)

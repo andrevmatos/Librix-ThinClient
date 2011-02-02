@@ -35,7 +35,7 @@ Now, this dont want to mean something"
 		# self.configurable should be a bool True if module has config options
 		self.configurable = True
 		# self.category should be a string containing category name of module
-		self.cateogory = 'software'
+		self.category = 'software'
 
 		# self.th will be a QThread instance
 		self.th = None

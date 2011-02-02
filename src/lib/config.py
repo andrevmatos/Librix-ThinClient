@@ -18,67 +18,28 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from time import strftime as time
 from lxml import etree as ET
 from copy import deepcopy
-from random import choice
+from tempfile import mkstemp
 
 from lib.utils import sha512sum
+from lib.modules import LTCModuleParser
 
 class LTCConfigParser(object):
 	"""LTCConfigParser class to manipulate XML configuration file
 	to Librix Thin Client Administration Interface"""
 
-	def __init__(self):
+	def __init__(self, moduleparser=LTCModuleParser()):
 		"""Instantiate LTCConfigParser
 
 		@param	self		A LTCConfigParser instance
+		@param	moduleparser	A LTCModuleParser instance
 		"""
+		self.moduleparser = moduleparser
 		self.st_mtime = 0
 		self.hash = 0
 		self.configfile = ''
 		self._parser = ET.XMLParser(encoding="utf-8", remove_blank_text=True)
-
-	def _makeTestConfigs(self, file):
-		"""Make test configs
-
-		Write some random configurations to tests librix TCAI
-		@param	self		A LTCConfigParser instance
-		"""
-		self._config = ET.Element("librix_tcd_config")
-		self._name = ET.SubElement(self._config, "name")
-		self._name.text = "Example Config File {0}".format(time('%Y%m%d %H%M'))
-
-		self._profileFalse = ET.SubElement(self._config, "profileFalse",
-			attrib={"name": "profileFalse"})
-
-		for c in ["hardware", "software"]:
-				category = ET.SubElement(self._profileFalse, "category",
-					attrib={"name": c})
-				for o in range(1, 5):
-					o = "{0} option {1}".format(c, o)
-					ET.SubElement(category, "option",
-						attrib={"name": o, "on": "false"})
-
-		self._profiles = ET.SubElement(self._config, "profiles")
-
-		for p in ["Profile 1", "Profile 2", "Profile 3"]:
-			profile = deepcopy(self._profileFalse)
-			profile.tag = "profile"
-			profile.attrib["name"] = p
-			self._profiles.append(profile)
-			for o in profile.findall("category/option"):
-				o.attrib["on"] = str(choice([False, True])).lower()
-
-		self._users = ET.SubElement(self._config, "users")
-		for u in ['andre', 'ivan', 'roberto', 'guilherme',
-			'david', 'carvalho']:
-				ET.SubElement(self._users, "user",
-					attrib={"name": u, "profile": choice(self.getProfilesList())})
-
-		self.backupfile = file
-		self._syncConfigs()
-		del self.backupfile
 
 	def readConfigFile(self, file=''):
 		"""Parse a configfile
@@ -115,33 +76,43 @@ class LTCConfigParser(object):
 		if not file:
 			file = self.configfile
 			backupfile = self.backupfile
-			if self.saved(): return
+			if not self.modified(): return
 		else:
-			backupfile = self.configfile
+			if os.path.isfile(self.configfile): backupfile = self.configfile
+			elif os.path.isfile(self.backupfile): backupfile = self.backupfile
 
 		if file == backupfile: return
 
 		with open(file, 'w') as destfile, open(backupfile, 'r') as backup:
 			destfile.write(backup.read())
 
-		if not self.saved():
+		if self.modified():
 			os.remove(self.backupfile)
 		self.readConfigFile(file)
 
-	def saved(self, file=''):
-		"""Tell if file is saved
+	def newConfigFile(self):
+		"""Creates a new config file in /tmp
 
-		Return true if all changes in file are saved (there's no backupfile)
-		and False otherwise
 		@param	self		A LTCConfigParser instance
-		@param	file		Optional argument. If not given, use self.backupfile
-		@return				A bool value
 		"""
-		if not file:
-			file = self.backupfile
-		else:
-			file += '~'
-		return(not os.path.isfile(file))
+		self.configfile = mkstemp(suffix='.conf', prefix='.tmp')[1]
+		if os.path.isfile(self.configfile): os.remove(self.configfile)
+		self.backupfile = self.configfile + '~'
+
+#		self.st_mtime = os.stat(config).st_mtime
+#		self.hash = sha512sum(file)
+
+		self._config = ET.Element("librix_tcd_config")
+		self._name = ET.SubElement(self._config, "name")
+
+		self._profileFalse = ET.SubElement(self._config, "profileFalse",
+			attrib={"name": "profileFalse"})
+		self._profiles = ET.SubElement(self._config, "profiles")
+		self._users = ET.SubElement(self._config, "users")
+
+		for m in self.moduleparser.getModulesList():
+			ET.SubElement(self._profileFalse, "option",
+				attrib={"name": m, "on": str(False).lower()})
 
 	def _syncConfigs(self):
 		"""Sync self.xml with self.backupfile
@@ -149,6 +120,31 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		"""
 		self._config.getroottree().write(self.backupfile, pretty_print=True)
+
+	def modified(self, file=''):
+		"""Tell if file is modified
+
+		Return true if all changes in file are saved (there's no backupfile)
+		and False otherwise
+		@param	self		A LTCConfigParser instance
+		@param	file		Optional argument. If not given, use self.backupfile
+		@return				Int value. 0 if not modified, 1 if yes and 2 if new
+		"""
+		if not file:
+			configfile = self.configfile
+			backupfile = self.backupfile
+		else:
+			configfile = file
+			backupfile = file + '~'
+
+		#return(not os.path.isfile(file)|)
+		configfile + backupfile
+		if os.path.isfile(configfile) and os.path.isfile(backupfile):
+			return(1)
+		elif os.path.isfile(backupfile):
+			return(2)
+		else:
+			return(0)
 
 	def getName(self):
 		"""Return config file name
@@ -310,38 +306,18 @@ class LTCConfigParser(object):
 		self._profiles.append(p)
 		self._syncConfigs()
 
-	def getCategoriesList(self):
-		"""Return a list of categories in profile
-
-		@param	self		A LTCConfigParser() instance
-		@return				A list of strings with the
-							categories names
-		"""
-
-		_c = [c.get("name") for c in self._profileFalse.findall("category")]
-		_c.sort()
-		return(_c)
-
-	def getOptionsList(self, category=''):
+	def getOptionsList(self):
 		"""Return a list of options in category of profile
 
 		If category not given, all options are listed
 		@param	self		A LTCConfigParser() instance
 		@param	profile		A profile name string.
-		@param	category	A category name string.
 		@return				A list of strings with the options names
 								in category
 		"""
-		if category and not category in self.getCategoriesList():
-			raise IndexError("\"{0}\" not in \
-				category list".format(category))
 
-		if category:
-			_o = [o.get("name") for o in self._profileFalse.findall(
-				"category[@name='{0}']/option".format(category))]
-		else:
-			_o = [o.get("name") for o in self._profileFalse.findall(
-				"category/option")]
+
+		_o = [o.get("name") for o in self._profileFalse.findall("option")]
 		_o.sort()
 		return(_o)
 
@@ -372,8 +348,8 @@ class LTCConfigParser(object):
 		if not option in self.getOptionsList():
 			raise IndexError("\"{0}\" not in options list".format(option))
 
-		o = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{1}']").format(profile, option))
+		o = self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
+			.format(profile, option))
 		# Using string to match partial names, like F and no, to false
 		if o.get("on").lower() in "false off not 0":
 			return(False)
@@ -393,8 +369,8 @@ class LTCConfigParser(object):
 		if not option in self.getOptionsList():
 			raise IndexError("\"{0}\" not in options list".format(option))
 
-		o = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{1}']").format(profile, option))
+		o = self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
+			.format(profile, option))
 		o.set("on", str(value).lower())
 		self._syncConfigs()
 
@@ -412,8 +388,8 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in options list".format(option))
 
 		return(deepcopy(
-			self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{1}']").format(profile, option))))
+			self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
+				.format(profile, option))))
 
 	def setConfig(self, profile, option, config):
 		"""Get XML object based config information of an option
@@ -428,13 +404,13 @@ class LTCConfigParser(object):
 		if not option in self.getOptionsList():
 			raise IndexError("\"{0}\" not in options list".format(option))
 
-		O = self._profiles.find(("profile[@name='{0}']/category/"+
-			"option[@name='{1}']").format(profile, option))
+		O = self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
+			.format(profile, option))
 		att = deepcopy(O.attrib)
 		O.getparent().replace(O, config)
 
-		self._profiles.find(("profile[@name='{0}']/category/"+
-		"option[@name='{1}']").format(profile, option)).attrib = att
+		self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
+			.format(profile, option)).attrib = att
 
 		self._syncConfigs()
 		del att

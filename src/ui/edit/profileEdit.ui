@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
+    <width>651</width>
     <height>550</height>
    </rect>
   </property>
@@ -28,67 +28,25 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="configBox">
-     <property name="title">
-      <string>Profile Configuration</string>
+    <widget class="QTabWidget" name="classTabs">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QToolBox" name="configToolBox">
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>426</width>
-           <height>420</height>
-          </rect>
-         </property>
-         <attribute name="label">
-          <string>Page 1</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QScrollArea" name="scrollArea">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>418</width>
-               <height>412</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <widget class="QPushButton" name="pushButton">
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="icons/temp_icons.qrc">
-                  <normaloff>:/edit_icon/ok.png</normaloff>:/edit_icon/ok.png</iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QListWidget" name="optionsList"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
    <item>
@@ -101,7 +59,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="icons/temp_icons.qrc"/>
+  <include location="../icons/temp_icons.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -115,7 +73,7 @@
      <y>538</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-2</x>
+     <x>0</x>
      <y>117</y>
     </hint>
    </hints>
@@ -131,7 +89,7 @@
      <y>535</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-3</x>
+     <x>0</x>
      <y>151</y>
     </hint>
    </hints>

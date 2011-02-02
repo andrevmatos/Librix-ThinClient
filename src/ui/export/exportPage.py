@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt4 import QtGui,QtCore
+from PyQt4 import QtGui
 import os
 
 from ui.export.Ui_exportWidget import Ui_ExportWidget
@@ -28,7 +28,7 @@ from ui.export.scanTargets import ScanTargets
 
 class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""
-	def __init__(self, configparser, leftList, parent=None):
+	def __init__(self, configparser, moduleparser, leftList, parent=None):
 		"""Instantiate a ExportPage object
 
 		@param	self		A ExportPage instance
@@ -36,6 +36,7 @@ class ExportPage(QtGui.QWidget):
 		@param	leftList	The leftMenu QListWidget, to create the tab
 		@param	parent		A QtGui.QWidget parent object
 		"""
+		self.moduleparser = moduleparser
 		self.configparser = configparser
 		self.leftList = leftList
 		self.parent = parent
