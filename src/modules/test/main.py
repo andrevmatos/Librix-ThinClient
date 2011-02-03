@@ -42,19 +42,19 @@ Now, this dont want to mean something"
 
 		self.started = False
 
-	def start(self, conf):
+	def start(self, conf=None):
 		"""Start module"""
 		if not self.started:
 			self.started = True
 			print("__", self.prettyname, "started!")
 
-	def stop(self, conf):
+	def stop(self, conf=None):
 		"""Stop module"""
 		if self.started:
 			self.started = False
 			print("__", self.prettyname, "stopped!")
 
-	def status(self, conf):
+	def status(self, conf=None):
 		"""Return true if module is active WITH conf"""
 		return(self.started)
 

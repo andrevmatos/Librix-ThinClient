@@ -24,12 +24,14 @@ from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
 
 from daemon.filechecker import FileChecker
 from daemon.userchecker import UserChecker
-from lib.daemon import Daemon
+#from lib.daemon import Daemon
 from lib.config import LTCConfigParser
 from lib.modules import LTCModuleParser
+from lib.http import ThreadedServer
 
 pidfile = '/var/run/thinclient.pid'
 configfile = 'thinclient.conf'
+http_port = 8088
 
 class LibrixTCDaemon(QObject):
 	"""This class provides the main daemon for Librix Thin Client"""
@@ -46,19 +48,23 @@ class LibrixTCDaemon(QObject):
 
 		# Init LTCModuleParser
 		self.moduleparser = LTCModuleParser()
-		self.moduleparser.parseModules()
+
+		self.httpserver = ThreadedServer(self.configparser, http_port)
+		self.httpserver.start()
 
 		# Init FileChecker instance and timer
-		self.checkFile = FileChecker(self.configparser)
+		self.checkFile = FileChecker(self.configparser, self.moduleparser)
 		self.checkFileTimer = QTimer(self)
 		self.connect(self.checkFileTimer,
 			SIGNAL("timeout()"), self.checkFile.start)
 
 		# Init UserChecker instance and timer
-		self.checkUsers = UserChecker(self.configparser)
+		self.checkUsers = UserChecker(self.configparser, self.moduleparser)
 		self.checkUsersTimer = QTimer(self)
 		self.connect(self.checkUsersTimer,
 			SIGNAL("timeout()"), self.checkUsers.start)
+
+		self.checkFile.refreshConfigs.connect(self.checkUsers.clearUser)
 
 		# Start timers
 		self.checkFileTimer.start(5000)

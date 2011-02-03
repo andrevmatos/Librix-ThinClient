@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from PyQt4.QtCore import SIGNAL, QThread
+from PyQt4.QtCore import QThread
 
 class UserChecker(QThread):
 	"""Check if a user in configfile is logged and apply rules"""
@@ -36,6 +36,9 @@ class UserChecker(QThread):
 
 		self.currentuser = None
 
+	def clearUser(self):
+		self.currentuser = None
+
 	def run(self):
 		"""Thread main routine
 
@@ -43,7 +46,7 @@ class UserChecker(QThread):
 		users list. If yes, apply configurations
 		@param	self		A UserChecker instance
 		"""
-		#print('__run UserChecker', end=' ')
+		print('__run UserChecker', end=' ')
 		with os.popen('users') as U:
 			loggedUsers = list(set(U.read().strip().split()))
 			loggedUsers.sort()
@@ -62,7 +65,9 @@ class UserChecker(QThread):
 						# by check if itself is already started or stoped
 						if self.configparser.getOption(p, o):
 							self.moduleparser.startModule(o)
+							print("__startModule", o)
 						else:
 							self.moduleparser.stopModule(o)
+							print("__stopModule", o)
 					self.currentuser = u
-		#print('__end UserChecker')
+		print('__end UserChecker')

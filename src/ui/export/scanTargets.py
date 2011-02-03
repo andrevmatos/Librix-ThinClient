@@ -21,12 +21,14 @@
 from PyQt4 import QtGui,QtCore
 from ui.export.Ui_scanTargetsDialog import Ui_ScanTargetsDialog
 
-#from lib.ping import ping
-import subprocess
-from random import random
+from urllib.request import urlopen
 
 class ScanTargets(QtGui.QDialog):
 	"""Creates scan targets dialog"""
+
+	# Implement custom signal to carry IP list
+	ipDict = QtCore.pyqtSignal(dict, name="ipDict")
+
 	def __init__(self, parent=None):
 		"""Instantiate a ScanTargets object
 
@@ -38,80 +40,124 @@ class ScanTargets(QtGui.QDialog):
 		self.ui = Ui_ScanTargetsDialog()
 		self.ui.setupUi(self)
 
-		self.targets = []
+		self.setModal(True)
+		self.makeMenu()
+
 		self.tree = []
-		self.total = 0
+		self.total = 0.0
+		self.finished = 0.0
+
+	def makeMenu(self):
+		self.menu = QtGui.QMenu(self.ui.selectButton)
+
+		self.menu.addAction(self.tr("Select All"))\
+			.triggered.connect(self.selectAll)
+		self.menu.addAction(self.tr("Select Online"))\
+			.triggered.connect(self.selectOnline)
+		self.menu.addAction(self.tr("Select None"))\
+			.triggered.connect(self.selectNone)
+		self.menu.addSeparator()
+		self.menu.addAction(self.tr("Invert Selection"))\
+			.triggered.connect(self.invertSelection)
+
+		self.ui.selectButton.setMenu(self.menu)
 
 	def scan(self, targets):
-		#for i in self.targets:
-		#	self.targets.remove(i)
-		#self.targets = []
 		self.ui.progressBar.setValue(0)
+		self.finished = 0
 		self.total = len(targets)
 		for i in targets:
 			T = TreeElement(i, len(targets), self.ui.targetsTree)
 			self.tree.append(T)
-			self.connect(T.thread, QtCore.SIGNAL("pingFinished()"), self.increaseProgress)
+			T.pingFinished.connect(self.increaseProgress)
 
 	def rescan(self):
 		self.ui.progressBar.setValue(0)
+		self.finished = 0
 		for i in self.tree:
 			i.setSelected(False)
-			i.thread.start()
+			i.start()
 
 	def increaseProgress(self):
-		p = self.ui.progressBar
-		p.setValue(p.value() + int(round(100.0/self.total)))
-
-	def backClicked(self):
-		pass
+		self.finished += 1
+		v = int(round(100.0*(self.finished/self.total)))
+		self.ui.progressBar.setValue(v)
 
 	def accept(self):
+		targets = {}
 		for i in self.tree:
 			if i.isSelected():
-				self.targets.append(i.text(0))
+				targets[i.address] = i.online
+		self.ipDict.emit(targets)
 		QtGui.QDialog.accept(self)
 
-	def exec_(self, targets):
-		"""Reimplemented exec_ function from QtGui.QDialog
-
-		@param	self		A ScanTargets instance
-		@param	targets		A list containing IP address
-		@return				A list containing IP address
-		"""
-		if not targets:
-			return([])
-
+	def show(self, targets):
+		self.total = len(targets)
+		if self.isVisible():
+			return
 		self.scan(targets)
-		r = QtGui.QDialog.exec_(self)
+		QtGui.QWidget.show(self)
 
-		if r: return(self.targets)
-		else: return([])
+	def selectAll(self):
+		for i in self.tree:
+			i.setSelected(True)
 
-class TreeElement(QtGui.QTreeWidgetItem):
+	def selectNone(self):
+		for i in self.tree:
+			i.setSelected(False)
+
+	def selectOnline(self):
+		for i in self.tree:
+			if i.online: i.setSelected(True)
+			else: i.setSelected(False)
+
+	def invertSelection(self):
+		for i in self.tree:
+			i.setSelected(not i.isSelected())
+
+
+# TODO: when get the right implementation of scan fuction (maybe using http
+# serv, move this class to other file. This is ugly =P
+class TreeElement(QtCore.QThread):
+	# Custom signal
+	pingFinished = QtCore.pyqtSignal()
+
 	def __init__(self, address, total, parent=None):
 		self.parent = parent
 		self.address = address
 		self.total = total
 
-		QtGui.QTreeWidgetItem.__init__(self, parent)
+		QtCore.QThread.__init__(self)
 
-		self.setText(0, address)
+		self.listItem = QtGui.QTreeWidgetItem(parent)
+		self.listItem.setText(0, address)
 
-		self.thread = QtCore.QThread()
-		self.thread.element = self
-		self.thread.run = self.run
-		self.thread.start()
+		self.start()
+
+	def setSelected(self, value):
+		self.listItem.setSelected(value)
+
+	def isSelected(self):
+		return(self.listItem.isSelected())
 
 	def run(self):
-		self.setText(1, self.tr("Scanning", "a host or IP on add targets dialog"))
-		#self.thread.msleep(int(2000*random()))
-		self.on = subprocess.Popen("ping -c 4 {0}".format(self.address).split(),
-			stdout=subprocess.PIPE)
-		if not self.on.wait():
-			self.setSelected(True)
-			self.setText(1, self.tr("Online", "host connected"))
+		self.listItem.setText(1, self.tr("Scanning",
+			"a host or IP on add targets dialog"))
+		self.online = None
+
+		for k in range(3):
+			try:
+				u = urlopen("http://{0}:8088".format(self.address), None, 5)
+				self.online = u.read().decode('utf-8').strip()
+				break
+			except:
+				continue
+
+		if self.online:
+			self.listItem.setSelected(True)
+			self.listItem.setText(1, self.tr(self.online, "host connected"))
 		else:
-			self.setSelected(False)
-			self.setText(1, self.tr("Seens Offline", "if the host has not been answered"))
-		self.thread.emit(QtCore.SIGNAL("pingFinished()"))
+			self.listItem.setSelected(False)
+			self.listItem.setText(1, self.tr("Seens Offline",
+			"if the host has not been answered"))
+		self.pingFinished.emit()

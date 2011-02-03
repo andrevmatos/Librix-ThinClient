@@ -19,13 +19,15 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from PyQt4.QtCore import SIGNAL, QThread
+from PyQt4.QtCore import QThread,pyqtSignal
 from lib.utils import sha512sum
 
 class FileChecker(QThread):
 	"""Check if configfile was modifyed and reload it"""
 
-	def __init__(self, configparser):
+	refreshConfigs = pyqtSignal()
+
+	def __init__(self, configparser, moduleparser):
 		"""Thread init routine
 
 		@param	self		A FileChecker instance
@@ -46,10 +48,10 @@ class FileChecker(QThread):
 		If yes, reload configs
 		@param	self		A FileChecker instance
 		"""
-		#print('__run FileChecker', end=' ')
+		print('__run FileChecker', end=' ')
 		if os.stat(self.configfile).st_mtime != self.configparser.st_mtime:
 			hash = sha512sum(self.configfile)
 			if hash != self.configparser.hash:
 				self.configparser.readConfigFile()
-				self.emit(SIGNAL("refreshConfigs()"))
-		#print('__end FileChecker')
+				self.refreshConfigs.emit()
+		print('__end FileChecker')

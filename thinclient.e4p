@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-01, 20:06:19 -->
+<!-- Saved: 2011-02-02, 18:44:19 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -61,6 +61,7 @@
     <Source>src/lib/ping.py</Source>
     <Source>src/ui/edit/ListItemWidget.py</Source>
     <Source>src/ui/edit/Ui_listItemWidget.py</Source>
+    <Source>src/lib/http.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

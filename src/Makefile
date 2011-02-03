@@ -24,7 +24,7 @@ SHELL=/bin/bash
 
 .PHONY: compile
 
-compile:
+compile: clean
 	/usr/bin/python3 build.py
 clean:
 	find ./ -iname \*.pyc -delete ; \

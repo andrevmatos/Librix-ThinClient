@@ -2,21 +2,14 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-02, 10:04:49 -->
+<!-- Saved: 2011-02-02, 18:44:19 -->
 <Session version="4.4">
   <Filenames>
     <Filename cline="26" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/init.py</Filename>
-    <Filename cline="177" cindex="25" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/main.py</Filename>
-    <Filename cline="81" cindex="53" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
-    <Filename cline="73" cindex="24" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
-    <Filename cline="61" cindex="16" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/editPage.py</Filename>
-    <Filename cline="69" cindex="35" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/ProfileEdit.py</Filename>
-    <Filename cline="53" cindex="22" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/ConfigProfileEdit.py</Filename>
-    <Filename cline="96" cindex="33" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/ListItemWidget.py</Filename>
-    <Filename cline="57" cindex="90" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/Ui_listItemWidget.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/common/LeftMenuItem.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/__init__.py</Filename>
+    <Filename cline="69" cindex="21" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/export/scanTargets.py</Filename>
   </Filenames>
-  <ActiveWindow cline="96" cindex="33">/home/andre/Dev/Librix/thinclient/src/ui/edit/ListItemWidget.py</ActiveWindow>
+  <ActiveWindow cline="69" cindex="21">/home/andre/Dev/Librix/thinclient/src/ui/export/scanTargets.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>
@@ -31,14 +24,5 @@
     <AutoContinue value="True"/>
     <CovexcPattern/>
   </DebugInfo>
-  <Bookmarks>
-    <Bookmark>
-      <BmFilename>/home/andre/Dev/Librix/thinclient/src/lib/config.py</BmFilename>
-      <Linenumber value="43"/>
-    </Bookmark>
-    <Bookmark>
-      <BmFilename>/home/andre/Dev/Librix/thinclient/src/lib/config.py</BmFilename>
-      <Linenumber value="105"/>
-    </Bookmark>
-  </Bookmarks>
+  <Bookmarks/>
 </Session>

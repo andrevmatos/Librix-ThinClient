@@ -41,7 +41,7 @@ class ExportPage(QtGui.QWidget):
 		self.leftList = leftList
 		self.parent = parent
 
-		self.targets = []
+		self.targets = {}
 
 		QtGui.QWidget.__init__(self, parent)
 
@@ -55,7 +55,7 @@ class ExportPage(QtGui.QWidget):
 		self.fscompleter.setModel(QtGui.QDirModel(self.fscompleter))
 		self.ui.privKeyPath.setCompleter(self.fscompleter)
 
-		self.checkPrivKeyFile(self.ui.privKeyPath.text())
+		self.checkPrivKeyFile()
 
 	def browsePrivKeyFile(self):
 		"""Browse files and set ui.pathLineEdit with given path
@@ -67,25 +67,33 @@ class ExportPage(QtGui.QWidget):
 		if filepath:
 			self.ui.privKeyPath.setText(filepath)
 
-	def checkPrivKeyFile(self, path):
-		"""Verify if path on self.ui.pathLineEdit exists
+	def checkPrivKeyFile(self, path=''):
+		"""Verify if path on self.ui.pathLineEdit exists.
 
-		and set lineedit text color as red and apply button disabled if not
+		Also check if has targets, and set lineedit text color as red
+		and apply button disabled if not
 		@param	self		A ExportPage instance
 		@param	path		A filepath string
 		"""
+		if not path:
+			path = self.ui.privKeyPath.text()
+
 		if os.path.isfile(path):
 			# Set lineedit text color to default
 			self.ui.privKeyPath.setStyleSheet("")
-			# Set Apply button enabled
+		else:
+			# Set lineedit text color as red
+			self.ui.privKeyPath.setStyleSheet("color: red;")
+
+		self.checkConfigs()
+
+	def checkConfigs(self):
+		if os.path.isfile(self.ui.privKeyPath.text()) and self.targets:
 			for b in self.ui.buttonBox.buttons():
 				if self.ui.buttonBox.standardButton(b)\
 					== QtGui.QDialogButtonBox.Apply:
 					b.setEnabled(True)
 		else:
-			# Set lineedit text color as red
-			self.ui.privKeyPath.setStyleSheet("color: red;")
-			# Set Apply button disabled
 			for b in self.ui.buttonBox.buttons():
 				if self.ui.buttonBox.standardButton(b)\
 					== QtGui.QDialogButtonBox.Apply:
@@ -99,11 +107,11 @@ class ExportPage(QtGui.QWidget):
 		addTargetsDialog = AddTargets(self)
 		scanTargetsDialog = ScanTargets(self)
 
-		targets = addTargetsDialog.exec_()
-		targets = scanTargetsDialog.exec_(targets)
+		addTargetsDialog.show()
 
-		self.targets.extend(targets)
-		self.refreshTargets()
+		addTargetsDialog.ipList.connect(scanTargetsDialog.show)
+		scanTargetsDialog.ipDict.connect(self.targets.update)
+		scanTargetsDialog.ipDict.connect(self.refreshTargets)
 
 	def removeTargetsClicked(self):
 		"""Remove selected targets from targets list
@@ -112,13 +120,26 @@ class ExportPage(QtGui.QWidget):
 		"""
 		for i in self.ui.treeWidget.selectedItems():
 			if i.isSelected():
-				try: self.targets.remove(i.text(0))
-				except Exception as e: print("This must not been happened:", e)
+				try: self.targets.pop(i.text(0))
+				except Exception as e: print("This must not has happened:", e)
 		self.refreshTargets()
 
 	def refreshTargets(self):
 		print("__refreshed")
 		self.ui.treeWidget.clear()
 		for i in self.targets:
-			QtGui.QTreeWidgetItem(self.ui.treeWidget, [i, "Online"])
+			QtGui.QTreeWidgetItem(self.ui.treeWidget, [i, self.targets[i]])
+		self.checkPrivKeyFile()
+		self.checkConfigs()
+
+	def buttonBoxClicked(self, button):
+		if self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Reset:
+			self.targets = {}
+			self.ui.privKeyPath.setText("/root/.ssh/id_rsa")
+		elif self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Apply:
+			# TODO: implement actual export (scp) function
+			pass
+		self.refreshTargets()
+		self.checkPrivKeyFile()
+
 

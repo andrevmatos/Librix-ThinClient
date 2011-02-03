@@ -25,6 +25,10 @@ from lib.utils import subnetwork
 
 class AddTargets(QtGui.QDialog):
 	"""Creates add targets dialog"""
+
+	# Implement custom signal to carry IP list
+	ipList = QtCore.pyqtSignal(list, name="ipList")
+
 	def __init__(self, parent=None):
 		"""Instantiate a AddTargets object
 
@@ -37,6 +41,8 @@ class AddTargets(QtGui.QDialog):
 
 		self.ui = Ui_AddTargetsDialog()
 		self.ui.setupUi(self)
+
+		self.setModal(True)
 
 		self.opts = {
 			self.ui.singleRadio: self.ui.singleWidget,
@@ -74,18 +80,8 @@ class AddTargets(QtGui.QDialog):
 
 	def accept(self):
 		if self.targets:
+			self.ipList.emit(self.targets)
 			QtGui.QDialog.accept(self)
-
-	def exec_(self):
-		"""Reimplemented exec_ function from QtGui.QDialog
-
-		@param	self		A AddTargets instance
-		@return				A list containing IP address
-		"""
-		r = QtGui.QDialog.exec_(self)
-
-		if r: return(self.targets)
-		else: return([])
 
 	def parseTargets(self, text):
 		self.targets = []

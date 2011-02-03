@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/scanTargetsDialog.ui'
 #
-# Created: Wed Feb  2 12:02:36 2011
+# Created: Wed Feb  2 23:37:29 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,7 +35,10 @@ class Ui_ScanTargetsDialog(object):
 		self.targetsTree.setAnimated(True)
 		self.targetsTree.setWordWrap(True)
 		self.targetsTree.setObjectName(_fromUtf8("targetsTree"))
-		self.targetsTree.header().setDefaultSectionSize(400)
+		self.targetsTree.header().setCascadingSectionResizes(False)
+		self.targetsTree.header().setDefaultSectionSize(200)
+		self.targetsTree.header().setHighlightSections(False)
+		self.targetsTree.header().setMinimumSectionSize(250)
 		self.horizontalLayout_2.addWidget(self.targetsTree)
 		self.verticalLayout.addWidget(self.mainWidget)
 		self.progressBar = QtGui.QProgressBar(ScanTargetsDialog)
@@ -53,9 +56,11 @@ class Ui_ScanTargetsDialog(object):
 		icon = QtGui.QIcon()
 		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/refresh.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.refreshButton.setIcon(icon)
-		self.refreshButton.setAutoDefault(True)
 		self.refreshButton.setObjectName(_fromUtf8("refreshButton"))
 		self.horizontalLayout.addWidget(self.refreshButton)
+		self.selectButton = QtGui.QPushButton(self.buttonBox)
+		self.selectButton.setObjectName(_fromUtf8("selectButton"))
+		self.horizontalLayout.addWidget(self.selectButton)
 		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
 		self.horizontalLayout.addItem(spacerItem)
 		self.cancelButton = QtGui.QPushButton(self.buttonBox)
@@ -63,7 +68,6 @@ class Ui_ScanTargetsDialog(object):
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/close.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.cancelButton.setIcon(icon1)
-		self.cancelButton.setAutoDefault(True)
 		self.cancelButton.setObjectName(_fromUtf8("cancelButton"))
 		self.horizontalLayout.addWidget(self.cancelButton)
 		self.okButton = QtGui.QPushButton(self.buttonBox)
@@ -89,6 +93,7 @@ class Ui_ScanTargetsDialog(object):
 		self.targetsTree.headerItem().setText(0, QtGui.QApplication.translate("ScanTargetsDialog", "Address", None, QtGui.QApplication.UnicodeUTF8))
 		self.targetsTree.headerItem().setText(1, QtGui.QApplication.translate("ScanTargetsDialog", "Version", None, QtGui.QApplication.UnicodeUTF8))
 		self.refreshButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Rescan", None, QtGui.QApplication.UnicodeUTF8))
+		self.selectButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Select", None, QtGui.QApplication.UnicodeUTF8))
 		self.cancelButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 		self.okButton.setText(QtGui.QApplication.translate("ScanTargetsDialog", "Ok", None, QtGui.QApplication.UnicodeUTF8))
 

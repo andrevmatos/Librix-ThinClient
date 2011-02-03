@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Wed Feb  2 12:02:36 2011
+# Created: Wed Feb  2 23:37:29 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,7 +40,8 @@ class Ui_ExportWidget(object):
 		self.treeWidget.setAnimated(True)
 		self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
 		self.treeWidget.header().setCascadingSectionResizes(True)
-		self.treeWidget.header().setDefaultSectionSize(400)
+		self.treeWidget.header().setDefaultSectionSize(200)
+		self.treeWidget.header().setMinimumSectionSize(250)
 		self.treeWidget.header().setSortIndicatorShown(True)
 		self.horizontalLayout.addWidget(self.treeWidget)
 		self.targetsToolBar = QtGui.QWidget(self.IPsWidget)
@@ -108,6 +109,7 @@ class Ui_ExportWidget(object):
 		QtCore.QObject.connect(self.openButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.browsePrivKeyFile)
 		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.addTargetsClicked)
 		QtCore.QObject.connect(self.toolButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.removeTargetsClicked)
+		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("clicked(QAbstractButton*)")), ExportWidget.buttonBoxClicked)
 		QtCore.QMetaObject.connectSlotsByName(ExportWidget)
 
 	def retranslateUi(self, ExportWidget):

@@ -44,8 +44,17 @@
         <property name="wordWrap">
          <bool>true</bool>
         </property>
+        <attribute name="headerCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
         <attribute name="headerDefaultSectionSize">
-         <number>400</number>
+         <number>200</number>
+        </attribute>
+        <attribute name="headerHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="headerMinimumSectionSize">
+         <number>250</number>
         </attribute>
         <column>
          <property name="text">
@@ -90,8 +99,12 @@
          <iconset resource="../icons/temp_icons.qrc">
           <normaloff>:/tab/refresh.png</normaloff>:/tab/refresh.png</iconset>
         </property>
-        <property name="autoDefault">
-         <bool>true</bool>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="selectButton">
+        <property name="text">
+         <string>Select</string>
         </property>
        </widget>
       </item>
@@ -122,9 +135,6 @@
         <property name="icon">
          <iconset resource="../icons/temp_icons.qrc">
           <normaloff>:/edit_icon/close.png</normaloff>:/edit_icon/close.png</iconset>
-        </property>
-        <property name="autoDefault">
-         <bool>true</bool>
         </property>
        </widget>
       </item>

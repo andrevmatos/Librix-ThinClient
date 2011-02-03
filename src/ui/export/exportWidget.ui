@@ -47,7 +47,10 @@
             <bool>true</bool>
            </attribute>
            <attribute name="headerDefaultSectionSize">
-            <number>400</number>
+            <number>200</number>
+           </attribute>
+           <attribute name="headerMinimumSectionSize">
+            <number>250</number>
            </attribute>
            <attribute name="headerShowSortIndicator" stdset="0">
             <bool>true</bool>
@@ -279,12 +282,28 @@
    <slot>removeTargetsClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>626</x>
-     <y>89</y>
+     <x>618</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>601</x>
      <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>ExportWidget</receiver>
+   <slot>buttonBoxClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>583</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>647</x>
+     <y>514</y>
     </hint>
    </hints>
   </connection>
@@ -294,5 +313,6 @@
   <slot>browsePrivKeyFile()</slot>
   <slot>addTargetsClicked()</slot>
   <slot>removeTargetsClicked()</slot>
+  <slot>buttonBoxClicked()</slot>
  </slots>
 </ui>
