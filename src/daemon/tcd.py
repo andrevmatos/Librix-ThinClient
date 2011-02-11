@@ -19,6 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+import os
 
 from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
 
@@ -31,6 +32,7 @@ from lib.http import ThreadedServer
 
 pidfile = '/var/run/thinclient.pid'
 configfile = 'thinclient.conf'
+authorized_keys = '~/.ssh/authorized_keys'
 http_port = 8088
 
 class LibrixTCDaemon(QObject):
@@ -49,6 +51,7 @@ class LibrixTCDaemon(QObject):
 		# Init LTCModuleParser
 		self.moduleparser = LTCModuleParser()
 
+		# Start HTTP server
 		self.httpserver = ThreadedServer(self.configparser, http_port)
 		self.httpserver.start()
 
@@ -64,11 +67,22 @@ class LibrixTCDaemon(QObject):
 		self.connect(self.checkUsersTimer,
 			SIGNAL("timeout()"), self.checkUsers.start)
 
-		self.checkFile.refreshConfigs.connect(self.checkUsers.clearUser)
+		self.checkFile.reload.connect(self.checkUsers.clearUser)
+		self.checkFile.reload.connect(self.writePubKeys)
 
 		# Start timers
 		self.checkFileTimer.start(5000)
 		self.checkUsersTimer.start(2000)
+
+	def writePubKeys(self):
+		"""Install pubkeys in configfile on authorized keys file
+
+		Called when checkFile.reload signal is emited
+		@param	self		A LTCModuleParser instance
+		"""
+		with open(os.path.expanduser(authorized_keys), 'w') as kf:
+			kf.write('\n'.join(self.configparser.getKeys()))
+
 
 def run():
 		"""The program main loop"""
@@ -84,3 +98,4 @@ def run():
 if __name__ == '__main__':
 	#main()
 	run()
+

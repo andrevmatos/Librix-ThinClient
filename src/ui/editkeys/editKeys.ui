@@ -59,9 +59,44 @@
           <number>2</number>
          </property>
          <item>
-          <widget class="QToolButton" name="addButton">
+          <widget class="QToolButton" name="openButton">
+           <property name="toolTip">
+            <string>Add PubKey from File</string>
+           </property>
+           <property name="statusTip">
+            <string>Add PubKey from File</string>
+           </property>
+           <property name="whatsThis">
+            <string>Add PubKey from File</string>
+           </property>
            <property name="text">
-            <string>...</string>
+            <string>Add PubKey from File</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
+             <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="addButton">
+           <property name="toolTip">
+            <string>Add PubKey</string>
+           </property>
+           <property name="statusTip">
+            <string>Add PubKey</string>
+           </property>
+           <property name="whatsThis">
+            <string>Add PubKey</string>
+           </property>
+           <property name="text">
+            <string>Add PubKey</string>
            </property>
            <property name="icon">
             <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
@@ -77,8 +112,17 @@
          </item>
          <item>
           <widget class="QToolButton" name="delButton">
+           <property name="toolTip">
+            <string>Remove PubKey</string>
+           </property>
+           <property name="statusTip">
+            <string>Remove PubKey</string>
+           </property>
+           <property name="whatsThis">
+            <string>Remove PubKey</string>
+           </property>
            <property name="text">
-            <string>...</string>
+            <string>Remove PubKey</string>
            </property>
            <property name="icon">
             <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
@@ -166,8 +210,8 @@
    <slot>addKey()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>648</x>
-     <y>42</y>
+     <x>667</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>628</x>
@@ -182,8 +226,8 @@
    <slot>delKey()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>666</x>
-     <y>67</y>
+     <x>667</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>656</x>
@@ -191,9 +235,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>openButton</sender>
+   <signal>clicked()</signal>
+   <receiver>EditKeys</receiver>
+   <slot>openKey()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>648</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>596</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addKey()</slot>
   <slot>delKey()</slot>
+  <slot>openKey()</slot>
  </slots>
 </ui>

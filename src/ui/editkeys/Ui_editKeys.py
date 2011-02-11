@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/editkeys/editKeys.ui'
 #
-# Created: Fri Feb 11 15:46:58 2011
+# Created: Fri Feb 11 19:24:57 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,17 +45,24 @@ class Ui_EditKeys(object):
 		self.verticalLayout_2.setMargin(2)
 		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-		self.addButton = QtGui.QToolButton(self.toolBar)
+		self.openButton = QtGui.QToolButton(self.toolBar)
 		icon = QtGui.QIcon()
-		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/list-add.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.addButton.setIcon(icon)
+		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.openButton.setIcon(icon)
+		self.openButton.setIconSize(QtCore.QSize(22, 22))
+		self.openButton.setObjectName(_fromUtf8("openButton"))
+		self.verticalLayout_2.addWidget(self.openButton)
+		self.addButton = QtGui.QToolButton(self.toolBar)
+		icon1 = QtGui.QIcon()
+		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/list-add.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.addButton.setIcon(icon1)
 		self.addButton.setIconSize(QtCore.QSize(22, 22))
 		self.addButton.setObjectName(_fromUtf8("addButton"))
 		self.verticalLayout_2.addWidget(self.addButton)
 		self.delButton = QtGui.QToolButton(self.toolBar)
-		icon1 = QtGui.QIcon()
-		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/list-remove.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.delButton.setIcon(icon1)
+		icon2 = QtGui.QIcon()
+		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/list-remove.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.delButton.setIcon(icon2)
 		self.delButton.setIconSize(QtCore.QSize(22, 22))
 		self.delButton.setObjectName(_fromUtf8("delButton"))
 		self.verticalLayout_2.addWidget(self.delButton)
@@ -74,13 +81,24 @@ class Ui_EditKeys(object):
 		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), EditKeys.reject)
 		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditKeys.addKey)
 		QtCore.QObject.connect(self.delButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditKeys.delKey)
+		QtCore.QObject.connect(self.openButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditKeys.openKey)
 		QtCore.QMetaObject.connectSlotsByName(EditKeys)
 
 	def retranslateUi(self, EditKeys):
 		EditKeys.setWindowTitle(QtGui.QApplication.translate("EditKeys", "Edit PubKeys", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("EditKeys", "Super User SSH Public Keys:", None, QtGui.QApplication.UnicodeUTF8))
-		self.addButton.setText(QtGui.QApplication.translate("EditKeys", "...", None, QtGui.QApplication.UnicodeUTF8))
-		self.delButton.setText(QtGui.QApplication.translate("EditKeys", "...", None, QtGui.QApplication.UnicodeUTF8))
+		self.openButton.setToolTip(QtGui.QApplication.translate("EditKeys", "Add PubKey from File", None, QtGui.QApplication.UnicodeUTF8))
+		self.openButton.setStatusTip(QtGui.QApplication.translate("EditKeys", "Add PubKey from File", None, QtGui.QApplication.UnicodeUTF8))
+		self.openButton.setWhatsThis(QtGui.QApplication.translate("EditKeys", "Add PubKey from File", None, QtGui.QApplication.UnicodeUTF8))
+		self.openButton.setText(QtGui.QApplication.translate("EditKeys", "Add PubKey from File", None, QtGui.QApplication.UnicodeUTF8))
+		self.addButton.setToolTip(QtGui.QApplication.translate("EditKeys", "Add PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.addButton.setStatusTip(QtGui.QApplication.translate("EditKeys", "Add PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.addButton.setWhatsThis(QtGui.QApplication.translate("EditKeys", "Add PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.addButton.setText(QtGui.QApplication.translate("EditKeys", "Add PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setToolTip(QtGui.QApplication.translate("EditKeys", "Remove PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setStatusTip(QtGui.QApplication.translate("EditKeys", "Remove PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setWhatsThis(QtGui.QApplication.translate("EditKeys", "Remove PubKey", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setText(QtGui.QApplication.translate("EditKeys", "Remove PubKey", None, QtGui.QApplication.UnicodeUTF8))
 
 from ui.icons import temp_icons_rc
 

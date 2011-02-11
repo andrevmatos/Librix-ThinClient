@@ -25,7 +25,8 @@ from lib.utils import sha512sum
 class FileChecker(QThread):
 	"""Check if configfile was modifyed and reload it"""
 
-	refreshConfigs = pyqtSignal()
+	# Signal emited when configfile is readed
+	reload = pyqtSignal()
 
 	def __init__(self, configparser, moduleparser):
 		"""Thread init routine
@@ -53,5 +54,5 @@ class FileChecker(QThread):
 			hash = sha512sum(self.configfile)
 			if hash != self.configparser.hash:
 				self.configparser.readConfigFile()
-				self.refreshConfigs.emit()
+				self.reload.emit()
 		print('__end FileChecker')

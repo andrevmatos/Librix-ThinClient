@@ -474,8 +474,6 @@ class LTCConfigParser(object):
 		@param	key			A string containing a valid pubkey
 		"""
 		k = key.strip().split()
-		if len(k) != 3 or k[0] not in ['ssh-dss', 'ssh-rsa']:
-			raise ValueError("Invalid SSH PubKey")
 		if key.strip() in self.getKeys():
 			return
 

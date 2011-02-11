@@ -138,6 +138,7 @@ class Main(QtGui.QMainWindow):
 				event.accept()
 			elif ret == QtGui.QMessageBox.Discard:
 				os.remove(self.configparser.backupfile)
+				self.newConfigFile()
 				event.accept()
 			else:
 				event.ignore()
@@ -148,6 +149,10 @@ class Main(QtGui.QMainWindow):
 		@param	self		A Main window instance
 		"""
 		self.configparser.newConfigFile()
+		try:
+			self.Users.updateLists()
+			self.Edit.updateLists()
+		except: pass
 
 	def openConfigFile(self):
 		"""Open file dialog to select and open a configuration
@@ -155,6 +160,10 @@ class Main(QtGui.QMainWindow):
 		If there is a backup file, ask if admin want to recover it
 		@param	self		A Main window instance
 		"""
+		event = QtCore.QEvent(QtCore.QEvent.User)
+		self.closeEvent(event)
+		if not event.isAccepted(): return
+
 		file = QtGui.QFileDialog.getOpenFileName(self,
 			self.tr("Open Config File"), os.path.abspath("thinclient.conf"))
 		if file and self.configparser.modified(file)==1:

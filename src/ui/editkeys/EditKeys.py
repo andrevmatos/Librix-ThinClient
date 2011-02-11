@@ -41,15 +41,33 @@ class EditKeys(QtGui.QDialog):
 		for k in configparser.getKeys():
 			QtGui.QListWidgetItem(k, self.ui.keysList).setToolTip(k)
 
-	def addKey(self):
-		"""Mothod called when self.ui.addButton is clicked
+	def openKey(self):
+		"""Method called when self.ui.openButton is clicked
 
-		Add a empty entry to list
+		Open a pubkey file
+		@param	self		A EditKeys instance
+		"""
+		fn = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open PubKey"),
+			"~/.ssh/id_rsa.pub")
+		if not fn: return
+		with open(fn, 'r') as F:
+			k = F.read().strip()
+		if len(k.split()) != 3 or k.split()[0] not in ['ssh-dss', 'ssh-rsa']:
+			return
+		else:
+			QtGui.QListWidgetItem(k, self.ui.keysList).setToolTip(k)
+
+	def addKey(self):
+		"""Method called when self.ui.addButton is clicked
+
+		Add a entry to list
 		@param	self		A EditKeys instance
 		"""
 		k = QtGui.QInputDialog.getText(self, self.tr("New PubKey"),
 			self.tr("Enter below a valid SSH public key"))[0]
-		if k:
+		if len(k.split()) != 3 or k.split()[0] not in ['ssh-dss', 'ssh-rsa']:
+			return
+		else:
 			QtGui.QListWidgetItem(k, self.ui.keysList).setToolTip(k)
 
 	def delKey(self):

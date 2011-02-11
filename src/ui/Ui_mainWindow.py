@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Fri Feb 11 15:46:58 2011
+# Created: Fri Feb 11 19:24:57 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -189,6 +189,7 @@ class Ui_ThinClient(object):
 		QtCore.QObject.connect(self.actionSave, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveConfigFile)
 		QtCore.QObject.connect(self.actionSave_as, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveAsConfigFile)
 		QtCore.QObject.connect(self.actionEdit_PubKeys, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.editKeys)
+		QtCore.QObject.connect(self.actionNew, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.newConfigFile)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):

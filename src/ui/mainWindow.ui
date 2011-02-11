@@ -506,6 +506,22 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionNew</sender>
+   <signal>activated()</signal>
+   <receiver>ThinClient</receiver>
+   <slot>newConfigFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>activateTab()</slot>
@@ -514,5 +530,6 @@ p, li { white-space: pre-wrap; }
   <slot>saveConfigFile()</slot>
   <slot>saveAsConfigFile()</slot>
   <slot>editKeys()</slot>
+  <slot>newConfigFile()</slot>
  </slots>
 </ui>
