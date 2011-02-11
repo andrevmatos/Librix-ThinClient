@@ -38,32 +38,3 @@ def sha512sum(filepath):
 	with open(filepath, 'r') as f:
 		return(sha512(f.read().encode('utf-8')).hexdigest())
 
-def subnetwork(ip, netmask):
-	"""Returns a tuple with 2 strings containing first and last IPs in subnet
-
-	@param	ip		A string containing a valid IPv4 address
-	@param	netmask	A string containing a valid IPv4 subnetwork mask
-	@return			A 2 strings tuple
-	"""
-	# I = IP in binary notation
-	I = ''
-	for i in ip.split('.'):
-		I += bin(int(i)).replace('0b', '', 1).rjust(8, '0')
-	# N = netmask in binary notation
-	N = ''
-	for n in netmask.split('.'):
-		N += bin(int(n)).replace('0b', '', 1).rjust(8, '0')
-	#print("@@", '\n', I, '\n', N)
-	# net = network address in binary notation
-	net = ''.join([I[i] for i in range(32) if int(N[i], 2)]).ljust(32, '0')
-	# first = first ip (net+1) in binary notation
-	first = bin(int(net, 2)+1).replace('0b', '', 1).rjust(32, '0')
-	# last = last ip (net+n-broadcast-1) in binary notation,
-	# where n is number of hosts on subnetwork
-	last = bin(int(net, 2)+(2**N.count('0'))-2)\
-		.replace('0b', '', 1).rjust(32, '0')
-
-	# convert first and last IPs from binary to decimal notation
-	r = ('.'.join([str(int(first[i*8:(i+1)*8], 2)) for i in range(4)]),
-		'.'.join([str(int(last[i*8:(i+1)*8], 2)) for i in range(4)]))
-	return(r)

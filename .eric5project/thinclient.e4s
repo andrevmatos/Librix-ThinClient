@@ -2,14 +2,16 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-02, 18:44:19 -->
+<!-- Saved: 2011-02-10, 22:28:51 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="26" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/init.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/__init__.py</Filename>
-    <Filename cline="69" cindex="21" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/export/scanTargets.py</Filename>
+    <Filename cline="129" cindex="9" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
+    <Filename cline="411" cindex="20" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
+    <Filename cline="54" cindex="54" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/ListItemWidget.py</Filename>
+    <Filename cline="157" cindex="18" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/main.py</Filename>
+    <Filename cline="65" cindex="22" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/AppPermissions.py</Filename>
   </Filenames>
-  <ActiveWindow cline="69" cindex="21">/home/andre/Dev/Librix/thinclient/src/ui/export/scanTargets.py</ActiveWindow>
+  <ActiveWindow cline="65" cindex="22">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/AppPermissions.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>

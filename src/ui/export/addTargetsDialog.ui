@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Add targets - Step 1/2</string>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
@@ -54,6 +57,9 @@
            <property name="inputMethodHints">
             <set>Qt::ImhNone</set>
            </property>
+           <property name="text">
+            <string>127.0.0.1</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -74,6 +80,9 @@
            <property name="inputMethodHints">
             <set>Qt::ImhUrlCharactersOnly</set>
            </property>
+           <property name="text">
+            <string>localhost.localdomain</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -90,7 +99,11 @@
        <widget class="QWidget" name="rangeWidget" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QLineEdit" name="fromIPLine"/>
+          <widget class="QLineEdit" name="fromIPLine">
+           <property name="text">
+            <string>192.168.1.1</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="separatorLabel">
@@ -100,7 +113,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="toIPLine"/>
+          <widget class="QLineEdit" name="toIPLine">
+           <property name="text">
+            <string>192.168.1.255</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -116,7 +133,11 @@
        <widget class="QWidget" name="subnetWidget" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QLineEdit" name="IPLine"/>
+          <widget class="QLineEdit" name="IPLine">
+           <property name="text">
+            <string>192.168.1.1</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="twodotsLabel">
@@ -126,7 +147,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="netmaskLine"/>
+          <widget class="QLineEdit" name="netmaskLine">
+           <property name="text">
+            <string>255.255.255.0</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

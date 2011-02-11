@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Wed Feb  2 23:37:29 2011
+# Created: Fri Feb 11 10:16:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,15 +24,20 @@ class Ui_ExportWidget(object):
 		sizePolicy.setHeightForWidth(ExportWidget.sizePolicy().hasHeightForWidth())
 		ExportWidget.setSizePolicy(sizePolicy)
 		self.mainVLayout = QtGui.QVBoxLayout(ExportWidget)
+		self.mainVLayout.setSpacing(4)
 		self.mainVLayout.setMargin(4)
 		self.mainVLayout.setObjectName(_fromUtf8("mainVLayout"))
 		self.targetsBox = QtGui.QGroupBox(ExportWidget)
 		self.targetsBox.setObjectName(_fromUtf8("targetsBox"))
 		self.verticalLayout = QtGui.QVBoxLayout(self.targetsBox)
+		self.verticalLayout.setSpacing(4)
+		self.verticalLayout.setMargin(4)
 		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 		self.IPsWidget = QtGui.QWidget(self.targetsBox)
 		self.IPsWidget.setObjectName(_fromUtf8("IPsWidget"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.IPsWidget)
+		self.horizontalLayout.setSpacing(4)
+		self.horizontalLayout.setMargin(4)
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.treeWidget = QtGui.QTreeWidget(self.IPsWidget)
@@ -49,6 +54,8 @@ class Ui_ExportWidget(object):
 		self.targetsToolBar.setMaximumSize(QtCore.QSize(16777215, 16777215))
 		self.targetsToolBar.setObjectName(_fromUtf8("targetsToolBar"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.targetsToolBar)
+		self.verticalLayout_2.setSpacing(4)
+		self.verticalLayout_2.setMargin(4)
 		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.addButton = QtGui.QToolButton(self.targetsToolBar)
@@ -82,6 +89,8 @@ class Ui_ExportWidget(object):
 		self.privKeyBox.setMaximumSize(QtCore.QSize(16777215, 100))
 		self.privKeyBox.setObjectName(_fromUtf8("privKeyBox"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.privKeyBox)
+		self.horizontalLayout_2.setSpacing(4)
+		self.horizontalLayout_2.setMargin(4)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.privKeyLabel = QtGui.QLabel(self.privKeyBox)
 		self.privKeyLabel.setObjectName(_fromUtf8("privKeyLabel"))

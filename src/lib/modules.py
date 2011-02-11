@@ -98,15 +98,36 @@ class LTCModuleParser(object):
 		"""
 		return(self._modules[module].configurable)
 
-	def getModuleStatus(self, module, conf=None):
-		"""Return true if module is active WITH conf
+	def setModuleConfig(self, module, config):
+		"""Set given config in module
 
 		@param	self		A LTCModuleParser instance
-		@param	module		Module name
-		@param	conf		lxml.etree.Element object of module config
-		@return				True if module is activated WITH conf
+		@param	module		A module name
+		@param	config		A lxml.etree.Element object
 		"""
-		return(self._modules[module].status(conf))
+		self._modules[module].setConfig(config)
+
+	def getModuleConfig(self, module):
+		"""Get current config from module
+
+		@param	self		A LTCModuleParser instance
+		@param	module		A module name
+		@return				A lxml.etree.Element object
+		"""
+		return(self._modules[module].getConfig())
+
+	def configModule(self, module, parent=None):
+		"""Exec configuration dialog for module
+
+		@param	self		A LTCModuleParser instance
+		@param	module		A module name
+		@param	parent		Parent QtGui.QWidget object, passed to module's
+							config method
+		"""
+		if self.getModuleConfigurable(module):
+			self._modules[module].config(parent)
+		else:
+			return
 
 	def startModule(self, module):
 		"""Threaded method to start a module

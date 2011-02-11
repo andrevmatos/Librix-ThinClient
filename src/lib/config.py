@@ -114,6 +114,21 @@ class LTCConfigParser(object):
 			ET.SubElement(self._profileFalse, "option",
 				attrib={"name": m, "on": str(False).lower()})
 
+	def updateConfigFile(self):
+		"""Update current config file with modules list of moduleparser
+
+		adding present modules, if absent in configfile. This don't touch
+		present config if module isn't present (to future configs).
+		@param	self		A LTCConfigParser instance
+		"""
+		for m in self.moduleparser.getModulesList():
+			if m not in self.getOptionsList():
+				ET.SubElement(self._profileFalse, "option",
+					attrib={'name':m, 'on':'false'})
+				for p in self._profiles:
+					ET.SubElement(p, "option", attrib={'name':m, 'on':'false'})
+		self._syncConfigs()
+
 	def _syncConfigs(self):
 		"""Sync self.xml with self.backupfile
 
@@ -315,25 +330,25 @@ class LTCConfigParser(object):
 		@return				A list of strings with the options names
 								in category
 		"""
-
-
 		_o = [o.get("name") for o in self._profileFalse.findall("option")]
 		_o.sort()
 		return(_o)
 
 	def getActiveOptions(self, profile):
-		"""Return a list of options in category of profile
+		"""Return a list of options activated on profile
 
-		If category not given, all options are listed
 		@param	self		A LTCConfigParser() instance
 		@param	profile		A profile name string.
-		@param	category	A category name string.
 		@return				A list of strings with the options names
-								in category
+							in category
 		"""
-		#TODO: implement
-		pass
+		if not profile in self.getProfilesList():
+			raise IndexError("\"{0}\" not in profiles list".format(profile))
 
+		_o = [o.get('name') for o in self._profiles.find(("profile[@name='{0}']/"+
+			"option[@on='true']").format(profile))]
+		_o.sort()
+		return(_o)
 
 	def getOption(self, profile, option):
 		"""Return the value of option in profile
@@ -404,16 +419,19 @@ class LTCConfigParser(object):
 		if not option in self.getOptionsList():
 			raise IndexError("\"{0}\" not in options list".format(option))
 
-		O = self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
-			.format(profile, option))
-		att = deepcopy(O.attrib)
-		O.getparent().replace(O, config)
+		P = self._profiles.find("profile[@name='{0}']".format(profile))
+		O = P.find(("option[@name='{0}']").format(option))
+		config.tag = O.tag
+		#config.attrib = O.attrib
+		config.attrib.clear()
+		for i in O.attrib:
+			config.attrib[i] = O.attrib[i]
 
-		self._profiles.find(("profile[@name='{0}']/option[@name='{1}']")\
-			.format(profile, option)).attrib = att
+
+		P.remove(O)
+		P.append(config)
 
 		self._syncConfigs()
-		del att
 		del O
 
 	def addUser(self, username):

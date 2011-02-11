@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/scanTargetsDialog.ui'
 #
-# Created: Wed Feb  2 23:37:29 2011
+# Created: Fri Feb 11 10:16:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,9 @@ except AttributeError:
 class Ui_ScanTargetsDialog(object):
 	def setupUi(self, ScanTargetsDialog):
 		ScanTargetsDialog.setObjectName(_fromUtf8("ScanTargetsDialog"))
+		ScanTargetsDialog.setWindowModality(QtCore.Qt.NonModal)
 		ScanTargetsDialog.resize(570, 360)
+		ScanTargetsDialog.setModal(True)
 		self.verticalLayout = QtGui.QVBoxLayout(ScanTargetsDialog)
 		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 		self.helpLabel = QtGui.QLabel(ScanTargetsDialog)

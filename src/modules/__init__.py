@@ -19,10 +19,10 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 __all__ = [
-	'test',
-	'test2'
+	'app_permissions',
 ]
 
+m = None
 for m in __all__:
 	exec("from . import {0}".format(m))
 

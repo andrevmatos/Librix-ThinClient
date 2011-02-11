@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>clear-edit.png</file>
+    <file>arrow-right-double.png</file>
+    <file>arrow-left-double.png</file>
+  </qresource>
+</RCC>

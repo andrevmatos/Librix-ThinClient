@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AppPermissions</class>
+ <widget class="QDialog" name="AppPermissions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <property name="margin">
+    <number>4</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="mainWidget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="margin">
+       <number>4</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="optionsLabel">
+        <property name="text">
+         <string>Default Policy:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="policyWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <property name="margin">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="allowRadio">
+           <property name="text">
+            <string>Allow All</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="denyRadio">
+           <property name="text">
+            <string>Deny All</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="listsWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <property name="margin">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QWidget" name="allListWid" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="allSearchWid" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLineEdit" name="allSearchLine"/>
+               </item>
+               <item>
+                <widget class="QToolButton" name="allSearchClearButton">
+                 <property name="toolTip">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="statusTip">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="whatsThis">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="text">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="icons/icons.qrc">
+                   <normaloff>:/icons/clear-edit.png</normaloff>:/icons/clear-edit.png</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="allLabel">
+              <property name="text">
+               <string>All Applications</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="allAppsList">
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::DragDrop</enum>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::ExtendedSelection</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="actionsWid" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QToolButton" name="addButton">
+              <property name="text">
+               <string>Add Application</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons/icons.qrc">
+                <normaloff>:/icons/arrow-right-double.png</normaloff>:/icons/arrow-right-double.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>22</width>
+                <height>22</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="delButton">
+              <property name="text">
+               <string>Remove Application</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons/icons.qrc">
+                <normaloff>:/icons/arrow-left-double.png</normaloff>:/icons/arrow-left-double.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>22</width>
+                <height>22</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="selectedWid" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="selectedSearchWid" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLineEdit" name="selectedSearchLine"/>
+               </item>
+               <item>
+                <widget class="QToolButton" name="selectedSearchClearButton">
+                 <property name="toolTip">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="statusTip">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="whatsThis">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="text">
+                  <string>Clear Search</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="icons/icons.qrc">
+                   <normaloff>:/icons/clear-edit.png</normaloff>:/icons/clear-edit.png</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="selectedLabel">
+              <property name="text">
+               <string>Exceptions:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="selectedAppsList">
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::DragDrop</enum>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::ExtendedSelection</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="icons/icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>allSearchClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>allSearchLine</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>275</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectedSearchClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>selectedSearchLine</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>604</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>586</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>allSearchLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>allSearch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>115</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>addSelected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>234</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>641</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>removeSelected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-3</x>
+     <y>258</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectedSearchLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>selectedSearch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>502</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>529</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>allowRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>setPolicy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>192</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>denyRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>AppPermissions</receiver>
+   <slot>setPolicy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>358</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>allSearch()</slot>
+  <slot>addSelected()</slot>
+  <slot>removeSelected()</slot>
+  <slot>selectedSearch()</slot>
+  <slot>setPolicy()</slot>
+ </slots>
+</ui>

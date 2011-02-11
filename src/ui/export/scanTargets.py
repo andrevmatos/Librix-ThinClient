@@ -40,7 +40,6 @@ class ScanTargets(QtGui.QDialog):
 		self.ui = Ui_ScanTargetsDialog()
 		self.ui.setupUi(self)
 
-		self.setModal(True)
 		self.makeMenu()
 
 		self.tree = []
@@ -145,7 +144,7 @@ class TreeElement(QtCore.QThread):
 			"a host or IP on add targets dialog"))
 		self.online = None
 
-		for k in range(3):
+		for k in range(1):
 			try:
 				u = urlopen("http://{0}:8088".format(self.address), None, 5)
 				self.online = u.read().decode('utf-8').strip()

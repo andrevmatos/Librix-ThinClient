@@ -89,6 +89,9 @@ class ProfileEdit(QtGui.QWidget):
 			for o in self.moduleparser.getModulesList(c):
 				self.configparser.setOption(name, o,
 					self.tabs[c].modules_widgets[o].activated)
+				if self.moduleparser.getModuleConfigurable(o):
+					self.configparser.setConfig(name, o,
+						self.moduleparser.getModuleConfig(o))
 
 		self.parent.updateLists()
 		self.parent.activateProfileSummary(name)

@@ -48,10 +48,7 @@ class ConfigProfileEdit(QtGui.QWidget):
 
 		for m in moduleparser.getModulesList(category):
 			self.modules_widgets[m] = ListItemWidget(
-				moduleparser.getModulePrettyName(m),
-				moduleparser.getModuleDescription(m),
-				moduleparser.getModuleConfigurable(m),
-				self.ui.listWidget)
+				m, moduleparser, self.ui.listWidget)
 
 	def setProfile(self, profile):
 		"""Set modules options according with profile's config
@@ -60,5 +57,8 @@ class ConfigProfileEdit(QtGui.QWidget):
 		@param	profile		A string containing profile's name
 		"""
 		for m in self.modules_widgets:
+			if self.moduleparser.getModuleConfigurable(m):
+				self.moduleparser.setModuleConfig(m,
+					self.configparser.getConfig(profile, m))
 			self.modules_widgets[m].setActivated(
 				self.configparser.getOption(profile, m))

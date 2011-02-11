@@ -172,6 +172,19 @@ class Main(QtGui.QMainWindow):
 
 		if file:
 			self.configparser.readConfigFile(file)
+			# If file outdated, update
+			if self.configparser.getOptionsList() != self.moduleparser.getModulesList():
+				if QtGui.QMessageBox.question(self,
+				self.tr("Outdated Config File"), self.tr("This config file "+
+				"has absent and/or hasn't present modules.\n"+
+				"You want to update it (required to proceed)?\n"+
+				"P.S.: New modules will be added to configurations "+
+				"but absent, present in configuration, won't be touched "+
+				"or shown."), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+				QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
+					self.configparser.updateConfigFile()
+				else:
+					self.newConfigFile()
 			self.ui.nameEdit.setText(self.configparser.getName())
 			self.ui.statusbar.showMessage(self.tr("Editing file: {0}")\
 				.format(file), 0)

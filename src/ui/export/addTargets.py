@@ -21,7 +21,7 @@
 from PyQt4 import QtGui,QtCore
 from ui.export.Ui_addTargetsDialog import Ui_AddTargetsDialog
 
-from lib.utils import subnetwork
+from lib.ip import IPRange,Subnetwork
 
 class AddTargets(QtGui.QDialog):
 	"""Creates add targets dialog"""
@@ -41,8 +41,6 @@ class AddTargets(QtGui.QDialog):
 
 		self.ui = Ui_AddTargetsDialog()
 		self.ui.setupUi(self)
-
-		self.setModal(True)
 
 		self.opts = {
 			self.ui.singleRadio: self.ui.singleWidget,
@@ -99,32 +97,22 @@ class AddTargets(QtGui.QDialog):
 			t = self.ui.toIPLine.text()
 			if self.ipValidator.validate(f, len(f))[0] == \
 				self.ipValidator.validate(t, len(t))[0] == 2:
-				F = f.split('.')
-				T = t.split('.')
+				for i in IPRange(f, t):
+					self.targets.append(i)
 
-				for a in range(int(F[0]), int(T[0])+1):
-					for b in range(int(F[1]), int(T[1])+1):
-						for c in range(int(F[2]), int(T[2])+1):
-							for d in range(int(F[3]), int(T[3])+1):
-								self.targets.append('.'.join([str(a),
-									str(b), str(c), str(d)]))
 		elif self.ui.subnetRadio.isChecked():
 			i = self.ui.IPLine.text()
 			n = self.ui.netmaskLine.text()
 			if self.ipValidator.validate(i, len(i))[0] == \
 				self.ipValidator.validate(n, len(n))[0] == 2:
-				f, t = subnetwork(i, n)
-				F = f.split('.')
-				T = t.split('.')
-				for a in range(int(F[0]), int(T[0])+1):
-					for b in range(int(F[1]), int(T[1])+1):
-						for c in range(int(F[2]), int(T[2])+1):
-							for d in range(int(F[3]), int(T[3])+1):
-								self.targets.append('.'.join([str(a),
-									str(b), str(c), str(d)]))
+				for i in Subnetwork(i, n):
+					self.targets.append(i)
 
 		if self.targets:
 			self.ui.nextButton.setEnabled(True)
 		else:
 			self.ui.nextButton.setEnabled(False)
+
+	def getNet(self):
+		"""Return a tuple containing host IP, network and netmask"""
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/addTargetsDialog.ui'
 #
-# Created: Wed Feb  2 23:37:29 2011
+# Created: Fri Feb 11 10:16:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,6 +18,7 @@ class Ui_AddTargetsDialog(object):
 	def setupUi(self, AddTargetsDialog):
 		AddTargetsDialog.setObjectName(_fromUtf8("AddTargetsDialog"))
 		AddTargetsDialog.resize(570, 360)
+		AddTargetsDialog.setModal(True)
 		self.verticalLayout = QtGui.QVBoxLayout(AddTargetsDialog)
 		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 		self.label = QtGui.QLabel(AddTargetsDialog)
@@ -153,9 +154,15 @@ class Ui_AddTargetsDialog(object):
 		AddTargetsDialog.setWindowTitle(QtGui.QApplication.translate("AddTargetsDialog", "Add targets - Step 1/2", None, QtGui.QApplication.UnicodeUTF8))
 		self.label.setText(QtGui.QApplication.translate("AddTargetsDialog", "Select an option. Default values are examples:", None, QtGui.QApplication.UnicodeUTF8))
 		self.singleRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Single IP:", None, QtGui.QApplication.UnicodeUTF8))
+		self.singleIpLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "127.0.0.1", None, QtGui.QApplication.UnicodeUTF8))
 		self.hostnameRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Hostname:", None, QtGui.QApplication.UnicodeUTF8))
+		self.hostnameLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "localhost.localdomain", None, QtGui.QApplication.UnicodeUTF8))
 		self.rangeRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "IP Range:", None, QtGui.QApplication.UnicodeUTF8))
+		self.fromIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.1", None, QtGui.QApplication.UnicodeUTF8))
+		self.toIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.255", None, QtGui.QApplication.UnicodeUTF8))
 		self.subnetRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Sub-network:", None, QtGui.QApplication.UnicodeUTF8))
+		self.IPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.1", None, QtGui.QApplication.UnicodeUTF8))
+		self.netmaskLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "255.255.255.0", None, QtGui.QApplication.UnicodeUTF8))
 		self.cancelButton.setText(QtGui.QApplication.translate("AddTargetsDialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 		self.nextButton.setText(QtGui.QApplication.translate("AddTargetsDialog", "Next", None, QtGui.QApplication.UnicodeUTF8))
 

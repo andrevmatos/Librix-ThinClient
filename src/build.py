@@ -46,6 +46,30 @@ def resourcecompile(dirpath, filename):
 
 	return(dirpath, pyfile.split('/')[-1]) # return dirpath and py filename
 
+def gen_pro_file(filepath):
+	olddir = os.getcwd()
+	os.chdir(os.path.dirname(filepath))
+	SOURCES = []
+	FORMS = []
+	TRANSLATIONS = []
+	for D, d, F in os.walk('.'):
+		for f in F:
+			if f.endswith('.py'):
+				SOURCES.append(os.path.join(D, f))
+			elif f.endswith('.ui'):
+				FORMS.append(os.path.join(D, f))
+			elif f.endswith('.ts'):
+				TRANSLATIONS.append(os.path.join(D, f))
+	
+	with open(os.path.basename(filepath), 'w') as pro_file:
+		if SOURCES:
+			pro_file.write("SOURCES = " + ' '.join(SOURCES) + '\n')
+		if FORMS:
+			pro_file.write("FORMS = " + ' '.join(FORMS) + '\n')
+		if TRANSLATIONS:
+			pro_file.write("TRANSLATIONS = " + ' '.join(TRANSLATIONS) + '\n')
+	os.chdir(olddir)
+
 def translatecompile(dirpath, filename):
 	"""Compile translations (.ts) files"""
 
@@ -54,7 +78,6 @@ def translatecompile(dirpath, filename):
 	S = subprocess.Popen("lrelease {0}".format(os.path.join(dirpath, filename)), shell=True)
 	S.wait()
 
-#	return(dirpath, pyfile.split('/')[-1]) # return dirpath and py filename
 
 def fix_from_imports(filepath, resources):
 
@@ -74,19 +97,20 @@ def main(dir='.'):
 
 	for dirpath, dirnames, filenames in os.walk(dir):
 		for f in filenames:
-			if '.qrc' in f:
+			if f.endswith('.qrc'):
 				r = resourcecompile(dirpath, f)
 				resources[r[1].split('.')[0]] = r[0]
 				print("# Resource Compile:", f, '=>', r[1])
 	for dirpath, dirnames, filenames in os.walk(dir):
 		for f in filenames:
-			if '.ui' in f:
+			if f.endswith('.ui'):
 				u = uicompile(dirpath, f)
 				fix_from_imports(u[1], resources)
 				print("# UI Compile:", f, "=>", u[1])
 	for dirpath, dirnames, filenames in os.walk(dir):
 		for f in filenames:
-			if '.pro' in f:
+			if f.endswith('.pro'):
+				gen_pro_file(os.path.join(dirpath, f))
 				translatecompile(dirpath, f)
 
 if __name__ == '__main__':

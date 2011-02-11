@@ -24,25 +24,19 @@ from ui.edit.Ui_listItemWidget import Ui_listItemWidget
 
 class ListItemWidget(QtGui.QWidget):
 	"""Creates the QListWidgetItem widget of a module into cateogory"""
-	def __init__(self, prettyname, description, configurable, parent=None):
+	def __init__(self, module, moduleparser, parent=None):
 		"""Instantiate a ListItemWidget widget
 
 		containing a option in category
 		@param	self		A ListItemWidget instance
-		@param	prettyname	A string containing pretty name of module
-		@param	description	A string containing rich text description
-		@param	configurable	Bool. True if module is configurable
-		@param	activated	Bool. Initial state of module
+		@param	module		String containing module name
+		@param	moduleparser	A LTCModuleParser instance
 		@param	parent		Parent QtGui.QListWidget
 		"""
-		self.prettyname = prettyname
-		self.description = description
-		self.configurable = configurable
-		self.activated = None
 		self.expanded = False
-
+		self.module = module
 		self.parent = parent
-
+		self.moduleparser = moduleparser
 		self.listItem = QtGui.QListWidgetItem(parent)
 
 		QtGui.QWidget.__init__(self, parent)
@@ -50,23 +44,34 @@ class ListItemWidget(QtGui.QWidget):
 		self.ui = Ui_listItemWidget()
 		self.ui.setupUi(self)
 
-		self.ui.expandedWid.hide()
+		self.ui.prettyLabel.setText(moduleparser.getModulePrettyName(module))
+		self.ui.prettyLabel_2.setText(moduleparser.getModulePrettyName(module))
+		self.ui.descriptionText.setHtml(
+			moduleparser.getModuleDescription(module))
 
-		self.ui.prettyLabel.setText(prettyname)
-		self.ui.prettyLabel_2.setText(prettyname)
-		self.ui.descriptionText.setText(description)
+		if not moduleparser.getModuleConfigurable(module):
+			self.ui.configureButton.setEnabled(False)
+		else:
+			self.ui.configureButton.clicked.connect(self.config)
 
 		self.parent.setItemWidget(self.listItem, self)
-		#self.listItem.setSizeHint(self.size())
 		self.setExpanded(False)
 
-	def setActivated(self, activated):
+	def setActivated(self, activated=None):
 		"""Set this module activated or not
 
 		@param	self		A ListItemWidget instance
 		@param	activated	Bool
 		"""
+		# if None, toggle
+		if activated is None:
+			activated = not self.activated
+
 		self.activated = activated
+
+		# Refresh description, that may contain current config infos
+		self.ui.descriptionText.setHtml(
+			self.moduleparser.getModuleDescription(self.module))
 
 		self.ui.toggleButtonCol.setChecked(activated)
 		self.ui.toggleButtonExp.setChecked(activated)
@@ -102,4 +107,13 @@ class ListItemWidget(QtGui.QWidget):
 			self.listItem.setSizeHint(self.ui.collapsedWid.size())
 
 		self.expanded = value
+
+	def config(self):
+		"""Show module's configuration dialog
+
+		@param	self		A LTCModuleParser instance
+		"""
+		self.moduleparser.configModule(self.module, self.parent)
+		self.setActivated(self.activated)
+
 
