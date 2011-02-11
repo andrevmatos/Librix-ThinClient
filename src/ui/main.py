@@ -23,6 +23,7 @@ import os
 from PyQt4 import QtGui,QtCore
 
 from ui.Ui_mainWindow import Ui_ThinClient
+from ui.editkeys.EditKeys import EditKeys
 
 from ui.users.usersPage import UsersPage
 from ui.edit.editPage import EditPage
@@ -216,6 +217,14 @@ class Main(QtGui.QMainWindow):
 			self.configparser.writeConfigFile(file)
 			self.ui.statusbar.showMessage(self.tr("File \"{0}\" saved!").format(
 				self.configparser.configfile), 5000)
+
+	def editKeys(self):
+		"""Open EditKeys dialog
+
+		@param	self		A Main window instance
+		"""
+		dialog = EditKeys(self.configparser, self)
+		dialog.exec_()
 
 def main():
 	"""The program main loop"""

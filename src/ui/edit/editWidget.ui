@@ -72,7 +72,7 @@
             <string>New Profile</string>
            </property>
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/toolbar/document-new.png</normaloff>:/toolbar/document-new.png</iconset>
            </property>
            <property name="iconSize">
@@ -98,7 +98,7 @@
             <string>Remove Profile</string>
            </property>
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/toolbar/document-close.png</normaloff>:/toolbar/document-close.png</iconset>
            </property>
            <property name="iconSize">
@@ -131,7 +131,7 @@
             <string>Edit Profile</string>
            </property>
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/toolbar/document-edit.png</normaloff>:/toolbar/document-edit.png</iconset>
            </property>
            <property name="iconSize">
@@ -157,7 +157,7 @@
             <string>Duplicate Profile</string>
            </property>
            <property name="icon">
-            <iconset resource="icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/toolbar/document-edit-verify.png</normaloff>:/toolbar/document-edit-verify.png</iconset>
            </property>
            <property name="iconSize">
@@ -208,7 +208,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="icons/temp_icons.qrc"/>
+  <include location="../icons/temp_icons.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -250,8 +250,8 @@
    <slot>editProfile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
-     <y>529</y>
+     <x>148</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>205</x>
@@ -266,8 +266,8 @@
    <slot>duplicateProfile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>137</x>
-     <y>531</y>
+     <x>194</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>207</x>
@@ -288,6 +288,22 @@
     <hint type="destinationlabel">
      <x>206</x>
      <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>profilesList</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>EditWidget</receiver>
+   <slot>editProfile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>-2</y>
     </hint>
    </hints>
   </connection>

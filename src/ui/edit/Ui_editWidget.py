@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/editWidget.ui'
 #
-# Created: Fri Feb 11 10:16:33 2011
+# Created: Fri Feb 11 15:46:58 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -110,6 +110,7 @@ class Ui_EditWidget(object):
 		QtCore.QObject.connect(self.editButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.editProfile)
 		QtCore.QObject.connect(self.duplicateButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.duplicateProfile)
 		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), EditWidget.addProfile)
+		QtCore.QObject.connect(self.profilesList, QtCore.SIGNAL(_fromUtf8("itemDoubleClicked(QListWidgetItem*)")), EditWidget.editProfile)
 		QtCore.QMetaObject.connectSlotsByName(EditWidget)
 
 	def retranslateUi(self, EditWidget):

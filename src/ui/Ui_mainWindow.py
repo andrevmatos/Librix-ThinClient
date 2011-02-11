@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/mainWindow.ui'
 #
-# Created: Fri Feb 11 10:16:33 2011
+# Created: Fri Feb 11 15:46:58 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -119,6 +119,8 @@ class Ui_ThinClient(object):
 		self.menuFile.setObjectName(_fromUtf8("menuFile"))
 		self.menuView = QtGui.QMenu(self.menuBar)
 		self.menuView.setObjectName(_fromUtf8("menuView"))
+		self.menuEdit = QtGui.QMenu(self.menuBar)
+		self.menuEdit.setObjectName(_fromUtf8("menuEdit"))
 		ThinClient.setMenuBar(self.menuBar)
 		self.toolBar = QtGui.QToolBar(ThinClient)
 		self.toolBar.setIconSize(QtCore.QSize(22, 22))
@@ -154,18 +156,27 @@ class Ui_ThinClient(object):
 		icon5.addPixmap(QtGui.QPixmap(_fromUtf8(":/profileAction/document-new.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.actionNew.setIcon(icon5)
 		self.actionNew.setObjectName(_fromUtf8("actionNew"))
+		self.actionEdit_PubKeys = QtGui.QAction(ThinClient)
+		icon6 = QtGui.QIcon()
+		icon6.addPixmap(QtGui.QPixmap(_fromUtf8(":/edit_icon/document-edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionEdit_PubKeys.setIcon(icon6)
+		self.actionEdit_PubKeys.setObjectName(_fromUtf8("actionEdit_PubKeys"))
 		self.menuFile.addAction(self.actionNew)
 		self.menuFile.addAction(self.actionOpen)
 		self.menuFile.addAction(self.actionSave)
 		self.menuFile.addAction(self.actionSave_as)
 		self.menuFile.addSeparator()
 		self.menuFile.addAction(self.actionQuit)
+		self.menuEdit.addAction(self.actionEdit_PubKeys)
 		self.menuBar.addAction(self.menuFile.menuAction())
 		self.menuBar.addAction(self.menuView.menuAction())
+		self.menuBar.addAction(self.menuEdit.menuAction())
 		self.toolBar.addAction(self.actionNew)
 		self.toolBar.addAction(self.actionOpen)
 		self.toolBar.addAction(self.actionSave)
 		self.toolBar.addAction(self.actionSave_as)
+		self.toolBar.addSeparator()
+		self.toolBar.addAction(self.actionEdit_PubKeys)
 		self.toolBar.addSeparator()
 		self.toolBar.addAction(self.actionQuit)
 		self.toolBar.addSeparator()
@@ -177,6 +188,7 @@ class Ui_ThinClient(object):
 		QtCore.QObject.connect(self.nameEdit, QtCore.SIGNAL(_fromUtf8("editingFinished()")), ThinClient.configNameChanged)
 		QtCore.QObject.connect(self.actionSave, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveConfigFile)
 		QtCore.QObject.connect(self.actionSave_as, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveAsConfigFile)
+		QtCore.QObject.connect(self.actionEdit_PubKeys, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.editKeys)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
@@ -189,6 +201,7 @@ class Ui_ThinClient(object):
 		self.nameEdit.setToolTip(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
+		self.menuEdit.setTitle(QtGui.QApplication.translate("ThinClient", "Edit", None, QtGui.QApplication.UnicodeUTF8))
 		self.toolBar.setWindowTitle(QtGui.QApplication.translate("ThinClient", "Main Tool Bar", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setText(QtGui.QApplication.translate("ThinClient", "Open", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionOpen.setToolTip(QtGui.QApplication.translate("ThinClient", "Open config file", None, QtGui.QApplication.UnicodeUTF8))
@@ -217,6 +230,8 @@ class Ui_ThinClient(object):
 		self.actionNew.setStatusTip(QtGui.QApplication.translate("ThinClient", "Creates a new empty config file", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionNew.setWhatsThis(QtGui.QApplication.translate("ThinClient", "Creates a new empty config file", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionNew.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+N", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionEdit_PubKeys.setText(QtGui.QApplication.translate("ThinClient", "Edit PubKeys", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionEdit_PubKeys.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+E", None, QtGui.QApplication.UnicodeUTF8))
 
 from ui.icons import temp_icons_rc
 

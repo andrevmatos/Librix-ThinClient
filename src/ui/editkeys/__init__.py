@@ -19,5 +19,11 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 __all__ = [
+	'icons',
 	'main',
+	'Ui_mainWindow',
+	'users',
+	'edit',
+	'export',
+	'common',
 ]

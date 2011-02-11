@@ -65,6 +65,7 @@ class LTCConfigParser(object):
 		self._profiles = self._config.find("profiles")
 		self._profileFalse = self._config.find("profileFalse")
 		self._users = self._config.find("users")
+		self._keys = self._config.find("keys")
 
 	def writeConfigFile(self, file=''):
 		"""Write configurations from self.backupfile to file
@@ -109,6 +110,7 @@ class LTCConfigParser(object):
 			attrib={"name": "profileFalse"})
 		self._profiles = ET.SubElement(self._config, "profiles")
 		self._users = ET.SubElement(self._config, "users")
+		self._keys = ET.SubElement(self._config, "keys")
 
 		for m in self.moduleparser.getModulesList():
 			ET.SubElement(self._profileFalse, "option",
@@ -457,25 +459,46 @@ class LTCConfigParser(object):
 		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
 		self._syncConfigs()
 
-#	def getUserOption(self, username, option):
-#		"""Get a option in user's key
-#
-#		@param	self		A LTCConfigParser instance
-#		@param	username	A string containing user's name
-#		@param	option		A string containing option's name
-#		@return				String stored on option in username
-#		"""
-#		return(self._users.find("user[@name='{0}']".format(username)).get(option))
-#
-#	def setUserOption(self, username, option, value):
-#		"""Set a option in user's key
-#
-#		@param	self		A LTCConfigParser instance
-#		@param	username	A string containing user's name
-#		@param	option		A string containing option's name
-#		@param	value		String to be stored on option in username
-#		"""
-#		self._users.find("user[@name='{0}']".format(username).set(option, value))
+	def getKeys(self):
+		"""Return config file SSH public keys list
+
+		@param	self		A LTCConfigParser instance
+		@return				A list of strings containing pubkeys
+		"""
+		return([k.text for k in self._keys.findall("key")])
+
+	def addKey(self, key):
+		"""Add a given key to configfile
+
+		@param	self		A LTCConfigParser instance
+		@param	key			A string containing a valid pubkey
+		"""
+		k = key.strip().split()
+		if len(k) != 3 or k[0] not in ['ssh-dss', 'ssh-rsa']:
+			raise ValueError("Invalid SSH PubKey")
+		if key.strip() in self.getKeys():
+			return
+
+		ET.SubElement(self._keys, "key").text = key.strip()
+		self._syncConfigs()
+
+	def delKey(self, key):
+		"""Remove a given key from configfile
+
+		@param	self		A LTCConfigParser instance
+		@param	key			A string containing a valid pubkey
+		"""
+		k = key.strip().split()
+		if len(k) != 3 or k[0] not in ['ssh-dss', 'ssh-rsa']:
+			raise ValueError("Invalid SSH PubKey")
+		if key.strip() not in self.getKeys():
+			raise IndexError("PubKey not in Keys list")
+
+		for k in self._keys:
+			if k.text.strip() == key.strip():
+				self._keys.remove(k)
+
+		self._syncConfigs()
 
 if __name__ == '__main__':
 	from sys import argv

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-10, 22:28:51 -->
+<!-- Saved: 2011-02-11, 14:33:41 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -65,6 +65,9 @@
     <Source>src/modules/app_permissions/AppPermissions.py</Source>
     <Source>src/modules/app_permissions/icons/__init__.py</Source>
     <Source>src/lib/ip.py</Source>
+    <Source>src/ui/editkeys/Ui_editKeys.py</Source>
+    <Source>src/ui/editkeys/__init__.py</Source>
+    <Source>src/ui/editkeys/EditKeys.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -79,7 +82,7 @@
     <Form>src/ui/export/scanTargetsDialog.ui</Form>
     <Form>src/ui/edit/listItemWidget.ui</Form>
     <Form>src/modules/app_permissions/AppPermissions.ui</Form>
-    <Form>src/modules/app_permissions/progressDialog.ui</Form>
+    <Form>src/ui/editkeys/editKeys.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
