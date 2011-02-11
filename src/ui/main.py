@@ -59,7 +59,7 @@ class Main(QtGui.QMainWindow):
 		self.configparser = LTCConfigParser(self.moduleparser)
 
 		#self.openConfigFile()
-		self.newConfigFile()
+		self.newConfigFile(first=True)
 
 		# Set config file name
 		self.ui.nameEdit.setText(self.configparser.getName())
@@ -125,14 +125,11 @@ class Main(QtGui.QMainWindow):
 		if not self.configparser.modified():
 			event.accept()
 		else:
-			msgbox = QtGui.QMessageBox(self)
-			msgbox.setWindowTitle("LTMT")
-			msgbox.setText(self.tr("The configuration file has been modified."))
-			msgbox.setInformativeText(self.tr("Do you want to save your changes?"))
-			msgbox.setStandardButtons(QtGui.QMessageBox.Save |\
-				QtGui.QMessageBox.Discard | QtGui.QMessageBox.Cancel)
-			msgbox.setDefaultButton(QtGui.QMessageBox.Save)
-			ret = msgbox.exec_()
+			ret = QtGui.QMessageBox.question(self, self.tr("LTMT"),
+				self.tr("The configuration file has been modified.")+
+				"\n"+self.tr("Do you want to save your changes?"),
+				QtGui.QMessageBox.Save | QtGui.QMessageBox.Discard |\
+				QtGui.QMessageBox.Cancel, QtGui.QMessageBox.Save)
 			if ret == QtGui.QMessageBox.Save:
 				self.saveConfigFile()
 				event.accept()
@@ -143,16 +140,22 @@ class Main(QtGui.QMainWindow):
 			else:
 				event.ignore()
 
-	def newConfigFile(self):
+	def newConfigFile(self, first=False):
 		"""Creates a new config file
 
 		@param	self		A Main window instance
+		@param	first		Bool. True if the first operation in
+							configparser, when there is no configfile set on it
 		"""
+		if not first:
+			event = QtCore.QEvent(QtCore.QEvent.User)
+			self.closeEvent(event)
+			if not event.isAccepted(): return
+
 		self.configparser.newConfigFile()
-		try:
+		if not first:
 			self.Users.updateLists()
 			self.Edit.updateLists()
-		except: pass
 
 	def openConfigFile(self):
 		"""Open file dialog to select and open a configuration
@@ -182,7 +185,7 @@ class Main(QtGui.QMainWindow):
 
 		if file:
 			self.configparser.readConfigFile(file)
-			# If file outdated, update
+			# If file outdated, ask for update
 			if self.configparser.getOptionsList() != self.moduleparser.getModulesList():
 				if QtGui.QMessageBox.question(self,
 				self.tr("Outdated Config File"), self.tr("This config file "+
