@@ -2,29 +2,33 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-10, 22:28:51 -->
+<!-- Saved: 2011-02-12, 00:38:05 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="129" cindex="9" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
-    <Filename cline="411" cindex="20" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
-    <Filename cline="54" cindex="54" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/edit/ListItemWidget.py</Filename>
-    <Filename cline="157" cindex="18" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/main.py</Filename>
-    <Filename cline="65" cindex="22" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/AppPermissions.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
+    <Filename cline="158" cindex="39" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
+    <Filename cline="188" cindex="79" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/main.py</Filename>
+    <Filename cline="43" cindex="12" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/editkeys/EditKeys.py</Filename>
   </Filenames>
-  <ActiveWindow cline="65" cindex="22">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/AppPermissions.py</ActiveWindow>
-  <Breakpoints/>
-  <Watchexpressions/>
+  <ActiveWindow cline="188" cindex="79">/home/andre/Dev/Librix/thinclient/src/ui/main.py</ActiveWindow>
+  <Breakpoints>
+  </Breakpoints>
+  <Watchexpressions>
+  </Watchexpressions>
   <DebugInfo>
     <CommandLine></CommandLine>
     <WorkingDirectory></WorkingDirectory>
     <Environment></Environment>
-    <ReportExceptions value="True"/>
-    <Exceptions/>
-    <IgnoredExceptions/>
-    <AutoClearShell value="True"/>
-    <TracePython value="False"/>
-    <AutoContinue value="True"/>
-    <CovexcPattern/>
+    <ReportExceptions value="True" />
+    <Exceptions>
+    </Exceptions>
+    <IgnoredExceptions>
+    </IgnoredExceptions>
+    <AutoClearShell value="True" />
+    <TracePython value="False" />
+    <AutoContinue value="True" />
+    <CovexcPattern></CovexcPattern>
   </DebugInfo>
-  <Bookmarks/>
+  <Bookmarks>
+  </Bookmarks>
 </Session>

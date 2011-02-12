@@ -3,68 +3,73 @@
 <context>
     <name>AddTargetsDialog</name>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="154"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="152"/>
         <source>Add targets - Step 1/2</source>
         <translation>Adicionar alvos - Passo 1 de 2</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="155"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="153"/>
         <source>Select an option. Default values are examples:</source>
         <translation>Selecione uma opção. Valores padrão são exemplos:</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="156"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="154"/>
         <source>Single IP:</source>
         <translation>IP único:</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="158"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="156"/>
         <source>Hostname:</source>
         <translation>Nome do alvo:</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="160"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="158"/>
         <source>IP Range:</source>
         <translation>Intervalo entre IPs:</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="163"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="161"/>
         <source>Sub-network:</source>
         <translation>Sub-rede:</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="166"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="164"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="167"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="165"/>
         <source>Next</source>
         <translation>Próximo</translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="157"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="155"/>
         <source>127.0.0.1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="159"/>
-        <source>localhost.localdomain</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="164"/>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="162"/>
         <source>192.168.1.1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="162"/>
-        <source>192.168.1.255</source>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="163"/>
+        <source>255.255.255.0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_addTargetsDialog.py" line="165"/>
-        <source>255.255.255.0</source>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="157"/>
+        <source>librixdev.las.ic.unicamp.br</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="159"/>
+        <source>10.0.0.1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="export/targets/Ui_addTargetsDialog.py" line="160"/>
+        <source>10.0.0.10</source>
         <translation></translation>
     </message>
 </context>
@@ -98,22 +103,22 @@
     <message>
         <location filename="editkeys/Ui_editKeys.py" line="93"/>
         <source>Add PubKey from File</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar Chave Pública de um arquivo</translation>
     </message>
     <message>
         <location filename="editkeys/Ui_editKeys.py" line="97"/>
         <source>Add PubKey</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar Chave Pública</translation>
     </message>
     <message>
         <location filename="editkeys/Ui_editKeys.py" line="101"/>
         <source>Remove PubKey</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover Chave Pública</translation>
     </message>
     <message>
         <location filename="editkeys/EditKeys.py" line="50"/>
         <source>Open PubKey</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Chave Pública</translation>
     </message>
 </context>
 <context>
@@ -267,12 +272,12 @@
 <context>
     <name>ExportPage</name>
     <message>
-        <location filename="export/exportPage.py" line="51"/>
+        <location filename="export/exportPage.py" line="53"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="export/exportPage.py" line="65"/>
+        <location filename="export/exportPage.py" line="67"/>
         <source>Import File</source>
         <translation>Importar Arquivo</translation>
     </message>
@@ -280,52 +285,52 @@
 <context>
     <name>ExportWidget</name>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="125"/>
+        <location filename="export/Ui_exportWidget.py" line="133"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="126"/>
+        <location filename="export/Ui_exportWidget.py" line="134"/>
         <source>Targets</source>
         <translation>Alvos</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="128"/>
+        <location filename="export/Ui_exportWidget.py" line="136"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="129"/>
+        <location filename="export/Ui_exportWidget.py" line="137"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="130"/>
+        <location filename="export/Ui_exportWidget.py" line="138"/>
         <source>Add Targets Manually</source>
         <translation>Adicionar Alvos Manualmente</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="137"/>
+        <location filename="export/Ui_exportWidget.py" line="146"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="132"/>
+        <location filename="export/Ui_exportWidget.py" line="140"/>
         <source>Remove Selected Targets</source>
         <translation>Remover Alvos Selecionados</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="134"/>
+        <location filename="export/Ui_exportWidget.py" line="143"/>
         <source>Admin SSH Private Key</source>
         <translation>Chave Privada SSH do Administrador</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="135"/>
+        <location filename="export/Ui_exportWidget.py" line="144"/>
         <source>SSH Private Key:</source>
         <translation>Shave SSH Privada:</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="136"/>
+        <location filename="export/Ui_exportWidget.py" line="145"/>
         <source>/root/.ssh/id_rsa</source>
         <translation></translation>
     </message>
@@ -351,17 +356,17 @@
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="main.py" line="130"/>
+        <location filename="main.py" line="128"/>
         <source>The configuration file has been modified.</source>
         <translation>O arquivo de configuração foi modificado.</translation>
     </message>
     <message>
-        <location filename="main.py" line="131"/>
+        <location filename="main.py" line="128"/>
         <source>Do you want to save your changes?</source>
         <translation>Deseja salvar suas modificações?</translation>
     </message>
     <message>
-        <location filename="main.py" line="167"/>
+        <location filename="main.py" line="170"/>
         <source>Open Config File</source>
         <translation>Abrir Arquivo de Configuração</translation>
     </message>
@@ -371,50 +376,55 @@
         <translation type="obsolete">Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="170"/>
+        <location filename="main.py" line="173"/>
         <source>A backup file of &lt;b&gt;{0}&lt;/b&gt; was found.
 Do you want to restore it?</source>
         <translation>Uma cópia de segurança de &lt;b&gt;{0}&lt;/b&gt; foi encontrada.
 Deseja restaurá-la?</translation>
     </message>
     <message>
-        <location filename="main.py" line="199"/>
+        <location filename="main.py" line="202"/>
         <source>Editing file: {0}</source>
         <translation>Editando arquivo: {0}</translation>
     </message>
     <message>
-        <location filename="main.py" line="227"/>
+        <location filename="main.py" line="230"/>
         <source>File &quot;{0}&quot; saved!</source>
         <translation>Arquivo &quot;{0}&quot; salvo!</translation>
     </message>
     <message>
-        <location filename="main.py" line="222"/>
+        <location filename="main.py" line="225"/>
         <source>Save Config File as</source>
         <translation>Salvar Arquivo de Configuração como</translation>
     </message>
     <message>
-        <location filename="main.py" line="222"/>
+        <location filename="main.py" line="225"/>
         <source>Conf files (*.conf) (*.conf);; XML files (*.xml) (*.xml);; All files (*) (*)</source>
         <translation>Arquivos Conf (*.conf) (*.conf);; Arquivos XML (*.xml) (*.xml);; Todos os Arquivos (*) (*)</translation>
     </message>
     <message>
-        <location filename="main.py" line="170"/>
+        <location filename="main.py" line="173"/>
         <source>Backup found</source>
         <translation>Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="187"/>
+        <location filename="main.py" line="190"/>
         <source>Outdated Config File</source>
         <translation>Arquivo de Configuração Desatualizado</translation>
     </message>
     <message>
-        <location filename="main.py" line="187"/>
+        <location filename="main.py" line="190"/>
         <source>This config file has absent and/or hasn&apos;t present modules.
 You want to update it (required to proceed)?
 P.S.: New modules will be added to configurations but absent, present in configuration, won&apos;t be touched or shown.</source>
         <translation>Este arquivo de configuração contém módulos inexistentes e/ou não contém módulos presentes.
 Você deseja atualiza-lo (necessário para prosseguir)?
 Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, preentes nas configurações, não serão modificados ou exibidos.</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="128"/>
+        <source>LTMT</source>
+        <translation>LTMT</translation>
     </message>
 </context>
 <context>
@@ -454,22 +464,22 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>ScanTargets</name>
     <message>
-        <location filename="export/scanTargets.py" line="52"/>
+        <location filename="export/targets/scanTargets.py" line="51"/>
         <source>Select All</source>
         <translation>Selecionar Todos</translation>
     </message>
     <message>
-        <location filename="export/scanTargets.py" line="54"/>
+        <location filename="export/targets/scanTargets.py" line="53"/>
         <source>Select Online</source>
         <translation>Selecionar Conectados</translation>
     </message>
     <message>
-        <location filename="export/scanTargets.py" line="56"/>
+        <location filename="export/targets/scanTargets.py" line="55"/>
         <source>Select None</source>
         <translation>Selecionar Nenhum</translation>
     </message>
     <message>
-        <location filename="export/scanTargets.py" line="59"/>
+        <location filename="export/targets/scanTargets.py" line="58"/>
         <source>Invert Selection</source>
         <translation>Inverter Seleção</translation>
     </message>
@@ -477,42 +487,42 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>ScanTargetsDialog</name>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="92"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="92"/>
         <source>Scan targets - Step 2/2</source>
         <translation>Escanear alvos - Passo 2 de 2</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="93"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="93"/>
         <source>Select hosts to add, and click Ok</source>
         <translation>Selecione máquinas para adicionar, então clique em Ok</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="95"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="95"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="96"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="96"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="97"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="97"/>
         <source>Rescan</source>
         <translation>Reescanear</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="99"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="99"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="100"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="100"/>
         <source>Ok</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="export/Ui_scanTargetsDialog.py" line="98"/>
+        <location filename="export/targets/Ui_scanTargetsDialog.py" line="98"/>
         <source>Select</source>
         <translation>Seleção</translation>
     </message>
@@ -663,7 +673,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Ui_mainWindow.py" line="235"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ThreadedScan</name>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="70"/>
+        <source>Scanning</source>
+        <comment>a host or IP on add targets dialog</comment>
+        <translation>Escaneando</translation>
+    </message>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="88"/>
+        <source>Seens Offline</source>
+        <comment>if the host has not been answered</comment>
+        <translation type="obsolete">Parece desconectado</translation>
+    </message>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="46"/>
+        <source>Seens Offline</source>
+        <translation>Parece desconectado</translation>
+    </message>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="89"/>
+        <source>Seens Offline</source>
+        <comment>if the host has not responded</comment>
+        <translation>Parece desconectado</translation>
     </message>
 </context>
 <context>
@@ -672,7 +708,7 @@ p, li { white-space: pre-wrap; }
         <location filename="export/scanTargets.py" line="143"/>
         <source>Scanning</source>
         <comment>a host or IP on add targets dialog</comment>
-        <translation>Escaneando</translation>
+        <translation type="obsolete">Escaneando</translation>
     </message>
     <message>
         <location filename="export/scanTargets.py" line="103"/>
@@ -684,7 +720,7 @@ p, li { white-space: pre-wrap; }
         <location filename="export/scanTargets.py" line="160"/>
         <source>Seens Offline</source>
         <comment>if the host has not been answered</comment>
-        <translation>Parece desconectado</translation>
+        <translation type="obsolete">Parece desconectado</translation>
     </message>
 </context>
 <context>

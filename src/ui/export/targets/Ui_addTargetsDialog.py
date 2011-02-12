@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/export/addTargetsDialog.ui'
+# Form implementation generated from reading ui file './ui/export/targets/addTargetsDialog.ui'
 #
-# Created: Fri Feb 11 19:24:57 2011
+# Created: Sat Feb 12 14:33:44 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -118,7 +118,6 @@ class Ui_AddTargetsDialog(object):
 		self.cancelButton.setObjectName(_fromUtf8("cancelButton"))
 		self.horizontalLayout.addWidget(self.cancelButton)
 		self.nextButton = QtGui.QPushButton(self.buttonBox)
-		self.nextButton.setEnabled(False)
 		self.nextButton.setMinimumSize(QtCore.QSize(100, 0))
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/arrow-right-double.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -133,7 +132,6 @@ class Ui_AddTargetsDialog(object):
 		QtCore.QObject.connect(self.singleRadio, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), AddTargetsDialog.optClicked)
 		QtCore.QObject.connect(self.hostnameRadio, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), AddTargetsDialog.optClicked)
 		QtCore.QObject.connect(self.rangeRadio, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), AddTargetsDialog.optClicked)
-		QtCore.QObject.connect(self.subnetRadio, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), AddTargetsDialog.optClicked)
 		QtCore.QObject.connect(self.nextButton, QtCore.SIGNAL(_fromUtf8("clicked()")), AddTargetsDialog.accept)
 		QtCore.QObject.connect(self.singleIpLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
 		QtCore.QObject.connect(self.hostnameLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
@@ -141,13 +139,13 @@ class Ui_AddTargetsDialog(object):
 		QtCore.QObject.connect(self.toIPLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
 		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
 		QtCore.QObject.connect(self.netmaskLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddTargetsDialog.parseTargets)
-		QtCore.QObject.connect(self.singleIpLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.hostnameLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.fromIPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.toIPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
-		QtCore.QObject.connect(self.netmaskLine, QtCore.SIGNAL(_fromUtf8("editingFinished()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.IPLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.toIPLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.subnetRadio, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), AddTargetsDialog.optClicked)
+		QtCore.QObject.connect(self.hostnameLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.singleIpLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.netmaskLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
+		QtCore.QObject.connect(self.fromIPLine, QtCore.SIGNAL(_fromUtf8("returnPressed()")), AddTargetsDialog.accept)
 		QtCore.QMetaObject.connectSlotsByName(AddTargetsDialog)
 
 	def retranslateUi(self, AddTargetsDialog):
@@ -156,10 +154,10 @@ class Ui_AddTargetsDialog(object):
 		self.singleRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Single IP:", None, QtGui.QApplication.UnicodeUTF8))
 		self.singleIpLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "127.0.0.1", None, QtGui.QApplication.UnicodeUTF8))
 		self.hostnameRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Hostname:", None, QtGui.QApplication.UnicodeUTF8))
-		self.hostnameLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "localhost.localdomain", None, QtGui.QApplication.UnicodeUTF8))
+		self.hostnameLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "librixdev.las.ic.unicamp.br", None, QtGui.QApplication.UnicodeUTF8))
 		self.rangeRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "IP Range:", None, QtGui.QApplication.UnicodeUTF8))
-		self.fromIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.1", None, QtGui.QApplication.UnicodeUTF8))
-		self.toIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.255", None, QtGui.QApplication.UnicodeUTF8))
+		self.fromIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "10.0.0.1", None, QtGui.QApplication.UnicodeUTF8))
+		self.toIPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "10.0.0.10", None, QtGui.QApplication.UnicodeUTF8))
 		self.subnetRadio.setText(QtGui.QApplication.translate("AddTargetsDialog", "Sub-network:", None, QtGui.QApplication.UnicodeUTF8))
 		self.IPLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "192.168.1.1", None, QtGui.QApplication.UnicodeUTF8))
 		self.netmaskLine.setText(QtGui.QApplication.translate("AddTargetsDialog", "255.255.255.0", None, QtGui.QApplication.UnicodeUTF8))

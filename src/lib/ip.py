@@ -112,7 +112,7 @@ class Subnetwork(object):
 		self._net = Bin2Int(''.join([Int2Bin(self._I)[i] for i in range(32) \
 			if int(Int2Bin(self._N)[i], 2)]).ljust(32, '0'))
 
-		self._end =  self._net+(2**Int2Bin(self._N).count('0'))-2
+		self._end =  self._net+(2**Int2Bin(self._N).count('0'))-3
 
 	def __iter__(self):
 		"""Iterator return"""

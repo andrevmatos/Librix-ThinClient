@@ -81,7 +81,7 @@
             <set>Qt::ImhUrlCharactersOnly</set>
            </property>
            <property name="text">
-            <string>localhost.localdomain</string>
+            <string>librixdev.las.ic.unicamp.br</string>
            </property>
           </widget>
          </item>
@@ -101,7 +101,7 @@
          <item>
           <widget class="QLineEdit" name="fromIPLine">
            <property name="text">
-            <string>192.168.1.1</string>
+            <string>10.0.0.1</string>
            </property>
           </widget>
          </item>
@@ -115,7 +115,7 @@
          <item>
           <widget class="QLineEdit" name="toIPLine">
            <property name="text">
-            <string>192.168.1.255</string>
+            <string>10.0.0.10</string>
            </property>
           </widget>
          </item>
@@ -196,16 +196,13 @@
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset resource="../icons/temp_icons.qrc">
+         <iconset resource="../../icons/temp_icons.qrc">
           <normaloff>:/edit_icon/close.png</normaloff>:/edit_icon/close.png</iconset>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="nextButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -216,7 +213,7 @@
          <string>Next</string>
         </property>
         <property name="icon">
-         <iconset resource="../icons/temp_icons.qrc">
+         <iconset resource="../../icons/temp_icons.qrc">
           <normaloff>:/add_icon/arrow-right-double.png</normaloff>:/add_icon/arrow-right-double.png</iconset>
         </property>
         <property name="default">
@@ -230,7 +227,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../icons/temp_icons.qrc"/>
+  <include location="../../icons/temp_icons.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -294,22 +291,6 @@
     <hint type="destinationlabel">
      <x>246</x>
      <y>-16</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>subnetRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>optClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>188</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>285</x>
-     <y>-3</y>
     </hint>
    </hints>
   </connection>
@@ -426,88 +407,8 @@
    </hints>
   </connection>
   <connection>
-   <sender>singleIpLine</sender>
-   <signal>editingFinished()</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>423</x>
-     <y>90</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>577</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>hostnameLine</sender>
-   <signal>editingFinished()</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>452</x>
-     <y>160</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>573</x>
-     <y>133</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fromIPLine</sender>
-   <signal>editingFinished()</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>277</x>
-     <y>213</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>570</x>
-     <y>186</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toIPLine</sender>
-   <signal>editingFinished()</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>538</x>
-     <y>219</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>573</x>
-     <y>311</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>IPLine</sender>
-   <signal>editingFinished()</signal>
-   <receiver>AddTargetsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>292</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-4</x>
-     <y>308</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>IPLine</sender>
-   <signal>editingFinished()</signal>
+   <signal>returnPressed()</signal>
    <receiver>AddTargetsDialog</receiver>
    <slot>accept()</slot>
    <hints>
@@ -522,18 +423,98 @@
    </hints>
   </connection>
   <connection>
-   <sender>netmaskLine</sender>
-   <signal>editingFinished()</signal>
+   <sender>toIPLine</sender>
+   <signal>returnPressed()</signal>
    <receiver>AddTargetsDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>322</x>
-     <y>302</y>
+     <x>538</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>573</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>subnetRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>optClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hostnameLine</sender>
+   <signal>returnPressed()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>573</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>singleIpLine</sender>
+   <signal>returnPressed()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>447</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>netmaskLine</sender>
+   <signal>returnPressed()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
      <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromIPLine</sender>
+   <signal>returnPressed()</signal>
+   <receiver>AddTargetsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>148</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-4</x>
+     <y>308</y>
     </hint>
    </hints>
   </connection>

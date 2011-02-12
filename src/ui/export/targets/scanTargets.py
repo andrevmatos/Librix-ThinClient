@@ -19,9 +19,8 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui,QtCore
-from ui.export.Ui_scanTargetsDialog import Ui_ScanTargetsDialog
-
-from urllib.request import urlopen
+from ui.export.targets.Ui_scanTargetsDialog import Ui_ScanTargetsDialog
+from ui.export.targets.threadedScan import ThreadedScan
 
 class ScanTargets(QtGui.QDialog):
 	"""Creates scan targets dialog"""
@@ -42,7 +41,7 @@ class ScanTargets(QtGui.QDialog):
 
 		self.makeMenu()
 
-		self.tree = []
+		self.threads = []
 		self.total = 0.0
 		self.finished = 0.0
 
@@ -66,14 +65,15 @@ class ScanTargets(QtGui.QDialog):
 		self.finished = 0
 		self.total = len(targets)
 		for i in targets:
-			T = TreeElement(i, len(targets), self.ui.targetsTree)
-			self.tree.append(T)
-			T.pingFinished.connect(self.increaseProgress)
+			T = ThreadedScan(i, parent=self.ui.targetsTree)
+			self.threads.append(T)
+			T.finished.connect(self.increaseProgress)
+			T.start()
 
 	def rescan(self):
 		self.ui.progressBar.setValue(0)
 		self.finished = 0
-		for i in self.tree:
+		for i in self.threads:
 			i.setSelected(False)
 			i.start()
 
@@ -84,7 +84,7 @@ class ScanTargets(QtGui.QDialog):
 
 	def accept(self):
 		targets = {}
-		for i in self.tree:
+		for i in self.threads:
 			if i.isSelected():
 				targets[i.address] = i.online
 		self.ipDict.emit(targets)
@@ -98,65 +98,19 @@ class ScanTargets(QtGui.QDialog):
 		QtGui.QWidget.show(self)
 
 	def selectAll(self):
-		for i in self.tree:
+		for i in self.threads:
 			i.setSelected(True)
 
 	def selectNone(self):
-		for i in self.tree:
+		for i in self.threads:
 			i.setSelected(False)
 
 	def selectOnline(self):
-		for i in self.tree:
+		for i in self.threads:
 			if i.online: i.setSelected(True)
 			else: i.setSelected(False)
 
 	def invertSelection(self):
-		for i in self.tree:
+		for i in self.threads:
 			i.setSelected(not i.isSelected())
 
-
-# TODO: when get the right implementation of scan fuction (maybe using http
-# serv, move this class to other file. This is ugly =P
-class TreeElement(QtCore.QThread):
-	# Custom signal
-	pingFinished = QtCore.pyqtSignal()
-
-	def __init__(self, address, total, parent=None):
-		self.parent = parent
-		self.address = address
-		self.total = total
-
-		QtCore.QThread.__init__(self)
-
-		self.listItem = QtGui.QTreeWidgetItem(parent)
-		self.listItem.setText(0, address)
-
-		self.start()
-
-	def setSelected(self, value):
-		self.listItem.setSelected(value)
-
-	def isSelected(self):
-		return(self.listItem.isSelected())
-
-	def run(self):
-		self.listItem.setText(1, self.tr("Scanning",
-			"a host or IP on add targets dialog"))
-		self.online = None
-
-		for k in range(1):
-			try:
-				u = urlopen("http://{0}:8088".format(self.address), None, 5)
-				self.online = u.read().decode('utf-8').strip()
-				break
-			except:
-				continue
-
-		if self.online:
-			self.listItem.setSelected(True)
-			self.listItem.setText(1, self.tr(self.online, "host connected"))
-		else:
-			self.listItem.setSelected(False)
-			self.listItem.setText(1, self.tr("Seens Offline",
-			"if the host has not been answered"))
-		self.pingFinished.emit()

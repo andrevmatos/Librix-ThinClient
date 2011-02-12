@@ -235,8 +235,7 @@ class Main(QtGui.QMainWindow):
 
 		@param	self		A Main window instance
 		"""
-		dialog = EditKeys(self.configparser, self)
-		dialog.exec_()
+		EditKeys(self.configparser, self).exec_()
 
 def main():
 	"""The program main loop"""

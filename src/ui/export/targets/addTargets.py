@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui,QtCore
-from ui.export.Ui_addTargetsDialog import Ui_AddTargetsDialog
+from ui.export.targets.Ui_addTargetsDialog import Ui_AddTargetsDialog
 
 from lib.ip import IPRange,Subnetwork
 
@@ -49,8 +49,6 @@ class AddTargets(QtGui.QDialog):
 			self.ui.subnetRadio: self.ui.subnetWidget,
 		}
 
-		self.optClicked()
-
 		self.ipValidator = QtGui.QRegExpValidator(QtCore.QRegExp(
 			r"0*(2(5[0-5]|[0-4]\d)|1?\d{1,2})"+
 			r"(\.0*(2(5[0-5]|[0-4]\d)|1?\d{1,2})){3}"), self)
@@ -64,6 +62,8 @@ class AddTargets(QtGui.QDialog):
 		self.ui.netmaskLine.setValidator(self.ipValidator)
 		self.ui.hostnameLine.setValidator(self.urlValidator)
 
+		self.optClicked()
+
 	def optClicked(self):
 		"""An new option was selected on Dialog
 
@@ -75,13 +75,14 @@ class AddTargets(QtGui.QDialog):
 				self.opts[i].setEnabled(True)
 			else:
 				self.opts[i].setEnabled(False)
+		self.parseTargets()
 
 	def accept(self):
 		if self.targets:
 			self.ipList.emit(self.targets)
 			QtGui.QDialog.accept(self)
 
-	def parseTargets(self, text):
+	def parseTargets(self):
 		self.targets = []
 
 		if self.ui.singleRadio.isChecked():
@@ -112,7 +113,3 @@ class AddTargets(QtGui.QDialog):
 			self.ui.nextButton.setEnabled(True)
 		else:
 			self.ui.nextButton.setEnabled(False)
-
-	def getNet(self):
-		"""Return a tuple containing host IP, network and netmask"""
-

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Fri Feb 11 19:24:57 2011
+# Created: Sat Feb 12 14:33:44 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -66,14 +66,21 @@ class Ui_ExportWidget(object):
 		self.addButton.setAutoRaise(True)
 		self.addButton.setObjectName(_fromUtf8("addButton"))
 		self.verticalLayout_2.addWidget(self.addButton)
-		self.toolButton = QtGui.QToolButton(self.targetsToolBar)
+		self.delButton = QtGui.QToolButton(self.targetsToolBar)
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/list-remove.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.toolButton.setIcon(icon1)
-		self.toolButton.setIconSize(QtCore.QSize(24, 24))
-		self.toolButton.setAutoRaise(True)
-		self.toolButton.setObjectName(_fromUtf8("toolButton"))
-		self.verticalLayout_2.addWidget(self.toolButton)
+		self.delButton.setIcon(icon1)
+		self.delButton.setIconSize(QtCore.QSize(24, 24))
+		self.delButton.setAutoRaise(True)
+		self.delButton.setObjectName(_fromUtf8("delButton"))
+		self.verticalLayout_2.addWidget(self.delButton)
+		self.rescanButton = QtGui.QToolButton(self.targetsToolBar)
+		icon2 = QtGui.QIcon()
+		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/refresh.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.rescanButton.setIcon(icon2)
+		self.rescanButton.setIconSize(QtCore.QSize(22, 22))
+		self.rescanButton.setObjectName(_fromUtf8("rescanButton"))
+		self.verticalLayout_2.addWidget(self.rescanButton)
 		spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 		self.verticalLayout_2.addItem(spacerItem)
 		self.horizontalLayout.addWidget(self.targetsToolBar)
@@ -100,9 +107,9 @@ class Ui_ExportWidget(object):
 		self.privKeyPath.setObjectName(_fromUtf8("privKeyPath"))
 		self.horizontalLayout_2.addWidget(self.privKeyPath)
 		self.openButton = QtGui.QToolButton(self.privKeyBox)
-		icon2 = QtGui.QIcon()
-		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-		self.openButton.setIcon(icon2)
+		icon3 = QtGui.QIcon()
+		icon3.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.openButton.setIcon(icon3)
 		self.openButton.setIconSize(QtCore.QSize(24, 24))
 		self.openButton.setAutoRaise(True)
 		self.openButton.setObjectName(_fromUtf8("openButton"))
@@ -117,8 +124,9 @@ class Ui_ExportWidget(object):
 		QtCore.QObject.connect(self.privKeyPath, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), ExportWidget.checkPrivKeyFile)
 		QtCore.QObject.connect(self.openButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.browsePrivKeyFile)
 		QtCore.QObject.connect(self.addButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.addTargetsClicked)
-		QtCore.QObject.connect(self.toolButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.removeTargetsClicked)
+		QtCore.QObject.connect(self.delButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.removeTargetsClicked)
 		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("clicked(QAbstractButton*)")), ExportWidget.buttonBoxClicked)
+		QtCore.QObject.connect(self.rescanButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.rescan)
 		QtCore.QMetaObject.connectSlotsByName(ExportWidget)
 
 	def retranslateUi(self, ExportWidget):
@@ -129,8 +137,9 @@ class Ui_ExportWidget(object):
 		self.treeWidget.headerItem().setText(1, QtGui.QApplication.translate("ExportWidget", "Version", None, QtGui.QApplication.UnicodeUTF8))
 		self.addButton.setToolTip(QtGui.QApplication.translate("ExportWidget", "Add Targets Manually", None, QtGui.QApplication.UnicodeUTF8))
 		self.addButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setToolTip(QtGui.QApplication.translate("ExportWidget", "Remove Selected Targets", None, QtGui.QApplication.UnicodeUTF8))
-		self.toolButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setToolTip(QtGui.QApplication.translate("ExportWidget", "Remove Selected Targets", None, QtGui.QApplication.UnicodeUTF8))
+		self.delButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
+		self.rescanButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyBox.setTitle(QtGui.QApplication.translate("ExportWidget", "Admin SSH Private Key", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyLabel.setText(QtGui.QApplication.translate("ExportWidget", "SSH Private Key:", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyPath.setText(QtGui.QApplication.translate("ExportWidget", "/root/.ssh/id_rsa", None, QtGui.QApplication.UnicodeUTF8))

@@ -23,8 +23,9 @@ import os
 
 from ui.export.Ui_exportWidget import Ui_ExportWidget
 from ui.common.LeftMenuItem import LeftMenuItem
-from ui.export.addTargets import AddTargets
-from ui.export.scanTargets import ScanTargets
+from ui.export.targets.addTargets import AddTargets
+from ui.export.targets.scanTargets import ScanTargets
+from ui.export.targets.threadedScan import ThreadedScan
 
 class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""
@@ -42,6 +43,7 @@ class ExportPage(QtGui.QWidget):
 		self.parent = parent
 
 		self.targets = {}
+		self.threads = {}
 
 		QtGui.QWidget.__init__(self, parent)
 
@@ -110,6 +112,7 @@ class ExportPage(QtGui.QWidget):
 		addTargetsDialog.show()
 
 		addTargetsDialog.ipList.connect(scanTargetsDialog.show)
+		# update self.targets with targets dict from scanTargetsDialog
 		scanTargetsDialog.ipDict.connect(self.targets.update)
 		scanTargetsDialog.ipDict.connect(self.refreshTargets)
 
@@ -126,11 +129,20 @@ class ExportPage(QtGui.QWidget):
 
 	def refreshTargets(self):
 		print("__refreshed")
-		self.ui.treeWidget.clear()
 		for i in self.targets:
-			QtGui.QTreeWidgetItem(self.ui.treeWidget, [i, self.targets[i]])
+			if i not in self.threads:
+				self.threads[i] = ThreadedScan(i, self.targets[i],
+					parent=self.ui.treeWidget)
+		for i in self.threads:
+			if i not in self.targets:
+				del self.threads[i]
 		self.checkPrivKeyFile()
 		self.checkConfigs()
+
+	def rescan(self):
+		print("__rescanning")
+		for i in self.threads:
+			self.threads[i].start()
 
 	def buttonBoxClicked(self, button):
 		if self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Reset:
