@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-12, 13:58:47 -->
+<!-- Saved: 2011-02-16, 16:26:01 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -70,6 +70,10 @@
     <Source>src/ui/export/targets/Ui_addTargetsDialog.py</Source>
     <Source>src/ui/export/targets/scanTargets.py</Source>
     <Source>src/ui/export/targets/threadedScan.py</Source>
+    <Source>src/ui/export/ssh_export/threadedExport.py</Source>
+    <Source>src/ui/export/ssh_export/__init__.py</Source>
+    <Source>src/ui/export/ssh_export/Ui_sshExport.py</Source>
+    <Source>src/ui/export/ssh_export/sshExport.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -85,6 +89,7 @@
     <Form>src/ui/editkeys/editKeys.ui</Form>
     <Form>src/ui/export/targets/addTargetsDialog.ui</Form>
     <Form>src/ui/export/targets/scanTargetsDialog.ui</Form>
+    <Form>src/ui/export/ssh_export/sshExport.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>

@@ -462,6 +462,74 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
     </message>
 </context>
 <context>
+    <name>SSHExport</name>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="130"/>
+        <source>SSH Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="131"/>
+        <source>Exporting Config Files and Updates through SSH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="132"/>
+        <source>Operation {0} of {1}: {2}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="135"/>
+        <source>Show detailed status of operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="136"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="139"/>
+        <source>Cancel nonstarted operations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="140"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="141"/>
+        <source>Operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="142"/>
+        <source>Destiny</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/Ui_sshExport.py" line="143"/>
+        <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/sshExport.py" line="158"/>
+        <source>Operation {0} of {1}: Send files to {2}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/sshExport.py" line="171"/>
+        <source>Root Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/ssh_export/sshExport.py" line="171"/>
+        <source>The host {0} require a password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScanTargets</name>
     <message>
         <location filename="export/targets/scanTargets.py" line="51"/>

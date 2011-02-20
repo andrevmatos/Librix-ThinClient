@@ -3,6 +3,10 @@
     <file>system-users.png</file>
     <file>user.png</file>
   </qresource>
+  <qresource prefix="ssh_export">
+    <file>arrow-down-double.png</file>
+    <file>arrow-up-double.png</file>
+  </qresource>
   <qresource prefix="edit_users">
     <file>add-user.png</file>
     <file>remove-user.png</file>

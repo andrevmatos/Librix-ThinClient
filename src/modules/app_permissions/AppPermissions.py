@@ -266,9 +266,8 @@ class ThreadedParse(QtCore.QThread):
 			except:
 				continue
 
-			T = QtGui.QListWidgetItem("{0} [{1}]".format(Name,
-				Exec), self.listWid)
-			T.setToolTip(f)
+			T = QtGui.QListWidgetItem("{0}".format(Name), self.listWid)
+			T.setToolTip(Exec)
 			self.allApps[f] = {'name': Name, 'exec': Exec, 'icon': Icon,
 				'all': T}
 			self.concluded += 1
