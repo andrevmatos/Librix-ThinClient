@@ -76,7 +76,7 @@
 <context>
     <name>EditKeys</name>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="88"/>
+        <location filename="editkeys/Ui_editKeys.py" line="91"/>
         <source>Edit PubKeys</source>
         <translation>Editar Chaves Públicas</translation>
     </message>
@@ -96,22 +96,22 @@
         <translation>Insira abaixo uma chave pública SSH válida</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="89"/>
+        <location filename="editkeys/Ui_editKeys.py" line="92"/>
         <source>Super User SSH Public Keys:</source>
         <translation>Chaves Públicas SSH de Super Usuário:</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="93"/>
+        <location filename="editkeys/Ui_editKeys.py" line="96"/>
         <source>Add PubKey from File</source>
         <translation>Adicionar Chave Pública de um arquivo</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="97"/>
+        <location filename="editkeys/Ui_editKeys.py" line="100"/>
         <source>Add PubKey</source>
         <translation>Adicionar Chave Pública</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="101"/>
+        <location filename="editkeys/Ui_editKeys.py" line="104"/>
         <source>Remove PubKey</source>
         <translation>Remover Chave Pública</translation>
     </message>
@@ -285,52 +285,52 @@
 <context>
     <name>ExportWidget</name>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="133"/>
+        <location filename="export/Ui_exportWidget.py" line="139"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="134"/>
+        <location filename="export/Ui_exportWidget.py" line="140"/>
         <source>Targets</source>
         <translation>Alvos</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="136"/>
+        <location filename="export/Ui_exportWidget.py" line="142"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="137"/>
+        <location filename="export/Ui_exportWidget.py" line="143"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="138"/>
+        <location filename="export/Ui_exportWidget.py" line="144"/>
         <source>Add Targets Manually</source>
         <translation>Adicionar Alvos Manualmente</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="146"/>
+        <location filename="export/Ui_exportWidget.py" line="152"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="140"/>
+        <location filename="export/Ui_exportWidget.py" line="146"/>
         <source>Remove Selected Targets</source>
         <translation>Remover Alvos Selecionados</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="143"/>
+        <location filename="export/Ui_exportWidget.py" line="149"/>
         <source>Admin SSH Private Key</source>
         <translation>Chave Privada SSH do Administrador</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="144"/>
+        <location filename="export/Ui_exportWidget.py" line="150"/>
         <source>SSH Private Key:</source>
         <translation>Shave SSH Privada:</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="145"/>
+        <location filename="export/Ui_exportWidget.py" line="151"/>
         <source>/root/.ssh/id_rsa</source>
         <translation></translation>
     </message>
@@ -901,27 +901,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>listItemWidget</name>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="211"/>
+        <location filename="edit/Ui_listItemWidget.py" line="210"/>
         <source>Form</source>
         <translation>Formulário</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="215"/>
+        <location filename="edit/Ui_listItemWidget.py" line="214"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="216"/>
+        <location filename="edit/Ui_listItemWidget.py" line="215"/>
         <source>Pretty Option Name</source>
         <translation>Nome de Opção Bonito</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="217"/>
+        <location filename="edit/Ui_listItemWidget.py" line="216"/>
         <source>Configure</source>
         <translation>Configurar</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="218"/>
+        <location filename="edit/Ui_listItemWidget.py" line="217"/>
         <source>Activate</source>
         <translation>Ativar</translation>
     </message>

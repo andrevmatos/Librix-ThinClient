@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/editkeys/editKeys.ui'
 #
-# Created: Mon Feb 21 18:35:29 2011
+# Created: Mon Feb 21 19:27:47 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,6 +50,7 @@ class Ui_EditKeys(object):
 		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/export_icon/open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.openButton.setIcon(icon)
 		self.openButton.setIconSize(QtCore.QSize(22, 22))
+		self.openButton.setAutoRaise(True)
 		self.openButton.setObjectName(_fromUtf8("openButton"))
 		self.verticalLayout_2.addWidget(self.openButton)
 		self.addButton = QtGui.QToolButton(self.toolBar)
@@ -57,6 +58,7 @@ class Ui_EditKeys(object):
 		icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/add_icon/list-add.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.addButton.setIcon(icon1)
 		self.addButton.setIconSize(QtCore.QSize(22, 22))
+		self.addButton.setAutoRaise(True)
 		self.addButton.setObjectName(_fromUtf8("addButton"))
 		self.verticalLayout_2.addWidget(self.addButton)
 		self.delButton = QtGui.QToolButton(self.toolBar)
@@ -64,6 +66,7 @@ class Ui_EditKeys(object):
 		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/remove_icon/list-remove.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.delButton.setIcon(icon2)
 		self.delButton.setIconSize(QtCore.QSize(22, 22))
+		self.delButton.setAutoRaise(True)
 		self.delButton.setObjectName(_fromUtf8("delButton"))
 		self.verticalLayout_2.addWidget(self.delButton)
 		spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)

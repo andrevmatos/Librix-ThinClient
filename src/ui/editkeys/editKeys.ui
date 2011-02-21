@@ -73,7 +73,7 @@
             <string>Add PubKey from File</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
            </property>
            <property name="iconSize">
@@ -81,6 +81,9 @@
              <width>22</width>
              <height>22</height>
             </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -99,7 +102,7 @@
             <string>Add PubKey</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/add_icon/list-add.png</normaloff>:/add_icon/list-add.png</iconset>
            </property>
            <property name="iconSize">
@@ -107,6 +110,9 @@
              <width>22</width>
              <height>22</height>
             </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -125,7 +131,7 @@
             <string>Remove PubKey</string>
            </property>
            <property name="icon">
-            <iconset resource="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc">
+            <iconset resource="../icons/temp_icons.qrc">
              <normaloff>:/remove_icon/list-remove.png</normaloff>:/remove_icon/list-remove.png</iconset>
            </property>
            <property name="iconSize">
@@ -133,6 +139,9 @@
              <width>22</width>
              <height>22</height>
             </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -168,7 +177,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../../../../../../../D/Dev/Librix/thinclient/src/ui/icons/temp_icons.qrc"/>
+  <include location="../icons/temp_icons.qrc"/>
  </resources>
  <connections>
   <connection>

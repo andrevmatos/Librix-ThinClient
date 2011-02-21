@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/export/exportWidget.ui'
 #
-# Created: Mon Feb 21 18:35:29 2011
+# Created: Mon Feb 21 19:27:47 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -74,11 +74,17 @@ class Ui_ExportWidget(object):
 		self.delButton.setAutoRaise(True)
 		self.delButton.setObjectName(_fromUtf8("delButton"))
 		self.verticalLayout_2.addWidget(self.delButton)
+		self.line = QtGui.QFrame(self.targetsToolBar)
+		self.line.setFrameShape(QtGui.QFrame.HLine)
+		self.line.setFrameShadow(QtGui.QFrame.Sunken)
+		self.line.setObjectName(_fromUtf8("line"))
+		self.verticalLayout_2.addWidget(self.line)
 		self.rescanButton = QtGui.QToolButton(self.targetsToolBar)
 		icon2 = QtGui.QIcon()
 		icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/refresh.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.rescanButton.setIcon(icon2)
 		self.rescanButton.setIconSize(QtCore.QSize(22, 22))
+		self.rescanButton.setAutoRaise(True)
 		self.rescanButton.setObjectName(_fromUtf8("rescanButton"))
 		self.verticalLayout_2.addWidget(self.rescanButton)
 		spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)

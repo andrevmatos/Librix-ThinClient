@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/listItemWidget.ui'
 #
-# Created: Mon Feb 21 18:35:30 2011
+# Created: Mon Feb 21 19:27:47 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_listItemWidget(object):
 	def setupUi(self, listItemWidget):
 		listItemWidget.setObjectName(_fromUtf8("listItemWidget"))
-		listItemWidget.resize(559, 205)
+		listItemWidget.resize(559, 213)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
@@ -34,8 +34,6 @@ class Ui_listItemWidget(object):
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(self.collapsedWid.sizePolicy().hasHeightForWidth())
 		self.collapsedWid.setSizePolicy(sizePolicy)
-		self.collapsedWid.setMinimumSize(QtCore.QSize(0, 40))
-		self.collapsedWid.setMaximumSize(QtCore.QSize(16777215, 40))
 		self.collapsedWid.setObjectName(_fromUtf8("collapsedWid"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.collapsedWid)
 		self.horizontalLayout.setSpacing(0)
@@ -49,7 +47,7 @@ class Ui_listItemWidget(object):
 		sizePolicy.setHeightForWidth(self.expandButtonWid.sizePolicy().hasHeightForWidth())
 		self.expandButtonWid.setSizePolicy(sizePolicy)
 		self.expandButtonWid.setFrameShape(QtGui.QFrame.StyledPanel)
-		self.expandButtonWid.setFrameShadow(QtGui.QFrame.Raised)
+		self.expandButtonWid.setFrameShadow(QtGui.QFrame.Plain)
 		self.expandButtonWid.setObjectName(_fromUtf8("expandButtonWid"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.expandButtonWid)
 		self.horizontalLayout_2.setSpacing(0)
@@ -66,7 +64,7 @@ class Ui_listItemWidget(object):
 		self.horizontalLayout.addWidget(self.expandButtonWid)
 		self.prettyWid = QtGui.QFrame(self.collapsedWid)
 		self.prettyWid.setFrameShape(QtGui.QFrame.StyledPanel)
-		self.prettyWid.setFrameShadow(QtGui.QFrame.Raised)
+		self.prettyWid.setFrameShadow(QtGui.QFrame.Plain)
 		self.prettyWid.setObjectName(_fromUtf8("prettyWid"))
 		self.horizontalLayout_9 = QtGui.QHBoxLayout(self.prettyWid)
 		self.horizontalLayout_9.setSpacing(0)
@@ -83,7 +81,7 @@ class Ui_listItemWidget(object):
 		sizePolicy.setHeightForWidth(self.activateFrame.sizePolicy().hasHeightForWidth())
 		self.activateFrame.setSizePolicy(sizePolicy)
 		self.activateFrame.setFrameShape(QtGui.QFrame.StyledPanel)
-		self.activateFrame.setFrameShadow(QtGui.QFrame.Raised)
+		self.activateFrame.setFrameShadow(QtGui.QFrame.Plain)
 		self.activateFrame.setObjectName(_fromUtf8("activateFrame"))
 		self.horizontalLayout_3 = QtGui.QHBoxLayout(self.activateFrame)
 		self.horizontalLayout_3.setSpacing(0)
@@ -100,6 +98,7 @@ class Ui_listItemWidget(object):
 		self.toggleButtonCol.setIcon(icon1)
 		self.toggleButtonCol.setIconSize(QtCore.QSize(22, 22))
 		self.toggleButtonCol.setCheckable(True)
+		self.toggleButtonCol.setAutoRaise(True)
 		self.toggleButtonCol.setObjectName(_fromUtf8("toggleButtonCol"))
 		self.horizontalLayout_3.addWidget(self.toggleButtonCol)
 		self.horizontalLayout.addWidget(self.activateFrame)
@@ -137,7 +136,7 @@ class Ui_listItemWidget(object):
 		sizePolicy.setHeightForWidth(self.collapseButtonWid.sizePolicy().hasHeightForWidth())
 		self.collapseButtonWid.setSizePolicy(sizePolicy)
 		self.collapseButtonWid.setFrameShape(QtGui.QFrame.StyledPanel)
-		self.collapseButtonWid.setFrameShadow(QtGui.QFrame.Raised)
+		self.collapseButtonWid.setFrameShadow(QtGui.QFrame.Plain)
 		self.collapseButtonWid.setObjectName(_fromUtf8("collapseButtonWid"))
 		self.horizontalLayout_10 = QtGui.QHBoxLayout(self.collapseButtonWid)
 		self.horizontalLayout_10.setSpacing(0)
@@ -154,7 +153,7 @@ class Ui_listItemWidget(object):
 		self.horizontalLayout_7.addWidget(self.collapseButtonWid)
 		self.prettyName = QtGui.QFrame(self.titleWid)
 		self.prettyName.setFrameShape(QtGui.QFrame.StyledPanel)
-		self.prettyName.setFrameShadow(QtGui.QFrame.Raised)
+		self.prettyName.setFrameShadow(QtGui.QFrame.Plain)
 		self.prettyName.setObjectName(_fromUtf8("prettyName"))
 		self.horizontalLayout_5 = QtGui.QHBoxLayout(self.prettyName)
 		self.horizontalLayout_5.setSpacing(0)

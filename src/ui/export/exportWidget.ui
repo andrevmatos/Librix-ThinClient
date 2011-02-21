@@ -150,6 +150,13 @@
              </widget>
             </item>
             <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QToolButton" name="rescanButton">
               <property name="text">
                <string>...</string>
@@ -163,6 +170,9 @@
                 <width>22</width>
                 <height>22</height>
                </size>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

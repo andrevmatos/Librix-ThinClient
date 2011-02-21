@@ -122,20 +122,31 @@ class ExportPage(QtGui.QWidget):
 		@param	self		A ExportPage instance
 		"""
 		for i in self.ui.treeWidget.selectedItems():
-			if i.isSelected():
-				try: self.targets.pop(i.text(0))
-				except Exception as e: print("This must not has happened:", e)
+			if i.isSelected() and i.text(0) in self.targets:
+				self.targets.pop(i.text(0))
+				#except Exception as e: print("This must not has happened:", e)
 		self.refreshTargets()
 
 	def refreshTargets(self):
 		print("__refreshed")
+		D = []
 		for i in self.targets:
 			if i not in self.threads:
 				self.threads[i] = ThreadedScan(i, self.targets[i],
 					parent=self.ui.treeWidget)
 		for i in self.threads:
 			if i not in self.targets:
-				del self.threads[i]
+				D.append(i)
+		for i in D:
+			I = self.threads.pop(i)
+			# Should be a better way to delete a tree item
+			p = I.treeItem.parent()
+			if p:
+				p.takeChild(p.indexOfChild(I.treeItem))
+			else:
+				index = self.ui.treeWidget.indexOfTopLevelItem(I.treeItem)
+				self.ui.treeWidget.takeTopLevelItem(index)
+				
 		self.checkPrivKeyFile()
 		self.checkConfigs()
 
