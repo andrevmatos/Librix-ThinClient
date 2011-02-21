@@ -86,5 +86,5 @@ class ThreadedScan(QtCore.QThread):
 			self.treeItem.setText(1, self.online)
 		else:
 			self.treeItem.setSelected(False)
-			self.treeItem.setText(1, self.tr("Seens Offline",
+			self.treeItem.setText(1, self.tr("Offline",
 			"if the host has not responded"))

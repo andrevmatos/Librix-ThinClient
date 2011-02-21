@@ -466,67 +466,67 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="130"/>
         <source>SSH Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportação via SSH</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="131"/>
         <source>Exporting Config Files and Updates through SSH</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportando Arquivos de Configuração e Atualizações via SSH</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="132"/>
         <source>Operation {0} of {1}: {2}</source>
-        <translation type="unfinished"></translation>
+        <translation>Operação {0} de {1}: {2}</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="135"/>
         <source>Show detailed status of operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar status detalhado das operações</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="136"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Detalhes</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="139"/>
         <source>Cancel nonstarted operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancelar operações não-iniciadas</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="140"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="141"/>
         <source>Operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Operação</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="142"/>
         <source>Destiny</source>
-        <translation type="unfinished"></translation>
+        <translation>Destino</translation>
     </message>
     <message>
         <location filename="export/ssh_export/Ui_sshExport.py" line="143"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="export/ssh_export/sshExport.py" line="158"/>
         <source>Operation {0} of {1}: Send files to {2}</source>
-        <translation type="unfinished"></translation>
+        <translation>Operação {0} de {1}: Enviar arquivos para {2}</translation>
     </message>
     <message>
         <location filename="export/ssh_export/sshExport.py" line="171"/>
         <source>Root Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Senha de Root</translation>
     </message>
     <message>
         <location filename="export/ssh_export/sshExport.py" line="171"/>
         <source>The host {0} require a password!</source>
-        <translation type="unfinished"></translation>
+        <translation>O host {0} requer uma senha!</translation>
     </message>
 </context>
 <context>
@@ -767,7 +767,13 @@ p, li { white-space: pre-wrap; }
         <location filename="export/targets/threadedScan.py" line="89"/>
         <source>Seens Offline</source>
         <comment>if the host has not responded</comment>
-        <translation>Parece desconectado</translation>
+        <translation type="obsolete">Parece desconectado</translation>
+    </message>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="89"/>
+        <source>Offline</source>
+        <comment>if the host has not responded</comment>
+        <translation>Desconectado</translation>
     </message>
 </context>
 <context>
