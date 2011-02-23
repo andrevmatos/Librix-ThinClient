@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/users/usersWidget.ui'
 #
-# Created: Mon Feb 21 19:27:47 2011
+# Created: Wed Feb 23 17:52:07 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -115,6 +115,7 @@ class Ui_UsersWidget(object):
 		self.profilesTree.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
 		self.profilesTree.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
 		self.profilesTree.setObjectName(_fromUtf8("profilesTree"))
+		self.profilesTree.header().setVisible(False)
 		self.verticalLayout_4.addWidget(self.profilesTree)
 		self.horizontalLayout.addWidget(self.profilesWidget)
 		self.verticalLayout.addWidget(self.usersAndProfiles)

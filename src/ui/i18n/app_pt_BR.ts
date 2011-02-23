@@ -426,6 +426,16 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
+    <message>
+        <location filename="main.py" line="252"/>
+        <source>Librix ThinClient Management Tool</source>
+        <translation>Ferramenta de Gerenciamento do Librix ThinClient</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="245"/>
+        <source>Librix ThinClient Management Tool (LTMT) is a program developed by &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Librix Dev Team&lt;/a&gt;, also responsible by Librix Linux gentoo-based distribution, and it&apos;s embedded tools, in association with &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; and &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Administration and Security Laboratory of Unicamp&lt;/a&gt;.</source>
+        <translation>A Ferramenta de Gerenciamento do Librix ThinClient (LTMT) é um programa desenvolvido pelo &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Time de Desenvolvimento Librix&lt;/a&gt;, também responsável pelo Librix Linux, uma distribuição baseada em Gentoo, e suas ferramentas de gerenciamento, em associação com a &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; e o &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Laboratório de Administração e Segurança da Unicamp&lt;/a&gt;.</translation>
+    </message>
 </context>
 <context>
     <name>ProfileSummary</name>
@@ -611,7 +621,7 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
         <translation type="obsolete">Interface de Administração do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="197"/>
+        <location filename="Ui_mainWindow.py" line="212"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -624,124 +634,139 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ferramenta de Gerenciamento do Librix Thin Client. Versão Alpha.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="202"/>
+        <location filename="Ui_mainWindow.py" line="217"/>
         <source>Enter config name/version here</source>
         <translation>Insira nome ou versão da configuração aqui</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="203"/>
+        <location filename="Ui_mainWindow.py" line="218"/>
         <source>File</source>
         <translation>Arquivo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="204"/>
+        <location filename="Ui_mainWindow.py" line="219"/>
         <source>View</source>
         <translation>Exibir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="207"/>
+        <location filename="Ui_mainWindow.py" line="223"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="210"/>
+        <location filename="Ui_mainWindow.py" line="226"/>
         <source>Open config file</source>
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="211"/>
+        <location filename="Ui_mainWindow.py" line="227"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="212"/>
+        <location filename="Ui_mainWindow.py" line="228"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="215"/>
+        <location filename="Ui_mainWindow.py" line="231"/>
         <source>Save current file</source>
         <translation>Salvar arquivo atual</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="216"/>
+        <location filename="Ui_mainWindow.py" line="232"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="218"/>
+        <location filename="Ui_mainWindow.py" line="234"/>
         <source>Save as</source>
         <translation>Salvar como</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="221"/>
+        <location filename="Ui_mainWindow.py" line="237"/>
         <source>Save current file as another file name</source>
         <translation>Salvar arquivo atual com outro nome</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="222"/>
+        <location filename="Ui_mainWindow.py" line="238"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="223"/>
+        <location filename="Ui_mainWindow.py" line="239"/>
         <source>Quit</source>
         <translation>Sair</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="226"/>
+        <location filename="Ui_mainWindow.py" line="242"/>
         <source>Quit Librix Thin Client</source>
         <translation>Sair do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="227"/>
+        <location filename="Ui_mainWindow.py" line="243"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="228"/>
+        <location filename="Ui_mainWindow.py" line="244"/>
         <source>Show users profile summary</source>
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="229"/>
+        <location filename="Ui_mainWindow.py" line="245"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="232"/>
+        <location filename="Ui_mainWindow.py" line="248"/>
         <source>Creates a new empty config file</source>
         <translation>Criar um novo arquivo de configuração vazio</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="233"/>
+        <location filename="Ui_mainWindow.py" line="249"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="196"/>
+        <location filename="Ui_mainWindow.py" line="211"/>
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="206"/>
+        <location filename="Ui_mainWindow.py" line="222"/>
         <source>Main Tool Bar</source>
         <translation>Barra de Ferramentas Principal</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="205"/>
+        <location filename="Ui_mainWindow.py" line="220"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="234"/>
+        <location filename="Ui_mainWindow.py" line="250"/>
         <source>Edit PubKeys</source>
         <translation>Editar Chaves Públicas</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="235"/>
+        <location filename="Ui_mainWindow.py" line="251"/>
         <source>Ctrl+E</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="221"/>
+        <source>Help</source>
+        <translation>Ajuda</translation>
+    </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="252"/>
+        <source>About Qt</source>
+        <translation>Sobre o Qt</translation>
+    </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="253"/>
+        <source>About LTMT</source>
+        <translation>Sobre o LTMT</translation>
     </message>
 </context>
 <context>
@@ -761,7 +786,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="export/targets/threadedScan.py" line="46"/>
         <source>Seens Offline</source>
-        <translation>Parece desconectado</translation>
+        <translation type="obsolete">Parece desconectado</translation>
     </message>
     <message>
         <location filename="export/targets/threadedScan.py" line="89"/>
@@ -773,6 +798,11 @@ p, li { white-space: pre-wrap; }
         <location filename="export/targets/threadedScan.py" line="89"/>
         <source>Offline</source>
         <comment>if the host has not responded</comment>
+        <translation>Desconectado</translation>
+    </message>
+    <message>
+        <location filename="export/targets/threadedScan.py" line="46"/>
+        <source>Offline</source>
         <translation>Desconectado</translation>
     </message>
 </context>
@@ -835,22 +865,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UsersWidget</name>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="148"/>
+        <location filename="users/Ui_usersWidget.py" line="149"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="149"/>
+        <location filename="users/Ui_usersWidget.py" line="150"/>
         <source>Users:</source>
         <translation>Usuários:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="153"/>
+        <location filename="users/Ui_usersWidget.py" line="154"/>
         <source>Add user</source>
         <translation>Adicionar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="157"/>
+        <location filename="users/Ui_usersWidget.py" line="158"/>
         <source>Remove user</source>
         <translation>Remover usuário</translation>
     </message>
@@ -860,27 +890,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Editar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="160"/>
+        <location filename="users/Ui_usersWidget.py" line="161"/>
         <source>Add user to profile</source>
         <translation>Adicionar usuário ao perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="163"/>
+        <location filename="users/Ui_usersWidget.py" line="164"/>
         <source>Remove user from profile</source>
         <translation>Remover usuário do perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="164"/>
+        <location filename="users/Ui_usersWidget.py" line="165"/>
         <source>Profiles:</source>
         <translation>Perfis:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="165"/>
+        <location filename="users/Ui_usersWidget.py" line="166"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="166"/>
+        <location filename="users/Ui_usersWidget.py" line="167"/>
         <source>Profile Summary:</source>
         <translation>Resumo do Perfil:</translation>
     </message>

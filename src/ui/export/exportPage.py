@@ -140,12 +140,8 @@ class ExportPage(QtGui.QWidget):
 		for i in D:
 			I = self.threads.pop(i)
 			# Should be a better way to delete a tree item
-			p = I.treeItem.parent()
-			if p:
-				p.takeChild(p.indexOfChild(I.treeItem))
-			else:
-				index = self.ui.treeWidget.indexOfTopLevelItem(I.treeItem)
-				self.ui.treeWidget.takeTopLevelItem(index)
+			index = self.ui.treeWidget.indexOfTopLevelItem(I.treeItem)
+			self.ui.treeWidget.takeTopLevelItem(index)
 				
 		self.checkPrivKeyFile()
 		self.checkConfigs()

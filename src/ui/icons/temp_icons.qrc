@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="user_icon">
+    <file>qtlogo.png</file>
     <file>system-users.png</file>
     <file>user.png</file>
   </qresource>

@@ -200,7 +200,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -225,9 +225,17 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionEdit_PubKeys"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_LTMT"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -389,6 +397,24 @@ p, li { white-space: pre-wrap; }
     <string>Ctrl+E</string>
    </property>
   </action>
+  <action name="actionAbout_Qt">
+   <property name="icon">
+    <iconset resource="icons/temp_icons.qrc">
+     <normaloff>:/user_icon/qtlogo.png</normaloff>:/user_icon/qtlogo.png</iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout_LTMT">
+   <property name="icon">
+    <iconset resource="icons/temp_icons.qrc">
+     <normaloff>:/user_icon/system-users.png</normaloff>:/user_icon/system-users.png</iconset>
+   </property>
+   <property name="text">
+    <string>About LTMT</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="icons/temp_icons.qrc"/>
@@ -522,6 +548,38 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionAbout_LTMT</sender>
+   <signal>activated()</signal>
+   <receiver>ThinClient</receiver>
+   <slot>aboutLTMT()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout_Qt</sender>
+   <signal>activated()</signal>
+   <receiver>ThinClient</receiver>
+   <slot>aboutQt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>activateTab()</slot>
@@ -531,5 +589,7 @@ p, li { white-space: pre-wrap; }
   <slot>saveAsConfigFile()</slot>
   <slot>editKeys()</slot>
   <slot>newConfigFile()</slot>
+  <slot>aboutLTMT()</slot>
+  <slot>aboutQt()</slot>
  </slots>
 </ui>

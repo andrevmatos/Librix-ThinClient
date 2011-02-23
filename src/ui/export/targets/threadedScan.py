@@ -43,7 +43,7 @@ class ThreadedScan(QtCore.QThread):
 		self.treeItem.setText(0, address)
 
 		if version: self.treeItem.setText(1, version)
-		else: self.treeItem.setText(1, self.tr("Seens Offline"))
+		else: self.treeItem.setText(1, self.tr("Offline"))
 
 	def setSelected(self, value):
 		"""Set state of self.treeItem
