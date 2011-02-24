@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-16, 16:26:01 -->
+<!-- Saved: 2011-02-24, 18:03:34 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -74,6 +74,11 @@
     <Source>src/ui/export/ssh_export/__init__.py</Source>
     <Source>src/ui/export/ssh_export/Ui_sshExport.py</Source>
     <Source>src/ui/export/ssh_export/sshExport.py</Source>
+    <Source>src/ui/help/about_LTMT.py</Source>
+    <Source>src/ui/help/__init__.py</Source>
+    <Source>src/ui/users/add_user/Ui_addUser.py</Source>
+    <Source>src/ui/users/add_user/addUser.py</Source>
+    <Source>src/ui/users/add_user/__init__.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

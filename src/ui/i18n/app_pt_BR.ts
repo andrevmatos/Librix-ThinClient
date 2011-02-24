@@ -74,6 +74,49 @@
     </message>
 </context>
 <context>
+    <name>AddUser</name>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="122"/>
+        <source>Add User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="123"/>
+        <source>Enter a new user name below:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="124"/>
+        <source>Add this user to host accounts if it doesn&apos;t exist (sync).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="125"/>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="126"/>
+        <source>Initial Group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="127"/>
+        <source>Other Groups (comma separated):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="128"/>
+        <source>Home:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="129"/>
+        <source>Shell:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EditKeys</name>
     <message>
         <location filename="editkeys/Ui_editKeys.py" line="91"/>

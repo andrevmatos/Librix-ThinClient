@@ -21,8 +21,9 @@ import os
 from lxml import etree as ET
 from copy import deepcopy
 from tempfile import mkstemp
+from crypt import crypt
 
-from lib.utils import sha512sum
+from lib.utils import sha512sum, passwdGen
 from lib.modules import LTCModuleParser
 
 class LTCConfigParser(object):
@@ -458,6 +459,26 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in users list".format(username))
 		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
 		self._syncConfigs()
+	
+	def setUserSync(self, user, passwd, initGroup, groups, home, sh):
+		"""Set sync options for user
+		
+		@param	self		A LTCConfigParser instance
+		@param	user		A valid and existing username
+		@param	passwd		Plaintext password, will be encrypted
+		@param	initGroup	Initial group. It'll be created if doesn't exist
+		@param	groups		Other groups. Skip non-existing ones
+		@param	home		Home directory
+		@param	sh			Shell
+		"""
+		if not user in self.getUsersList():
+			raise IndexError("\"{0}\" not in users list".format(user))
+			
+		U = self._users.find("user[@name='{0}']".format(user))
+		
+		p = U.find("shadow_pw")
+		if not p: p = ET.SubElement(U, "shadow_pw")
+		hash = crypt(passwd, '$1$'+passwdGen(8))
 
 	def getKeys(self):
 		"""Return config file SSH public keys list
@@ -473,7 +494,6 @@ class LTCConfigParser(object):
 		@param	self		A LTCConfigParser instance
 		@param	key			A string containing a valid pubkey
 		"""
-		k = key.strip().split()
 		if key.strip() in self.getKeys():
 			return
 
