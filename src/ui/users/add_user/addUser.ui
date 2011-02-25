@@ -2,16 +2,22 @@
 <ui version="4.0">
  <class>AddUser</class>
  <widget class="QDialog" name="AddUser">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>342</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Add User</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
@@ -67,6 +73,29 @@
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="uidLabel">
+        <property name="text">
+         <string>UID:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="uidSpin">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="minimum">
+         <number>1000</number>
+        </property>
+        <property name="maximum">
+         <number>65535</number>
+        </property>
        </widget>
       </item>
       <item>
@@ -83,7 +112,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="initGLine"/>
+       <widget class="QLineEdit" name="initGLine">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="groupsLabel">
@@ -99,7 +132,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="groupsLine"/>
+       <widget class="QLineEdit" name="groupsLine">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="homeLabel">
@@ -172,7 +209,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>222</x>
-     <y>285</y>
+     <y>373</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -188,7 +225,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>290</x>
-     <y>291</y>
+     <y>379</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -212,5 +249,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>nameLine</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddUser</receiver>
+   <slot>userChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>139</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>userChanged()</slot>
+ </slots>
 </ui>

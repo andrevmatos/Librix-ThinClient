@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/users/usersWidget.ui'
 #
-# Created: Thu Feb 24 17:16:49 2011
+# Created: Fri Feb 25 18:40:17 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -143,6 +143,7 @@ class Ui_UsersWidget(object):
 		QtCore.QObject.connect(self.profilesTree, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)")), UsersWidget.activateProfileSummary)
 		QtCore.QObject.connect(self.addUserButton, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.addUser)
 		QtCore.QObject.connect(self.delUserButton, QtCore.SIGNAL(_fromUtf8("clicked()")), UsersWidget.delUser)
+		QtCore.QObject.connect(self.usersList, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), UsersWidget.activateUserSummary)
 		QtCore.QMetaObject.connectSlotsByName(UsersWidget)
 
 	def retranslateUi(self, UsersWidget):

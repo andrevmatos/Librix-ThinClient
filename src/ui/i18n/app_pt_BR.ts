@@ -76,44 +76,59 @@
 <context>
     <name>AddUser</name>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="122"/>
+        <location filename="users/add_user/Ui_addUser.py" line="137"/>
         <source>Add User</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar Usuário</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="123"/>
+        <location filename="users/add_user/Ui_addUser.py" line="138"/>
         <source>Enter a new user name below:</source>
-        <translation type="unfinished"></translation>
+        <translation>Insira o nome do novo usuário abaixo:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="124"/>
+        <location filename="users/add_user/Ui_addUser.py" line="139"/>
         <source>Add this user to host accounts if it doesn&apos;t exist (sync).</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar este usuário às contas da máquina, se não existir (sincronizar).</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="125"/>
+        <location filename="users/add_user/Ui_addUser.py" line="140"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Senha:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="126"/>
+        <location filename="users/add_user/Ui_addUser.py" line="142"/>
         <source>Initial Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo Inicial:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="127"/>
+        <location filename="users/add_user/Ui_addUser.py" line="143"/>
         <source>Other Groups (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Outros Grupos (separados por vírgula):</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="128"/>
+        <location filename="users/add_user/Ui_addUser.py" line="144"/>
         <source>Home:</source>
-        <translation type="unfinished"></translation>
+        <translation>Home:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="129"/>
+        <location filename="users/add_user/Ui_addUser.py" line="145"/>
         <source>Shell:</source>
-        <translation type="unfinished"></translation>
+        <translation>Shell:</translation>
+    </message>
+    <message>
+        <location filename="users/add_user/Ui_addUser.py" line="141"/>
+        <source>UID:</source>
+        <translation>UID:</translation>
+    </message>
+    <message>
+        <location filename="users/add_user/addUser.py" line="82"/>
+        <source>Replace User</source>
+        <translation>Sobrescrever Usuário</translation>
+    </message>
+    <message>
+        <location filename="users/add_user/addUser.py" line="82"/>
+        <source>Are you sure you want to overwrite &quot;{0}&quot; user?</source>
+        <translation>Você tem certeza que deseja sobrescrever o usuário &quot;{0}&quot;?</translation>
     </message>
 </context>
 <context>
@@ -651,9 +666,39 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>Summary</name>
     <message>
-        <location filename="common/Ui_profileSummary.py" line="64"/>
+        <location filename="common/Ui_userSummary.py" line="88"/>
         <source>Form</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="90"/>
+        <source>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="91"/>
+        <source>&lt;font color=green&gt;Initial Group:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Grupo Inicial:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="92"/>
+        <source>&lt;font color=green&gt;Other Groups:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Outros Grupos:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="93"/>
+        <source>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="94"/>
+        <source>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/Ui_userSummary.py" line="89"/>
+        <source>&lt;font color=green&gt;Shadow Password Hash:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Hash de Senha Shadow:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -871,59 +916,109 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>UserSummary</name>
+    <message>
+        <location filename="common/UserSummary.py" line="58"/>
+        <source>&lt;h2&gt;&lt;b&gt;Name: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
+</source>
+        <translation>&lt;h2&gt;&lt;b&gt;Nome: &lt;font color=blue&gt;{0}&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;
+</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="61"/>
+        <source>&lt;font color=green&gt;Shadow Password Hash:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Hash de Senha Shadow:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="63"/>
+        <source>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="65"/>
+        <source>&lt;font color=green&gt;Initial Group:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Grupo Inicial:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="67"/>
+        <source>&lt;font color=green&gt;Other Groups:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Outros Grupos:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="69"/>
+        <source>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="common/UserSummary.py" line="71"/>
+        <source>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
+        <translation>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
+    </message>
+</context>
+<context>
     <name>UsersPage</name>
     <message>
-        <location filename="users/usersPage.py" line="47"/>
+        <location filename="users/usersPage.py" line="49"/>
         <source>Users</source>
         <translation>Usuários</translation>
     </message>
     <message>
-        <location filename="users/usersPage.py" line="86"/>
+        <location filename="users/usersPage.py" line="93"/>
         <source>Profile: &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>Perfil: &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="users/usersPage.py" line="162"/>
         <source>Add user</source>
-        <translation>Adicionar usuário</translation>
+        <translation type="obsolete">Adicionar usuário</translation>
     </message>
     <message>
         <location filename="users/usersPage.py" line="162"/>
         <source>Enter the new user name here:</source>
-        <translation>Insira o nome do novo usuário aqui:</translation>
+        <translation type="obsolete">Insira o nome do novo usuário aqui:</translation>
     </message>
     <message>
-        <location filename="users/usersPage.py" line="174"/>
+        <location filename="users/usersPage.py" line="195"/>
         <source>Remove users</source>
         <translation>Remover usuários</translation>
     </message>
     <message>
-        <location filename="users/usersPage.py" line="174"/>
+        <location filename="users/usersPage.py" line="195"/>
         <source>Are you sure you want to delete these users?
 </source>
         <translation>Você tem certeza de que quer deletar estes usuários?
 </translation>
     </message>
+    <message>
+        <location filename="users/usersPage.py" line="116"/>
+        <source>Profile Summary:</source>
+        <translation>Resumo do Perfil:</translation>
+    </message>
+    <message>
+        <location filename="users/usersPage.py" line="129"/>
+        <source>User Summary:</source>
+        <translation>Resumo de Usuário:</translation>
+    </message>
 </context>
 <context>
     <name>UsersWidget</name>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="149"/>
+        <location filename="users/Ui_usersWidget.py" line="150"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="150"/>
+        <location filename="users/Ui_usersWidget.py" line="151"/>
         <source>Users:</source>
         <translation>Usuários:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="154"/>
+        <location filename="users/Ui_usersWidget.py" line="155"/>
         <source>Add user</source>
         <translation>Adicionar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="158"/>
+        <location filename="users/Ui_usersWidget.py" line="159"/>
         <source>Remove user</source>
         <translation>Remover usuário</translation>
     </message>
@@ -933,27 +1028,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Editar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="161"/>
+        <location filename="users/Ui_usersWidget.py" line="162"/>
         <source>Add user to profile</source>
         <translation>Adicionar usuário ao perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="164"/>
+        <location filename="users/Ui_usersWidget.py" line="165"/>
         <source>Remove user from profile</source>
         <translation>Remover usuário do perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="165"/>
+        <location filename="users/Ui_usersWidget.py" line="166"/>
         <source>Profiles:</source>
         <translation>Perfis:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="166"/>
+        <location filename="users/Ui_usersWidget.py" line="167"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="167"/>
+        <location filename="users/Ui_usersWidget.py" line="168"/>
         <source>Profile Summary:</source>
         <translation>Resumo do Perfil:</translation>
     </message>

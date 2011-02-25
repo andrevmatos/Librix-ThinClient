@@ -40,6 +40,40 @@ class FileChecker(QThread):
 		self.configfile = configparser.configfile
 
 		self.moduleparser = moduleparser
+		self.reload.connect(self.syncUsers)
+	
+	def getHostUsersList(self):
+		"""Return a list of all usernames in system
+		
+		@param	self		A FileChecker instance
+		@return			List of usernames string
+		"""
+		users = []
+		with open("/etc/passwd", 'r') as pw:
+			for l in pw:
+				L = l.split(':')
+				if len(L) == 7:
+					users.append(L[0])
+		return(users)
+	
+	def syncUsers(self):
+		"""Add users to host account
+		
+		@param	self		A FileChecker instance
+		"""
+		for u in self.configparser.getUsersList():
+			if self.configparser.getUserS(u) and not \
+				u in self.getHostUsersList():
+				opt = self.configparser.getUserSync(u)
+				l = "useradd -D"
+				if opt["uid"]: l += " -u {0}".format(opt["uid"])
+				if opt["init_group"] == u or opt["init_group"] == str(opt["uid"]):
+					l += " -U"
+				elif opt["init_group"]:
+					l += " -g {0}".format(opt["init_group"])
+				if opt["groups"]: l += " -G {0}".format(','.join(opt["groups"]))
+				
+				
 
 	def run(self):
 		"""Thread main routine

@@ -22,8 +22,10 @@ from copy import deepcopy
 from PyQt4 import QtGui
 
 from ui.users.Ui_usersWidget import Ui_UsersWidget
+from ui.users.add_user.addUser import AddUser
 from ui.common.LeftMenuItem import LeftMenuItem
 from ui.common.ProfileSummary import ProfileSummary
+from ui.common.UserSummary import UserSummary
 
 class UsersPage(QtGui.QWidget):
 	"""Creates the main users page"""
@@ -47,9 +49,13 @@ class UsersPage(QtGui.QWidget):
 		self.tab = LeftMenuItem(leftList, self.tr("Users"),
 			QtGui.QIcon(":/user_icon/system-users.png"))
 
-		self.summary = ProfileSummary(configparser, moduleparser, False,
+		self.profileSummary = ProfileSummary(configparser, moduleparser, False,
 			self.ui.dockWidgetContents)
-		self.ui.verticalLayout_5.addWidget(self.summary)
+		self.userSummary = UserSummary(configparser, moduleparser, 
+			self.ui.dockWidgetContents)
+		self.ui.verticalLayout_5.addWidget(self.profileSummary)
+		self.ui.verticalLayout_5.addWidget(self.userSummary)
+		self.userSummary.hide()
 
 		self.ui.usersList.dragEnterEvent = self.dragEnterEvent
 		self.ui.usersList.dropEvent = self.usersDropEvent
@@ -66,7 +72,8 @@ class UsersPage(QtGui.QWidget):
 		self.ui.profilesTree.clear()
 		self.ui.usersList.clear()
 
-		self.summary.setSummary()
+		self.profileSummary.setSummary()
+		self.userSummary.setSummary()
 
 		for p in self.configparser.getProfilesList():
 			P = QtGui.QTreeWidgetItem(self.ui.profilesTree,
@@ -100,11 +107,27 @@ class UsersPage(QtGui.QWidget):
 		@param	self		A UsersPage instance
 		@param	treeItem	A QtGui.QTreeWidgetItem profile object
 		"""
+		self.userSummary.hide()
 		if not treeItem: return
 		while treeItem.parent():
 			treeItem = treeItem.parent()
 
-		self.summary.setSummary(treeItem.text(0))
+		self.profileSummary.setSummary(treeItem.text(0))
+		self.ui.summaryDock.setWindowTitle(self.tr("Profile Summary:"))
+		self.profileSummary.show()
+	
+	def activateUserSummary(self, listItem):
+		"""Show user summary when a user is selected on self.usersList
+		
+		@param	self		A UsersPage instance
+		@param	listItem	A QtGui.QListWidgetItem user object
+		"""
+		self.profileSummary.hide()
+		if not listItem: return
+		
+		self.userSummary.setSummary(listItem.text())
+		self.ui.summaryDock.setWindowTitle(self.tr("User Summary:"))
+		self.userSummary.show()
 
 	def addUsersToProfile(self, users = [], profile = ''):
 		"""Get the user in the self.usersList and add it to self.profilesTree
@@ -159,10 +182,8 @@ class UsersPage(QtGui.QWidget):
 
 		@param	self		 A UsersPage instance
 		"""
-		username = QtGui.QInputDialog.getText(self, self.tr("Add user"),
-			self.tr("Enter the new user name here:"))[0]
-		if username:
-			self.configparser.addUser(username)
+		dialog = AddUser(self.configparser, self)
+		dialog.exec_()
 		self.updateLists()
 
 	def delUser(self):

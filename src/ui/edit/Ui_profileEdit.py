@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/profileEdit.ui'
 #
-# Created: Thu Feb 24 17:16:49 2011
+# Created: Fri Feb 25 18:40:17 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

@@ -446,7 +446,7 @@ class LTCConfigParser(object):
 		if username in self.getUsersList():
 			return
 		ET.SubElement(self._users, "user", attrib={"name": username,
-			"profile": ""})
+			"profile": "", "sync": "false"})
 		self._syncConfigs()
 
 	def delUser(self, username):
@@ -460,25 +460,105 @@ class LTCConfigParser(object):
 		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
 		self._syncConfigs()
 	
-	def setUserSync(self, user, passwd, initGroup, groups, home, sh):
-		"""Set sync options for user
+	def getUserS(self, user):
+		"""Return true if user will be synced
 		
 		@param	self		A LTCConfigParser instance
-		@param	user		A valid and existing username
-		@param	passwd		Plaintext password, will be encrypted
-		@param	initGroup	Initial group. It'll be created if doesn't exist
-		@param	groups		Other groups. Skip non-existing ones
-		@param	home		Home directory
-		@param	sh			Shell
+		@param	user		A valid existing user string name
+		@return			Bool	
 		"""
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
 			
 		U = self._users.find("user[@name='{0}']".format(user))
+		if U.get("sync").lower() in "false no off 0":
+			return(False)
+		else:
+			return(True)
+	
+	def setUserSync(self, user, passwd, uid, initGroup, groups, home, shell):
+		"""Set sync options for user
+		
+		@param	self		A LTCConfigParser instance
+		@param	user		A valid existing username
+		@param	passwd		Plaintext password, will be encrypted
+		@param	uid			Int value for UID. If already in use, skip user sync
+		@param	initGroup	Initial group. It'll be created if doesn't exist
+		@param	groups		String list. Other groups. Skip non-existing ones
+		@param	home		Home directory
+		@param	shell		Shell
+		"""
+		if not user in self.getUsersList():
+			raise IndexError("\"{0}\" not in users list".format(user))
+			
+		U = self._users.find("user[@name='{0}']".format(user))
+		U.set("sync", "true")
 		
 		p = U.find("shadow_pw")
 		if not p: p = ET.SubElement(U, "shadow_pw")
 		hash = crypt(passwd, '$1$'+passwdGen(8))
+		p.text = hash
+		
+		u = U.find("uid")
+		if not u: u = ET.SubElement(U, "uid")
+		u.text = str(uid)
+		
+		i = U.find("init_group")
+		if not i: i = ET.SubElement(U, "init_group")
+		i.text = initGroup
+		
+		g = U.find("groups")
+		if not g: g = ET.SubElement(U, "groups")
+		g.text = ','.join(groups)
+		
+		h = U.find("home")
+		if not h: h = ET.SubElement(U, "home")
+		h.text = home
+		
+		s = U.find("shell")
+		if not s: s = ET.SubElement(U, "shell")
+		s.text = shell
+		
+		self._syncConfigs()
+	
+	def getUserSync(self, user):
+		"""Get sync options for user
+		
+		@param	self		A LTCConfigParser instance
+		@param	user		A valid existing username
+		@return			A dict containing user's options
+		"""
+		if not user in self.getUsersList():
+			raise IndexError("\"{0}\" not in users list".format(user))
+		
+		U = self._users.find("user[@name='{0}']".format(user))
+		if U.get("sync").lower() in "false no off 0":
+			return({i: None for i in 
+				["hash", "uid", "init_group", "groups", "home", "shell"]})
+		
+		p = U.find("shadow_pw")
+		if p is not None: p = p.text
+		u = U.find("uid")
+		if u is not None: u = int(u.text)
+		i = U.find("init_group")
+		if i is not None: i = i.text
+		g = U.find("groups")
+		if g is not None: g = g.text.split(',')
+		h = U.find("home")
+		if h is not None: h = h.text
+		s = U.find("shell")
+		if s is not None: s = s.text
+		
+		D = {
+			"hash": p, 
+			"uid": u, 
+			"init_group": i, 
+			"groups": g, 
+			"home": h, 
+			"shell": s
+		}
+		
+		return(D)
 
 	def getKeys(self):
 		"""Return config file SSH public keys list

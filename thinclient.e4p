@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-24, 18:03:34 -->
+<!-- Saved: 2011-02-25, 18:40:03 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -79,6 +79,8 @@
     <Source>src/ui/users/add_user/Ui_addUser.py</Source>
     <Source>src/ui/users/add_user/addUser.py</Source>
     <Source>src/ui/users/add_user/__init__.py</Source>
+    <Source>src/ui/common/UserSummary.py</Source>
+    <Source>src/ui/common/Ui_userSummary.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -95,6 +97,8 @@
     <Form>src/ui/export/targets/addTargetsDialog.ui</Form>
     <Form>src/ui/export/targets/scanTargetsDialog.ui</Form>
     <Form>src/ui/export/ssh_export/sshExport.ui</Form>
+    <Form>src/ui/common/userSummary.ui</Form>
+    <Form>src/ui/users/add_user/addUser.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>

@@ -19,11 +19,11 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui
-from ui.common.Ui_profileSummary import Ui_Summary
+from ui.common.Ui_userSummary import Ui_Summary
 
-class ProfileSummary(QtGui.QWidget):
+class UserSummary(QtGui.QWidget):
 	"""Creates a frame with profile summary"""
-	def __init__(self, configparser, moduleparser, vert=False, parent=None):
+	def __init__(self, configparser, moduleparser, parent=None):
 		"""Instantiate a ProfilesSummary object
 
 		@param	self		A ProfilesSummary instance
@@ -39,48 +39,35 @@ class ProfileSummary(QtGui.QWidget):
 		self.ui = Ui_Summary()
 		self.ui.setupUi(self)
 
-		if vert:
-			self.ui.horizontalLayout.setDirection(QtGui.QBoxLayout.TopToBottom)
-
-		self.configsWidgets = {}
-
-	def setSummary(self, profile=''):
+	def setSummary(self, user=''):
 		"""Set the summary of _profile on _label
 
 		@param	self		A ProfilesSummary instance
 		@param	profile		A string containing the name of the profile
 		"""
-		if not profile:
+		if not user:
 			self.ui.title.setText('')
-			for c in self.configsWidgets:
-				self.configsWidgets[c].setText('')
+			self.ui.password.setText('')
+			self.ui.uid.setText('')
+			self.ui.initGroup.setText('')
+			self.ui.groups.setText('')
+			self.ui.home.setText('')
+			self.ui.shell.setText('')
 		else:
+			opt = self.configparser.getUserSync(user)
 			self.ui.title.setText(self.tr("<h2><b>Name: "+
-				"<font color=blue>{0}</font></b></h2>\n").format(profile))
+				"<font color=blue>{0}</font></b></h2>\n").format(user))
 
-			# for each category, creates a QLabel and add the configurations
-			for c in self.moduleparser.getCategoriesList():
-				config = "<h4>{0}:</h4>\n".format(c)
-
-				for o in self.moduleparser.getModulesList(c):
-					config += "<h6> ➜ {0}: ".format(o)
-					if self.configparser.getOption(profile, o):
-						config += self.tr("<font color=green><b>On</b></font></h6>\n",
-							"if option is activated on profile")
-					else:
-						config += self.tr("<font color=red><b>Off</b></font></h6>\n",
-							"if option is deactivated on profile")
-
-				if not c in self.configsWidgets:
-					self.configsWidgets[c] = QtGui.QLabel(self.ui.configsWidget)
-					self.ui.horizontalLayout.addWidget(self.configsWidgets[c])
-
-				self.configsWidgets[c].setText(config)
-
-#	def show(self):
-#		"""Reimplementation of QtGui.QWidget.show method"""
-#		if self.parent.current:
-#			self.parent.current.hide()
-#
-#		self.parent.current = self
-#		QtGui.QWidget.show(self)
+			self.ui.password.setText(self.tr("<font color=green>"+
+				"Shadow Password Hash:</font> <b>{0}</b>").format(opt["hash"]))
+			self.ui.uid.setText(self.tr("<font color=green>"+
+				"UID:</font> <b>{0}</b>").format(opt["uid"]))
+			self.ui.initGroup.setText(self.tr("<font color=green>"+
+				"Initial Group:</font> <b>{0}</b>").format(opt["init_group"]))
+			self.ui.groups.setText(self.tr("<font color=green>"+
+				"Other Groups:</font> <b>{0}</b>").format(opt["groups"]))
+			self.ui.home.setText(self.tr("<font color=green>"+
+				"Home:</font> <b>{0}</b>").format(opt["home"]))
+			self.ui.shell.setText(self.tr("<font color=green>"+
+				"Shell:</font> <b>{0}</b>").format(opt["shell"]))
+			

@@ -275,7 +275,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>337</x>
-     <y>223</y>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -291,7 +291,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>337</x>
-     <y>259</y>
+     <y>254</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -347,6 +347,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>usersList</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>UsersWidget</receiver>
+   <slot>activateUserSummary()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addUsersToProfile()</slot>
@@ -354,5 +370,6 @@
   <slot>activateProfileSummary()</slot>
   <slot>addUser()</slot>
   <slot>delUser()</slot>
+  <slot>activateUserSummary()</slot>
  </slots>
 </ui>

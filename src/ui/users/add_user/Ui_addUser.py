@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/users/add_user/addUser.ui'
 #
-# Created: Thu Feb 24 17:16:49 2011
+# Created: Fri Feb 25 18:40:17 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,9 @@ except AttributeError:
 class Ui_AddUser(object):
 	def setupUi(self, AddUser):
 		AddUser.setObjectName(_fromUtf8("AddUser"))
-		AddUser.resize(400, 342)
+		AddUser.setWindowModality(QtCore.Qt.WindowModal)
+		AddUser.resize(400, 388)
+		AddUser.setModal(True)
 		self.verticalLayout = QtGui.QVBoxLayout(AddUser)
 		self.verticalLayout.setSizeConstraint(QtGui.QLayout.SetFixedSize)
 		self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
@@ -55,8 +57,18 @@ class Ui_AddUser(object):
 		self.verticalLayout_2.addWidget(self.pwLabel)
 		self.pwLine = QtGui.QLineEdit(self.detailsWid)
 		self.pwLine.setEchoMode(QtGui.QLineEdit.Password)
+		self.pwLine.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
 		self.pwLine.setObjectName(_fromUtf8("pwLine"))
 		self.verticalLayout_2.addWidget(self.pwLine)
+		self.uidLabel = QtGui.QLabel(self.detailsWid)
+		self.uidLabel.setObjectName(_fromUtf8("uidLabel"))
+		self.verticalLayout_2.addWidget(self.uidLabel)
+		self.uidSpin = QtGui.QSpinBox(self.detailsWid)
+		self.uidSpin.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+		self.uidSpin.setMinimum(1000)
+		self.uidSpin.setMaximum(65535)
+		self.uidSpin.setObjectName(_fromUtf8("uidSpin"))
+		self.verticalLayout_2.addWidget(self.uidSpin)
 		self.initGLabel = QtGui.QLabel(self.detailsWid)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
 		sizePolicy.setHorizontalStretch(0)
@@ -66,6 +78,7 @@ class Ui_AddUser(object):
 		self.initGLabel.setObjectName(_fromUtf8("initGLabel"))
 		self.verticalLayout_2.addWidget(self.initGLabel)
 		self.initGLine = QtGui.QLineEdit(self.detailsWid)
+		self.initGLine.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
 		self.initGLine.setObjectName(_fromUtf8("initGLine"))
 		self.verticalLayout_2.addWidget(self.initGLine)
 		self.groupsLabel = QtGui.QLabel(self.detailsWid)
@@ -77,6 +90,7 @@ class Ui_AddUser(object):
 		self.groupsLabel.setObjectName(_fromUtf8("groupsLabel"))
 		self.verticalLayout_2.addWidget(self.groupsLabel)
 		self.groupsLine = QtGui.QLineEdit(self.detailsWid)
+		self.groupsLine.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
 		self.groupsLine.setObjectName(_fromUtf8("groupsLine"))
 		self.verticalLayout_2.addWidget(self.groupsLine)
 		self.homeLabel = QtGui.QLabel(self.detailsWid)
@@ -116,6 +130,7 @@ class Ui_AddUser(object):
 		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), AddUser.accept)
 		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), AddUser.reject)
 		QtCore.QObject.connect(self.syncCheck, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.detailsWid.setVisible)
+		QtCore.QObject.connect(self.nameLine, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), AddUser.userChanged)
 		QtCore.QMetaObject.connectSlotsByName(AddUser)
 
 	def retranslateUi(self, AddUser):
@@ -123,6 +138,7 @@ class Ui_AddUser(object):
 		self.descLabel.setText(QtGui.QApplication.translate("AddUser", "Enter a new user name below:", None, QtGui.QApplication.UnicodeUTF8))
 		self.syncCheck.setText(QtGui.QApplication.translate("AddUser", "Add this user to host accounts if it doesn\'t exist (sync).", None, QtGui.QApplication.UnicodeUTF8))
 		self.pwLabel.setText(QtGui.QApplication.translate("AddUser", "Password:", None, QtGui.QApplication.UnicodeUTF8))
+		self.uidLabel.setText(QtGui.QApplication.translate("AddUser", "UID:", None, QtGui.QApplication.UnicodeUTF8))
 		self.initGLabel.setText(QtGui.QApplication.translate("AddUser", "Initial Group:", None, QtGui.QApplication.UnicodeUTF8))
 		self.groupsLabel.setText(QtGui.QApplication.translate("AddUser", "Other Groups (comma separated):", None, QtGui.QApplication.UnicodeUTF8))
 		self.homeLabel.setText(QtGui.QApplication.translate("AddUser", "Home:", None, QtGui.QApplication.UnicodeUTF8))
