@@ -37,26 +37,6 @@ modes = {'app': [0o600, 0o644], 'bin': [0o700, 0o755]}
 
 class Main(object):
 	"""Applications Permissions module"""
-	_prettyname = {
-		'en_US': "Application Permissions",
-		'pt_BR': "Permissões de Aplicativos",
-	}
-	_prettyname['default'] = _prettyname['en_US']
-
-	_description = {
-		'en_US': ''.join(["Configure which applications will be available for ",
-			"users, by changing permissions of named .desktop files into ",
-			"/usr/share/applications and his corresponding executed binaries."]),
-		'pt_BR': ''.join(["Configura quais aplicativos estarão disponíveis ",
-			"para os usuários, modificando as permissões dos arquivos ",
-			".desktop especificados, dentro de /usr/share/applications ",
-			"e seus binários executados correspondentes"])
-	}
-	_description['default'] = _description['en_US']
-
-	_configurable = True
-
-	_category = 'software'
 
 	def __init__(self):
 		"""Init module"""
@@ -69,42 +49,84 @@ class Main(object):
 
 		self._locale = QLocale.system().name()
 
-		self._current = None
+	def prettyname(self):
+		"""Return module's pretty name
 
-	def __getattr__(self, key):
-		"""Return internationalized attributes
-
-		@param	self		A Main instance
-		@param	key			A attribute name
+		@param	self		A Main module instance
+		@return				A string containing description
 		"""
-		if key == 'prettyname':
-			l = self._locale if self._locale in self._prettyname else 'default'
-			return(self._prettyname[l])
-		elif key == 'description':
-			l = self._locale if self._locale in self._description else 'default'
-			desc = self._description[l]
-			desc += "<br><b>Policy: </b>"
-			if 'allow' in self._config.find("policy").text:
-				desc += "<font color=green>Allow</font><br>"
-				desc += "<b>Denyed Apps:</b> "
-			else:
-				desc += "<font color=red>Deny</font><br>"
-				desc += "<b>Allowed Apps:</b> "
-			desc += ', '.join([a.text.replace(".desktop", "") for a in
-				self._config.findall("entry[@type='app']")])
-			return(desc)
-		elif key == 'configurable':
-			return(self._configurable)
-		elif key == 'category':
-			return(self._category)
-		else:
-			raise AttributeError
+		_prettyname = {
+			'en_US': "Application Permissions",
+			'pt_BR': "Permissões de Aplicativos",
+		}
+		_prettyname['default'] = _prettyname['en_US']
+
+		l = self._locale if self._locale in self._prettyname else 'default'
+
+		return(_prettyname[l])
+
+	def description(self):
+		"""Return module's description
+
+		@param	self		A Main module instance
+		@return				A string containing description
+		"""
+		_description = {
+			'en_US': ''.join(["Configure which applications will be available for ",
+				"users, by changing permissions of named .desktop files into ",
+				"/usr/share/applications and his corresponding executed binaries."]),
+			'pt_BR': ''.join(["Configura quais aplicativos estarão disponíveis ",
+				"para os usuários, modificando as permissões dos arquivos ",
+				".desktop especificados, dentro de /usr/share/applications ",
+				"e seus binários executados correspondentes"])
+		}
+		_description['default'] = _description['en_US']
+
+		_descConfig = {
+			'en_US': {
+				"allow": "<br><b>Policy: </b><font color=green>Allow</font><br>"+
+					"<b>Denyed Apps:</b> ",
+				"deny": "<br><b>Policy: </b><font color=red>Deny</font><br>"+
+					"<b>Denyed Apps:</b> ",
+			},
+			'pt_BR': {
+				"allow": "<br><b>Política: </b><font color=green>Permitir</font>"+
+					"<br><b>Aplicações Negadas:</b> ",
+				"deny": "<br><b>Política: </b><font color=red>Negar</font>"+
+					"<br><b>Aplicações Permitidas:</b> "
+			}
+		}
+		_descConfig['default'] = _descConfig['en_US']
+
+		l = self._locale if self._locale in self._description else 'default'
+
+		desc = self._description[l]
+		desc += self._descConfig[l][self._config.find("policy").text]
+
+		desc += ', '.join([a.text.replace(".desktop", "") for a in
+			self._config.findall("entry[@type='app']")])
+
+		return(desc)
+
+	def configurable(self):
+		"""Return if module is configurable
+
+		@param	self		A Main module instance
+		"""
+		return(True)
+
+	def category(self):
+		"""Return module's category
+
+		@param	self		A Main module instance
+		"""
+		return("software")
 
 	def start(self):
 		"""Start method"""
-		if 'allow' in self._config.find("policy").text:
+		if self._config.find("policy").text == 'allow':
 			policy = True
-		elif 'deny' in self._config.find("policy").text:
+		elif self._config.find("policy").text == 'deny':
 			policy = False
 		apps = [e.text for e in self._config.findall("entry[@type='app']")]
 		for D, d, F in os.walk(app_dir):

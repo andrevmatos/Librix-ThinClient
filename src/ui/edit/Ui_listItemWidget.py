@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/edit/listItemWidget.ui'
 #
-# Created: Fri Feb 25 18:40:17 2011
+# Created: Sat Feb 26 16:45:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -169,7 +169,7 @@ class Ui_listItemWidget(object):
 		self.description.setObjectName(_fromUtf8("description"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.description)
 		self.verticalLayout_3.setSpacing(4)
-		self.verticalLayout_3.setContentsMargins(8, 4, 8, 4)
+		self.verticalLayout_3.setContentsMargins(4, 0, 4, 0)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.descriptionText = QtGui.QTextEdit(self.description)
 		self.descriptionText.setReadOnly(True)

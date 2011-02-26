@@ -39,7 +39,7 @@ class LTCConfigParser(object):
 		self.moduleparser = moduleparser
 		self.st_mtime = 0
 		self.hash = 0
-		self.configfile = ''
+		self.configfile = 'thinclient.conf'
 		self._parser = ET.XMLParser(encoding="utf-8", remove_blank_text=True)
 
 	def readConfigFile(self, file=''):
@@ -101,8 +101,8 @@ class LTCConfigParser(object):
 		if os.path.isfile(self.configfile): os.remove(self.configfile)
 		self.backupfile = self.configfile + '~'
 
-#		self.st_mtime = os.stat(config).st_mtime
-#		self.hash = sha512sum(file)
+		self.st_mtime = 0
+		self.hash = 0
 
 		self._config = ET.Element("librix_tcd_config")
 		self._name = ET.SubElement(self._config, "name")
@@ -459,26 +459,26 @@ class LTCConfigParser(object):
 			raise IndexError("\"{0}\" not in users list".format(username))
 		self._users.remove(self._users.find("user[@name='{0}']".format(username)))
 		self._syncConfigs()
-	
+
 	def getUserS(self, user):
 		"""Return true if user will be synced
-		
+
 		@param	self		A LTCConfigParser instance
 		@param	user		A valid existing user string name
-		@return			Bool	
+		@return			Bool
 		"""
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
-			
+
 		U = self._users.find("user[@name='{0}']".format(user))
 		if U.get("sync").lower() in "false no off 0":
 			return(False)
 		else:
 			return(True)
-	
+
 	def setUserSync(self, user, passwd, uid, initGroup, groups, home, shell):
 		"""Set sync options for user
-		
+
 		@param	self		A LTCConfigParser instance
 		@param	user		A valid existing username
 		@param	passwd		Plaintext password, will be encrypted
@@ -490,52 +490,52 @@ class LTCConfigParser(object):
 		"""
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
-			
+
 		U = self._users.find("user[@name='{0}']".format(user))
 		U.set("sync", "true")
-		
+
 		p = U.find("shadow_pw")
 		if not p: p = ET.SubElement(U, "shadow_pw")
 		hash = crypt(passwd, '$1$'+passwdGen(8))
 		p.text = hash
-		
+
 		u = U.find("uid")
 		if not u: u = ET.SubElement(U, "uid")
 		u.text = str(uid)
-		
+
 		i = U.find("init_group")
 		if not i: i = ET.SubElement(U, "init_group")
 		i.text = initGroup
-		
+
 		g = U.find("groups")
 		if not g: g = ET.SubElement(U, "groups")
 		g.text = ','.join(groups)
-		
+
 		h = U.find("home")
 		if not h: h = ET.SubElement(U, "home")
 		h.text = home
-		
+
 		s = U.find("shell")
 		if not s: s = ET.SubElement(U, "shell")
 		s.text = shell
-		
+
 		self._syncConfigs()
-	
+
 	def getUserSync(self, user):
 		"""Get sync options for user
-		
+
 		@param	self		A LTCConfigParser instance
 		@param	user		A valid existing username
 		@return			A dict containing user's options
 		"""
 		if not user in self.getUsersList():
 			raise IndexError("\"{0}\" not in users list".format(user))
-		
+
 		U = self._users.find("user[@name='{0}']".format(user))
 		if U.get("sync").lower() in "false no off 0":
-			return({i: None for i in 
+			return({i: None for i in
 				["hash", "uid", "init_group", "groups", "home", "shell"]})
-		
+
 		p = U.find("shadow_pw")
 		if p is not None: p = p.text
 		u = U.find("uid")
@@ -548,16 +548,16 @@ class LTCConfigParser(object):
 		if h is not None: h = h.text
 		s = U.find("shell")
 		if s is not None: s = s.text
-		
+
 		D = {
-			"hash": p, 
-			"uid": u, 
-			"init_group": i, 
-			"groups": g, 
-			"home": h, 
+			"hash": p,
+			"uid": u,
+			"init_group": i,
+			"groups": g,
+			"home": h,
 			"shell": s
 		}
-		
+
 		return(D)
 
 	def getKeys(self):

@@ -20,7 +20,12 @@
 
 import os
 from PyQt4.QtCore import QThread,pyqtSignal
+
 from lib.utils import sha512sum
+import subprocess
+
+configfile = "thinclient.conf"
+authorized_keys = '~/.ssh/authorized_keys'
 
 class FileChecker(QThread):
 	"""Check if configfile was modifyed and reload it"""
@@ -37,14 +42,21 @@ class FileChecker(QThread):
 		QThread.__init__(self)
 
 		self.configparser = configparser
-		self.configfile = configparser.configfile
-
 		self.moduleparser = moduleparser
-		self.reload.connect(self.syncUsers)
-	
+
+	@reload.connect
+	def writePubKeys(self):
+		"""Install pubkeys in configfile on authorized keys file
+
+		Called when checkFile.reload signal is emited
+		@param	self		A LTCModuleParser instance
+		"""
+		with open(os.path.expanduser(authorized_keys), 'w') as kf:
+			kf.write('\n'.join(self.configparser.getKeys()))
+
 	def getHostUsersList(self):
 		"""Return a list of all usernames in system
-		
+
 		@param	self		A FileChecker instance
 		@return			List of usernames string
 		"""
@@ -55,25 +67,32 @@ class FileChecker(QThread):
 				if len(L) == 7:
 					users.append(L[0])
 		return(users)
-	
+
+	@reload.connect
 	def syncUsers(self):
 		"""Add users to host account
-		
+
 		@param	self		A FileChecker instance
 		"""
 		for u in self.configparser.getUsersList():
 			if self.configparser.getUserS(u) and not \
 				u in self.getHostUsersList():
+
 				opt = self.configparser.getUserSync(u)
-				l = "useradd -D"
+				l = "useradd"
 				if opt["uid"]: l += " -u {0}".format(opt["uid"])
 				if opt["init_group"] == u or opt["init_group"] == str(opt["uid"]):
 					l += " -U"
 				elif opt["init_group"]:
 					l += " -g {0}".format(opt["init_group"])
 				if opt["groups"]: l += " -G {0}".format(','.join(opt["groups"]))
-				
-				
+				if opt["home"]: l += " -m -d {0}".format(opt["home"])
+				if opt["shell"]: l += " -s {0}".format(opt["shell"])
+
+				l +=  " {0}".format(u)
+
+				p = subprocess.Popen(l, shell=True)
+				p.wait()
 
 	def run(self):
 		"""Thread main routine
@@ -84,7 +103,10 @@ class FileChecker(QThread):
 		@param	self		A FileChecker instance
 		"""
 		print('__run FileChecker', end=' ')
-		if os.stat(self.configfile).st_mtime != self.configparser.st_mtime:
+
+		if not os.path.isfile(configfile): return
+
+		if os.stat(configfile).st_mtime != self.configparser.st_mtime:
 			hash = sha512sum(self.configfile)
 			if hash != self.configparser.hash:
 				self.configparser.readConfigFile()

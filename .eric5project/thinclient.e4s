@@ -2,15 +2,13 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-17, 10:25:06 -->
+<!-- Saved: 2011-02-25, 21:22:37 -->
 <Session version="4.4">
   <Filenames>
     <Filename cline="15" cindex="20" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
-    <Filename cline="475" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
-    <Filename cline="60" cindex="23" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/export/ssh_export/sshExport.py</Filename>
-    <Filename cline="61" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/export/ssh_export/threadedExport.py</Filename>
+    <Filename cline="466" cindex="14" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
   </Filenames>
-  <ActiveWindow cline="61" cindex="0">/home/andre/Dev/Librix/thinclient/src/ui/export/ssh_export/threadedExport.py</ActiveWindow>
+  <ActiveWindow cline="466" cindex="14">/home/andre/Dev/Librix/thinclient/src/lib/config.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>

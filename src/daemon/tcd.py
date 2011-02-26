@@ -32,7 +32,6 @@ from lib.http import ThreadedServer
 
 pidfile = '/var/run/thinclient.pid'
 configfile = 'thinclient.conf'
-authorized_keys = '~/.ssh/authorized_keys'
 http_port = 8088
 
 class LibrixTCDaemon(QObject):
@@ -68,21 +67,10 @@ class LibrixTCDaemon(QObject):
 			SIGNAL("timeout()"), self.checkUsers.start)
 
 		self.checkFile.reload.connect(self.checkUsers.clearUser)
-		self.checkFile.reload.connect(self.writePubKeys)
 
 		# Start timers
 		self.checkFileTimer.start(5000)
 		self.checkUsersTimer.start(2000)
-
-	def writePubKeys(self):
-		"""Install pubkeys in configfile on authorized keys file
-
-		Called when checkFile.reload signal is emited
-		@param	self		A LTCModuleParser instance
-		"""
-		with open(os.path.expanduser(authorized_keys), 'w') as kf:
-			kf.write('\n'.join(self.configparser.getKeys()))
-
 
 def run():
 		"""The program main loop"""

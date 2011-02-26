@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/app_permissions/AppPermissions.ui'
 #
-# Created: Fri Feb 25 18:40:17 2011
+# Created: Sat Feb 26 16:45:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -76,6 +76,7 @@ class Ui_AppPermissions(object):
 		icon = QtGui.QIcon()
 		icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/clear-edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.allSearchClearButton.setIcon(icon)
+		self.allSearchClearButton.setAutoRaise(True)
 		self.allSearchClearButton.setObjectName(_fromUtf8("allSearchClearButton"))
 		self.horizontalLayout_3.addWidget(self.allSearchClearButton)
 		self.verticalLayout_3.addWidget(self.allSearchWid)
@@ -134,6 +135,7 @@ class Ui_AppPermissions(object):
 		self.horizontalLayout_4.addWidget(self.selectedSearchLine)
 		self.selectedSearchClearButton = QtGui.QToolButton(self.selectedSearchWid)
 		self.selectedSearchClearButton.setIcon(icon)
+		self.selectedSearchClearButton.setAutoRaise(True)
 		self.selectedSearchClearButton.setObjectName(_fromUtf8("selectedSearchClearButton"))
 		self.horizontalLayout_4.addWidget(self.selectedSearchClearButton)
 		self.verticalLayout_4.addWidget(self.selectedSearchWid)

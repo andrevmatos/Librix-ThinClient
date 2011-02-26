@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-25, 18:40:03 -->
+<!-- Saved: 2011-02-25, 21:14:19 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -103,6 +103,7 @@
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
     <Translation>src/ui/i18n/app_pt_BR.ts</Translation>
+    <Translation>src/ui/i18n/qt_pt_BR.qm</Translation>
   </Translations>
   <Resources>
     <Resource>src/ui/icons/temp_icons.qrc</Resource>

@@ -83,7 +83,6 @@ class Main(QtGui.QMainWindow):
 		self.Export.hide()
 
 		summaryAction = self.Users.ui.summaryDock.toggleViewAction()
-		summaryAction.setText(self.tr("Show user's profile summary"))
 		self.ui.menuView.addAction(summaryAction)
 
 		self.current = self.Users
@@ -236,10 +235,10 @@ class Main(QtGui.QMainWindow):
 		@param	self		A Main window instance
 		"""
 		EditKeys(self.configparser, self).exec_()
-	
+
 	def aboutLTMT(self):
 		"""Show a LTMT 'About' dialog
-		
+
 		@param	self		A Main window instance
 		"""
 		helpText = self.tr("Librix ThinClient Management Tool (LTMT) is a program "+
@@ -249,12 +248,12 @@ class Main(QtGui.QMainWindow):
 			"<a href='http://www.itautec.com.br'>Itautec</a> and "+
 			"<a href='http://www.las.ic.unicamp.br'>Administration and "+
 			"Security Laboratory of Unicamp</a>.")
-		QtGui.QMessageBox.about(self,  self.tr("Librix ThinClient Management Tool"), 
+		QtGui.QMessageBox.about(self,  self.tr("Librix ThinClient Management Tool"),
 			helpText)
-	
+
 	def aboutQt(self):
 		"""Show a Qt 'About' dialog
-		
+
 		@param	self		A Main window instance
 		"""
 		QtGui.QMessageBox.aboutQt(self)
