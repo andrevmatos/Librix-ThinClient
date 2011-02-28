@@ -58,8 +58,8 @@ class UserSummary(QtGui.QWidget):
 			self.ui.title.setText(self.tr("<h2><b>Name: "+
 				"<font color=blue>{0}</font></b></h2>\n").format(user))
 
-			self.ui.password.setText(self.tr("<font color=green>"+
-				"Shadow Password Hash:</font> <b>{0}</b>").format(opt["hash"]))
+			self.ui.password.setText(self.tr("<font color=green>Shadow "+
+				"Password Hash:</font> <b>{0}</b>").format(opt["passwd"]))
 			self.ui.uid.setText(self.tr("<font color=green>"+
 				"UID:</font> <b>{0}</b>").format(opt["uid"]))
 			self.ui.initGroup.setText(self.tr("<font color=green>"+
@@ -70,4 +70,4 @@ class UserSummary(QtGui.QWidget):
 				"Home:</font> <b>{0}</b>").format(opt["home"]))
 			self.ui.shell.setText(self.tr("<font color=green>"+
 				"Shell:</font> <b>{0}</b>").format(opt["shell"]))
-			
+

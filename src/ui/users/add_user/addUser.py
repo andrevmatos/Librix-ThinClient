@@ -28,25 +28,25 @@ class AddUser(QtGui.QDialog):
 	"""This class provides a add user dialog feature to users page of LTMT"""
 	def __init__(self, configparser, parent=None):
 		"""Init method
-		
+
 		@param	self		A AddUser instance
 		@param	parent	Parent QtGui.QWidget object
 		"""
 		self.configparser = configparser
 		self.parent = parent
-		
+
 		QtGui.QDialog.__init__(self)
-		
+
 		self.ui = Ui_AddUser()
 		self.ui.setupUi(self)
-		
+
 		self.parseDefaults()
-		
+
 		self.ui.detailsWid.hide()
-	
+
 	def parseDefaults(self):
 		"""Parse some default values for new user accounts
-		
+
 		@param	self		A AddUser instance
 		"""
 		with open("/etc/default/useradd", 'r') as ua:
@@ -59,10 +59,10 @@ class AddUser(QtGui.QDialog):
 						self.home = L[1]
 					elif L[0] == "SHELL":
 						self.shell = L[1]
-	
+
 	def userChanged(self, username):
 		"""Slot called when user name was changed, updating entries
-		
+
 		@param	self		A AddUser instance
 		@param	username	String username
 		"""
@@ -72,16 +72,16 @@ class AddUser(QtGui.QDialog):
 
 	def accept(self):
 		"""Reimplemented method QtGui.QDialog.accept
-		
+
 		Add user to configparser before accept dialog
 		@param	self		A AddUser instance
 		"""
 		user = self.ui.nameLine.text()
 		print("__accepted__", user)
 		if user in self.configparser.getUsersList():
-			if QtGui.QMessageBox.warning(self, self.tr("Replace User"), 
+			if QtGui.QMessageBox.warning(self, self.tr("Replace User"),
 				self.tr("Are you sure you want to overwrite \"{0}\" user?")\
-				.format(user), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, 
+				.format(user), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
 				QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
 				self.configparser.delUser(user)
 			else:
@@ -89,7 +89,7 @@ class AddUser(QtGui.QDialog):
 		self.configparser.addUser(user)
 		if self.ui.syncCheck.isChecked():
 			self.configparser.setUserSync(user, passwd=self.ui.pwLine.text(),
-				uid=self.ui.uidSpin.text(), initGroup=self.ui.initGLine.text(),
+				uid=self.ui.uidSpin.text(), init_group=self.ui.initGLine.text(),
 				groups=[g.strip() for g in self.ui.groupsLine.text().split(',')],
 				home=self.ui.homeLine.text(), shell=self.ui.shellLine.text())
 

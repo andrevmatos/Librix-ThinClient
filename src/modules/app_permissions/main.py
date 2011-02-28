@@ -61,7 +61,7 @@ class Main(object):
 		}
 		_prettyname['default'] = _prettyname['en_US']
 
-		l = self._locale if self._locale in self._prettyname else 'default'
+		l = self._locale if self._locale in _prettyname else 'default'
 
 		return(_prettyname[l])
 
@@ -98,13 +98,14 @@ class Main(object):
 		}
 		_descConfig['default'] = _descConfig['en_US']
 
-		l = self._locale if self._locale in self._description else 'default'
+		l = self._locale if self._locale in _description else 'default'
 
-		desc = self._description[l]
-		desc += self._descConfig[l][self._config.find("policy").text]
+		desc = _description[l]
 
-		desc += ', '.join([a.text.replace(".desktop", "") for a in
-			self._config.findall("entry[@type='app']")])
+		if self._config is not None:
+			desc += _descConfig[l][self._config.find("policy").text]
+			desc += ', '.join([a.text.replace(".desktop", "") for a in
+				self._config.findall("entry[@type='app']")])
 
 		return(desc)
 
@@ -188,11 +189,12 @@ class Main(object):
 		c = app.exec_()
 		if c is not None: self.setConfig(c)
 
-	def setConfig(self, config=None):
+	def setConfig(self, config=None, user=None):
 		"""Set a given config on module
 
 		@param	self		A Main instance
 		@param	config		A lxml.etree.Element object
+		@param	user		A optional username. Some modules requires it
 		"""
 		if config is not None and config.find("policy") is not None:
 			self._config = deepcopy(config)

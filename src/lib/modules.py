@@ -53,8 +53,8 @@ class LTCModuleParser(object):
 		"""
 		c = []
 		for m in self._modules:
-			if self._modules[m].category not in c:
-				c.append(self._modules[m].category)
+			if self._modules[m].category() not in c:
+				c.append(self._modules[m].category())
 		c.sort()
 		return(c)
 
@@ -67,7 +67,7 @@ class LTCModuleParser(object):
 		@return				A list of modules
 		"""
 		M = [m for m in self._modules \
-			if not category or self._modules[m].category == category]
+			if not category or self._modules[m].category() == category]
 		M.sort()
 		return(M)
 
@@ -78,7 +78,7 @@ class LTCModuleParser(object):
 		@param	module		Module name
 		@return				A string containing module pretty name
 		"""
-		return(self._modules[module].prettyname)
+		return(self._modules[module].prettyname())
 
 	def getModuleDescription(self, module):
 		"""Get module description
@@ -87,7 +87,7 @@ class LTCModuleParser(object):
 		@param	module		Module name
 		@return				A string containing module description
 		"""
-		return(self._modules[module].description)
+		return(self._modules[module].description())
 
 	def getModuleConfigurable(self, module):
 		"""Get if module has configuration dialog
@@ -96,16 +96,17 @@ class LTCModuleParser(object):
 		@param	module		Module name
 		@return				Bool. True if module is configurable
 		"""
-		return(self._modules[module].configurable)
+		return(self._modules[module].configurable())
 
-	def setModuleConfig(self, module, config):
+	def setModuleConfig(self, module, config, user=None):
 		"""Set given config in module
 
 		@param	self		A LTCModuleParser instance
 		@param	module		A module name
 		@param	config		A lxml.etree.Element object
+		@param	user		A optional username.
 		"""
-		self._modules[module].setConfig(config)
+		self._modules[module].setConfig(config, user)
 
 	def getModuleConfig(self, module):
 		"""Get current config from module

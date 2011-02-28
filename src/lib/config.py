@@ -476,14 +476,14 @@ class LTCConfigParser(object):
 		else:
 			return(True)
 
-	def setUserSync(self, user, passwd, uid, initGroup, groups, home, shell):
+	def setUserSync(self, user, passwd, uid, init_group, groups, home, shell):
 		"""Set sync options for user
 
 		@param	self		A LTCConfigParser instance
 		@param	user		A valid existing username
 		@param	passwd		Plaintext password, will be encrypted
 		@param	uid			Int value for UID. If already in use, skip user sync
-		@param	initGroup	Initial group. It'll be created if doesn't exist
+		@param	init_group	Initial group. It'll be created if doesn't exist
 		@param	groups		String list. Other groups. Skip non-existing ones
 		@param	home		Home directory
 		@param	shell		Shell
@@ -505,7 +505,7 @@ class LTCConfigParser(object):
 
 		i = U.find("init_group")
 		if not i: i = ET.SubElement(U, "init_group")
-		i.text = initGroup
+		i.text = init_group
 
 		g = U.find("groups")
 		if not g: g = ET.SubElement(U, "groups")
@@ -534,7 +534,7 @@ class LTCConfigParser(object):
 		U = self._users.find("user[@name='{0}']".format(user))
 		if U.get("sync").lower() in "false no off 0":
 			return({i: None for i in
-				["hash", "uid", "init_group", "groups", "home", "shell"]})
+				["passwd", "uid", "init_group", "groups", "home", "shell"]})
 
 		p = U.find("shadow_pw")
 		if p is not None: p = p.text
@@ -550,7 +550,7 @@ class LTCConfigParser(object):
 		if s is not None: s = s.text
 
 		D = {
-			"hash": p,
+			"passwd": p,
 			"uid": u,
 			"init_group": i,
 			"groups": g,
