@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-25, 21:14:19 -->
+<!-- Saved: 2011-02-28, 13:47:24 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -81,6 +81,8 @@
     <Source>src/ui/users/add_user/__init__.py</Source>
     <Source>src/ui/common/UserSummary.py</Source>
     <Source>src/ui/common/Ui_userSummary.py</Source>
+    <Source>src/modules/autostart/main.py</Source>
+    <Source>src/modules/autostart/__init__.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>

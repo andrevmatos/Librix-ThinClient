@@ -2,13 +2,15 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-25, 21:22:37 -->
+<!-- Saved: 2011-02-28, 13:47:24 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="15" cindex="20" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
-    <Filename cline="466" cindex="14" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
+    <Filename cline="108" cindex="46" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
+    <Filename cline="487" cindex="5" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
+    <Filename cline="93" cindex="22" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</Filename>
+    <Filename cline="175" cindex="50" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/main.py</Filename>
   </Filenames>
-  <ActiveWindow cline="466" cindex="14">/home/andre/Dev/Librix/thinclient/src/lib/config.py</ActiveWindow>
+  <ActiveWindow cline="93" cindex="22">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>
