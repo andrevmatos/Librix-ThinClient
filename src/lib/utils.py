@@ -19,8 +19,11 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import string
+import os
+import re
 from random import choice
 from hashlib import sha512
+import time
 
 def passwdGen(size=8):
 	"""Generates a password (random letters and digits string) of size lenght
@@ -37,4 +40,29 @@ def sha512sum(filepath):
 	"""
 	with open(filepath, 'r') as f:
 		return(sha512(f.read().encode('utf-8')).hexdigest())
+
+class DesktopParser():
+	"""Parse a .desktop file"""
+	def __init__(self, file):
+		"""Init method
+
+		@param	self		A DesktopParser instance
+		@param	file		A file name to parse
+		"""
+		assert(os.path.isfile(file))
+		self._file = open(file, 'r')
+
+	def get(self, key):
+		"""Get value of key from file
+
+		@param	self		A DesktopParser instance
+		@param	key			A key value
+		@return				The value of key, None if key not in file
+		"""
+		r = re.compile(r'\s*{0} ?= ?'.format(key), re.I)
+		self._file.seek(0)
+		for l in self._file:
+			if re.match(r, l):
+				return(re.sub(r, '', l).strip())
+		return(None)
 

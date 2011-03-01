@@ -113,7 +113,7 @@
                   <string>Clear Search</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="icons/icons.qrc">
+                  <iconset resource="icons/app_icons.qrc">
                    <normaloff>:/icons/clear-edit.png</normaloff>:/icons/clear-edit.png</iconset>
                  </property>
                  <property name="autoRaise">
@@ -178,7 +178,7 @@
                <string>Add Application</string>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="icons/app_icons.qrc">
                 <normaloff>:/icons/arrow-right-double.png</normaloff>:/icons/arrow-right-double.png</iconset>
               </property>
               <property name="iconSize">
@@ -195,7 +195,7 @@
                <string>Remove Application</string>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="icons/app_icons.qrc">
                 <normaloff>:/icons/arrow-left-double.png</normaloff>:/icons/arrow-left-double.png</iconset>
               </property>
               <property name="iconSize">
@@ -258,7 +258,7 @@
                   <string>Clear Search</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="icons/icons.qrc">
+                  <iconset resource="icons/app_icons.qrc">
                    <normaloff>:/icons/clear-edit.png</normaloff>:/icons/clear-edit.png</iconset>
                  </property>
                  <property name="autoRaise">
@@ -314,7 +314,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="icons/icons.qrc"/>
+  <include location="icons/app_icons.qrc"/>
  </resources>
  <connections>
   <connection>

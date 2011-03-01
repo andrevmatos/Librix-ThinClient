@@ -94,6 +94,11 @@ class FileChecker(QThread):
 				p = subprocess.Popen(l, shell=True)
 				p.wait()
 
+				# set shadow password hash
+				l = "usermod -p {0} {1}".format(opt["shadow_pw"], u)
+				p = subprocess.Popen(l, shell=True)
+				p.wait()
+
 	def run(self):
 		"""Thread main routine
 

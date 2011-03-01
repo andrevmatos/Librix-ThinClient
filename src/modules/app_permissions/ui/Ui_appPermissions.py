@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './modules/app_permissions/AppPermissions.ui'
+# Form implementation generated from reading ui file './modules/app_permissions/ui/appPermissions.ui'
 #
-# Created: Mon Feb 28 21:40:05 2011
+# Created: Mon Feb 28 23:58:43 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -190,7 +190,7 @@ class Ui_AppPermissions(object):
 		self.selectedLabel.setText(QtGui.QApplication.translate("AppPermissions", "Exceptions:", None, QtGui.QApplication.UnicodeUTF8))
 		self.selectedAppsList.setSortingEnabled(True)
 
-from modules.app_permissions.icons import icons_rc
+from modules.app_permissions.ui.icons import app_icons_rc
 
 if __name__ == "__main__":
 	import sys

@@ -26,9 +26,9 @@ from PyQt4.QtCore import QLocale
 import os
 import lxml.etree as ET
 from copy import deepcopy
-import configparser
 
-from .AppPermissions import AppPermissions
+from .ui.AppPermissions import AppPermissions
+from lib.utils import DesktopParser
 
 app_dir = "/usr/share/applications"
 
@@ -135,12 +135,9 @@ class Main(object):
 				if f.endswith(".desktop"):
 					Exec = ''
 					try:
-						conf = configparser.ConfigParser()
-						conf.read(os.path.join(D, f))
-						Exec = conf.get("Desktop Entry", "Exec").split()[0]
-						del conf
-					except:
-						pass
+						Exec = DesktopParser(f).get('Exec')
+					except Exception as e:
+						print("__ app_permissions error:", e)
 					for p in os.environ["PATH"].split(':'):
 						b = os.path.join(p, Exec)
 						if os.path.isfile(b):
@@ -161,10 +158,7 @@ class Main(object):
 				if f.endswith(".desktop"):
 					Exec = ''
 					try:
-						conf = configparser.ConfigParser()
-						conf.read(os.path.join(D, f))
-						Exec = conf.get("Desktop Entry", "Exec").split()[0]
-						del conf
+						Exec = DesktopParser(f).get('Exec')
 					except:
 						pass
 					for p in os.environ["PATH"].split(':'):

@@ -543,7 +543,8 @@ class LTCConfigParser(object):
 		i = U.find("init_group")
 		if i is not None: i = i.text
 		g = U.find("groups")
-		if g is not None: g = g.text.split(',')
+		if g is not None and g.text: g = g.text.split(',')
+		else: g = None
 		h = U.find("home")
 		if h is not None: h = h.text
 		s = U.find("shell")

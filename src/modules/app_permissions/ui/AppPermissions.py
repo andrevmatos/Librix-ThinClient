@@ -24,8 +24,9 @@ if __name__ == '__main__':
 	sys.path.append("../../")
 
 from PyQt4 import QtGui,QtCore
-from .Ui_AppPermissions import Ui_AppPermissions
+from .Ui_appPermissions import Ui_AppPermissions
 #from lxml import etree as ET
+from lib.utils import DesktopParser
 
 import re
 import os
@@ -246,45 +247,18 @@ class ThreadedParse(QtCore.QThread):
 		self.total = len(all)
 		self.concluded = 0.0
 		for f in all:
-			Name = ''
-			Exec = ''
-			Icon = ''
 			if self.cancel:
 				break
 			try:
-				with open(f, 'r') as F:
-					n = re.compile(r'\s*Name ?= ?')
-					e = re.compile(r'\s*Exec ?= ?')
-					i = re.compile(r'\s*Icon ?= ?')
-					for l in F:
-						if re.match(n, l):
-							Name = re.sub(n, '', l, 1).strip()
-						elif re.match(e, l):
-							Exec = re.sub(e, '', l, 1).strip()
-						elif re.match(i, l):
-							Exec = re.sub(i, '', l, 1).strip()
+				d = DesktopParser(f)
+				Name = d.get('Name')
+				Exec = d.get('Exec')
 			except:
 				continue
 
 			T = QtGui.QListWidgetItem("{0}".format(Name), self.listWid)
 			T.setToolTip(Exec)
-			self.allApps[f] = {'name': Name, 'exec': Exec, 'icon': Icon,
-				'all': T}
+			self.allApps[f] = {'name': Name, 'exec': Exec, 'all': T}
 			self.concluded += 1
 			self.parsed.emit(int(round(100.0*self.concluded/self.total)))
 
-
-def main():
-	"""The program main loop"""
-	root = ET.Element("root")
-	ET.SubElement(root, "policy").text = "deny"
-	ET.SubElement(root, "entry", attrib={'type': 'app'}).text = "firefox.desktop"
-	ET.SubElement(root, "entry", attrib={'type': 'app'}).text = "amarok.desktop"
-
-	app = QtGui.QApplication(sys.argv)
-	window=AppPermissions(root)
-	window.show()
-	print("***", app.exec_())
-
-if __name__ == '__main__':
-	main()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-02-28, 20:56:26 -->
+<!-- Saved: 2011-02-28, 21:52:10 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -54,12 +54,6 @@
     <Source>src/ui/edit/ListItemWidget.py</Source>
     <Source>src/ui/edit/Ui_listItemWidget.py</Source>
     <Source>src/lib/http.py</Source>
-    <Source>src/modules/app_permissions/main.py</Source>
-    <Source>src/modules/app_permissions/Ui_AppPermissions.py</Source>
-    <Source>src/modules/app_permissions/__init__.py</Source>
-    <Source>src/modules/app_permissions/icons/icons_rc.py</Source>
-    <Source>src/modules/app_permissions/AppPermissions.py</Source>
-    <Source>src/modules/app_permissions/icons/__init__.py</Source>
     <Source>src/lib/ip.py</Source>
     <Source>src/ui/editkeys/Ui_editKeys.py</Source>
     <Source>src/ui/editkeys/__init__.py</Source>
@@ -90,6 +84,13 @@
     <Source>src/modules/autostart/ui/AutoExecConfig.py</Source>
     <Source>src/modules/autostart/ui/icons/autostart_icons_rc.py</Source>
     <Source>src/modules/autostart/ui/icons/__init__.py</Source>
+    <Source>src/modules/app_permissions/main.py</Source>
+    <Source>src/modules/app_permissions/__init__.py</Source>
+    <Source>src/modules/app_permissions/ui/__init__.py</Source>
+    <Source>src/modules/app_permissions/ui/AppPermissions.py</Source>
+    <Source>src/modules/app_permissions/ui/Ui_appPermissions.py</Source>
+    <Source>src/modules/app_permissions/ui/icons/app_icons_rc.py</Source>
+    <Source>src/modules/app_permissions/ui/icons/__init__.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -101,7 +102,6 @@
     <Form>src/ui/common/tabItemWidget.ui</Form>
     <Form>src/ui/common/profileSummary.ui</Form>
     <Form>src/ui/edit/listItemWidget.ui</Form>
-    <Form>src/modules/app_permissions/AppPermissions.ui</Form>
     <Form>src/ui/editkeys/editKeys.ui</Form>
     <Form>src/ui/export/targets/addTargetsDialog.ui</Form>
     <Form>src/ui/export/targets/scanTargetsDialog.ui</Form>
@@ -110,6 +110,7 @@
     <Form>src/ui/users/add_user/addUser.ui</Form>
     <Form>src/modules/autostart/ui/autoExecConfig.ui</Form>
     <Form>src/modules/autostart/ui/editScript.ui</Form>
+    <Form>src/modules/app_permissions/ui/appPermissions.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
@@ -118,8 +119,8 @@
   </Translations>
   <Resources>
     <Resource>src/ui/icons/temp_icons.qrc</Resource>
-    <Resource>src/modules/app_permissions/icons/icons.qrc</Resource>
     <Resource>src/modules/autostart/ui/icons/autostart_icons.qrc</Resource>
+    <Resource>src/modules/app_permissions/ui/icons/app_icons.qrc</Resource>
   </Resources>
   <Interfaces/>
   <Others/>
