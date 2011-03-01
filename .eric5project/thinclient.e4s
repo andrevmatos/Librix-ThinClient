@@ -2,15 +2,15 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-28, 13:47:24 -->
+<!-- Saved: 2011-02-28, 15:03:45 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="108" cindex="46" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
+    <Filename cline="106" cindex="64" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
     <Filename cline="487" cindex="5" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
-    <Filename cline="93" cindex="22" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</Filename>
-    <Filename cline="175" cindex="50" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/app_permissions/main.py</Filename>
+    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</Filename>
+    <Filename cline="63" cindex="10" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/userchecker.py</Filename>
   </Filenames>
-  <ActiveWindow cline="93" cindex="22">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</ActiveWindow>
+  <ActiveWindow cline="106" cindex="64">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>

@@ -20,6 +20,7 @@
 
 __all__ = [
 	'app_permissions',
+	'autostart',
 ]
 
 m = None

@@ -104,7 +104,7 @@ class LTCModuleParser(object):
 		@param	self		A LTCModuleParser instance
 		@param	module		A module name
 		@param	config		A lxml.etree.Element object
-		@param	user		A optional username.
+		@param	user		A optional username, for modules that requires it
 		"""
 		self._modules[module].setConfig(config, user)
 

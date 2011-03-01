@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AutoExecConfig</class>
+ <widget class="QDialog" name="AutoExecConfig">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AutoStart Configuration</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Commands List:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="mainWid" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QListWidget" name="listWidget"/>
+      </item>
+      <item>
+       <widget class="QWidget" name="toolbarWid" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="editButton">
+           <property name="toolTip">
+            <string>Edit Command</string>
+           </property>
+           <property name="statusTip">
+            <string>Edit Command</string>
+           </property>
+           <property name="whatsThis">
+            <string>Edit Command</string>
+           </property>
+           <property name="text">
+            <string>Edit Command</string>
+           </property>
+           <property name="icon">
+            <iconset resource="icons/autostart_icons.qrc">
+             <normaloff>:/toolbar/document-edit.png</normaloff>:/toolbar/document-edit.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="openButton">
+           <property name="toolTip">
+            <string>Import from a Menu Item</string>
+           </property>
+           <property name="statusTip">
+            <string>Import from a Menu Item</string>
+           </property>
+           <property name="whatsThis">
+            <string>Import from a Menu Item</string>
+           </property>
+           <property name="text">
+            <string>Import from a Menu Item</string>
+           </property>
+           <property name="icon">
+            <iconset resource="icons/autostart_icons.qrc">
+             <normaloff>:/toolbar/document-open.png</normaloff>:/toolbar/document-open.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="addButton">
+           <property name="toolTip">
+            <string>Add Command</string>
+           </property>
+           <property name="statusTip">
+            <string>Add Command</string>
+           </property>
+           <property name="whatsThis">
+            <string>Add Command</string>
+           </property>
+           <property name="text">
+            <string>Add Command</string>
+           </property>
+           <property name="icon">
+            <iconset resource="icons/autostart_icons.qrc">
+             <normaloff>:/toolbar/list-add.png</normaloff>:/toolbar/list-add.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="removeButton">
+           <property name="toolTip">
+            <string>Delete Command</string>
+           </property>
+           <property name="statusTip">
+            <string>Delete Command</string>
+           </property>
+           <property name="whatsThis">
+            <string>Delete Command</string>
+           </property>
+           <property name="text">
+            <string>Delete Command</string>
+           </property>
+           <property name="icon">
+            <iconset resource="icons/autostart_icons.qrc">
+             <normaloff>:/toolbar/list-remove.png</normaloff>:/toolbar/list-remove.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="icons/autostart_icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AutoExecConfig</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>252</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AutoExecConfig</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AutoExecConfig</receiver>
+   <slot>editCommand()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>558</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AutoExecConfig</receiver>
+   <slot>newCommand()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>109</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>578</x>
+     <y>-5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AutoExecConfig</receiver>
+   <slot>delCommand()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>534</x>
+     <y>-15</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>editCommand()</slot>
+  <slot>newCommand()</slot>
+  <slot>delCommand()</slot>
+ </slots>
+</ui>
