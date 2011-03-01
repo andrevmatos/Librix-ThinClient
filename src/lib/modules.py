@@ -53,8 +53,8 @@ class LTCModuleParser(object):
 		"""
 		c = []
 		for m in self._modules:
-			if self._modules[m].category() not in c:
-				c.append(self._modules[m].category())
+			if self.getModuleCategory(m) not in c:
+				c.append(self.getModuleCategory(m))
 		c.sort()
 		return(c)
 
@@ -98,6 +98,15 @@ class LTCModuleParser(object):
 		"""
 		return(self._modules[module].configurable())
 
+	def getModuleCategory(self, module):
+		"""Get module's category
+
+		@param	self		A LTCModuleParser instance
+		@param	module		Module name
+		@return				String containing category name
+		"""
+		return(self._modules[module].category())
+
 	def setModuleConfig(self, module, config, user=None):
 		"""Set given config in module
 
@@ -106,6 +115,8 @@ class LTCModuleParser(object):
 		@param	config		A lxml.etree.Element object
 		@param	user		A optional username, for modules that requires it
 		"""
+		if not self.getModuleConfigurable(module):
+			return
 		self._modules[module].setConfig(config, user)
 
 	def getModuleConfig(self, module):
@@ -115,6 +126,8 @@ class LTCModuleParser(object):
 		@param	module		A module name
 		@return				A lxml.etree.Element object
 		"""
+		if not self.getModuleConfigurable(module):
+			return(None)
 		return(self._modules[module].getConfig())
 
 	def configModule(self, module, parent=None):
@@ -125,10 +138,9 @@ class LTCModuleParser(object):
 		@param	parent		Parent QtGui.QWidget object, passed to module's
 							config method
 		"""
-		if self.getModuleConfigurable(module):
-			self._modules[module].config(parent)
-		else:
+		if not self.getModuleConfigurable(module):
 			return
+		self._modules[module].config(parent)
 
 	def startModule(self, module):
 		"""Threaded method to start a module

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/app_permissions/ui/appPermissions.ui'
 #
-# Created: Mon Feb 28 23:58:43 2011
+# Created: Tue Mar  1 13:53:41 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

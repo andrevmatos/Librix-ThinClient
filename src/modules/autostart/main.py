@@ -31,7 +31,7 @@ from .ui.AutoExecConfig import AutoExecConfig
 
 ae_prefix = 'autoexec_'
 ae_suffix = '.sh'
-ae_mode = 0o700
+ae_mode = 0o755
 
 class Main():
 	"""A LTMT module that provides a list of autostart commands"""
