@@ -24,8 +24,8 @@ from copy import deepcopy
 from tempfile import NamedTemporaryFile as tmpfile
 from lxml import etree as ET
 
-from os import chmod,listdir,remove
-from os.path import expanduser,join
+from os import chmod,listdir,remove,mkdir
+from os.path import expanduser,join,isdir
 
 from .ui.AutoExecConfig import AutoExecConfig
 
@@ -134,6 +134,12 @@ class Main():
 		"""Start method"""
 		if not self._user:
 			return
+
+		
+		if not isdir(expanduser(join('~'+self._user, ".config"))):
+			mkdir(expanduser(join('~'+self._user, ".config")))
+		if not isdir(expanduser(join('~'+self._user, ".config", "autostart"))):
+			mkdir(expanduser(join('~'+self._user, ".config", "autostart")))
 
 		self.stop()					# clean old autoexec scripts
 
