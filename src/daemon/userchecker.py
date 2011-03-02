@@ -57,9 +57,12 @@ class UserChecker(QThread):
 					self.moduleparser.stopModule(o)
 				self.currentuser = None
 		else:
+			for o in self.moduleparser.getModulesList():
+				self.moduleparser.stopModule(o)
 			for u in self.configparser.getUsersList():
 				if u in loggedUsers:
 					p = self.configparser.getUserProfile(u)
+					if not p: continue
 					for o in self.moduleparser.getModulesList():
 						# Attention: modules would be responsible
 						# by check if itself is already started or stopped

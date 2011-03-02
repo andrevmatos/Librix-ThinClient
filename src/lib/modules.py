@@ -67,7 +67,7 @@ class LTCModuleParser(object):
 		@return				A list of modules
 		"""
 		M = [m for m in self._modules \
-			if not category or self._modules[m].category() == category]
+			if not category or self.getModuleCategory(m) == category]
 		M.sort()
 		return(M)
 

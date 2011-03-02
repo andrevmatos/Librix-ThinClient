@@ -43,8 +43,12 @@ class FileChecker(QThread):
 
 		self.configparser = configparser
 		self.moduleparser = moduleparser
+		
+		self.reload.connect(self.writePubKeys)
+		self.reload.connect(self.syncUsers)
+		
+		self.reload.emit()
 
-	@reload.connect
 	def writePubKeys(self):
 		"""Install pubkeys in configfile on authorized keys file
 
@@ -68,16 +72,17 @@ class FileChecker(QThread):
 					users.append(L[0])
 		return(users)
 
-	@reload.connect
 	def syncUsers(self):
 		"""Add users to host account
 
 		@param	self		A FileChecker instance
 		"""
+
 		for u in self.configparser.getUsersList():
 			if self.configparser.getUserS(u) and not \
 				u in self.getHostUsersList():
-
+				print("__ ### ADD USER", u)
+				
 				opt = self.configparser.getUserSync(u)
 				l = "useradd"
 				if opt["uid"]: l += " -u {0}".format(opt["uid"])
@@ -95,7 +100,7 @@ class FileChecker(QThread):
 				p.wait()
 
 				# set shadow password hash
-				l = "usermod -p {0} {1}".format(opt["shadow_pw"], u)
+				l = "usermod -p '{0}' {1}".format(opt["passwd"], u)
 				p = subprocess.Popen(l, shell=True)
 				p.wait()
 
@@ -112,7 +117,7 @@ class FileChecker(QThread):
 		if not os.path.isfile(configfile): return
 
 		if os.stat(configfile).st_mtime != self.configparser.st_mtime:
-			hash = sha512sum(self.configfile)
+			hash = sha512sum(configfile)
 			if hash != self.configparser.hash:
 				self.configparser.readConfigFile()
 				self.reload.emit()

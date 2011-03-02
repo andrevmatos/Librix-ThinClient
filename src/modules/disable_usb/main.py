@@ -22,7 +22,6 @@ from PyQt4.QtCore import QLocale
 from os.path import dirname,basename,abspath,join
 from os import remove
 
-#disable_script = join(dirname(abspath(__file__)), "udev", "disable_usb.py")
 disable_rule = join(dirname(abspath(__file__)), "udev", 
 	"10-disable_usb_storage.rules")
 udev_rule = join("/etc/udev/rules.d", basename(disable_rule))
@@ -106,8 +105,7 @@ class Main():
 
 	def start(self):
 		"""Start method"""
-		with open(disable_rule, 'r') as DR,\
-			open(udev_rule, 'w') as UR:
+		with open(disable_rule, 'r') as DR, open(udev_rule, 'w') as UR:
 			UR.write(DR.read())
 
 	def stop(self):

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-02, 17:06:57 -->
+<!-- Saved: 2011-03-02, 19:49:50 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -92,7 +92,6 @@
     <Source>src/modules/app_permissions/ui/icons/__init__.py</Source>
     <Source>src/modules/disable_usb/main.py</Source>
     <Source>src/modules/disable_usb/__init__.py</Source>
-    <Source>src/modules/disable_usb/udev/disable_usb.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
