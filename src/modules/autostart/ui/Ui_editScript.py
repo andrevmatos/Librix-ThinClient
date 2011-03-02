@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './modules/autostart/ui/editScript.ui'
 #
-# Created: Tue Mar  1 13:53:41 2011
+# Created: Wed Mar  2 19:38:07 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

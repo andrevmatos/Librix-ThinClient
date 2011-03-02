@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="sd*", SUBSYSTEM=="block", ATTR{removable}=="1", RUN+="/usr/bin/eject %k"
