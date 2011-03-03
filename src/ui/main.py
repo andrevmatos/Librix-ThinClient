@@ -258,8 +258,12 @@ class Main(QtGui.QMainWindow):
 		"""
 		QtGui.QMessageBox.aboutQt(self)
 
-def main():
+def main(file=None):
 	"""The program main loop"""
+	global configfile
+	if file:
+		configfile = file
+		
 	app = QtGui.QApplication(sys.argv)
 
 	# Install translations

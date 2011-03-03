@@ -21,11 +21,9 @@
 from PyQt4.QtCore import QLocale
 
 from copy import deepcopy
-from tempfile import NamedTemporaryFile as tmpfile
 from lxml import etree as ET
-
-from os import chmod,listdir,remove,mkdir
-from os.path import expanduser,join,isdir
+import subprocess
+from time import sleep
 
 from .ui.AutoExecConfig import AutoExecConfig
 
@@ -134,37 +132,18 @@ class Main():
 		"""Start method"""
 		if not self._user:
 			return
-
 		
-		if not isdir(expanduser(join('~'+self._user, ".config"))):
-			mkdir(expanduser(join('~'+self._user, ".config")))
-		if not isdir(expanduser(join('~'+self._user, ".config", "autostart"))):
-			mkdir(expanduser(join('~'+self._user, ".config", "autostart")))
-
-		self.stop()					# clean old autoexec scripts
-
+		sleep(2)
 		for c in self._config.findall("command"):
-			f = tmpfile(prefix=ae_prefix, suffix=ae_suffix, delete=True,
-				dir=expanduser(join('~'+self._user, '.config', 'autostart')))
-			chmod(f.name, ae_mode)	# exec permission
-			self._files.append(f)	# stores on self._files list
-			text = "#!/bin/bash\n"
-			text += c.text + "\n"
-			text += "exit 0\n"
-			f.write(text.encode())
-			f.flush()				# synchronize
+			l = ("su -c 'DISPLAY=:1 XAUTHORITY=~/.Xauthority "+\
+				"bash -c \"{0}\" &' - {1}").format(c.text.strip(), self._user)
+			p= subprocess.Popen(l, shell=True, 
+				stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+			p.wait()
 
 	def stop(self):
 		"""Stop method"""
-		# NamedTemporaryFile deletes file when it is closed
-		while self._files:
-			self._files.pop(0).close()
-		# if a improperly shutdown occurred
-		if self._user:
-			for f in listdir(expanduser(join('~'+self._user, '.config',
-				'autostart'))):
-				if f.startswith(ae_prefix) and f.endswith(ae_suffix):
-					remove(f)
+		pass
 
 	def config(self, parent=None):
 		"""Config method"""

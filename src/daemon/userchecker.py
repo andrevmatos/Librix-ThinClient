@@ -55,6 +55,7 @@ class UserChecker(QThread):
 			if self.currentuser not in loggedUsers:
 				for o in self.moduleparser.getModulesList():
 					self.moduleparser.stopModule(o)
+				print("__ Disable Profile for User:", self.currentuser)
 				self.currentuser = None
 		else:
 			for o in self.moduleparser.getModulesList():
@@ -77,4 +78,5 @@ class UserChecker(QThread):
 							self.moduleparser.stopModule(o)
 							print("__stopModule", o)
 					self.currentuser = u
+					print("__ Enable Profile for User:", self.currentuser)
 		print('__end UserChecker')

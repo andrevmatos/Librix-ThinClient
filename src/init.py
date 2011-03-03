@@ -20,17 +20,43 @@
 
 import sys
 import signal
+from os.path import isfile
+from optparse import OptionParser
 
 if __name__ == "__main__":
 	# Accept C^c and SIGTERMs to exit (skip passing this keys to Qt)
 	signal.signal(signal.SIGINT, signal.SIG_DFL)
-
-	# TODO: basic argument parser, make it better
-	if "-c" in sys.argv:
+	
+	usage = "Usage: %prog [-c|-v] [configfile]"
+	
+	parser = OptionParser(usage=usage)
+	parser.add_option("-c", "--client", dest="mode", default=False,
+		action="store_true", help="Executes LTMT GUI Client")
+	parser.add_option("-d", "--daemon", dest="mode", default=False,
+		action="store_false", help="Executes LTMT Daemon")
+		
+	parser.add_option("-v", "--verbose", default=False, dest="verbose",
+		action="store_true", help="Print debug messages to standard output")
+	parser.add_option("-q", "--quiet", default=False, dest="verbose",
+		action="store_false", help="Don't print debug messages to standard output")
+	
+	(options, args) = parser.parse_args()
+	
+	if not options.verbose:
+		sys.stdout = open("/dev/null", "w")
+		sys.stderr = open("/dev/null", "w")
+		#sys.stderr.close()
+		#sys.stdout.close()
+	
+	configfile = None
+	for o in args:
+		if isfile(o):
+			configfile = o
+			break
+	
+	if options.mode:
 		from ui.main import main
-		main()
-	elif "-d" in sys.argv:
-		from daemon.tcd import run
-		run()
+		main(configfile)
 	else:
-		sys.stderr.write("Invalid option!\n")
+		from daemon.tcd import main
+		main(configfile)

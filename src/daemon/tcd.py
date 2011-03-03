@@ -25,7 +25,7 @@ from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
 
 from daemon.filechecker import FileChecker
 from daemon.userchecker import UserChecker
-#from lib.daemon import Daemon
+from lib.daemon import Daemon
 from lib.config import LTCConfigParser
 from lib.modules import LTCModuleParser
 from lib.http import ThreadedServer
@@ -74,16 +74,21 @@ class LibrixTCDaemon(QObject):
 
 def run():
 		"""The program main loop"""
+		print("__run")
 		app = QCoreApplication(sys.argv)
 		daemon = LibrixTCDaemon()
 		sys.exit(app.exec_())
 
-#def main():
-#	daemon = Daemon(pidfile)
-#	daemon.run = run
-#	daemon.start()
+def main(file=None):
+	print("__main")
+	global configfile, pidfile
+	if file:
+		configfile = file
+		
+	daemon = Daemon(pidfile)
+	daemon.run = run
+	daemon.start()
 
 if __name__ == '__main__':
-	#main()
-	run()
+	main()
 
