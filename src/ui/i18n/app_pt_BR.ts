@@ -414,17 +414,17 @@
         <translation type="obsolete">Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="main.py" line="127"/>
+        <location filename="main.py" line="129"/>
         <source>The configuration file has been modified.</source>
         <translation>O arquivo de configuração foi modificado.</translation>
     </message>
     <message>
-        <location filename="main.py" line="127"/>
+        <location filename="main.py" line="129"/>
         <source>Do you want to save your changes?</source>
         <translation>Deseja salvar suas modificações?</translation>
     </message>
     <message>
-        <location filename="main.py" line="169"/>
+        <location filename="main.py" line="171"/>
         <source>Open Config File</source>
         <translation>Abrir Arquivo de Configuração</translation>
     </message>
@@ -434,44 +434,44 @@
         <translation type="obsolete">Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="172"/>
+        <location filename="main.py" line="174"/>
         <source>A backup file of &lt;b&gt;{0}&lt;/b&gt; was found.
 Do you want to restore it?</source>
         <translation>Uma cópia de segurança de &lt;b&gt;{0}&lt;/b&gt; foi encontrada.
 Deseja restaurá-la?</translation>
     </message>
     <message>
-        <location filename="main.py" line="201"/>
+        <location filename="main.py" line="203"/>
         <source>Editing file: {0}</source>
         <translation>Editando arquivo: {0}</translation>
     </message>
     <message>
-        <location filename="main.py" line="229"/>
+        <location filename="main.py" line="231"/>
         <source>File &quot;{0}&quot; saved!</source>
         <translation>Arquivo &quot;{0}&quot; salvo!</translation>
     </message>
     <message>
-        <location filename="main.py" line="224"/>
+        <location filename="main.py" line="226"/>
         <source>Save Config File as</source>
         <translation>Salvar Arquivo de Configuração como</translation>
     </message>
     <message>
-        <location filename="main.py" line="224"/>
+        <location filename="main.py" line="226"/>
         <source>Conf files (*.conf) (*.conf);; XML files (*.xml) (*.xml);; All files (*) (*)</source>
         <translation>Arquivos Conf (*.conf) (*.conf);; Arquivos XML (*.xml) (*.xml);; Todos os Arquivos (*) (*)</translation>
     </message>
     <message>
-        <location filename="main.py" line="172"/>
+        <location filename="main.py" line="174"/>
         <source>Backup found</source>
         <translation>Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="189"/>
+        <location filename="main.py" line="191"/>
         <source>Outdated Config File</source>
         <translation>Arquivo de Configuração Desatualizado</translation>
     </message>
     <message>
-        <location filename="main.py" line="189"/>
+        <location filename="main.py" line="191"/>
         <source>This config file has absent and/or hasn&apos;t present modules.
 You want to update it (required to proceed)?
 P.S.: New modules will be added to configurations but absent, present in configuration, won&apos;t be touched or shown.</source>
@@ -480,17 +480,17 @@ Você deseja atualiza-lo (necessário para prosseguir)?
 Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, preentes nas configurações, não serão modificados ou exibidos.</translation>
     </message>
     <message>
-        <location filename="main.py" line="127"/>
+        <location filename="main.py" line="129"/>
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
     <message>
-        <location filename="main.py" line="251"/>
+        <location filename="main.py" line="253"/>
         <source>Librix ThinClient Management Tool</source>
         <translation>Ferramenta de Gerenciamento do Librix ThinClient</translation>
     </message>
     <message>
-        <location filename="main.py" line="244"/>
+        <location filename="main.py" line="246"/>
         <source>Librix ThinClient Management Tool (LTMT) is a program developed by &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Librix Dev Team&lt;/a&gt;, also responsible by Librix Linux gentoo-based distribution, and it&apos;s embedded tools, in association with &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; and &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Administration and Security Laboratory of Unicamp&lt;/a&gt;.</source>
         <translation>A Ferramenta de Gerenciamento do Librix ThinClient (LTMT) é um programa desenvolvido pelo &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Time de Desenvolvimento Librix&lt;/a&gt;, também responsável pelo Librix Linux, uma distribuição baseada em Gentoo, e suas ferramentas de gerenciamento, em associação com a &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; e o &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Laboratório de Administração e Segurança da Unicamp&lt;/a&gt;.</translation>
     </message>

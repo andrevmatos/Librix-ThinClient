@@ -19,9 +19,9 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui,QtCore
-from ui.export.targets.Ui_addTargetsDialog import Ui_AddTargetsDialog
+from ltmt.ui.export.targets.Ui_addTargetsDialog import Ui_AddTargetsDialog
 
-from lib.ip import IPRange,Subnetwork
+from ltmt.lib.ip import IPRange,Subnetwork
 
 class AddTargets(QtGui.QDialog):
 	"""Creates add targets dialog"""

@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui
-from ui.editkeys.Ui_editKeys import Ui_EditKeys
+from ltmt.ui.editkeys.Ui_editKeys import Ui_EditKeys
 
 class EditKeys(QtGui.QDialog):
 	"""Show a dialog to edit pubkeys in configfile"""

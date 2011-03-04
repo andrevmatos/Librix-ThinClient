@@ -19,7 +19,7 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui
-from ui.common.Ui_profileSummary import Ui_Summary
+from ltmt.ui.common.Ui_profileSummary import Ui_Summary
 
 class ProfileSummary(QtGui.QWidget):
 	"""Creates a frame with profile summary"""

@@ -20,7 +20,7 @@
 
 from PyQt4 import QtGui
 
-from ui.edit.Ui_listItemWidget import Ui_listItemWidget
+from ltmt.ui.edit.Ui_listItemWidget import Ui_listItemWidget
 
 class ListItemWidget(QtGui.QWidget):
 	"""Creates the QListWidgetItem widget of a module into cateogory"""

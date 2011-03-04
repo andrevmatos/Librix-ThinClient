@@ -20,8 +20,8 @@
 
 from PyQt4 import QtGui
 
-from ui.edit.Ui_profileEdit import Ui_EditProfile
-from ui.edit.ConfigProfileEdit import ConfigProfileEdit
+from ltmt.ui.edit.Ui_profileEdit import Ui_EditProfile
+from ltmt.ui.edit.ConfigProfileEdit import ConfigProfileEdit
 
 class ProfileEdit(QtGui.QWidget):
 	"""Creates the page to edit profile, into EditPage"""

@@ -22,17 +22,17 @@ import sys
 import os
 from PyQt4 import QtGui,QtCore
 
-from ui.Ui_mainWindow import Ui_ThinClient
-from ui.editkeys.EditKeys import EditKeys
+from ltmt.ui.Ui_mainWindow import Ui_ThinClient
+from ltmt.ui.editkeys.EditKeys import EditKeys
 
-from ui.users.usersPage import UsersPage
-from ui.edit.editPage import EditPage
-from ui.export.exportPage import ExportPage
+from ltmt.ui.users.usersPage import UsersPage
+from ltmt.ui.edit.editPage import EditPage
+from ltmt.ui.export.exportPage import ExportPage
 
-from lib.config import LTCConfigParser
-from lib.modules import LTCModuleParser
+from ltmt.lib.config import LTCConfigParser
+from ltmt.lib.modules import LTCModuleParser
 
-configfile = 'thinclient.conf'
+from ltmt.defs import configfile
 
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
@@ -57,9 +57,11 @@ class Main(QtGui.QMainWindow):
 		# Init users and profiles package
 		self.moduleparser = LTCModuleParser()
 		self.configparser = LTCConfigParser(self.moduleparser)
-
-		#self.openConfigFile()
-		self.newConfigFile(first=True)
+		
+		if os.path.isfile(configfile):
+			self.configparser.readConfigFile(configfile)
+		else:
+			self.newConfigFile(first=True)
 
 		# Set config file name
 		self.ui.nameEdit.setText(self.configparser.getName())
@@ -263,6 +265,7 @@ def main(file=None):
 	global configfile
 	if file:
 		configfile = file
+	configfile = os.path.abspath(configfile)
 		
 	app = QtGui.QApplication(sys.argv)
 

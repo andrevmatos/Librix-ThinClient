@@ -19,8 +19,8 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4 import QtGui,QtCore
-from ui.export.targets.Ui_scanTargetsDialog import Ui_ScanTargetsDialog
-from ui.export.targets.threadedScan import ThreadedScan
+from ltmt.ui.export.targets.Ui_scanTargetsDialog import Ui_ScanTargetsDialog
+from ltmt.ui.export.targets.threadedScan import ThreadedScan
 
 class ScanTargets(QtGui.QDialog):
 	"""Creates scan targets dialog"""

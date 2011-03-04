@@ -21,11 +21,11 @@
 from PyQt4 import QtGui
 import os
 
-from ui.export.Ui_exportWidget import Ui_ExportWidget
-from ui.common.LeftMenuItem import LeftMenuItem
-from ui.export.targets.addTargets import AddTargets
-from ui.export.targets.scanTargets import ScanTargets
-from ui.export.targets.threadedScan import ThreadedScan
+from ltmt.ui.export.Ui_exportWidget import Ui_ExportWidget
+from ltmt.ui.common.LeftMenuItem import LeftMenuItem
+from ltmt.ui.export.targets.addTargets import AddTargets
+from ltmt.ui.export.targets.scanTargets import ScanTargets
+from ltmt.ui.export.targets.threadedScan import ThreadedScan
 
 class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""

@@ -26,7 +26,7 @@ if __name__ == '__main__':
 from PyQt4 import QtGui,QtCore
 from .Ui_appPermissions import Ui_AppPermissions
 #from lxml import etree as ET
-from lib.utils import DesktopParser
+from ltmt.lib.utils import DesktopParser
 
 import re
 import os

@@ -39,7 +39,7 @@ class LTCModuleParser(object):
 		"""
 		if 'Mod' in vars():
 			del Mod
-		import modules as Mod
+		import ltmt.modules as Mod
 
 		for m in Mod.__all__:
 			self._modules[m] = eval("Mod.{0}.Main()".format(m))

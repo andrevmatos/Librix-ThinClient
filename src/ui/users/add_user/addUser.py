@@ -22,7 +22,7 @@ import os
 
 from PyQt4 import QtGui
 
-from ui.users.add_user.Ui_addUser import Ui_AddUser
+from ltmt.ui.users.add_user.Ui_addUser import Ui_AddUser
 
 class AddUser(QtGui.QDialog):
 	"""This class provides a add user dialog feature to users page of LTMT"""

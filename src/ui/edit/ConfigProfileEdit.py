@@ -20,8 +20,8 @@
 
 from PyQt4 import QtGui
 
-from ui.edit.Ui_configProfileEdit import Ui_configsWidget
-from ui.edit.ListItemWidget import ListItemWidget
+from ltmt.ui.edit.Ui_configProfileEdit import Ui_configsWidget
+from ltmt.ui.edit.ListItemWidget import ListItemWidget
 
 class ConfigProfileEdit(QtGui.QWidget):
 	"""Creates the config tab of a category in profile"""

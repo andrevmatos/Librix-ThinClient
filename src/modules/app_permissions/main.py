@@ -28,7 +28,7 @@ import lxml.etree as ET
 from copy import deepcopy
 
 from .ui.AppPermissions import AppPermissions
-from lib.utils import DesktopParser
+from ltmt.lib.utils import DesktopParser
 
 app_dir = "/usr/share/applications"
 

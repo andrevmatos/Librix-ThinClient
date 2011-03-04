@@ -23,8 +23,10 @@ from copy import deepcopy
 from tempfile import mkstemp
 from crypt import crypt
 
-from lib.utils import sha512sum, passwdGen
-from lib.modules import LTCModuleParser
+from ltmt.lib.utils import sha512sum, passwdGen
+from ltmt.lib.modules import LTCModuleParser
+
+from ltmt.defs import configfile
 
 class LTCConfigParser(object):
 	"""LTCConfigParser class to manipulate XML configuration file
@@ -39,7 +41,7 @@ class LTCConfigParser(object):
 		self.moduleparser = moduleparser
 		self.st_mtime = 0
 		self.hash = 0
-		self.configfile = 'thinclient.conf'
+		self.configfile = configfile
 		self._parser = ET.XMLParser(encoding="utf-8", remove_blank_text=True)
 
 	def readConfigFile(self, file=''):

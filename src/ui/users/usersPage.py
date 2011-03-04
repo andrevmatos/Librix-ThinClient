@@ -21,11 +21,11 @@
 from copy import deepcopy
 from PyQt4 import QtGui
 
-from ui.users.Ui_usersWidget import Ui_UsersWidget
-from ui.users.add_user.addUser import AddUser
-from ui.common.LeftMenuItem import LeftMenuItem
-from ui.common.ProfileSummary import ProfileSummary
-from ui.common.UserSummary import UserSummary
+from ltmt.ui.users.Ui_usersWidget import Ui_UsersWidget
+from ltmt.ui.users.add_user.addUser import AddUser
+from ltmt.ui.common.LeftMenuItem import LeftMenuItem
+from ltmt.ui.common.ProfileSummary import ProfileSummary
+from ltmt.ui.common.UserSummary import UserSummary
 
 class UsersPage(QtGui.QWidget):
 	"""Creates the main users page"""

@@ -19,20 +19,20 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-#import os
+from os.path import abspath
 
 from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
 
-from daemon.filechecker import FileChecker
-from daemon.userchecker import UserChecker
-from lib.daemon import Daemon
-from lib.config import LTCConfigParser
-from lib.modules import LTCModuleParser
-from lib.http import ThreadedServer
+from ltmt.daemon.filechecker import FileChecker
+from ltmt.daemon.userchecker import UserChecker
+from ltmt.lib.daemon import Daemon
+from ltmt.lib.config import LTCConfigParser
+from ltmt.lib.modules import LTCModuleParser
+from ltmt.lib.http import ThreadedServer
 
-pidfile = '/var/run/thinclient.pid'
-configfile = 'thinclient.conf'
-http_port = 8088
+from ltmt.defs import configfile, pidfile, http_port
+
+daemon = None
 
 class LibrixTCDaemon(QObject):
 	"""This class provides the main daemon for Librix Thin Client"""
@@ -72,21 +72,22 @@ class LibrixTCDaemon(QObject):
 		self.checkFileTimer.start(5000)
 		self.checkUsersTimer.start(2000)
 
-def run():
-		"""The program main loop"""
+class TCDaemon(Daemon):
+	def run(self):
 		print("__run")
-		app = QCoreApplication(sys.argv)
-		daemon = LibrixTCDaemon()
+		app = QCoreApplication([])
+		LTCD = LibrixTCDaemon()
 		sys.exit(app.exec_())
 
 def main(file=None):
 	print("__main")
 	global configfile, pidfile
+	
 	if file:
 		configfile = file
+	configfile = abspath(configfile)
 		
-	daemon = Daemon(pidfile)
-	daemon.run = run
+	daemon = TCDaemon(pidfile)
 	daemon.start()
 
 if __name__ == '__main__':

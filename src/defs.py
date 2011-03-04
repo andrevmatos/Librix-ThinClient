@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 #
 #  Copyright (C) 2010 - Librix Dev Team
 #
@@ -18,6 +18,9 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-__all__ = [
-	'ltmt',
-]
+pidfile = "/var/run/thinclient.pid"
+configfile = "/etc/thinclient.conf"
+http_port = 8088
+version = "0.0.98"
+
+__all__ = ["pidfile", "configfile", "http_port"]

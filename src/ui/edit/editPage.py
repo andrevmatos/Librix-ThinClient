@@ -20,11 +20,11 @@
 
 from PyQt4 import QtGui,QtCore
 
-from ui.edit.Ui_editWidget import Ui_EditWidget
-from ui.edit.ProfileEdit import ProfileEdit
+from ltmt.ui.edit.Ui_editWidget import Ui_EditWidget
+from ltmt.ui.edit.ProfileEdit import ProfileEdit
 
-from ui.common.LeftMenuItem import LeftMenuItem
-from ui.common.ProfileSummary import ProfileSummary
+from ltmt.ui.common.LeftMenuItem import LeftMenuItem
+from ltmt.ui.common.ProfileSummary import ProfileSummary
 
 class EditPage(QtGui.QWidget):
 	"""Creates the main Edit page"""

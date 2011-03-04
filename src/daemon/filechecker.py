@@ -21,7 +21,7 @@
 import os
 from PyQt4.QtCore import QThread,pyqtSignal
 
-from lib.utils import sha512sum
+from ltmt.lib.utils import sha512sum
 import subprocess
 
 configfile = "thinclient.conf"

@@ -46,7 +46,7 @@ import os
 
 from PyQt4 import QtGui
 
-from Ui_sshExport import Ui_SSHExport
+from ltmt.Ui_sshExport import Ui_SSHExport
 from threadedExport import ThreadedExport
 
 n_threads = 4

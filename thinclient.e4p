@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-02, 19:49:50 -->
+<!-- Saved: 2011-03-04, 15:28:03 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -9,11 +9,12 @@
   <ProgLanguage mixed="0">Python3</ProgLanguage>
   <ProjectType>Qt4</ProjectType>
   <Description></Description>
-  <Version>0.1</Version>
+  <Version>0.0.98</Version>
   <Author>Librix Dev Team</Author>
   <Email>tutooprog@las.ic.unicamp.br</Email>
+  <TranslationPattern>ltmt/ui/i18n/app_%language%.ts</TranslationPattern>
+  <TranslationsBinPath>ltmt/ui/i18n/app_%language%.qm</TranslationsBinPath>
   <Sources>
-    <Source>src/init.py</Source>
     <Source>src/ui/users/__init__.py</Source>
     <Source>src/ui/users/usersPage.py</Source>
     <Source>src/ui/main.py</Source>
@@ -92,6 +93,8 @@
     <Source>src/modules/app_permissions/ui/icons/__init__.py</Source>
     <Source>src/modules/disable_usb/main.py</Source>
     <Source>src/modules/disable_usb/__init__.py</Source>
+    <Source>src/defs.py</Source>
+    <Source>ltmt.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -125,7 +128,7 @@
   </Resources>
   <Interfaces/>
   <Others/>
-  <MainScript>src/init.py</MainScript>
+  <MainScript>ltmt.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>
