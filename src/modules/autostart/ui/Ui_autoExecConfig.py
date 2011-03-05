@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './modules/autostart/ui/autoExecConfig.ui'
+# Form implementation generated from reading ui file './src/modules/autostart/ui/autoExecConfig.ui'
 #
-# Created: Fri Mar  4 16:28:23 2011
+# Created: Sat Mar  5 18:19:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -110,7 +110,7 @@ class Ui_AutoExecConfig(object):
 		self.removeButton.setWhatsThis(QtGui.QApplication.translate("AutoExecConfig", "Delete Command", None, QtGui.QApplication.UnicodeUTF8))
 		self.removeButton.setText(QtGui.QApplication.translate("AutoExecConfig", "Delete Command", None, QtGui.QApplication.UnicodeUTF8))
 
-from modules.autostart.ui.icons import autostart_icons_rc
+from src.modules.autostart.ui.icons import autostart_icons_rc
 
 if __name__ == "__main__":
 	import sys

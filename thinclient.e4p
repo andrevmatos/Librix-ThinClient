@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-04, 18:35:20 -->
+<!-- Saved: 2011-03-05, 18:13:02 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -25,7 +25,6 @@
     <Source>src/ui/icons/__init__.py</Source>
     <Source>src/ui/__init__.py</Source>
     <Source>src/__init__.py</Source>
-    <Source>src/build.py</Source>
     <Source>__init__.py</Source>
     <Source>src/ui/edit/ProfileEdit.py</Source>
     <Source>src/ui/edit/ConfigProfileEdit.py</Source>
@@ -121,6 +120,9 @@
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
     <Translation>src/ui/i18n/app_pt_BR.ts</Translation>
     <Translation>src/ui/i18n/qt_pt_BR.qm</Translation>
+    <Translation>ltmt/ui/i18n/app_pt_BR.qm</Translation>
+    <Translation>ltmt/ui/i18n/app_pt_BR.ts</Translation>
+    <Translation>ltmt/ui/i18n/qt_pt_BR.qm</Translation>
   </Translations>
   <Resources>
     <Resource>src/ui/icons/temp_icons.qrc</Resource>

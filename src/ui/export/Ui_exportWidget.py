@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/export/exportWidget.ui'
+# Form implementation generated from reading ui file './src/ui/export/exportWidget.ui'
 #
-# Created: Fri Mar  4 16:28:23 2011
+# Created: Sat Mar  5 18:19:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -151,7 +151,7 @@ class Ui_ExportWidget(object):
 		self.privKeyPath.setText(QtGui.QApplication.translate("ExportWidget", "/root/.ssh/id_rsa", None, QtGui.QApplication.UnicodeUTF8))
 		self.openButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
 
-from ui.icons import temp_icons_rc
+from src.ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys

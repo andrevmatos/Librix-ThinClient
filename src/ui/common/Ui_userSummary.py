@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/common/userSummary.ui'
+# Form implementation generated from reading ui file './src/ui/common/userSummary.ui'
 #
-# Created: Fri Mar  4 16:28:22 2011
+# Created: Sat Mar  5 18:19:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

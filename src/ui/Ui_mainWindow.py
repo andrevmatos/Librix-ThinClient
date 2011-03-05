@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ui/mainWindow.ui'
+# Form implementation generated from reading ui file './src/ui/mainWindow.ui'
 #
-# Created: Fri Mar  4 16:28:22 2011
+# Created: Sat Mar  5 18:19:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -252,7 +252,7 @@ class Ui_ThinClient(object):
 		self.actionAbout_Qt.setText(QtGui.QApplication.translate("ThinClient", "About Qt", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionAbout_LTMT.setText(QtGui.QApplication.translate("ThinClient", "About LTMT", None, QtGui.QApplication.UnicodeUTF8))
 
-from ui.icons import temp_icons_rc
+from src.ui.icons import temp_icons_rc
 
 if __name__ == "__main__":
 	import sys
