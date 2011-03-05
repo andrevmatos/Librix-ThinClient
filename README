@@ -1,0 +1,44 @@
+Librix ThinClient Management Tool (LTMT)
+
+Copyright (C) 2010 - Librix Dev Team
+
+This program is developed by Librix Dev Team (tutoo@las.ic.unicamp.br), in
+partnership with Itautec and LAS (Administration and Security Laboratory, of
+Computing Institute of State University of Campinas, Brazil), and is Open
+Source Software, in terms of GNU GPLv2, shipped at COPYING file in the
+program's folder. 
+
+
+This file is part of librix-thinclient.
+
+librix-thinclient is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+librix-thinclient is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
+
+1. DEPENDENCIES:
+To run properly, this program depends of:
+- Python 3.1 or greater <http://www.python.org>
+- PyQt4 4.8 or greater, with python3 support <www.riverbankcomputing.co.uk>
+- lxml (libxml2) 2.2 or greater, with python3 support <http://lxml.de>
+
+2. INSTALL:
+To install this program, run:
+# python setup.py install
+On program's folder.
+
+3. DEVELOPMENT:
+The GIT development repository of this program can be found at:
+git://librixdev.las.ic.unicamp.br/git/source/x11-apps/thinclient.git
+
+4. BUGS AND CONTACTS
+To report a bug, make a review or suggestion, write to
+tutooprog@las.ic.unicamp.br
