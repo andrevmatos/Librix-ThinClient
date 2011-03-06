@@ -84,6 +84,7 @@ class clean_ui(_clean):
 class build(_build):
 	def run(self):
 		clean.run(self)
+		_build.run(self)
 		build_ui.run(self)
 		build_ts.run(self)
 		_build.run(self)
@@ -155,12 +156,11 @@ class build_ui(_build):
 	def finalize_options(self):
 		pass
 
-
 	def run(self):
 		def uicompile(uifile, pyfile=None):
 			if not pyfile:
-				pyfile = join(dirname(uifile),
-					'Ui_'+basename(uifile).replace('.ui', '.py'))
+				pyfile = join(dirname(uifile).replace("src", join(self.build_lib,
+					"ltmt")), 'Ui_'+basename(uifile).replace('.ui', '.py'))
 
 			with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
 				uic.compileUi(ui, py, execute=True, indent=0, from_imports=True)
@@ -174,16 +174,19 @@ class build_ui(_build):
 				pyfile = rcfile.replace(".qrc", "_rc.py")
 
 			os.system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
+			with open(pyfile, 'r') as S,\
+			open(pyfile.replace("src", join(self.build_lib, "ltmt")), 'w') as B:
+				B.write(S.read())
 			print("Compiling Resource:", rcfile, "=>", pyfile)
 
 		def fix_from_imports(filepath):
 			with open(filepath, 'r') as f:
 				L = f.readlines()
 			RC = []
-			for D, d, F in os.walk('src'):
+			for D, d, F in os.walk("src"):
 				for f in F:
 					if f.endswith("_rc.py"):
-						RC.append(join(D, f))
+						RC.append(join(D.replace("src", "ltmt"), f))
 			for l in range(len(L)):
 				if L[l].startswith("from .") and L[l].endswith("_rc\n"):
 					for i in RC:
@@ -195,7 +198,7 @@ class build_ui(_build):
 			with open(filepath, 'w') as f:
 				f.write(''.join(L))
 
-		for D, d, F in os.walk('.'):
+		for D, d, F in os.walk('src'):
 			for f in F:
 				if f.endswith(".ui"):
 					uicompile(join(D, f))
@@ -232,6 +235,7 @@ This version requires Python 3.1 or later.
 		"Intended Audience :: Sys Admins"
 	],
 	package_dir={'ltmt': 'src'},
+	package_data={"ltmt": ["ui/i18n/*.qm"]},
 	packages=[
 		"ltmt",
 		"ltmt.lib",

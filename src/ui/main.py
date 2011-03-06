@@ -57,7 +57,7 @@ class Main(QtGui.QMainWindow):
 		# Init users and profiles package
 		self.moduleparser = LTCModuleParser()
 		self.configparser = LTCConfigParser(self.moduleparser)
-		
+
 		if os.path.isfile(configfile):
 			self.configparser.readConfigFile(configfile)
 		else:
@@ -266,16 +266,18 @@ def main(file=None):
 	if file:
 		configfile = file
 	configfile = os.path.abspath(configfile)
-		
+
 	app = QtGui.QApplication(sys.argv)
 
 	# Install translations
 	locale = QtCore.QLocale.system().name()
 	qtTranslator = QtCore.QTranslator()
-	if qtTranslator.load("qt_"+locale, "ui/i18n"):
+	if qtTranslator.load("qt_"+locale,
+	os.path.join(os.path.dirname(__file__), "i18n/")):
 		app.installTranslator(qtTranslator)
 	appTranslator = QtCore.QTranslator()
-	if appTranslator.load("app_"+locale, "ui/i18n"):
+	if appTranslator.load("app_"+locale,
+	os.path.join(os.path.dirname(__file__), "i18n/")):
 		app.installTranslator(appTranslator)
 
 	window=Main()

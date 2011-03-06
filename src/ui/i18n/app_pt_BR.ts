@@ -3,72 +3,72 @@
 <context>
     <name>AddTargetsDialog</name>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="152"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="14"/>
         <source>Add targets - Step 1/2</source>
         <translation>Adicionar alvos - Passo 1 de 2</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="153"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="35"/>
         <source>Select an option. Default values are examples:</source>
         <translation>Selecione uma opção. Valores padrão são exemplos:</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="154"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="45"/>
         <source>Single IP:</source>
         <translation>IP único:</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="156"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="71"/>
         <source>Hostname:</source>
         <translation>Nome do alvo:</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="158"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="94"/>
         <source>IP Range:</source>
         <translation>Intervalo entre IPs:</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="161"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="128"/>
         <source>Sub-network:</source>
         <translation>Sub-rede:</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="164"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="196"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="165"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="213"/>
         <source>Next</source>
         <translation>Próximo</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="155"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="61"/>
         <source>127.0.0.1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="162"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="138"/>
         <source>192.168.1.1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="163"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="152"/>
         <source>255.255.255.0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="157"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="84"/>
         <source>librixdev.las.ic.unicamp.br</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="159"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="104"/>
         <source>10.0.0.1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_addTargetsDialog.py" line="160"/>
+        <location filename="export/targets/addTargetsDialog.ui" line="118"/>
         <source>10.0.0.10</source>
         <translation></translation>
     </message>
@@ -76,47 +76,47 @@
 <context>
     <name>AddUser</name>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="137"/>
+        <location filename="users/add_user/addUser.ui" line="17"/>
         <source>Add User</source>
         <translation>Adicionar Usuário</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="138"/>
+        <location filename="users/add_user/addUser.ui" line="35"/>
         <source>Enter a new user name below:</source>
         <translation>Insira o nome do novo usuário abaixo:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="139"/>
+        <location filename="users/add_user/addUser.ui" line="45"/>
         <source>Add this user to host accounts if it doesn&apos;t exist (sync).</source>
         <translation>Adicionar este usuário às contas da máquina, se não existir (sincronizar).</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="140"/>
+        <location filename="users/add_user/addUser.ui" line="67"/>
         <source>Password:</source>
         <translation>Senha:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="142"/>
+        <location filename="users/add_user/addUser.ui" line="110"/>
         <source>Initial Group:</source>
         <translation>Grupo Inicial:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="143"/>
+        <location filename="users/add_user/addUser.ui" line="130"/>
         <source>Other Groups (comma separated):</source>
         <translation>Outros Grupos (separados por vírgula):</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="144"/>
+        <location filename="users/add_user/addUser.ui" line="150"/>
         <source>Home:</source>
         <translation>Home:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="145"/>
+        <location filename="users/add_user/addUser.ui" line="173"/>
         <source>Shell:</source>
         <translation>Shell:</translation>
     </message>
     <message>
-        <location filename="users/add_user/Ui_addUser.py" line="141"/>
+        <location filename="users/add_user/addUser.ui" line="84"/>
         <source>UID:</source>
         <translation>UID:</translation>
     </message>
@@ -134,7 +134,7 @@
 <context>
     <name>EditKeys</name>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="91"/>
+        <location filename="editkeys/editKeys.ui" line="14"/>
         <source>Edit PubKeys</source>
         <translation>Editar Chaves Públicas</translation>
     </message>
@@ -154,22 +154,22 @@
         <translation>Insira abaixo uma chave pública SSH válida</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="92"/>
+        <location filename="editkeys/editKeys.ui" line="29"/>
         <source>Super User SSH Public Keys:</source>
         <translation>Chaves Públicas SSH de Super Usuário:</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="96"/>
+        <location filename="editkeys/editKeys.ui" line="73"/>
         <source>Add PubKey from File</source>
         <translation>Adicionar Chave Pública de um arquivo</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="100"/>
+        <location filename="editkeys/editKeys.ui" line="102"/>
         <source>Add PubKey</source>
         <translation>Adicionar Chave Pública</translation>
     </message>
     <message>
-        <location filename="editkeys/Ui_editKeys.py" line="104"/>
+        <location filename="editkeys/editKeys.ui" line="131"/>
         <source>Remove PubKey</source>
         <translation>Remover Chave Pública</translation>
     </message>
@@ -234,17 +234,17 @@
 <context>
     <name>EditProfile</name>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="53"/>
+        <location filename="edit/profileEdit.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="54"/>
+        <location filename="edit/profileEdit.ui" line="23"/>
         <source>Profile Name</source>
         <translation>Nome do Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="55"/>
+        <location filename="edit/profileEdit.ui" line="26"/>
         <source>profileName</source>
         <translation>nomeDoPerfil</translation>
     </message>
@@ -264,12 +264,12 @@
         <translation type="obsolete">Botão</translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="56"/>
+        <location filename="edit/profileEdit.ui" line="37"/>
         <source>Tab 1</source>
         <translation>Aba 1</translation>
     </message>
     <message>
-        <location filename="edit/Ui_profileEdit.py" line="57"/>
+        <location filename="edit/profileEdit.ui" line="47"/>
         <source>Tab 2</source>
         <translation>Aba 2</translation>
     </message>
@@ -277,52 +277,52 @@
 <context>
     <name>EditWidget</name>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="117"/>
+        <location filename="edit/editWidget.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="118"/>
+        <location filename="edit/editWidget.ui" line="44"/>
         <source>Profiles:</source>
         <translation>Perfis:</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="121"/>
+        <location filename="edit/editWidget.ui" line="72"/>
         <source>New Profile</source>
         <translation>Novo Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="120"/>
+        <location filename="edit/editWidget.ui" line="69"/>
         <source>Creates an empty profile</source>
         <translation>Cria um perfil em branco</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="124"/>
+        <location filename="edit/editWidget.ui" line="98"/>
         <source>Remove Profile</source>
         <translation>Apagar Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="123"/>
+        <location filename="edit/editWidget.ui" line="95"/>
         <source>Delete the selected profile. This action can&apos;t be undo</source>
         <translation>Apaga o perfil selecionado. Esta ação não pode ser desfeita</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="127"/>
+        <location filename="edit/editWidget.ui" line="131"/>
         <source>Edit Profile</source>
         <translation>Editar Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="126"/>
+        <location filename="edit/editWidget.ui" line="128"/>
         <source>Edit selected profile</source>
         <translation>Edita o perfil selecionado</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="130"/>
+        <location filename="edit/editWidget.ui" line="157"/>
         <source>Duplicate Profile</source>
         <translation>Duplicar Perfil</translation>
     </message>
     <message>
-        <location filename="edit/Ui_editWidget.py" line="129"/>
+        <location filename="edit/editWidget.ui" line="154"/>
         <source>Creates a new profile with the same configuration of the selected one.</source>
         <translation>Cria um novo perfil com as mesmas configurações do perfil selecionado.</translation>
     </message>
@@ -343,52 +343,52 @@
 <context>
     <name>ExportWidget</name>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="139"/>
+        <location filename="export/exportWidget.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="140"/>
+        <location filename="export/exportWidget.ui" line="32"/>
         <source>Targets</source>
         <translation>Alvos</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="142"/>
+        <location filename="export/exportWidget.ui" line="75"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="143"/>
+        <location filename="export/exportWidget.ui" line="80"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="144"/>
+        <location filename="export/exportWidget.ui" line="109"/>
         <source>Add Targets Manually</source>
         <translation>Adicionar Alvos Manualmente</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="152"/>
+        <location filename="export/exportWidget.ui" line="251"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="146"/>
+        <location filename="export/exportWidget.ui" line="132"/>
         <source>Remove Selected Targets</source>
         <translation>Remover Alvos Selecionados</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="149"/>
+        <location filename="export/exportWidget.ui" line="222"/>
         <source>Admin SSH Private Key</source>
         <translation>Chave Privada SSH do Administrador</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="150"/>
+        <location filename="export/exportWidget.ui" line="234"/>
         <source>SSH Private Key:</source>
         <translation>Shave SSH Privada:</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="151"/>
+        <location filename="export/exportWidget.ui" line="241"/>
         <source>/root/.ssh/id_rsa</source>
         <translation></translation>
     </message>
@@ -532,52 +532,52 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>SSHExport</name>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="130"/>
+        <location filename="export/ssh_export/sshExport.ui" line="23"/>
         <source>SSH Export</source>
         <translation>Exportação via SSH</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="131"/>
+        <location filename="export/ssh_export/sshExport.ui" line="50"/>
         <source>Exporting Config Files and Updates through SSH</source>
         <translation>Exportando Arquivos de Configuração e Atualizações via SSH</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="132"/>
+        <location filename="export/ssh_export/sshExport.ui" line="83"/>
         <source>Operation {0} of {1}: {2}</source>
         <translation>Operação {0} de {1}: {2}</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="135"/>
+        <location filename="export/ssh_export/sshExport.ui" line="159"/>
         <source>Show detailed status of operation</source>
         <translation>Mostrar status detalhado das operações</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="136"/>
+        <location filename="export/ssh_export/sshExport.ui" line="162"/>
         <source>Details</source>
         <translation>Detalhes</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="139"/>
+        <location filename="export/ssh_export/sshExport.ui" line="198"/>
         <source>Cancel nonstarted operations</source>
         <translation>Cancelar operações não-iniciadas</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="140"/>
+        <location filename="export/ssh_export/sshExport.ui" line="201"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="141"/>
+        <location filename="export/ssh_export/sshExport.ui" line="261"/>
         <source>Operation</source>
         <translation>Operação</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="142"/>
+        <location filename="export/ssh_export/sshExport.ui" line="266"/>
         <source>Destiny</source>
         <translation>Destino</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/Ui_sshExport.py" line="143"/>
+        <location filename="export/ssh_export/sshExport.ui" line="271"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
@@ -623,42 +623,42 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>ScanTargetsDialog</name>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="92"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="17"/>
         <source>Scan targets - Step 2/2</source>
         <translation>Escanear alvos - Passo 2 de 2</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="93"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="26"/>
         <source>Select hosts to add, and click Ok</source>
         <translation>Selecione máquinas para adicionar, então clique em Ok</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="95"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="67"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="96"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="72"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="97"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="102"/>
         <source>Rescan</source>
         <translation>Reescanear</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="99"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="139"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="100"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="156"/>
         <source>Ok</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="export/targets/Ui_scanTargetsDialog.py" line="98"/>
+        <location filename="export/targets/scanTargetsDialog.ui" line="113"/>
         <source>Select</source>
         <translation>Seleção</translation>
     </message>
@@ -666,37 +666,37 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>Summary</name>
     <message>
-        <location filename="common/Ui_userSummary.py" line="88"/>
+        <location filename="common/profileSummary.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="90"/>
+        <location filename="common/userSummary.ui" line="82"/>
         <source>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;UID:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="91"/>
+        <location filename="common/userSummary.ui" line="92"/>
         <source>&lt;font color=green&gt;Initial Group:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;Grupo Inicial:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="92"/>
+        <location filename="common/userSummary.ui" line="102"/>
         <source>&lt;font color=green&gt;Other Groups:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;Outros Grupos:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="93"/>
+        <location filename="common/userSummary.ui" line="112"/>
         <source>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;Home:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="94"/>
+        <location filename="common/userSummary.ui" line="122"/>
         <source>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;Shell:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="common/Ui_userSummary.py" line="89"/>
+        <location filename="common/userSummary.ui" line="72"/>
         <source>&lt;font color=green&gt;Shadow Password Hash:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</source>
         <translation>&lt;font color=green&gt;Hash de Senha Shadow:&lt;/font&gt; &lt;b&gt;{0}&lt;/b&gt;</translation>
     </message>
@@ -709,7 +709,7 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
         <translation type="obsolete">Interface de Administração do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="212"/>
+        <location filename="mainWindow.ui" line="40"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -722,137 +722,137 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ferramenta de Gerenciamento do Librix Thin Client. Versão Alpha.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="217"/>
+        <location filename="mainWindow.ui" line="76"/>
         <source>Enter config name/version here</source>
         <translation>Insira nome ou versão da configuração aqui</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="218"/>
+        <location filename="mainWindow.ui" line="208"/>
         <source>File</source>
         <translation>Arquivo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="219"/>
+        <location filename="mainWindow.ui" line="219"/>
         <source>View</source>
         <translation>Exibir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="223"/>
+        <location filename="mainWindow.ui" line="275"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="226"/>
+        <location filename="mainWindow.ui" line="284"/>
         <source>Open config file</source>
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="227"/>
+        <location filename="mainWindow.ui" line="287"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="228"/>
+        <location filename="mainWindow.ui" line="296"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="231"/>
+        <location filename="mainWindow.ui" line="305"/>
         <source>Save current file</source>
         <translation>Salvar arquivo atual</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="232"/>
+        <location filename="mainWindow.ui" line="308"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="234"/>
+        <location filename="mainWindow.ui" line="320"/>
         <source>Save as</source>
         <translation>Salvar como</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="237"/>
+        <location filename="mainWindow.ui" line="329"/>
         <source>Save current file as another file name</source>
         <translation>Salvar arquivo atual com outro nome</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="238"/>
+        <location filename="mainWindow.ui" line="332"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="239"/>
+        <location filename="mainWindow.ui" line="341"/>
         <source>Quit</source>
         <translation>Sair</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="242"/>
+        <location filename="mainWindow.ui" line="350"/>
         <source>Quit Librix Thin Client</source>
         <translation>Sair do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="243"/>
+        <location filename="mainWindow.ui" line="353"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="244"/>
+        <location filename="mainWindow.ui" line="364"/>
         <source>Show users profile summary</source>
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="245"/>
+        <location filename="mainWindow.ui" line="373"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="248"/>
+        <location filename="mainWindow.ui" line="382"/>
         <source>Creates a new empty config file</source>
         <translation>Criar um novo arquivo de configuração vazio</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="249"/>
+        <location filename="mainWindow.ui" line="385"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="211"/>
+        <location filename="mainWindow.ui" line="14"/>
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="222"/>
+        <location filename="mainWindow.ui" line="242"/>
         <source>Main Tool Bar</source>
         <translation>Barra de Ferramentas Principal</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="220"/>
+        <location filename="mainWindow.ui" line="224"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="250"/>
+        <location filename="mainWindow.ui" line="394"/>
         <source>Edit PubKeys</source>
         <translation>Editar Chaves Públicas</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="251"/>
+        <location filename="mainWindow.ui" line="397"/>
         <source>Ctrl+E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="221"/>
+        <location filename="mainWindow.ui" line="230"/>
         <source>Help</source>
         <translation>Ajuda</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="252"/>
+        <location filename="mainWindow.ui" line="406"/>
         <source>About Qt</source>
         <translation>Sobre o Qt</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="253"/>
+        <location filename="mainWindow.ui" line="415"/>
         <source>About LTMT</source>
         <translation>Sobre o LTMT</translation>
     </message>
@@ -1003,22 +1003,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UsersWidget</name>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="154"/>
+        <location filename="users/usersWidget.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="155"/>
+        <location filename="users/usersWidget.ui" line="44"/>
         <source>Users:</source>
         <translation>Usuários:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="159"/>
+        <location filename="users/usersWidget.ui" line="113"/>
         <source>Add user</source>
         <translation>Adicionar usuário</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="163"/>
+        <location filename="users/usersWidget.ui" line="136"/>
         <source>Remove user</source>
         <translation>Remover usuário</translation>
     </message>
@@ -1038,27 +1038,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Remover usuário do perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="172"/>
+        <location filename="users/usersWidget.ui" line="219"/>
         <source>Profiles:</source>
         <translation>Perfis:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="173"/>
+        <location filename="users/usersWidget.ui" line="245"/>
         <source>Profiles</source>
         <translation>Perfis</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="174"/>
+        <location filename="users/usersWidget.ui" line="286"/>
         <source>Profile Summary:</source>
         <translation>Resumo do Perfil:</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="167"/>
+        <location filename="users/usersWidget.ui" line="166"/>
         <source>Add User to Profile</source>
         <translation>Adicionar Usuário ao Perfil</translation>
     </message>
     <message>
-        <location filename="users/Ui_usersWidget.py" line="171"/>
+        <location filename="users/usersWidget.ui" line="186"/>
         <source>Remove User from Profile</source>
         <translation>Remover Usuário do Perfil</translation>
     </message>
@@ -1066,12 +1066,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>configsWidget</name>
     <message>
-        <location filename="edit/Ui_configProfileEdit.py" line="62"/>
+        <location filename="edit/configProfileEdit.ui" line="20"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_configProfileEdit.py" line="63"/>
+        <location filename="edit/configProfileEdit.ui" line="26"/>
         <source>Modules:</source>
         <translation>Módulos:</translation>
     </message>
@@ -1079,27 +1079,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>listItemWidget</name>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="210"/>
+        <location filename="edit/listItemWidget.ui" line="26"/>
         <source>Form</source>
         <translation>Formulário</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="214"/>
+        <location filename="edit/listItemWidget.ui" line="241"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="215"/>
+        <location filename="edit/listItemWidget.ui" line="282"/>
         <source>Pretty Option Name</source>
         <translation>Nome de Opção Bonito</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="216"/>
+        <location filename="edit/listItemWidget.ui" line="357"/>
         <source>Configure</source>
         <translation>Configurar</translation>
     </message>
     <message>
-        <location filename="edit/Ui_listItemWidget.py" line="217"/>
+        <location filename="edit/listItemWidget.ui" line="368"/>
         <source>Activate</source>
         <translation>Ativar</translation>
     </message>
@@ -1107,7 +1107,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>tabWidget</name>
     <message>
-        <location filename="common/Ui_tabItemWidget.py" line="57"/>
+        <location filename="common/tabItemWidget.ui" line="26"/>
         <source>Form</source>
         <translation></translation>
     </message>
