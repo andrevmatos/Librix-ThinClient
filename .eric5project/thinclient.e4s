@@ -2,15 +2,14 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-02-28, 15:03:45 -->
+<!-- Saved: 2011-03-06, 17:14:11 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="106" cindex="64" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</Filename>
-    <Filename cline="487" cindex="5" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/config.py</Filename>
-    <Filename cline="0" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</Filename>
-    <Filename cline="63" cindex="10" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/userchecker.py</Filename>
+    <Filename cline="256" cindex="23" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/setup.py</Filename>
+    <Filename cline="25" cindex="26" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/ltmt</Filename>
+    <Filename cline="271" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/ui/main.py</Filename>
   </Filenames>
-  <ActiveWindow cline="106" cindex="64">/home/andre/Dev/Librix/thinclient/src/lib/modules.py</ActiveWindow>
+  <ActiveWindow cline="256" cindex="23">/home/andre/Dev/Librix/thinclient/setup.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>

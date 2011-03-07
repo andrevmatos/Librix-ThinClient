@@ -84,7 +84,7 @@ class clean_ui(_clean):
 class build(_build):
 	def run(self):
 		clean.run(self)
-		_build.run(self)
+		build_ui.run(self)
 		build_ui.run(self)
 		build_ts.run(self)
 		_build.run(self)
@@ -205,6 +205,18 @@ class build_ui(_build):
 				elif f.endswith(".qrc"):
 					rccompile(join(D, f))
 
+def gen_packages():
+	P = []
+	for D, d, F in os.walk("src"):
+		for f in F:
+			if f.endswith(".py") and D not in P:
+				P.append(D)
+				break
+	p = []
+	for i in P:
+		if i.startswith("src"):
+			p.append(i.replace("src", "ltmt", 1).replace(os.path.sep, "."))
+	return(p)
 
 setup(
 	name="LTMT",
@@ -236,30 +248,7 @@ This version requires Python 3.1 or later.
 	],
 	package_dir={'ltmt': 'src'},
 	package_data={"ltmt": ["ui/i18n/*.qm"]},
-	packages=[
-		"ltmt",
-		"ltmt.lib",
-		"ltmt.daemon",
-		"ltmt.ui",
-		"ltmt.ui.icons",
-		"ltmt.ui.common",
-		"ltmt.ui.help",
-		"ltmt.ui.users",
-		"ltmt.ui.users.add_user",
-		"ltmt.ui.export",
-		"ltmt.ui.export.targets",
-		"ltmt.ui.export.ssh_export",
-		"ltmt.ui.editkeys",
-		"ltmt.ui.edit",
-		"ltmt.modules",
-		"ltmt.modules.app_permissions",
-		"ltmt.modules.app_permissions.ui",
-		"ltmt.modules.app_permissions.ui.icons",
-		"ltmt.modules.disable_usb",
-		"ltmt.modules.autostart",
-		"ltmt.modules.autostart.ui",
-		"ltmt.modules.autostart.ui.icons",
-	],
+	packages=gen_packages(),
 	cmdclass={
 		"clean": clean,
 		"clean_ts": clean_ts,

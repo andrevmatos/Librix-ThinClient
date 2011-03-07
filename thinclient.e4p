@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-05, 18:13:02 -->
+<!-- Saved: 2011-03-06, 17:14:11 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -93,7 +93,6 @@
     <Source>src/modules/disable_usb/main.py</Source>
     <Source>src/modules/disable_usb/__init__.py</Source>
     <Source>src/defs.py</Source>
-    <Source>ltmt.py</Source>
     <Source>setup.py</Source>
   </Sources>
   <Forms>
@@ -130,8 +129,10 @@
     <Resource>src/modules/app_permissions/ui/icons/app_icons.qrc</Resource>
   </Resources>
   <Interfaces/>
-  <Others/>
-  <MainScript>ltmt.py</MainScript>
+  <Others>
+    <Other>ltmt</Other>
+  </Others>
+  <MainScript>ltmt</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>

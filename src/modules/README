@@ -1,0 +1,84 @@
+Librix ThinClient Management Tool (LTMT) - Module Development Reference
+
+To a custom module work properly with LTMT (daemon and client), it must follow
+some basic guidelines.
+
+1. "Main" CLASS:
+
+Each module should provide a main class, called "Main".
+  >>> from ltmt.modules import module
+  >>> 'Main' in dir(module)
+  True
+  >>> _
+
+If module is a simples .py file, it can define class Main(). 
+  $ egrep "class" ./module.py
+  ...
+  class Main(object):
+  ...
+  $ _
+
+If it is a package, with a file containing Main class, __init__.py should
+import it. For example, a module in package format called "test", with a
+"start_class.py" file, and main class called "Test", should contain in
+__init__.py a line like:
+  $ grep "import" test/__init__.py
+  ...
+  from .start_class import Test as Main
+  ...
+  $ _
+
+2. "Main" Class Methods:
+
+Main class should provides some basic methods.
+
+  2.1. def prettyname(self):
+    "prettyname" method get only self argument and should return a string
+    containing human readable and, possibly, internationalized pretty name for
+    this module. This pretty name will be shown in Edit Profile page.
+
+  2.2. def description(self):
+    "description" method also get only self argument and should return a string
+    containing human readable and internationalized description for this module.
+    Also, can contain a summary of current configuration set on module instance.
+  
+  2.3. def configurable(self):
+    Should return a boolean telling if this module has or hasn't a
+    configuration dialog.
+
+  2.4. def category(self):
+    Should return a short string, containing category of module. This
+    categories are tabs on Edit Profile page, and dinamically generated from
+    modules categories.
+
+  2.5. def setConfig(self, config=None, user=None):
+    Set given config and user on module configuration. Config should be a
+    lxml.etree.Element object, containing required configurations of module.
+    User should be a optional short string containing currently logged in user
+    name (for modules applyed in user). This method also should be defined to
+    modules not configurable, for compatibility reasons.
+
+  2.6. def getConfig(self):
+    Return a lxml.etree.Element object containing current configurations set on
+    module instance. Must be defined also if module isn't configurable,
+    returning None, for compatibility reasons.
+
+  2.7. def config(self, parent=None):
+    Configuration options for module. Only configurable modules must have this
+    method. Get a optional parent argument, containing parent QtGui.QWidget of
+    client application, to show a dialog. Configurations set on this routine
+    should be applyed on module, not returned. Then, getConfig will return it,
+    if required.
+
+  2.8. def start(self):
+    Start method. Should actually apply module permissions in system, according 
+    with configurations currently set on module.
+
+  2.9. def stop(self):
+    Stop method. Should undo routines applyed by start method.
+
+3. ACTIVE MODULES LIST
+
+All modules, to be recognized by LTMT, must be listed in __all__ list into
+modules/__init__.py file. To deactivate a module, without deleting its data
+files, simply remove it of __all__ list.
