@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+#
 #  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
@@ -22,11 +23,13 @@ from PyQt4.QtCore import QLocale
 from os.path import dirname,basename,abspath,join
 from os import remove
 
-disable_rule = join(dirname(abspath(__file__)), "udev", 
+from ltmt.modules.skel import Module
+
+disable_rule = join(dirname(abspath(__file__)), "udev",
 	"10-disable_usb_storage.rules")
 udev_rule = join("/etc/udev/rules.d", basename(disable_rule))
 
-class Main():
+class Main(Module):
 	"""A LTMT module that provides a list of autostart commands"""
 	def __init__(self):
 		"""Init method

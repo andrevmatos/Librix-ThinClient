@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-#  Copyright (C) 2010 - Librix Dev Team
+#
 #
 # This file is part of librix-thinclient.
 #
@@ -25,9 +25,11 @@ from lxml import etree as ET
 from time import sleep
 import subprocess
 
+from ltmt.modules.skel import Module
+
 from .ui.AutoExecConfig import AutoExecConfig
 
-class Main():
+class Main(Module):
 	"""A LTMT module that provides a list of autostart commands"""
 	def __init__(self):
 		"""Init method

@@ -2,17 +2,14 @@
 <!DOCTYPE Session SYSTEM "Session-4.4.dtd">
 <!-- eric5 session file for project thinclient -->
 <!-- This file was generated automatically, do not edit. -->
-<!-- Saved: 2011-03-09, 00:07:42 -->
+<!-- Saved: 2011-03-09, 17:42:01 -->
 <Session version="4.4">
   <Filenames>
-    <Filename cline="251" cindex="35" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/setup.py</Filename>
-    <Filename cline="79" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/ltmt</Filename>
-    <Filename cline="84" cindex="29" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</Filename>
-    <Filename cline="66" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/lib/daemon.py</Filename>
-    <Filename cline="61" cindex="18" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/userchecker.py</Filename>
-    <Filename cline="136" cindex="50" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</Filename>
+    <Filename cline="86" cindex="3" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/setup.py</Filename>
+    <Filename cline="71" cindex="23" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/ltmt</Filename>
+    <Filename cline="68" cindex="59" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</Filename>
   </Filenames>
-  <ActiveWindow cline="136" cindex="50">/home/andre/Dev/Librix/thinclient/src/modules/autostart/main.py</ActiveWindow>
+  <ActiveWindow cline="86" cindex="3">/home/andre/Dev/Librix/thinclient/setup.py</ActiveWindow>
   <Breakpoints/>
   <Watchexpressions/>
   <DebugInfo>

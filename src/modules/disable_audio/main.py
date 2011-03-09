@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+#
 #  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
@@ -22,9 +23,11 @@ from PyQt4.QtCore import QLocale
 from os import stat, chmod, walk
 from os.path import join
 
+from ltmt.modules.skel import Module
+
 modes = [0o600, 0o660]
 
-class Main():
+class Main(Module):
 	"""A LTMT module that provides a list of autostart commands"""
 	def __init__(self):
 		"""Init method

@@ -11,10 +11,15 @@ Each module should provide a main class, called "Main".
   True
   >>> _
 
+*** "Main" class MUST inherit from ltmt.modules.skel.Module super class:
+  >>> from ltmt.modules.skel import Module
+  >>> class Main(Module):
+  ...
+
 If module is a simples .py file, it can define class Main(). 
   $ egrep "class" ./module.py
   ...
-  class Main(object):
+  class Main(Module):
   ...
   $ _
 
@@ -28,7 +33,7 @@ __init__.py a line like:
   ...
   $ _
 
-2. "Main" Class Methods:
+2. "Main" CLASS METHODS:
 
 Main class should provides some basic methods.
 
@@ -55,20 +60,18 @@ Main class should provides some basic methods.
     Set given config and user on module configuration. Config should be a
     lxml.etree.Element object, containing required configurations of module.
     User should be a optional short string containing currently logged in user
-    name (for modules applyed in user). This method also should be defined to
-    modules not configurable, for compatibility reasons.
+    name (for modules applyed in user). Only for configurable modules.
 
   2.6. def getConfig(self):
     Return a lxml.etree.Element object containing current configurations set on
-    module instance. Must be defined also if module isn't configurable,
-    returning None, for compatibility reasons.
+    module instance. Only for configurable modules.
 
   2.7. def config(self, parent=None):
     Configuration options for module. Only configurable modules must have this
     method. Get a optional parent argument, containing parent QtGui.QWidget of
     client application, to show a dialog. Configurations set on this routine
     should be applyed on module, not returned. Then, getConfig will return it,
-    if required.
+    if required. Only for configurable modules.
 
   2.8. def start(self):
     Start method. Should actually apply module permissions in system, according 

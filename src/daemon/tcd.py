@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+#
 #  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
@@ -21,7 +22,7 @@
 import sys
 from os.path import abspath, isfile
 
-from PyQt4.QtCore import QCoreApplication, QObject, QTimer
+from PyQt4.QtCore import QCoreApplication, QTimer
 
 from ltmt.daemon.filechecker import FileChecker
 from ltmt.daemon.userchecker import UserChecker
@@ -34,14 +35,14 @@ from ltmt.defs import configfile, pidfile, http_port
 
 daemon = None
 
-class LibrixTCDaemon(QObject):
+class LibrixTCDaemon(QCoreApplication):
 	"""This class provides the main daemon for Librix Thin Client"""
 	def __init__(self):
 		"""Instantiate LibrixTCDaemon class and exec init routines
 
 		@param	self		A LibrixTCDaemon instance
 		"""
-		QObject.__init__(self)
+		QCoreApplication.__init__(self, sys.argv)
 
 		# Init LTCConfigParser
 		self.configparser = LTCConfigParser()
@@ -64,14 +65,15 @@ class LibrixTCDaemon(QObject):
 		self.checkUsersTimer = QTimer(self)
 		self.checkUsersTimer.timeout.connect(self.checkUsers.start)
 
+		# PID file checker
+		self.checkPIDfileTimer = QTimer(self)
+		self.checkPIDfileTimer.timeout.connect(self.checkPIDfile)
+
 		self.checkFile.reload.connect(self.checkUsers.clearUser)
 
 		# Start timers
 		self.checkFileTimer.start(1000)
 		self.checkUsersTimer.start(1000)
-
-		self.checkPIDfileTimer = QTimer(self)
-		self.checkPIDfileTimer.timeout.connect(self.checkPIDfile)
 		self.checkPIDfileTimer.start(1000)
 
 	def checkPIDfile(self):
@@ -89,8 +91,7 @@ class LibrixTCDaemon(QObject):
 class TCDaemon(Daemon):
 	def run(self):
 		print("__run")
-		app = QCoreApplication([])
-		self.LTCD = LibrixTCDaemon()
+		app = LibrixTCDaemon()
 		sys.exit(app.exec_())
 
 def main(file=None):
@@ -102,7 +103,6 @@ def main(file=None):
 	configfile = abspath(configfile)
 
 	daemon = TCDaemon(pidfile)
-
 	daemon.start()
 
 if __name__ == '__main__':

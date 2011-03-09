@@ -1,0 +1,19 @@
+#!/sbin/runscript
+
+depend() {
+  need net
+}
+
+start() {
+  ebegin "Starting LTMT"
+  start-stop-daemon --start --pidfile /var/run/thinclient.pid \
+    --exec /usr/bin/ltmt -- -d -l
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping LTMT"
+  start-stop-daemon --stop --pidfile /var/run/thinclient.pid \
+    --exec /usr/bin/ltmt -- -k -v
+  eend $?
+}

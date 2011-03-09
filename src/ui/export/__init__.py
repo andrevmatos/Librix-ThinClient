@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-#  Copyright (C) 2010 - Librix Dev Team
+#
 #
 # This file is part of librix-thinclient.
 #

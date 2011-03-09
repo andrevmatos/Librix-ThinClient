@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+#
 #  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
@@ -27,6 +28,8 @@ import os
 import lxml.etree as ET
 from copy import deepcopy
 
+from ltmt.modules.skel import Module
+
 from .ui.AppPermissions import AppPermissions
 from ltmt.lib.utils import DesktopParser
 
@@ -35,7 +38,7 @@ app_dir = "/usr/share/applications"
 # Modes: app (.desktop files), bin (binary executables files)
 modes = {'app': [0o600, 0o644], 'bin': [0o700, 0o755]}
 
-class Main(object):
+class Main(Module):
 	"""Applications Permissions module"""
 
 	def __init__(self):

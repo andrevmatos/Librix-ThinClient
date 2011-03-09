@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 #
-#  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
 #
@@ -23,6 +22,7 @@ from PyQt4 import uic
 from distutils.core import setup
 from distutils.command.build import build as _build
 from distutils.command.clean import clean as _clean
+from distutils.command.sdist import sdist
 
 import os
 from os.path import dirname, basename, abspath, isfile, isdir, join
@@ -83,7 +83,7 @@ class clean_ui(_clean):
 
 class build(_build):
 	def run(self):
-		clean.run(self)
+		#clean.run(self)
 		build_ts.run(self)
 		_build.run(self)
 		build_ui.run(self)
@@ -219,7 +219,7 @@ def gen_packages():
 	return(p)
 
 setup(
-	name="LTMT",
+	name="ltmt",
 	version="0.0.98",
 	license="GPL",
 	author="Librix Dev Team",
@@ -259,6 +259,8 @@ This version requires Python 3.1 or later.
 		"build": build,
 		"build_ts": build_ts,
 		"build_ui": build_ui,
+		"sdist": sdist,
 	},
+	data_files=[('/etc', ['thinclient.conf'])],
 	scripts=["ltmt"]
 )

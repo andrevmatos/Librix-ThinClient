@@ -1,2 +1,5 @@
 include COPYING
-recursive-include src *.ui *.ts *.pro *.qrc *.png
+include *.ebuild
+include thinclient.conf
+recursive-include init.d *
+recursive-include src *.ui *.ts *.pro *.qrc *.png *.rules

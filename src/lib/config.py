@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-#  Copyright (C) 2010 - Librix Dev Team
+#
 #
 # This file is part of librix-thinclient.
 #
@@ -82,8 +82,12 @@ class LTCConfigParser(object):
 			backupfile = self.backupfile
 			if not self.modified(): return
 		else:
-			if os.path.isfile(self.configfile): backupfile = self.configfile
-			elif os.path.isfile(self.backupfile): backupfile = self.backupfile
+			if os.path.isfile(self.configfile):
+				backupfile = self.configfile
+			elif os.path.isfile(self.backupfile):
+				backupfile = self.backupfile
+			else:
+				print("$$$", self.configfile, self.backupfile, file)
 
 		if file == backupfile: return
 
