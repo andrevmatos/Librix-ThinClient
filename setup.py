@@ -84,9 +84,9 @@ class clean_ui(_clean):
 class build(_build):
 	def run(self):
 		clean.run(self)
-		build_ui.run(self)
-		build_ui.run(self)
 		build_ts.run(self)
+		_build.run(self)
+		build_ui.run(self)
 		_build.run(self)
 
 class build_ts(_build):
@@ -247,7 +247,10 @@ This version requires Python 3.1 or later.
 		"Intended Audience :: Sys Admins"
 	],
 	package_dir={'ltmt': 'src'},
-	package_data={"ltmt": ["ui/i18n/*.qm"]},
+	package_data={"ltmt": [
+		"ui/i18n/*.qm",
+		"modules/disable_usb/udev/*.rules"
+	]},
 	packages=gen_packages(),
 	cmdclass={
 		"clean": clean,

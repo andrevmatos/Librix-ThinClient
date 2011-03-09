@@ -20,7 +20,7 @@
 
 import sys
 from os.path import isfile,abspath,isdir
-from os import kill,remove
+from os import kill,remove, devnull
 from argparse import ArgumentParser
 
 if isdir("./build/lib/ltmt"):
@@ -44,10 +44,12 @@ if __name__ == "__main__":
 
 	group = parser.add_argument_group(title="Debug Options")
 	dbg_group = group.add_mutually_exclusive_group()
-	dbg_group.add_argument("-q", "--quiet", dest="verbose", default=False,
-		action="store_false", help="Suppress debug informations")
-	dbg_group.add_argument("-v", "--verbose", dest="verbose", default=False,
-		action="store_true", help="Show debug informations")
+	dbg_group.add_argument("-q", "--quiet", dest="verbose", default=0,
+		action="store_const", const=0, help="Suppress debug informations")
+	dbg_group.add_argument("-v", "--verbose", dest="verbose",
+		action="store_const", const=1, help="Show debug informations")
+	dbg_group.add_argument("-l", "--log", dest="verbose",
+		action="store_const", const=2, help="Log to /var/log/thinclient.log")
 
 	parser.add_argument("-f", "--configfile", default="/etc/thinclient.conf",
 		nargs=1, help="Configuration File", metavar="FILE")
@@ -56,9 +58,12 @@ if __name__ == "__main__":
 
 	options = parser.parse_args()
 
-	if not options.verbose:
-		sys.stdout = open("/dev/null", "w")
-		sys.stderr = open("/dev/null", "w")
+	if options.verbose == 0:
+		sys.stdout = open(devnull, "w")
+		sys.stderr = open(devnull, "w")
+	elif options.verbose == 2:
+		sys.stdout = open("/var/log/thinclient.log", "a")
+		sys.stderr = open("/var/log/thinclient.log", "a")
 
 	configfile = None
 	if isfile(options.configfile[0]):
@@ -72,9 +77,8 @@ if __name__ == "__main__":
 		main(configfile)
 	elif options.mode == 2:	# elif 2, kill daemon
 		if isfile(pidfile):
-			with open(pidfile, "r") as P:
-				kill(int(P.read().strip()), 9)
-				#except: pass
+			with open(pidfile, 'r') as P:
+				print("Stopping daemon PID", P.read().strip())
 			remove(pidfile)
 		else:
 			print("Daemon not running!!!")

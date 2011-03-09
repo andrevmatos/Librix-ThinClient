@@ -19,9 +19,9 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-from os.path import abspath
+from os.path import abspath, isfile
 
-from PyQt4.QtCore import QCoreApplication, SIGNAL, QObject, QTimer
+from PyQt4.QtCore import QCoreApplication, QObject, QTimer
 
 from ltmt.daemon.filechecker import FileChecker
 from ltmt.daemon.userchecker import UserChecker
@@ -57,37 +57,52 @@ class LibrixTCDaemon(QObject):
 		# Init FileChecker instance and timer
 		self.checkFile = FileChecker(self.configparser, self.moduleparser)
 		self.checkFileTimer = QTimer(self)
-		self.connect(self.checkFileTimer,
-			SIGNAL("timeout()"), self.checkFile.start)
+		self.checkFileTimer.timeout.connect(self.checkFile.start)
 
 		# Init UserChecker instance and timer
 		self.checkUsers = UserChecker(self.configparser, self.moduleparser)
 		self.checkUsersTimer = QTimer(self)
-		self.connect(self.checkUsersTimer,
-			SIGNAL("timeout()"), self.checkUsers.start)
+		self.checkUsersTimer.timeout.connect(self.checkUsers.start)
 
 		self.checkFile.reload.connect(self.checkUsers.clearUser)
 
 		# Start timers
-		self.checkFileTimer.start(5000)
-		self.checkUsersTimer.start(2000)
+		self.checkFileTimer.start(1000)
+		self.checkUsersTimer.start(1000)
+
+		self.checkPIDfileTimer = QTimer(self)
+		self.checkPIDfileTimer.timeout.connect(self.checkPIDfile)
+		self.checkPIDfileTimer.start(1000)
+
+	def checkPIDfile(self):
+		if not isfile(pidfile):
+			self.stop()
+			sys.exit(0)
+
+	def stop(self):
+		print("__STOPPING ALL")
+		self.checkFileTimer.stop()
+		self.checkUsersTimer.stop()
+		for m in self.moduleparser.getModulesList():
+			self.moduleparser.stopModule(m)
 
 class TCDaemon(Daemon):
 	def run(self):
 		print("__run")
 		app = QCoreApplication([])
-		LTCD = LibrixTCDaemon()
+		self.LTCD = LibrixTCDaemon()
 		sys.exit(app.exec_())
 
 def main(file=None):
 	print("__main")
 	global configfile, pidfile
-	
+
 	if file:
 		configfile = file
 	configfile = abspath(configfile)
-		
+
 	daemon = TCDaemon(pidfile)
+
 	daemon.start()
 
 if __name__ == '__main__':

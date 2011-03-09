@@ -1,4 +1,4 @@
-# Makefile
+#!/usr/bin/env python3
 #
 #  Copyright (C) 2010 - Librix Dev Team
 #
@@ -18,15 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-# Makefile
+__all__ = []
 
-SHELL=/bin/bash
-
-.PHONY: compile
-
-compile: clean
-	/usr/bin/python3 build.py
-clean:
-	find ./ -iname \*.pyc -delete ; \
-	find ./ -iname \*Ui_\*py -delete ; \
-	find ./ -iname \*_rc.py -delete
+# Import mainclass
+from .main import Main

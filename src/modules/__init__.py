@@ -21,7 +21,8 @@
 __all__ = [
 	'app_permissions',
 	'autostart',
-	'disable_usb', 
+	'disable_usb',
+	'disable_audio',
 ]
 
 m = None

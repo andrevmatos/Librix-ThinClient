@@ -19,13 +19,10 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 from PyQt4.QtCore import QLocale
+from os import stat, chmod, walk
+from os.path import join
 
-from copy import deepcopy
-from lxml import etree as ET
-from time import sleep
-import subprocess
-
-from .ui.AutoExecConfig import AutoExecConfig
+modes = [0o600, 0o660]
 
 class Main():
 	"""A LTMT module that provides a list of autostart commands"""
@@ -35,10 +32,18 @@ class Main():
 		@param	self		A Main module instance
 		"""
 		self._locale = QLocale.system().name()
-
-		self._user = None
-		self._config = None
 		self._files = []
+
+		audio_gid = self._get_audio_gid()
+
+		for D, d, F in walk("/dev"):
+			for f in F:
+				f = join(D, f)
+				try:
+					if stat(f).st_gid == audio_gid:
+						self._files.append(f)
+				except:
+					pass
 
 	def prettyname(self):
 		"""Return module's prettyname
@@ -47,8 +52,8 @@ class Main():
 		@return				Module's prettyname string
 		"""
 		_prettyname = {
-			'en_US': "Autostart",
-			'pt_BR': "Inicialização Automática"
+			'en_US': "Disable Audio",
+			'pt_BR': "Desativar Audio"
 		}
 		_prettyname['default'] = _prettyname['en_US']
 
@@ -63,29 +68,18 @@ class Main():
 		@return				Module's description string
 		"""
 		_description = {
-			'en_US': ''.join(["Set a list of commands ",
-				"to be executed at user login."]),
-			'pt_BR': ''.join(["Configura uma lista de comandos ",
-				"a serem executados no login do usuário."])
+			'en_US': ''.join(["Disable audio (in/out) for user logged in, "
+				"by removing read/write permissions of /dev devices "
+				"which are owned by \"audio\" group."]),
+			'pt_BR': ''.join(["Desativa o audio (entrada/saida) para o "
+				"usuário logado, removendo as permissões de leitura e escrita ",
+				"dos dispositivos em /dev que pertencem ao grupo \"audio\"."])
 		}
 		_description['default'] = _description['en_US']
 
-		_descConf = {
-			'en_US': "Command List:",
-			'pt_BR': "Lista de Comandos:"
-		}
-
 		l = self._locale if self._locale in _description else 'default'
 
-		desc = _description[l]
-
-		if self._config is not None:
-			desc += "\n<br><b>" + _descConf[l] + "</b>"
-			for c in self._config.findall("command"):
-				desc += "\n<hr><code>" +\
-					c.text.replace('\n', '<br>') + "</code>"
-
-		return(desc)
+		return(_description[l])
 
 	def configurable(self):
 		"""Return true if module is configurable
@@ -93,7 +87,7 @@ class Main():
 		@param	self		A Main module instance
 		@return				Bool
 		"""
-		return(True)
+		return(False)
 
 	def category(self):
 		"""Return true if module is configurable
@@ -101,48 +95,39 @@ class Main():
 		@param	self		A Main module instance
 		@return				Bool
 		"""
-		return("software")
+		return("hardware")
 
 	def setConfig(self, config=None, user=None):
 		"""Set config on module and user
 
 		@param	self		A Main module instance
-		@param	conf		A lxml.etree Element object
+		@param	conf		No matter for this module
 		@param	user		A username to apply config
 		"""
-		self._config = deepcopy(config)
 		self._user = user
 
 	def getConfig(self):
-		"""Get current config of module
+		"""No matter
 
 		@param	self		A Main module instance
-		@return				A lxml.etree Element object
+		@return				None
 		"""
-		if self._config is not None:
-			return(self._config)
-		else:
-			return(ET.Element("root"))
+		return(None)
 
 	def start(self):
 		"""Start method"""
-		if not self._user:
-			return
-
-		sleep(2)
-		for c in self._config.findall("command"):
-			l = ("su -c 'bash -c \"DISPLAY=:0 XAUTHORITY=~/.Xauthority "+\
-				"{0}\" &' - {1}").format(c.text.strip(), self._user)
-			subprocess.Popen(l, shell=True, stdin=subprocess.PIPE,
-				stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		for f in self._files:
+			chmod(f, modes[0])
 
 	def stop(self):
 		"""Stop method"""
-		pass
+		for f in self._files:
+			chmod(f, modes[1])
 
-	def config(self, parent=None):
-		"""Config method"""
-		dialog = AutoExecConfig(deepcopy(self._config), parent)
-		r = dialog.exec_()
-		if r is not None:
-			self.setConfig(r, self._user)
+	def _get_audio_gid(self):
+		"""Return int GID of 'audio' group"""
+		with open("/etc/group", "r") as G:
+			for l in G:
+				L = l.strip().split(':')
+				if L and L[0] == "audio":
+					return(int(L[2]))

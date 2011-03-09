@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-06, 17:14:11 -->
+<!-- Saved: 2011-03-09, 00:07:42 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -37,49 +37,32 @@
     <Source>src/ui/common/ProfileSummary.py</Source>
     <Source>src/daemon/__init__.py</Source>
     <Source>src/daemon/tcd.py</Source>
-    <Source>src/ui/users/Ui_usersWidget.py</Source>
-    <Source>src/ui/Ui_mainWindow.py</Source>
-    <Source>src/ui/edit/Ui_profileEdit.py</Source>
-    <Source>src/ui/edit/Ui_editWidget.py</Source>
-    <Source>src/ui/edit/Ui_configProfileEdit.py</Source>
-    <Source>src/ui/export/Ui_exportWidget.py</Source>
     <Source>src/ui/icons/temp_icons_rc.py</Source>
-    <Source>src/ui/common/Ui_tabItemWidget.py</Source>
-    <Source>src/ui/common/Ui_profileSummary.py</Source>
     <Source>src/daemon/filechecker.py</Source>
     <Source>src/daemon/userchecker.py</Source>
     <Source>src/modules/__init__.py</Source>
     <Source>src/lib/modules.py</Source>
     <Source>src/ui/edit/ListItemWidget.py</Source>
-    <Source>src/ui/edit/Ui_listItemWidget.py</Source>
     <Source>src/lib/http.py</Source>
     <Source>src/lib/ip.py</Source>
-    <Source>src/ui/editkeys/Ui_editKeys.py</Source>
     <Source>src/ui/editkeys/__init__.py</Source>
     <Source>src/ui/editkeys/EditKeys.py</Source>
-    <Source>src/ui/export/targets/Ui_scanTargetsDialog.py</Source>
     <Source>src/ui/export/targets/__init__.py</Source>
     <Source>src/ui/export/targets/addTargets.py</Source>
-    <Source>src/ui/export/targets/Ui_addTargetsDialog.py</Source>
     <Source>src/ui/export/targets/scanTargets.py</Source>
     <Source>src/ui/export/targets/threadedScan.py</Source>
     <Source>src/ui/export/ssh_export/threadedExport.py</Source>
     <Source>src/ui/export/ssh_export/__init__.py</Source>
-    <Source>src/ui/export/ssh_export/Ui_sshExport.py</Source>
     <Source>src/ui/export/ssh_export/sshExport.py</Source>
     <Source>src/ui/help/about_LTMT.py</Source>
     <Source>src/ui/help/__init__.py</Source>
-    <Source>src/ui/users/add_user/Ui_addUser.py</Source>
     <Source>src/ui/users/add_user/addUser.py</Source>
     <Source>src/ui/users/add_user/__init__.py</Source>
     <Source>src/ui/common/UserSummary.py</Source>
-    <Source>src/ui/common/Ui_userSummary.py</Source>
     <Source>src/modules/autostart/main.py</Source>
     <Source>src/modules/autostart/__init__.py</Source>
-    <Source>src/modules/autostart/ui/Ui_autoExecConfig.py</Source>
     <Source>src/modules/autostart/ui/EditScript.py</Source>
     <Source>src/modules/autostart/ui/__init__.py</Source>
-    <Source>src/modules/autostart/ui/Ui_editScript.py</Source>
     <Source>src/modules/autostart/ui/AutoExecConfig.py</Source>
     <Source>src/modules/autostart/ui/icons/autostart_icons_rc.py</Source>
     <Source>src/modules/autostart/ui/icons/__init__.py</Source>
@@ -87,13 +70,14 @@
     <Source>src/modules/app_permissions/__init__.py</Source>
     <Source>src/modules/app_permissions/ui/__init__.py</Source>
     <Source>src/modules/app_permissions/ui/AppPermissions.py</Source>
-    <Source>src/modules/app_permissions/ui/Ui_appPermissions.py</Source>
     <Source>src/modules/app_permissions/ui/icons/app_icons_rc.py</Source>
     <Source>src/modules/app_permissions/ui/icons/__init__.py</Source>
     <Source>src/modules/disable_usb/main.py</Source>
     <Source>src/modules/disable_usb/__init__.py</Source>
     <Source>src/defs.py</Source>
     <Source>setup.py</Source>
+    <Source>src/modules/disable_audio/main.py</Source>
+    <Source>src/modules/disable_audio/__init__.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -119,9 +103,6 @@
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>
     <Translation>src/ui/i18n/app_pt_BR.ts</Translation>
     <Translation>src/ui/i18n/qt_pt_BR.qm</Translation>
-    <Translation>ltmt/ui/i18n/app_pt_BR.qm</Translation>
-    <Translation>ltmt/ui/i18n/app_pt_BR.ts</Translation>
-    <Translation>ltmt/ui/i18n/qt_pt_BR.qm</Translation>
   </Translations>
   <Resources>
     <Resource>src/ui/icons/temp_icons.qrc</Resource>

@@ -46,7 +46,6 @@ class UserChecker(QThread):
 		users list. If yes, apply configurations
 		@param	self		A UserChecker instance
 		"""
-		print('__run UserChecker', end=' ')
 		with os.popen('users') as U:
 			loggedUsers = list(set(U.read().strip().split()))
 			loggedUsers.sort()
@@ -60,10 +59,13 @@ class UserChecker(QThread):
 		else:
 			for o in self.moduleparser.getModulesList():
 				self.moduleparser.stopModule(o)
+			self.msleep(100)
 			for u in self.configparser.getUsersList():
 				if u in loggedUsers:
 					p = self.configparser.getUserProfile(u)
+					self.currentuser = u
 					if not p: continue
+					print("__ Loading: User", u, ", Profile", p)
 					for o in self.moduleparser.getModulesList():
 						# Attention: modules would be responsible
 						# by check if itself is already started or stopped
@@ -77,6 +79,4 @@ class UserChecker(QThread):
 						else:
 							self.moduleparser.stopModule(o)
 							print("__stopModule", o)
-					self.currentuser = u
 					print("__ Enable Profile for User:", self.currentuser)
-		print('__end UserChecker')

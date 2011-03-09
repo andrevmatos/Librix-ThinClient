@@ -24,7 +24,7 @@ from PyQt4.QtCore import QThread,pyqtSignal
 from ltmt.lib.utils import sha512sum
 import subprocess
 
-configfile = "thinclient.conf"
+from ltmt.defs import configfile
 authorized_keys = '~/.ssh/authorized_keys'
 
 class FileChecker(QThread):
@@ -43,10 +43,10 @@ class FileChecker(QThread):
 
 		self.configparser = configparser
 		self.moduleparser = moduleparser
-		
+
 		self.reload.connect(self.writePubKeys)
 		self.reload.connect(self.syncUsers)
-		
+
 		self.reload.emit()
 
 	def writePubKeys(self):
@@ -55,6 +55,7 @@ class FileChecker(QThread):
 		Called when checkFile.reload signal is emited
 		@param	self		A LTCModuleParser instance
 		"""
+		print("__writing pubKeys")
 		with open(os.path.expanduser(authorized_keys), 'w') as kf:
 			kf.write('\n'.join(self.configparser.getKeys()))
 
@@ -65,11 +66,14 @@ class FileChecker(QThread):
 		@return			List of usernames string
 		"""
 		users = []
-		with open("/etc/passwd", 'r') as pw:
-			for l in pw:
-				L = l.split(':')
-				if len(L) == 7:
-					users.append(L[0])
+		try:
+			with open("/etc/passwd", 'r') as pw:
+				for l in pw:
+					L = l.split(':')
+					if len(L) == 7:
+						users.append(L[0])
+		except:
+			pass
 		return(users)
 
 	def syncUsers(self):
@@ -82,7 +86,7 @@ class FileChecker(QThread):
 			if self.configparser.getUserS(u) and not \
 				u in self.getHostUsersList():
 				print("__ ### ADD USER", u)
-				
+
 				opt = self.configparser.getUserSync(u)
 				l = "useradd"
 				if opt["uid"]: l += " -u {0}".format(opt["uid"])
@@ -112,13 +116,11 @@ class FileChecker(QThread):
 		If yes, reload configs
 		@param	self		A FileChecker instance
 		"""
-		print('__run FileChecker', end=' ')
-
 		if not os.path.isfile(configfile): return
 
 		if os.stat(configfile).st_mtime != self.configparser.st_mtime:
 			hash = sha512sum(configfile)
 			if hash != self.configparser.hash:
+				print("__ refreshConfigFile")
 				self.configparser.readConfigFile()
 				self.reload.emit()
-		print('__end FileChecker')
