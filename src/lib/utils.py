@@ -49,7 +49,7 @@ class DesktopParser():
 		@param	self		A DesktopParser instance
 		@param	file		A file name to parse
 		"""
-		assert(os.path.isfile(file))
+		assert os.path.isfile(file), "File \"{0}\" not found".format(file)
 		self._file = open(file, 'r')
 
 	def get(self, key):

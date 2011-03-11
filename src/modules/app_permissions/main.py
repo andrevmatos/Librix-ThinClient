@@ -135,6 +135,7 @@ class Main(Module):
 		apps = [e.text for e in self._config.findall("entry[@type='app']")]
 		for D, d, F in os.walk(app_dir):
 			for f in F:
+				f = os.path.join(D, f)
 				if f.endswith(".desktop"):
 					Exec = ''
 					try:
@@ -148,16 +149,17 @@ class Main(Module):
 							break
 
 					if f in apps:
-						os.chmod(os.path.join(D, f), modes['app'][not policy])
+						os.chmod(f, modes['app'][not policy])
 						if Exec: os.chmod(Exec, modes['bin'][not policy])
 					else:
-						os.chmod(os.path.join(D, f), modes['app'][policy])
+						os.chmod(f, modes['app'][policy])
 						if Exec: os.chmod(Exec, modes['bin'][policy])
 
 	def stop(self):
 		"""Stop method"""
 		for D, d, F in os.walk(app_dir):
 			for f in F:
+				f = os.path.join(D, f)
 				if f.endswith(".desktop"):
 					Exec = ''
 					try:
@@ -170,7 +172,7 @@ class Main(Module):
 							Exec = b
 							break
 
-					os.chmod(os.path.join(D, f), modes['app'][1])
+					os.chmod(f, modes['app'][1])
 					if Exec: os.chmod(Exec, modes['bin'][1])
 
 	def config(self, parent=None):
