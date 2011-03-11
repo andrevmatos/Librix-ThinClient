@@ -64,7 +64,7 @@ class UserChecker(QThread):
 					p = self.configparser.getUserProfile(u)
 					self.currentuser = u
 					if not p: continue
-					print("__ Loading: User", u, ", Profile", p)
+					print("__ Loading: User:", u, ", Profile:", p)
 					for o in self.moduleparser.getModulesList():
 						# Attention: modules would be responsible
 						# by check if itself is already started or stopped

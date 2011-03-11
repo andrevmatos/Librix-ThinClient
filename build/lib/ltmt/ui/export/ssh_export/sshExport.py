@@ -38,16 +38,11 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-if __name__ == "__main__":
-	import sys
-	sys.path.append("../../../")
-
 import os
-
 from PyQt4 import QtGui
 
-from ltmt.Ui_sshExport import Ui_SSHExport
-from threadedExport import ThreadedExport
+from ltmt.ui.export.ssh_export.Ui_sshExport import Ui_SSHExport
+from ltmt.ui.export.ssh_export.threadedExport import ThreadedExport
 
 n_threads = 4
 
@@ -62,6 +57,7 @@ class SSHExport(QtGui.QDialog):
 		@param	targets	A list of hosts to do scp with files
 		@param	parent	Parent QtGui.QWidget
 		"""
+		print("__sshExport initiated")
 		self.files = files
 		self.privkey = privkey
 		self.targets = targets
@@ -83,9 +79,7 @@ class SSHExport(QtGui.QDialog):
 		self.threads = []
 		self.tree = {}
 		self.done = []
-
-		self.execThreads()
-
+	
 	def showDetails(self, value):
 		"""Show or hide details widget
 
@@ -136,7 +130,8 @@ class SSHExport(QtGui.QDialog):
 		"""
 		self.tree[target].setText(2, "Done")
 		self.done.append(target)
-		self.ui.progressBar.setValue(len(self.done)/len(self.targets))
+		self.ui.progressBar.setValue(
+			int(100.0*float(len(self.done))/float(len(self.targets))))
 
 	def targetError(self, target):
 		"""For a given target, set error status in details tree
@@ -156,7 +151,7 @@ class SSHExport(QtGui.QDialog):
 		"""
 		self.tree[target].setText(2, "Running")
 		self.ui.progressLabel.setText(self.tr("Operation {0} of {1}: "+
-		"Send files to {2}").format(len(self.done)+1, self.targets, target))
+		"Send files to {2}").format(len(self.done)+1, len(self.targets), target))
 
 	def passwdRequest(self, target):
 		"""Request a passwd from admin and set it on threads
@@ -185,19 +180,15 @@ class SSHExport(QtGui.QDialog):
 		@param	self		A ThreadedExport instance
 		"""
 		if not any([bool(i.targets) for i in self.threads]):
-			self.accept()
+			#self.accept()
+			pass
 
 	def reject(self):
 		"""Reimplement QtGui.QDialog.reject method
 
 		@param	self		A ThreadedExport instance
 		"""
-		for i in self.threads:
-			i.stop()
+		print("__rejected")
+		#for i in self.threads:
+		#	try: i.stop()
 		QtGui.QDialog.reject(self)
-
-if __name__ == "__main__":
-	app = QtGui.QApplication(sys.argv)
-	dialog = SSHExport()
-	dialog.show()
-	sys.exit(app.exec_())

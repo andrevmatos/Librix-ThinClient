@@ -26,6 +26,9 @@ from ltmt.ui.common.LeftMenuItem import LeftMenuItem
 from ltmt.ui.export.targets.addTargets import AddTargets
 from ltmt.ui.export.targets.scanTargets import ScanTargets
 from ltmt.ui.export.targets.threadedScan import ThreadedScan
+from ltmt.ui.export.ssh_export.sshExport import SSHExport
+
+from ltmt.defs import configfile
 
 class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""
@@ -155,10 +158,15 @@ class ExportPage(QtGui.QWidget):
 		if self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Reset:
 			self.targets = {}
 			self.ui.privKeyPath.setText("/root/.ssh/id_rsa")
+			self.refreshTargets()
+			self.checkPrivKeyFile()
 		elif self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Apply:
-			# TODO: implement actual export (scp) function
-			pass
-		self.refreshTargets()
-		self.checkPrivKeyFile()
+			self.startExport()
+		
+	def startExport(self):
+		self.dialog = SSHExport([configfile], self.ui.privKeyPath.text(), 
+			list(self.targets), self)
+		self.dialog.execThreads()
+		self.dialog.show()
 
 

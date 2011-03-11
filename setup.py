@@ -25,14 +25,12 @@ from distutils.command.clean import clean as _clean
 from distutils.command.sdist import sdist
 
 import os
-from os.path import dirname, basename, abspath, isfile, isdir, join
+from os.path import dirname, basename, abspath, isdir, join
 from shutil import rmtree
 
 class clean(_clean):
 	def run(self):
-		#_clean.run(self)
-		clean_ts.run(self)
-		clean_ui.run(self)
+		_clean.run(self)
 		if isdir(join(".", "build")):
 			rmtree(join(".", "build"))
 			print("Removing", join(".", "build"))
@@ -45,49 +43,12 @@ class clean(_clean):
 					os.remove(join(D, f))
 					print("Removing", f)
 
-class clean_ts(_clean):
-	description = "Clear compiled translations file"
-	user_options = []
-
-	def initialize_options(self):
-		pass
-
-	def finalize_options(self):
-		pass
-
-	def run(self):
-		for D, d, F in os.walk('.'):
-			for f in F:
-				if f.endswith(".qm") and \
-				isfile(join(D, f.replace(".qm", ".ts"))):
-					os.remove(join(D, f))
-					print("Removing", f)
-
-class clean_ui(_clean):
-	description = "Clean .py compiled from .ui files"
-	user_options = []
-
-	def initialize_options(self):
-		pass
-
-	def finalize_options(self):
-		pass
-
-	def run(self):
-		for D, d, F in os.walk('.'):
-			for f in F:
-				if f.endswith(".ui") and \
-				isfile(join(D, "Ui_"+f.replace(".ui", ".py"))):
-					os.remove(join(D, "Ui_"+f.replace(".ui", ".py")))
-					print("Removing", join(D, "Ui_"+f.replace(".ui", ".py")))
-
 class build(_build):
 	def run(self):
 		#clean.run(self)
-		build_ts.run(self)
 		_build.run(self)
 		build_ui.run(self)
-		_build.run(self)
+		build_ts.run(self)
 
 class build_ts(_build):
 	description = "Build and compile .ts translations files"
@@ -159,13 +120,17 @@ class build_ui(_build):
 	def run(self):
 		def uicompile(uifile, pyfile=None):
 			if not pyfile:
-				pyfile = join(dirname(uifile).replace("src", join(self.build_lib,
-					"ltmt")), 'Ui_'+basename(uifile).replace('.ui', '.py'))
+				pyfile = join(dirname(uifile), 
+					'Ui_'+basename(uifile).replace('.ui', '.py'))
 
 			with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
 				uic.compileUi(ui, py, execute=True, indent=0, from_imports=True)
 
 			fix_from_imports(pyfile)
+			with open(pyfile, 'r') as SRC, open(pyfile.replace("src", join(
+				self.build_lib, "ltmt")), 'w') as BLD:
+				BLD.write(SRC.read())
+			
 			print("Compiling UI:", uifile, "=>", pyfile)
 
 
@@ -254,8 +219,6 @@ This version requires Python 3.1 or later.
 	packages=gen_packages(),
 	cmdclass={
 		"clean": clean,
-		"clean_ts": clean_ts,
-		"clean_ui": clean_ui,
 		"build": build,
 		"build_ts": build_ts,
 		"build_ui": build_ui,

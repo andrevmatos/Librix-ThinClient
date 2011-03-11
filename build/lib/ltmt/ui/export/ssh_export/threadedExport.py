@@ -66,19 +66,21 @@ class ThreadedExport(QThread):
 			# Take next target
 			t = self.targets.pop(0)
 
-			self.startedSCP(t)
+			self.startedSCP.emit(t)
 			if self.password:
 				# Use expect o pass password to scp
 				p = subprocess.Popen(("expect -c 'spawn scp -o "+
-					"\"StrictHostKeyChecking no\"  -i {0} {1} {2}; "+
+					"\"StrictHostKeyChecking no\"  -i {0} {1} root@{2}:/etc; "+
 					"expect \"*?assword:*\"; send \"{3}\r\"; expect eof'"
 					).format(self.privkey, ' '.join(self.files), t,
-					self.password), shell=True)
+					self.password), shell=True, stdin=subprocess.PIPE, 
+					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			else:
-				p = subprocess.Popen(("scp -o \"PasswordAuthentication "+
-					"no\" -o \"StrictHostKeyChecking no\" -i {0} "+
-					"{1} {2}").format(self.privkey, ' '.join(self.files), t),
-					shell=True)
+				p = subprocess.Popen(("scp -o \"BatchMode yes\" "+
+					"-o \"StrictHostKeyChecking no\" -i {0} "+
+					"{1} root@{2}:/etc").format(self.privkey, ' '.join(self.files), t),
+					shell=True, stdin=subprocess.PIPE, 
+					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 			r = p.wait()
 			# if got password error
