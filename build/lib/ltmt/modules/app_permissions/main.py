@@ -175,7 +175,7 @@ class Main(Module):
 							break
 
 					os.chmod(f, modes['app'][1])
-					if Exec: os.chmod(Exec, modes['bin'][1])
+					if os.path.isfile(Exec): os.chmod(Exec, modes['bin'][1])
 
 	def config(self, parent=None):
 		"""Configuration dialog
