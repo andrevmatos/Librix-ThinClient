@@ -666,7 +666,7 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 <context>
     <name>Summary</name>
     <message>
-        <location filename="common/profileSummary.ui" line="14"/>
+        <location filename="common/userSummary.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
     </message>
