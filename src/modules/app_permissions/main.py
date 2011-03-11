@@ -140,6 +140,7 @@ class Main(Module):
 					Exec = ''
 					try:
 						Exec = DesktopParser(f).get('Exec')
+						if Exec: Exec = Exec.split()[0]
 					except Exception as e:
 						print("__ app_permissions error:", e)
 					for p in os.environ["PATH"].split(':'):
@@ -164,6 +165,7 @@ class Main(Module):
 					Exec = ''
 					try:
 						Exec = DesktopParser(f).get('Exec')
+						if Exec: Exec = Exec.split()[0]
 					except:
 						pass
 					for p in os.environ["PATH"].split(':'):

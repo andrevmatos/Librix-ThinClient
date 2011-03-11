@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/targets/addTargetsDialog.ui'
 #
-# Created: Fri Mar 11 14:27:43 2011
+# Created: Fri Mar 11 14:33:13 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
