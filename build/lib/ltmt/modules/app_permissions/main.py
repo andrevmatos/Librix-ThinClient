@@ -150,10 +150,12 @@ class Main(Module):
 
 					if f in apps:
 						os.chmod(os.path.join(D, f), modes['app'][not policy])
-						if Exec: os.chmod(Exec, modes['bin'][not policy])
+						if os.path.isfile(Exec):
+							os.chmod(Exec, modes['bin'][not policy])
 					else:
 						os.chmod(os.path.join(D, f), modes['app'][policy])
-						if Exec: os.chmod(Exec, modes['bin'][policy])
+						if os.path.isfile(Exec):
+							os.chmod(Exec, modes['bin'][policy])
 
 	def stop(self):
 		"""Stop method"""

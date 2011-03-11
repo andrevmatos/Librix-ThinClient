@@ -148,6 +148,7 @@ class LTCModuleParser(object):
 		@param	self		A LTCModuleParser instance
 		@param	module		Module name
 		"""
+		print("__start module:", module)
 		self._modules[module].th.run = self._modules[module].start
 		self._modules[module].th.start()
 
@@ -157,5 +158,6 @@ class LTCModuleParser(object):
 		@param	self		A LTCModuleParser instance
 		@param	module		Module name
 		"""
+		print("__stop module:", module)
 		self._modules[module].th.run = self._modules[module].stop
 		self._modules[module].th.start()

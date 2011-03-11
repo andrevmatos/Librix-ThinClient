@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/editkeys/editKeys.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -31,7 +31,6 @@ class Ui_EditKeys(object):
 		self.horizontalLayout = QtGui.QHBoxLayout(self.mainWidget)
 		self.horizontalLayout.setSpacing(4)
 		self.horizontalLayout.setMargin(4)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.keysList = QtGui.QListWidget(self.mainWidget)
 		self.keysList.setEditTriggers(QtGui.QAbstractItemView.DoubleClicked|QtGui.QAbstractItemView.EditKeyPressed|QtGui.QAbstractItemView.SelectedClicked)
@@ -43,7 +42,6 @@ class Ui_EditKeys(object):
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.toolBar)
 		self.verticalLayout_2.setSpacing(2)
 		self.verticalLayout_2.setMargin(2)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.openButton = QtGui.QToolButton(self.toolBar)
 		icon = QtGui.QIcon()

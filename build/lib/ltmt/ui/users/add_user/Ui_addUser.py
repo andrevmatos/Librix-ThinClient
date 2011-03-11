@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/users/add_user/addUser.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -45,7 +45,6 @@ class Ui_AddUser(object):
 		self.detailsWid.setSizePolicy(sizePolicy)
 		self.detailsWid.setObjectName(_fromUtf8("detailsWid"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.detailsWid)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.pwLabel = QtGui.QLabel(self.detailsWid)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)

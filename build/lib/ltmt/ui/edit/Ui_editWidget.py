@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/edit/editWidget.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,7 +35,6 @@ class Ui_EditWidget(object):
 		self.profilesListWidget.setObjectName(_fromUtf8("profilesListWidget"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.profilesListWidget)
 		self.verticalLayout_3.setMargin(0)
-		self.verticalLayout_3.setMargin(0)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.profilesLabel = QtGui.QLabel(self.profilesListWidget)
 		self.profilesLabel.setObjectName(_fromUtf8("profilesLabel"))
@@ -47,7 +46,6 @@ class Ui_EditWidget(object):
 		self.EditToolBarWidget.setMinimumSize(QtCore.QSize(0, 0))
 		self.EditToolBarWidget.setObjectName(_fromUtf8("EditToolBarWidget"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.EditToolBarWidget)
-		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.addButton = QtGui.QToolButton(self.EditToolBarWidget)
@@ -99,7 +97,6 @@ class Ui_EditWidget(object):
 		self.editProfilesWidget.setSizePolicy(sizePolicy)
 		self.editProfilesWidget.setObjectName(_fromUtf8("editProfilesWidget"))
 		self.verticalLayout_4 = QtGui.QVBoxLayout(self.editProfilesWidget)
-		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
 		self.horizontalLayout.addWidget(self.editProfilesWidget)

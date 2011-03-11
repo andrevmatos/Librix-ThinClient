@@ -58,8 +58,6 @@ class UserChecker(QThread):
 				print("__ Disable Profile for User:", self.currentuser)
 				self.currentuser = None
 		else:
-			for o in self.moduleparser.getModulesList():
-				self.moduleparser.stopModule(o)
 			self.msleep(100)
 			for u in self.configparser.getUsersList():
 				if u in loggedUsers:
@@ -76,8 +74,10 @@ class UserChecker(QThread):
 								self.configparser.getConfig(p, o), u)
 							# and start it
 							self.moduleparser.startModule(o)
-							print("__startModule", o)
 						else:
 							self.moduleparser.stopModule(o)
-							print("__stopModule", o)
 					print("__ Enable Profile for User:", self.currentuser)
+					return
+
+			for o in self.moduleparser.getModulesList():
+				self.moduleparser.stopModule(o)

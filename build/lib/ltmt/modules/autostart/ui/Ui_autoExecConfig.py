@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/modules/autostart/ui/autoExecConfig.ui'
 #
-# Created: Fri Mar 11 14:47:20 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:23 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -29,7 +29,6 @@ class Ui_AutoExecConfig(object):
 		self.mainWid.setObjectName(_fromUtf8("mainWid"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.mainWid)
 		self.horizontalLayout.setMargin(2)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.listWidget = QtGui.QListWidget(self.mainWid)
 		self.listWidget.setObjectName(_fromUtf8("listWidget"))
@@ -37,7 +36,6 @@ class Ui_AutoExecConfig(object):
 		self.toolbarWid = QtGui.QWidget(self.mainWid)
 		self.toolbarWid.setObjectName(_fromUtf8("toolbarWid"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.toolbarWid)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.editButton = QtGui.QToolButton(self.toolbarWid)

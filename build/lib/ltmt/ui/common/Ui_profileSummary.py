@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/common/profileSummary.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -33,7 +33,7 @@ class Ui_Summary(object):
 		self.scrollArea.setWidgetResizable(True)
 		self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
 		self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
-		self.content = QtGui.QWidget()
+		self.content = QtGui.QWidget(self.scrollArea)
 		self.content.setGeometry(QtCore.QRect(0, 0, 434, 534))
 		self.content.setObjectName(_fromUtf8("content"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.content)
@@ -50,7 +50,6 @@ class Ui_Summary(object):
 		self.configsWidget.setSizePolicy(sizePolicy)
 		self.configsWidget.setObjectName(_fromUtf8("configsWidget"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.configsWidget)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.verticalLayout_3.addWidget(self.configsWidget)
 		self.scrollArea.setWidget(self.content)

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/edit/listItemWidget.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -38,7 +38,6 @@ class Ui_listItemWidget(object):
 		self.horizontalLayout = QtGui.QHBoxLayout(self.collapsedWid)
 		self.horizontalLayout.setSpacing(0)
 		self.horizontalLayout.setMargin(4)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.expandButtonWid = QtGui.QFrame(self.collapsedWid)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
@@ -115,7 +114,6 @@ class Ui_listItemWidget(object):
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.expandedWid)
 		self.verticalLayout_2.setSpacing(0)
 		self.verticalLayout_2.setMargin(0)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.titleWid = QtGui.QWidget(self.expandedWid)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
@@ -126,7 +124,6 @@ class Ui_listItemWidget(object):
 		self.titleWid.setObjectName(_fromUtf8("titleWid"))
 		self.horizontalLayout_7 = QtGui.QHBoxLayout(self.titleWid)
 		self.horizontalLayout_7.setSpacing(0)
-		self.horizontalLayout_7.setMargin(0)
 		self.horizontalLayout_7.setMargin(0)
 		self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
 		self.collapseButtonWid = QtGui.QFrame(self.titleWid)

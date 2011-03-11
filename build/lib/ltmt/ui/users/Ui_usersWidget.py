@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/users/usersWidget.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:24 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -34,12 +34,10 @@ class Ui_UsersWidget(object):
 		self.usersAndProfiles.setObjectName(_fromUtf8("usersAndProfiles"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.usersAndProfiles)
 		self.horizontalLayout.setMargin(0)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.usersWidget = QtGui.QWidget(self.usersAndProfiles)
 		self.usersWidget.setObjectName(_fromUtf8("usersWidget"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.usersWidget)
-		self.verticalLayout_3.setMargin(0)
 		self.verticalLayout_3.setMargin(0)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.usersLabel = QtGui.QLabel(self.usersWidget)
@@ -64,7 +62,6 @@ class Ui_UsersWidget(object):
 		self.buttons.setObjectName(_fromUtf8("buttons"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.buttons)
 		self.verticalLayout_2.setSpacing(15)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -106,7 +103,6 @@ class Ui_UsersWidget(object):
 		self.profilesWidget = QtGui.QWidget(self.usersAndProfiles)
 		self.profilesWidget.setObjectName(_fromUtf8("profilesWidget"))
 		self.verticalLayout_4 = QtGui.QVBoxLayout(self.profilesWidget)
-		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
 		self.profilesLabel = QtGui.QLabel(self.profilesWidget)

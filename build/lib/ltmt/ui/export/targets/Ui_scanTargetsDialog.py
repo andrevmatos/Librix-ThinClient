@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/targets/scanTargetsDialog.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:23 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,7 +28,6 @@ class Ui_ScanTargetsDialog(object):
 		self.mainWidget = QtGui.QWidget(ScanTargetsDialog)
 		self.mainWidget.setObjectName(_fromUtf8("mainWidget"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.mainWidget)
-		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.targetsTree = QtGui.QTreeWidget(self.mainWidget)
 		self.targetsTree.setAlternatingRowColors(True)
@@ -51,7 +50,6 @@ class Ui_ScanTargetsDialog(object):
 		self.buttonBox.setMaximumSize(QtCore.QSize(16777215, 35))
 		self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.buttonBox)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.refreshButton = QtGui.QPushButton(self.buttonBox)

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/targets/addTargetsDialog.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:23 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -33,7 +33,6 @@ class Ui_AddTargetsDialog(object):
 		self.targetsWidget = QtGui.QWidget(AddTargetsDialog)
 		self.targetsWidget.setObjectName(_fromUtf8("targetsWidget"))
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.targetsWidget)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.singleRadio = QtGui.QRadioButton(self.targetsWidget)
 		self.singleRadio.setChecked(True)
@@ -42,7 +41,6 @@ class Ui_AddTargetsDialog(object):
 		self.singleWidget = QtGui.QWidget(self.targetsWidget)
 		self.singleWidget.setObjectName(_fromUtf8("singleWidget"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.singleWidget)
-		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.singleIpLine = QtGui.QLineEdit(self.singleWidget)
 		self.singleIpLine.setInputMethodHints(QtCore.Qt.ImhNone)
@@ -55,7 +53,6 @@ class Ui_AddTargetsDialog(object):
 		self.hostnameWidget = QtGui.QWidget(self.targetsWidget)
 		self.hostnameWidget.setObjectName(_fromUtf8("hostnameWidget"))
 		self.horizontalLayout_3 = QtGui.QHBoxLayout(self.hostnameWidget)
-		self.horizontalLayout_3.setMargin(0)
 		self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
 		self.hostnameLine = QtGui.QLineEdit(self.hostnameWidget)
 		self.hostnameLine.setInputMethodHints(QtCore.Qt.ImhUrlCharactersOnly)
@@ -68,7 +65,6 @@ class Ui_AddTargetsDialog(object):
 		self.rangeWidget = QtGui.QWidget(self.targetsWidget)
 		self.rangeWidget.setObjectName(_fromUtf8("rangeWidget"))
 		self.horizontalLayout_4 = QtGui.QHBoxLayout(self.rangeWidget)
-		self.horizontalLayout_4.setMargin(0)
 		self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
 		self.fromIPLine = QtGui.QLineEdit(self.rangeWidget)
 		self.fromIPLine.setObjectName(_fromUtf8("fromIPLine"))
@@ -87,7 +83,6 @@ class Ui_AddTargetsDialog(object):
 		self.subnetWidget = QtGui.QWidget(self.targetsWidget)
 		self.subnetWidget.setObjectName(_fromUtf8("subnetWidget"))
 		self.horizontalLayout_5 = QtGui.QHBoxLayout(self.subnetWidget)
-		self.horizontalLayout_5.setMargin(0)
 		self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
 		self.IPLine = QtGui.QLineEdit(self.subnetWidget)
 		self.IPLine.setObjectName(_fromUtf8("IPLine"))
@@ -105,7 +100,6 @@ class Ui_AddTargetsDialog(object):
 		self.buttonBox.setMaximumSize(QtCore.QSize(16777215, 35))
 		self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
 		self.horizontalLayout = QtGui.QHBoxLayout(self.buttonBox)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/ssh_export/sshExport.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:23 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -46,7 +46,6 @@ class Ui_SSHExport(object):
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.mainWidget)
 		self.verticalLayout_2.setSpacing(4)
 		self.verticalLayout_2.setMargin(4)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.progressLabel = QtGui.QLabel(self.mainWidget)
 		font = QtGui.QFont()
@@ -76,7 +75,6 @@ class Ui_SSHExport(object):
 		self.horizontalLayout = QtGui.QHBoxLayout(self.buttonBox)
 		self.horizontalLayout.setSpacing(4)
 		self.horizontalLayout.setMargin(4)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.detailsButton = QtGui.QPushButton(self.buttonBox)
 		icon = QtGui.QIcon()
@@ -106,7 +104,6 @@ class Ui_SSHExport(object):
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.detailsWidget)
 		self.verticalLayout_3.setSpacing(4)
 		self.verticalLayout_3.setMargin(4)
-		self.verticalLayout_3.setMargin(0)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.detailsTree = QtGui.QTreeWidget(self.detailsWidget)
 		self.detailsTree.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)

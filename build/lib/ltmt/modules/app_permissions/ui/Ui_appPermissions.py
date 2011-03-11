@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/modules/app_permissions/ui/appPermissions.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:22 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -27,7 +27,6 @@ class Ui_AppPermissions(object):
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.mainWidget)
 		self.verticalLayout_2.setSpacing(4)
 		self.verticalLayout_2.setMargin(4)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.optionsLabel = QtGui.QLabel(self.mainWidget)
 		self.optionsLabel.setObjectName(_fromUtf8("optionsLabel"))
@@ -37,7 +36,6 @@ class Ui_AppPermissions(object):
 		self.horizontalLayout = QtGui.QHBoxLayout(self.policyWidget)
 		self.horizontalLayout.setSpacing(4)
 		self.horizontalLayout.setMargin(4)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.allowRadio = QtGui.QRadioButton(self.policyWidget)
 		self.allowRadio.setChecked(True)
@@ -53,20 +51,17 @@ class Ui_AppPermissions(object):
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.listsWidget)
 		self.horizontalLayout_2.setSpacing(4)
 		self.horizontalLayout_2.setMargin(4)
-		self.horizontalLayout_2.setMargin(0)
 		self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
 		self.allListWid = QtGui.QWidget(self.listsWidget)
 		self.allListWid.setObjectName(_fromUtf8("allListWid"))
 		self.verticalLayout_3 = QtGui.QVBoxLayout(self.allListWid)
 		self.verticalLayout_3.setSpacing(4)
 		self.verticalLayout_3.setMargin(4)
-		self.verticalLayout_3.setMargin(0)
 		self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 		self.allSearchWid = QtGui.QWidget(self.allListWid)
 		self.allSearchWid.setObjectName(_fromUtf8("allSearchWid"))
 		self.horizontalLayout_3 = QtGui.QHBoxLayout(self.allSearchWid)
 		self.horizontalLayout_3.setSpacing(0)
-		self.horizontalLayout_3.setMargin(0)
 		self.horizontalLayout_3.setMargin(0)
 		self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
 		self.allSearchLine = QtGui.QLineEdit(self.allSearchWid)
@@ -95,7 +90,6 @@ class Ui_AppPermissions(object):
 		self.verticalLayout_5 = QtGui.QVBoxLayout(self.actionsWid)
 		self.verticalLayout_5.setSpacing(4)
 		self.verticalLayout_5.setMargin(4)
-		self.verticalLayout_5.setMargin(0)
 		self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
 		spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 		self.verticalLayout_5.addItem(spacerItem)
@@ -121,13 +115,11 @@ class Ui_AppPermissions(object):
 		self.verticalLayout_4 = QtGui.QVBoxLayout(self.selectedWid)
 		self.verticalLayout_4.setSpacing(4)
 		self.verticalLayout_4.setMargin(4)
-		self.verticalLayout_4.setMargin(0)
 		self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
 		self.selectedSearchWid = QtGui.QWidget(self.selectedWid)
 		self.selectedSearchWid.setObjectName(_fromUtf8("selectedSearchWid"))
 		self.horizontalLayout_4 = QtGui.QHBoxLayout(self.selectedSearchWid)
 		self.horizontalLayout_4.setSpacing(0)
-		self.horizontalLayout_4.setMargin(0)
 		self.horizontalLayout_4.setMargin(0)
 		self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
 		self.selectedSearchLine = QtGui.QLineEdit(self.selectedSearchWid)

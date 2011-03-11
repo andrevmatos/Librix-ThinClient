@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/exportWidget.ui'
 #
-# Created: Fri Mar 11 14:47:19 2011
-#      by: PyQt4 UI code generator 4.8.3
+# Created: Fri Mar 11 15:36:23 2011
+#      by: PyQt4 UI code generator 4.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -38,7 +38,6 @@ class Ui_ExportWidget(object):
 		self.horizontalLayout = QtGui.QHBoxLayout(self.IPsWidget)
 		self.horizontalLayout.setSpacing(4)
 		self.horizontalLayout.setMargin(4)
-		self.horizontalLayout.setMargin(0)
 		self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
 		self.treeWidget = QtGui.QTreeWidget(self.IPsWidget)
 		self.treeWidget.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
@@ -56,7 +55,6 @@ class Ui_ExportWidget(object):
 		self.verticalLayout_2 = QtGui.QVBoxLayout(self.targetsToolBar)
 		self.verticalLayout_2.setSpacing(4)
 		self.verticalLayout_2.setMargin(4)
-		self.verticalLayout_2.setMargin(0)
 		self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
 		self.addButton = QtGui.QToolButton(self.targetsToolBar)
 		icon = QtGui.QIcon()
