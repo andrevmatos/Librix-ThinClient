@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/editkeys/editKeys.ui'
 #
-# Created: Fri Mar 11 14:38:44 2011
+# Created: Fri Mar 11 14:47:19 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

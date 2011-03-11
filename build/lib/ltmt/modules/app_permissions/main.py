@@ -135,11 +135,10 @@ class Main(Module):
 		apps = [e.text for e in self._config.findall("entry[@type='app']")]
 		for D, d, F in os.walk(app_dir):
 			for f in F:
-				f = os.path.join(D, f)
 				if f.endswith(".desktop"):
 					Exec = ''
 					try:
-						Exec = DesktopParser(f).get('Exec')
+						Exec = DesktopParser(os.path.join(D, f)).get('Exec')
 						if Exec: Exec = Exec.split()[0]
 					except Exception as e:
 						print("__ app_permissions error:", e)
@@ -150,10 +149,10 @@ class Main(Module):
 							break
 
 					if f in apps:
-						os.chmod(f, modes['app'][not policy])
+						os.chmod(os.path.join(D, f), modes['app'][not policy])
 						if Exec: os.chmod(Exec, modes['bin'][not policy])
 					else:
-						os.chmod(f, modes['app'][policy])
+						os.chmod(os.path.join(D, f), modes['app'][policy])
 						if Exec: os.chmod(Exec, modes['bin'][policy])
 
 	def stop(self):
