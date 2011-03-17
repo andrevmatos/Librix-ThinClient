@@ -118,6 +118,7 @@ class SSHExport(QtGui.QDialog):
 				self.tree[t] = QtGui.QTreeWidgetItem(T, ["Send Files",
 					t, "Queued"])
 
+		self.ui.progressBar.setValue(0)
 		# finally, start threads
 		for i in self.threads:
 			i.start()
@@ -180,7 +181,7 @@ class SSHExport(QtGui.QDialog):
 		@param	self		A ThreadedExport instance
 		"""
 		if not any([bool(i.targets) for i in self.threads]):
-			#self.accept()
+			self.accept()
 			pass
 
 	def reject(self):

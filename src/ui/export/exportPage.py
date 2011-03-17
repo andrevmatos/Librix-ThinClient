@@ -164,7 +164,7 @@ class ExportPage(QtGui.QWidget):
 			self.startExport()
 		
 	def startExport(self):
-		self.dialog = SSHExport([configfile], self.ui.privKeyPath.text(), 
+		self.dialog = SSHExport([self.configparser.configfile], self.ui.privKeyPath.text(), 
 			list(self.targets), self)
 		self.dialog.execThreads()
 		self.dialog.show()

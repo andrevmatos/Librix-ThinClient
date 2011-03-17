@@ -68,28 +68,39 @@ class ThreadedExport(QThread):
 
 			self.startedSCP.emit(t)
 			if self.password:
-				# Use expect o pass password to scp
-				p = subprocess.Popen(("expect -c 'spawn scp -o "+
-					"\"StrictHostKeyChecking no\"  -i {0} {1} root@{2}:/etc; "+
-					"expect \"*?assword:*\"; send \"{3}\r\"; expect eof'"
-					).format(self.privkey, ' '.join(self.files), t,
-					self.password), shell=True, stdin=subprocess.PIPE, 
-					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				# Use expect to pass password to scp
+				p = subprocess.Popen(('expect -c \'spawn scp -o '+
+					'"StrictHostKeyChecking no" -o "NumberOfPasswordPrompts 1" '+
+					'-o "PasswordAuthentication no"  -i "{0}" {1} root@{2}:/etc ; '+
+					'expect "*?assword:" ; send "{3}\\n" ; expect eof ; '+
+					'catch wait result ; exit [lindex $result 3 ]\'').format(
+					self.privkey, ' '.join(self.files), t, self.password), 
+					shell=True)#, stdin=subprocess.PIPE, 
+					#stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 			else:
-				p = subprocess.Popen(("scp -o \"BatchMode yes\" "+
-					"-o \"StrictHostKeyChecking no\" -i {0} "+
-					"{1} root@{2}:/etc").format(self.privkey, ' '.join(self.files), t),
-					shell=True, stdin=subprocess.PIPE, 
+				p = subprocess.Popen(('scp -o "BatchMode yes" '+
+					'-o "StrictHostKeyChecking no" -i "{0}" '+
+					'{1} root@{2}:/etc').format(self.privkey, 
+					' '.join(self.files), t), shell=True, stdin=subprocess.PIPE,
 					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 			r = p.wait()
 			# if got password error
 			if r == 0:
+				print("__ host finished", t)
 				self.finishedSCP.emit(t)
 			elif r == 1:
+				print("__ host password request", t)
 				self.requestPasswd.emit(t)
 				# reinsert target on list, and pause thread
 				self.targets.insert(0, t)
+				print("__thread PAUSING!!")
 				return
 			else:
+				print("__ host error", t, "=", r)
 				self.errorSCP.emit(t)
+				
+		if self.pause:
+			print("__thread PAUSING!!")
+		else:
+			print("__thread FINISHING!!")
