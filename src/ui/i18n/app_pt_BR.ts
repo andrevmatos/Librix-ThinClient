@@ -394,6 +394,64 @@
     </message>
 </context>
 <context>
+    <name>KeyGen</name>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="74"/>
+        <source>Public/Private SSH Key Generation</source>
+        <translation>Geração de Chaves RSA Pública/Privada</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="80"/>
+        <source>&amp;Close</source>
+        <translation>&amp;Fechar</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="75"/>
+        <source>Log:</source>
+        <translation>Saída:</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="76"/>
+        <source>Sa&amp;ve Private Key File</source>
+        <translation>Sal&amp;var Chave Privada</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="77"/>
+        <source>&amp;Save Public Key File</source>
+        <translation>&amp;Salvar Chave Pública</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="78"/>
+        <source>O&amp;pen Private Key File</source>
+        <translation>A&amp;brir Chave Privada</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_keyGen.py" line="79"/>
+        <source>&amp;Open Public Key File</source>
+        <translation>&amp;Abrir Chave Pública</translation>
+    </message>
+    <message>
+        <location filename="keygen/KeyGen.py" line="88"/>
+        <source>Save SSH Private Key</source>
+        <translation>Salvar Chave Privada SSH</translation>
+    </message>
+    <message>
+        <location filename="keygen/KeyGen.py" line="99"/>
+        <source>Save SSH Public Key</source>
+        <translation>Salvar Chave Pública SSH</translation>
+    </message>
+    <message>
+        <location filename="keygen/KeyGen.py" line="108"/>
+        <source>SSH Private Key</source>
+        <translation>Chave Privada SSH</translation>
+    </message>
+    <message>
+        <location filename="keygen/KeyGen.py" line="113"/>
+        <source>SSH Public Key</source>
+        <translation>Chave Pública SSH</translation>
+    </message>
+</context>
+<context>
     <name>ListItemWidget</name>
     <message>
         <location filename="edit/ListItemWidget.py" line="79"/>
@@ -414,17 +472,17 @@
         <translation type="obsolete">Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="main.py" line="129"/>
+        <location filename="main.py" line="137"/>
         <source>The configuration file has been modified.</source>
         <translation>O arquivo de configuração foi modificado.</translation>
     </message>
     <message>
-        <location filename="main.py" line="129"/>
+        <location filename="main.py" line="137"/>
         <source>Do you want to save your changes?</source>
         <translation>Deseja salvar suas modificações?</translation>
     </message>
     <message>
-        <location filename="main.py" line="171"/>
+        <location filename="main.py" line="179"/>
         <source>Open Config File</source>
         <translation>Abrir Arquivo de Configuração</translation>
     </message>
@@ -434,44 +492,44 @@
         <translation type="obsolete">Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="174"/>
+        <location filename="main.py" line="182"/>
         <source>A backup file of &lt;b&gt;{0}&lt;/b&gt; was found.
 Do you want to restore it?</source>
         <translation>Uma cópia de segurança de &lt;b&gt;{0}&lt;/b&gt; foi encontrada.
 Deseja restaurá-la?</translation>
     </message>
     <message>
-        <location filename="main.py" line="203"/>
+        <location filename="main.py" line="211"/>
         <source>Editing file: {0}</source>
         <translation>Editando arquivo: {0}</translation>
     </message>
     <message>
-        <location filename="main.py" line="231"/>
+        <location filename="main.py" line="239"/>
         <source>File &quot;{0}&quot; saved!</source>
         <translation>Arquivo &quot;{0}&quot; salvo!</translation>
     </message>
     <message>
-        <location filename="main.py" line="226"/>
+        <location filename="main.py" line="234"/>
         <source>Save Config File as</source>
         <translation>Salvar Arquivo de Configuração como</translation>
     </message>
     <message>
-        <location filename="main.py" line="226"/>
+        <location filename="main.py" line="234"/>
         <source>Conf files (*.conf) (*.conf);; XML files (*.xml) (*.xml);; All files (*) (*)</source>
         <translation>Arquivos Conf (*.conf) (*.conf);; Arquivos XML (*.xml) (*.xml);; Todos os Arquivos (*) (*)</translation>
     </message>
     <message>
-        <location filename="main.py" line="174"/>
+        <location filename="main.py" line="182"/>
         <source>Backup found</source>
         <translation>Cópia de segurança encontrada</translation>
     </message>
     <message>
-        <location filename="main.py" line="191"/>
+        <location filename="main.py" line="199"/>
         <source>Outdated Config File</source>
         <translation>Arquivo de Configuração Desatualizado</translation>
     </message>
     <message>
-        <location filename="main.py" line="191"/>
+        <location filename="main.py" line="199"/>
         <source>This config file has absent and/or hasn&apos;t present modules.
 You want to update it (required to proceed)?
 P.S.: New modules will be added to configurations but absent, present in configuration, won&apos;t be touched or shown.</source>
@@ -480,19 +538,54 @@ Você deseja atualiza-lo (necessário para prosseguir)?
 Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, preentes nas configurações, não serão modificados ou exibidos.</translation>
     </message>
     <message>
-        <location filename="main.py" line="129"/>
+        <location filename="main.py" line="137"/>
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
     <message>
-        <location filename="main.py" line="253"/>
+        <location filename="main.py" line="268"/>
         <source>Librix ThinClient Management Tool</source>
         <translation>Ferramenta de Gerenciamento do Librix ThinClient</translation>
     </message>
     <message>
-        <location filename="main.py" line="246"/>
+        <location filename="main.py" line="261"/>
         <source>Librix ThinClient Management Tool (LTMT) is a program developed by &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Librix Dev Team&lt;/a&gt;, also responsible by Librix Linux gentoo-based distribution, and it&apos;s embedded tools, in association with &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; and &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Administration and Security Laboratory of Unicamp&lt;/a&gt;.</source>
         <translation>A Ferramenta de Gerenciamento do Librix ThinClient (LTMT) é um programa desenvolvido pelo &lt;a href=&apos;http://librixdev.las.ic.unicamp.br&apos;&gt;Time de Desenvolvimento Librix&lt;/a&gt;, também responsável pelo Librix Linux, uma distribuição baseada em Gentoo, e suas ferramentas de gerenciamento, em associação com a &lt;a href=&apos;http://www.itautec.com.br&apos;&gt;Itautec&lt;/a&gt; e o &lt;a href=&apos;http://www.las.ic.unicamp.br&apos;&gt;Laboratório de Administração e Segurança da Unicamp&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="60"/>
+        <source>SSH private key not found</source>
+        <translation>Chave privada SSH não encontrada</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="60"/>
+        <source>SSH RSA Private Key File &quot;~/.ssh/id_rsa&quot; not found.
+Do you want to generate a RSA private/public keys pair now?</source>
+        <translation>Chave Privada SSH &quot;~/.ssh/id_rsa&quot; não encontrada.
+Você deseja gerar um par de chaves pública;privada RSA agora agora?</translation>
+    </message>
+</context>
+<context>
+    <name>OpenKey</name>
+    <message>
+        <location filename="keygen/Ui_openKey.py" line="48"/>
+        <source>Dialog</source>
+        <translation>Diálogo</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_openKey.py" line="49"/>
+        <source>&amp;Copy to Clipboard</source>
+        <translation>&amp;Copiar para a Área de Transferência</translation>
+    </message>
+    <message>
+        <location filename="keygen/Ui_openKey.py" line="50"/>
+        <source>&amp;Close</source>
+        <translation>&amp;Fechar</translation>
+    </message>
+    <message>
+        <location filename="keygen/OpenKey.py" line="46"/>
+        <source>Copied!</source>
+        <translation>Copiado!</translation>
     </message>
 </context>
 <context>
@@ -715,146 +808,156 @@ Obs.: Novos módulos serão adicionados às configurações, mas intexistentes, 
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans [unknown]&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Librix Thin Client Management Tool. Alpha release.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans [unknown]&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ferramenta de Gerenciamento do Librix Thin Client. Versão Alpha.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="217"/>
+        <location filename="Ui_mainWindow.py" line="215"/>
         <source>Enter config name/version here</source>
         <translation>Insira nome ou versão da configuração aqui</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="218"/>
+        <location filename="Ui_mainWindow.py" line="216"/>
         <source>File</source>
         <translation>Arquivo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="219"/>
+        <location filename="Ui_mainWindow.py" line="217"/>
         <source>View</source>
         <translation>Exibir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="223"/>
+        <location filename="Ui_mainWindow.py" line="221"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="226"/>
+        <location filename="Ui_mainWindow.py" line="224"/>
         <source>Open config file</source>
         <translation>Abrir arquivo de configuração</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="227"/>
+        <location filename="Ui_mainWindow.py" line="225"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="228"/>
+        <location filename="Ui_mainWindow.py" line="226"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="231"/>
+        <location filename="Ui_mainWindow.py" line="229"/>
         <source>Save current file</source>
         <translation>Salvar arquivo atual</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="232"/>
+        <location filename="Ui_mainWindow.py" line="230"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="234"/>
+        <location filename="Ui_mainWindow.py" line="232"/>
         <source>Save as</source>
         <translation>Salvar como</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="237"/>
+        <location filename="Ui_mainWindow.py" line="235"/>
         <source>Save current file as another file name</source>
         <translation>Salvar arquivo atual com outro nome</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="238"/>
+        <location filename="Ui_mainWindow.py" line="236"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="239"/>
+        <location filename="Ui_mainWindow.py" line="237"/>
         <source>Quit</source>
         <translation>Sair</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="242"/>
+        <location filename="Ui_mainWindow.py" line="240"/>
         <source>Quit Librix Thin Client</source>
         <translation>Sair do Librix Thin Client</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="243"/>
+        <location filename="Ui_mainWindow.py" line="241"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="244"/>
+        <location filename="Ui_mainWindow.py" line="242"/>
         <source>Show users profile summary</source>
         <translation>Exibir resumo de perfil de usuário</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="245"/>
+        <location filename="Ui_mainWindow.py" line="243"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="248"/>
+        <location filename="Ui_mainWindow.py" line="246"/>
         <source>Creates a new empty config file</source>
         <translation>Criar um novo arquivo de configuração vazio</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="249"/>
+        <location filename="Ui_mainWindow.py" line="247"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="211"/>
+        <location filename="Ui_mainWindow.py" line="214"/>
         <source>LTMT</source>
         <translation>LTMT</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="222"/>
+        <location filename="Ui_mainWindow.py" line="220"/>
         <source>Main Tool Bar</source>
         <translation>Barra de Ferramentas Principal</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="220"/>
+        <location filename="Ui_mainWindow.py" line="218"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="250"/>
+        <location filename="Ui_mainWindow.py" line="248"/>
         <source>Edit PubKeys</source>
         <translation>Editar Chaves Públicas</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="251"/>
+        <location filename="Ui_mainWindow.py" line="249"/>
         <source>Ctrl+E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="221"/>
+        <location filename="Ui_mainWindow.py" line="219"/>
         <source>Help</source>
         <translation>Ajuda</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="252"/>
+        <location filename="Ui_mainWindow.py" line="250"/>
         <source>About Qt</source>
         <translation>Sobre o Qt</translation>
     </message>
     <message>
-        <location filename="Ui_mainWindow.py" line="253"/>
+        <location filename="Ui_mainWindow.py" line="251"/>
         <source>About LTMT</source>
         <translation>Sobre o LTMT</translation>
+    </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="252"/>
+        <source>Generate Keys</source>
+        <translation>Gerar Chaves</translation>
+    </message>
+    <message>
+        <location filename="Ui_mainWindow.py" line="253"/>
+        <source>Ctrl+G</source>
+        <translation></translation>
     </message>
 </context>
 <context>

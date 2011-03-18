@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric5 tasks file for project thinclient -->
-<!-- Saved: 2011-03-16, 20:22:57 -->
+<!-- Saved: 2011-03-18, 14:34:45 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: when get the right implementation of scan fuction (maybe using http</Summary>
@@ -15,10 +15,10 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: change work dir of save dialog to /etc</Summary>
     <Description></Description>
-    <Created>2011-03-07, 11:25:46</Created>
+    <Created>2011-03-18, 14:28:14</Created>
     <Resource>
       <Filename>src/ui/main.py</Filename>
-      <Linenumber>225</Linenumber>
+      <Linenumber>233</Linenumber>
     </Resource>
   </Task>
 </Tasks>

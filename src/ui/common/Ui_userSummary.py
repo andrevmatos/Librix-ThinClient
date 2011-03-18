@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/common/userSummary.ui'
 #
-# Created: Thu Mar 17 17:59:56 2011
+# Created: Fri Mar 18 14:34:49 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!

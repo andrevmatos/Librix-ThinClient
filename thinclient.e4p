@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-11, 14:15:06 -->
+<!-- Saved: 2011-03-18, 14:34:43 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -79,6 +79,29 @@
     <Source>src/modules/disable_audio/main.py</Source>
     <Source>src/modules/disable_audio/__init__.py</Source>
     <Source>src/modules/skel.py</Source>
+    <Source>src/ui/users/Ui_usersWidget.py</Source>
+    <Source>src/ui/Ui_mainWindow.py</Source>
+    <Source>src/ui/edit/Ui_listItemWidget.py</Source>
+    <Source>src/ui/edit/Ui_profileEdit.py</Source>
+    <Source>src/ui/edit/Ui_configProfileEdit.py</Source>
+    <Source>src/ui/edit/Ui_editWidget.py</Source>
+    <Source>src/ui/export/Ui_exportWidget.py</Source>
+    <Source>src/ui/common/Ui_profileSummary.py</Source>
+    <Source>src/ui/common/Ui_userSummary.py</Source>
+    <Source>src/ui/common/Ui_tabItemWidget.py</Source>
+    <Source>src/ui/editkeys/Ui_editKeys.py</Source>
+    <Source>src/ui/export/targets/Ui_scanTargetsDialog.py</Source>
+    <Source>src/ui/export/targets/Ui_addTargetsDialog.py</Source>
+    <Source>src/ui/export/ssh_export/Ui_sshExport.py</Source>
+    <Source>src/ui/users/add_user/Ui_addUser.py</Source>
+    <Source>src/modules/autostart/ui/Ui_autoExecConfig.py</Source>
+    <Source>src/modules/autostart/ui/Ui_editScript.py</Source>
+    <Source>src/modules/app_permissions/ui/Ui_appPermissions.py</Source>
+    <Source>src/ui/keygen/Ui_keyGen.py</Source>
+    <Source>src/ui/keygen/KeyGen.py</Source>
+    <Source>src/ui/keygen/__init__.py</Source>
+    <Source>src/ui/keygen/Ui_openKey.py</Source>
+    <Source>src/ui/keygen/OpenKey.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -99,6 +122,8 @@
     <Form>src/modules/autostart/ui/autoExecConfig.ui</Form>
     <Form>src/modules/autostart/ui/editScript.ui</Form>
     <Form>src/modules/app_permissions/ui/appPermissions.ui</Form>
+    <Form>src/ui/keygen/keyGen.ui</Form>
+    <Form>src/ui/keygen/openKey.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/mainWindow.ui'
 #
-# Created: Thu Mar 17 17:59:56 2011
+# Created: Fri Mar 18 14:34:48 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,11 +36,6 @@ class Ui_ThinClient(object):
 		self.horizontalLayout_4 = QtGui.QHBoxLayout(self.topBar)
 		self.horizontalLayout_4.setMargin(0)
 		self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
-		self.label = QtGui.QLabel(self.topBar)
-		self.label.setObjectName(_fromUtf8("label"))
-		self.horizontalLayout_4.addWidget(self.label)
-		spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-		self.horizontalLayout_4.addItem(spacerItem)
 		self.nameEdit = QtGui.QLineEdit(self.topBar)
 		self.nameEdit.setMinimumSize(QtCore.QSize(250, 0))
 		self.nameEdit.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -171,6 +166,11 @@ class Ui_ThinClient(object):
 		self.actionAbout_LTMT = QtGui.QAction(ThinClient)
 		self.actionAbout_LTMT.setIcon(icon)
 		self.actionAbout_LTMT.setObjectName(_fromUtf8("actionAbout_LTMT"))
+		self.actionGenerate_Keys = QtGui.QAction(ThinClient)
+		icon8 = QtGui.QIcon()
+		icon8.addPixmap(QtGui.QPixmap(_fromUtf8(":/tab/keygen.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.actionGenerate_Keys.setIcon(icon8)
+		self.actionGenerate_Keys.setObjectName(_fromUtf8("actionGenerate_Keys"))
 		self.menuFile.addAction(self.actionNew)
 		self.menuFile.addAction(self.actionOpen)
 		self.menuFile.addAction(self.actionSave)
@@ -178,6 +178,7 @@ class Ui_ThinClient(object):
 		self.menuFile.addSeparator()
 		self.menuFile.addAction(self.actionQuit)
 		self.menuEdit.addAction(self.actionEdit_PubKeys)
+		self.menuEdit.addAction(self.actionGenerate_Keys)
 		self.menuHelp.addAction(self.actionAbout_LTMT)
 		self.menuHelp.addAction(self.actionAbout_Qt)
 		self.menuBar.addAction(self.menuFile.menuAction())
@@ -190,6 +191,7 @@ class Ui_ThinClient(object):
 		self.toolBar.addAction(self.actionSave_as)
 		self.toolBar.addSeparator()
 		self.toolBar.addAction(self.actionEdit_PubKeys)
+		self.toolBar.addAction(self.actionGenerate_Keys)
 		self.toolBar.addSeparator()
 		self.toolBar.addAction(self.actionQuit)
 		self.toolBar.addSeparator()
@@ -198,22 +200,18 @@ class Ui_ThinClient(object):
 		QtCore.QObject.connect(self.listWidget, QtCore.SIGNAL(_fromUtf8("currentItemChanged(QListWidgetItem*,QListWidgetItem*)")), ThinClient.activateTab)
 		QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.close)
 		QtCore.QObject.connect(self.actionOpen, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.openConfigFile)
-		QtCore.QObject.connect(self.nameEdit, QtCore.SIGNAL(_fromUtf8("editingFinished()")), ThinClient.configNameChanged)
+		QtCore.QObject.connect(self.nameEdit, QtCore.SIGNAL(_fromUtf8("textChanged(QString)")), ThinClient.configNameChanged)
 		QtCore.QObject.connect(self.actionSave, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveConfigFile)
 		QtCore.QObject.connect(self.actionSave_as, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.saveAsConfigFile)
 		QtCore.QObject.connect(self.actionEdit_PubKeys, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.editKeys)
 		QtCore.QObject.connect(self.actionNew, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.newConfigFile)
 		QtCore.QObject.connect(self.actionAbout_LTMT, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.aboutLTMT)
 		QtCore.QObject.connect(self.actionAbout_Qt, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.aboutQt)
+		QtCore.QObject.connect(self.actionGenerate_Keys, QtCore.SIGNAL(_fromUtf8("activated()")), ThinClient.keyGen)
 		QtCore.QMetaObject.connectSlotsByName(ThinClient)
 
 	def retranslateUi(self, ThinClient):
 		ThinClient.setWindowTitle(QtGui.QApplication.translate("ThinClient", "LTMT", None, QtGui.QApplication.UnicodeUTF8))
-		self.label.setText(QtGui.QApplication.translate("ThinClient", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'DejaVu Sans [unknown]\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Librix Thin Client Management Tool. Alpha release.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 		self.nameEdit.setToolTip(QtGui.QApplication.translate("ThinClient", "Enter config name/version here", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuFile.setTitle(QtGui.QApplication.translate("ThinClient", "File", None, QtGui.QApplication.UnicodeUTF8))
 		self.menuView.setTitle(QtGui.QApplication.translate("ThinClient", "View", None, QtGui.QApplication.UnicodeUTF8))
@@ -251,6 +249,8 @@ class Ui_ThinClient(object):
 		self.actionEdit_PubKeys.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+E", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionAbout_Qt.setText(QtGui.QApplication.translate("ThinClient", "About Qt", None, QtGui.QApplication.UnicodeUTF8))
 		self.actionAbout_LTMT.setText(QtGui.QApplication.translate("ThinClient", "About LTMT", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionGenerate_Keys.setText(QtGui.QApplication.translate("ThinClient", "Generate Keys", None, QtGui.QApplication.UnicodeUTF8))
+		self.actionGenerate_Keys.setShortcut(QtGui.QApplication.translate("ThinClient", "Ctrl+G", None, QtGui.QApplication.UnicodeUTF8))
 
 from ltmt.ui.icons import temp_icons_rc
 

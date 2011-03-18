@@ -14,6 +14,8 @@
     <file>user-properties.png</file>
   </qresource>
   <qresource prefix="tab">
+    <file>copy.png</file>
+    <file>keygen.png</file>
     <file>refresh.png</file>
   </qresource>
   <qresource prefix="toolbar">
