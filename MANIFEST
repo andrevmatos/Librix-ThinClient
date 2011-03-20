@@ -2,7 +2,7 @@
 COPYING
 README
 ltmt
-ltmt-0.0.98_rc1.ebuild
+ltmt-0.0.98.ebuild
 setup.py
 thinclient.conf
 init.d/ltmt
@@ -89,7 +89,6 @@ src/ui/export/targets/scanTargetsDialog.ui
 src/ui/export/targets/threadedScan.py
 src/ui/help/__init__.py
 src/ui/help/about_LTMT.py
-src/ui/i18n/app_pt_BR.qm
 src/ui/i18n/app_pt_BR.ts
 src/ui/i18n/qt_pt_BR.qm
 src/ui/icons/__init__.py
