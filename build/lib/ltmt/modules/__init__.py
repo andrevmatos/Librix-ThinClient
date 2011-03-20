@@ -23,6 +23,7 @@ __all__ = [
 	'autostart',
 	'disable_usb',
 	'disable_audio',
+	'disable_run_cmd'
 ]
 
 m = None

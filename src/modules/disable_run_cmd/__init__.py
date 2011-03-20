@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 #
 #
+#  Copyright (C) 2010 - Librix Dev Team
 #
 # This file is part of librix-thinclient.
 #
@@ -18,10 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
-pidfile = "/var/run/thinclient.pid"
-configfile = "/etc/thinclient.conf"
-logfile = "/var/log/thinclient.log"
-http_port = 8088
-version = "0.0.99"
+__all__ = []
 
-__all__ = ["pidfile", "configfile", "logfile", "http_port", "version"]
+# Import mainclass
+from .main import Main

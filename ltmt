@@ -21,13 +21,13 @@
 
 import sys
 from os.path import isfile,abspath,isdir
-from os import kill,remove, devnull
+from os import remove, devnull
 from argparse import ArgumentParser
 
 if isdir("./build/lib/ltmt"):
 	sys.path.append("./build/lib")
 
-from ltmt.defs import pidfile, version
+from ltmt.defs import pidfile,version,logfile
 
 if __name__ == "__main__":
 	description = "Librix ThinClient Management Tool (LTMT)"
@@ -63,8 +63,8 @@ if __name__ == "__main__":
 		sys.stdout = open(devnull, "w")
 		sys.stderr = open(devnull, "w")
 	elif options.verbose == 2:
-		sys.stdout = open("/var/log/thinclient.log", "a")
-		sys.stderr = open("/var/log/thinclient.log", "a")
+		sys.stdout = open(logfile, "a")
+		sys.stderr = open(logfile, "a")
 
 	configfile = None
 	if isfile(options.configfile[0]):

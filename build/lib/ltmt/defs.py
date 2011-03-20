@@ -20,7 +20,8 @@
 
 pidfile = "/var/run/thinclient.pid"
 configfile = "/etc/thinclient.conf"
+logfile = "/var/log/thinclient.log"
 http_port = 8088
-version = "0.0.98"
+version = "0.0.99"
 
-__all__ = ["pidfile", "configfile", "http_port"]
+__all__ = ["pidfile", "configfile", "logfile", "http_port", "version"]

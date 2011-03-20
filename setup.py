@@ -24,8 +24,8 @@ from distutils.command.build import build as _build
 from distutils.command.clean import clean as _clean
 from distutils.command.sdist import sdist
 
-import os
-from os.path import dirname, basename, abspath, isdir, join
+from os import walk,remove,system
+from os.path import dirname, basename, abspath, isdir, join, sep
 from shutil import rmtree
 
 class clean(_clean):
@@ -34,13 +34,13 @@ class clean(_clean):
 		if isdir(join(".", "build")):
 			rmtree(join(".", "build"))
 			print("Removing", join(".", "build"))
-		for D, d, F in os.walk('.'):
+		for D, d, F in walk('.'):
 			if "__pycache__" in d:
 				rmtree(join(D, "__pycache__"), ignore_errors=True)
 				print("Removing", join(D, "__pycache__"))
 			for f in F:
 				if f.endswith(".pyc") or f.endswith(".pyo"):
-					os.remove(join(D, f))
+					remove(join(D, f))
 					print("Removing", f)
 
 class build(_build):
@@ -68,40 +68,40 @@ class build_ts(_build):
 					S = []
 					for s in SOURCES:
 						if abspath(dirname(s)).startswith(abspath(dirname(PRO))):
-							S.append(s.replace(dirname(PRO)+os.path.sep, ""))
+							S.append(s.replace(dirname(PRO)+sep, ""))
 					pro.write("SOURCES = {0}\n".format(SEP.join(S)))
 				if FORMS:
 					F = []
 					for f in FORMS:
 						if abspath(dirname(f)).startswith(abspath(dirname(PRO))):
-							F.append(f.replace(dirname(PRO)+os.path.sep, ""))
+							F.append(f.replace(dirname(PRO)+sep, ""))
 					pro.write("FORMS = {0}\n".format(SEP.join(F)))
 				if TRANSLATIONS:
 					T = []
 					for t in TRANSLATIONS:
 						if abspath(dirname(t)).startswith(abspath(dirname(PRO))):
-							T.append(t.replace(dirname(PRO)+os.path.sep, ""))
+							T.append(t.replace(dirname(PRO)+sep, ""))
 					pro.write("TRANSLATIONS = {0}\n".format(SEP.join(T)))
 
 		def _compile_ts(PRO):
-			os.system("pylupdate4 {0}".format(PRO))
-			os.system("lrelease {0}".format(PRO))
+			system("pylupdate4 {0}".format(PRO))
+			system("lrelease {0}".format(PRO))
 
 		PRO = []
 		FORMS = []
 		SOURCES = []
 		TRANSLATIONS = []
 
-		for D, d, F in os.walk('.'):
+		for D, d, F in walk('.'):
 			for f in F:
 				if f.endswith(".pro"):
-					PRO.append(os.path.join(D, f))
+					PRO.append(join(D, f))
 				elif f.endswith(".ui"):
-					FORMS.append(os.path.join(D, f))
+					FORMS.append(join(D, f))
 				elif f.endswith(".py"):
-					SOURCES.append(os.path.join(D, f))
+					SOURCES.append(join(D, f))
 				elif f.endswith(".ts"):
-					TRANSLATIONS.append(os.path.join(D, f))
+					TRANSLATIONS.append(join(D, f))
 
 		for P in PRO:
 			_gen_pro_file(P, FORMS, SOURCES, TRANSLATIONS)
@@ -120,7 +120,7 @@ class build_ui(_build):
 	def run(self):
 		def uicompile(uifile, pyfile=None):
 			if not pyfile:
-				pyfile = join(dirname(uifile), 
+				pyfile = join(dirname(uifile),
 					'Ui_'+basename(uifile).replace('.ui', '.py'))
 
 			with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
@@ -130,7 +130,7 @@ class build_ui(_build):
 			with open(pyfile, 'r') as SRC, open(pyfile.replace("src", join(
 				self.build_lib, "ltmt")), 'w') as BLD:
 				BLD.write(SRC.read())
-			
+
 			print("Compiling UI:", uifile, "=>", pyfile)
 
 
@@ -138,7 +138,7 @@ class build_ui(_build):
 			if not pyfile:
 				pyfile = rcfile.replace(".qrc", "_rc.py")
 
-			os.system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
+			system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
 			with open(pyfile, 'r') as S,\
 			open(pyfile.replace("src", join(self.build_lib, "ltmt")), 'w') as B:
 				B.write(S.read())
@@ -148,7 +148,7 @@ class build_ui(_build):
 			with open(filepath, 'r') as f:
 				L = f.readlines()
 			RC = []
-			for D, d, F in os.walk("src"):
+			for D, d, F in walk("src"):
 				for f in F:
 					if f.endswith("_rc.py"):
 						RC.append(join(D.replace("src", "ltmt"), f))
@@ -157,13 +157,13 @@ class build_ui(_build):
 					for i in RC:
 						I = L[l].strip().split()[-1]
 						if i.endswith(I+".py"):
-							p = dirname(i).replace(os.path.sep, ".")
+							p = dirname(i).replace(sep, ".")
 							break
 					L[l] = "from {0} import {1}\n".format(p, I)
 			with open(filepath, 'w') as f:
 				f.write(''.join(L))
 
-		for D, d, F in os.walk('src'):
+		for D, d, F in walk('src'):
 			for f in F:
 				if f.endswith(".ui"):
 					uicompile(join(D, f))
@@ -172,7 +172,7 @@ class build_ui(_build):
 
 def gen_packages():
 	P = []
-	for D, d, F in os.walk("src"):
+	for D, d, F in walk("src"):
 		for f in F:
 			if f.endswith(".py") and D not in P:
 				P.append(D)
@@ -180,7 +180,7 @@ def gen_packages():
 	p = []
 	for i in P:
 		if i.startswith("src"):
-			p.append(i.replace("src", "ltmt", 1).replace(os.path.sep, "."))
+			p.append(i.replace("src", "ltmt", 1).replace(sep, "."))
 	return(p)
 
 setup(

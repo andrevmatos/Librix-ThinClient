@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Session SYSTEM "Session-4.4.dtd">
+<!-- eric5 session file for project thinclient -->
+<!-- This file was generated automatically, do not edit. -->
+<!-- Saved: 2011-03-20, 17:24:52 -->
+<Session version="4.4">
+  <Filenames>
+    <Filename cline="89" cindex="0" folds="" zoom="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</Filename>
+  </Filenames>
+  <ActiveWindow cline="89" cindex="0">/home/andre/Dev/Librix/thinclient/src/daemon/tcd.py</ActiveWindow>
+  <Breakpoints/>
+  <Watchexpressions/>
+  <DebugInfo>
+    <CommandLine></CommandLine>
+    <WorkingDirectory></WorkingDirectory>
+    <Environment></Environment>
+    <ReportExceptions value="True"/>
+    <Exceptions/>
+    <IgnoredExceptions/>
+    <AutoClearShell value="True"/>
+    <TracePython value="False"/>
+    <AutoContinue value="True"/>
+    <CovexcPattern/>
+  </DebugInfo>
+  <Bookmarks/>
+</Session>
