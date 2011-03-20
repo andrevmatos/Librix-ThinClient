@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KeyGen</class>
+ <widget class="QDialog" name="KeyGen">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>419</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Public/Private SSH Key Generation</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Log:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="logText">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="savePrivKey">
+        <property name="text">
+         <string>Sa&amp;ve Private Key File</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/export_icon/save.png</normaloff>:/export_icon/save.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="savePubKey">
+        <property name="text">
+         <string>&amp;Save Public Key File</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/export_icon/save.png</normaloff>:/export_icon/save.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="openPrivKeyFile">
+        <property name="text">
+         <string>O&amp;pen Private Key File</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="openPubKeyFile">
+        <property name="text">
+         <string>&amp;Open Public Key File</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons/temp_icons.qrc">
+          <normaloff>:/export_icon/open.png</normaloff>:/export_icon/open.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="close">
+     <property name="text">
+      <string>&amp;Close</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../icons/temp_icons.qrc">
+       <normaloff>:/edit_icon/close.png</normaloff>:/edit_icon/close.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../icons/temp_icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>close</sender>
+   <signal>clicked()</signal>
+   <receiver>KeyGen</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>323</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>savePrivKey</sender>
+   <signal>clicked()</signal>
+   <receiver>KeyGen</receiver>
+   <slot>savePrivKey()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>116</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>savePubKey</sender>
+   <signal>clicked()</signal>
+   <receiver>KeyGen</receiver>
+   <slot>savePubKey()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>366</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>342</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openPrivKeyFile</sender>
+   <signal>clicked()</signal>
+   <receiver>KeyGen</receiver>
+   <slot>openPrivKey()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>524</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openPubKeyFile</sender>
+   <signal>clicked()</signal>
+   <receiver>KeyGen</receiver>
+   <slot>openPubKey()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>494</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>savePrivKey()</slot>
+  <slot>savePubKey()</slot>
+  <slot>openPrivKey()</slot>
+  <slot>openPubKey()</slot>
+ </slots>
+</ui>

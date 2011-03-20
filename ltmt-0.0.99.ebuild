@@ -15,9 +15,11 @@ KEYWORDS="x86 amd64"
 RDEPEND=">=dev-lang/python-3.1.1
 	>=dev-python/PyQt4-4.8.1
 	>=dev-python/lxml-2.2.8
-	>=dev-python/argparse-1.0"
+	>=dev-python/argparse-1.0
+	>=dev-tcltk/expect-5.43"
 
-DEPEND="${RDEPEND}"
+DEPEND=">=dev-lang/python-3.1.1
+	>=dev-python/PyQt4-4.8.1"
 
 pkg_setup() {
     python_set_active_version 3

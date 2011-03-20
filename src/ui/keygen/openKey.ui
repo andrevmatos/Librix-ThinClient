@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpenKey</class>
+ <widget class="QDialog" name="OpenKey">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>569</width>
+    <height>357</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="copyButton">
+     <property name="text">
+      <string>&amp;Copy to Clipboard</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../icons/temp_icons.qrc">
+       <normaloff>:/tab/copy.png</normaloff>:/tab/copy.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="closeButton">
+     <property name="text">
+      <string>&amp;Close</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../icons/temp_icons.qrc">
+       <normaloff>:/edit_icon/close.png</normaloff>:/edit_icon/close.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../icons/temp_icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OpenKey</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>36</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OpenKey</receiver>
+   <slot>copy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>copy()</slot>
+ </slots>
+</ui>

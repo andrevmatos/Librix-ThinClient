@@ -24,6 +24,7 @@ from PyQt4 import QtGui,QtCore
 
 from ltmt.ui.Ui_mainWindow import Ui_ThinClient
 from ltmt.ui.editkeys.EditKeys import EditKeys
+from ltmt.ui.keygen.KeyGen import KeyGen
 
 from ltmt.ui.users.usersPage import UsersPage
 from ltmt.ui.edit.editPage import EditPage
@@ -53,6 +54,15 @@ class Main(QtGui.QMainWindow):
 		self.ui.toolBar.addWidget(self.ui.nameEdit)
 
 		self.ui.topBar.close()
+		
+		# Check SSH key
+		if not os.path.isfile(os.path.expanduser("~/.ssh/id_rsa")) and\
+			QtGui.QMessageBox.question(self, self.tr("SSH private key not found"),
+			self.tr('SSH RSA Private Key File "~/.ssh/id_rsa" not found.\n'+
+			'Do you want to generate a RSA private/public keys pair now?'),
+			QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.Yes)\
+			== QtGui.QMessageBox.Yes:
+			self.keyGen()
 
 		# Init users and profiles package
 		self.moduleparser = LTCModuleParser()
@@ -108,15 +118,13 @@ class Main(QtGui.QMainWindow):
 			self.Export.show()
 			self.current = self.Export
 
-	def configNameChanged(self):
+	def configNameChanged(self, text):
 		"""When config file name was changed, set it to configfile
 
 		Qt Slot, called by UI
 		@param	self		A Main window instance
 		"""
-		text = self.ui.nameEdit.text()
-		if text:
-			self.configparser.setName(text)
+		self.configparser.setName(text)
 
 	def closeEvent(self, event):
 		"""Reimplementation of closeEvent Qt event
@@ -237,6 +245,13 @@ class Main(QtGui.QMainWindow):
 		@param	self		A Main window instance
 		"""
 		EditKeys(self.configparser, self).exec_()
+	
+	def keyGen(self):
+		"""Open Key Generation dialog
+		
+		@param	self		A Main window instance
+		"""
+		KeyGen(self).exec_()
 
 	def aboutLTMT(self):
 		"""Show a LTMT 'About' dialog
