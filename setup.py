@@ -24,7 +24,7 @@ from distutils.command.build import build as _build
 from distutils.command.clean import clean as _clean
 from distutils.command.sdist import sdist
 
-from os import walk,remove,system
+from os import walk,remove,system,stat
 from os.path import dirname, basename, abspath, isdir, join, sep
 from shutil import rmtree
 
@@ -122,27 +122,28 @@ class build_ui(_build):
 			if not pyfile:
 				pyfile = join(dirname(uifile),
 					'Ui_'+basename(uifile).replace('.ui', '.py'))
+			if stat(uifile).st_mtime > stat(pyfile).st_mtime:
+				with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
+					uic.compileUi(ui, py, execute=True, indent=0, from_imports=True)
 
-			with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
-				uic.compileUi(ui, py, execute=True, indent=0, from_imports=True)
+				fix_from_imports(pyfile)
+				print("Compiling UI:", uifile, "=>", pyfile)
 
-			fix_from_imports(pyfile)
-			with open(pyfile, 'r') as SRC, open(pyfile.replace("src", join(
-				self.build_lib, "ltmt")), 'w') as BLD:
+			with open(pyfile, 'r') as SRC, open(pyfile.replace("src",
+				join(self.build_lib, "ltmt")), 'w') as BLD:
 				BLD.write(SRC.read())
-
-			print("Compiling UI:", uifile, "=>", pyfile)
-
 
 		def rccompile(rcfile, pyfile=None):
 			if not pyfile:
 				pyfile = rcfile.replace(".qrc", "_rc.py")
 
-			system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
-			with open(pyfile, 'r') as S,\
-			open(pyfile.replace("src", join(self.build_lib, "ltmt")), 'w') as B:
+			if stat(rcfile).st_mtime > stat(pyfile).st_mtime:
+				system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
+				print("Compiling Resource:", rcfile, "=>", pyfile)
+
+			with open(pyfile, 'r') as S, open(pyfile.replace("src",
+				join(self.build_lib, "ltmt")), 'w') as B:
 				B.write(S.read())
-			print("Compiling Resource:", rcfile, "=>", pyfile)
 
 		def fix_from_imports(filepath):
 			with open(filepath, 'r') as f:
