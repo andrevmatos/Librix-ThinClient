@@ -116,13 +116,17 @@ class Main(Module):
 		else:
 			return
 
-		p.read(kdeglobals)
+		with open(kdeglobals, 'r') as KG:
+			p.read_file(KG)
 
 		s = 'KDE Action Restrictions'
 		if not p.has_section(s):
 			p.add_section(s)
 		p.set(s, "run_command", False)
 		p.set(s, "shell_access", False)
+
+		with open(kdeglobals, 'w') as KG:
+			p.write(KG, space_around_delimiters=False)
 
 
 	def stop(self):
@@ -136,10 +140,14 @@ class Main(Module):
 		else:
 			return
 
-		p.read(kdeglobals)
+		with open(kdeglobals, 'r') as KG:
+			p.read_file(KG)
 
 		s = 'KDE Action Restrictions'
 		if not p.has_section(s):
 			p.add_section(s)
 		p.set(s, "run_command", True)
 		p.set(s, "shell_access", True)
+
+		with open(kdeglobals, 'w') as KG:
+			p.write(KG, space_around_delimiters=False)

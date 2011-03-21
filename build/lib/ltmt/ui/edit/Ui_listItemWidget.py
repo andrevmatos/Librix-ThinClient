@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/edit/listItemWidget.ui'
 #
-# Created: Sun Mar 20 17:25:09 2011
+# Created: Mon Mar 21 19:42:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
