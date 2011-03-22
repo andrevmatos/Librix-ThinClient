@@ -25,7 +25,7 @@ from distutils.command.clean import clean as _clean
 from distutils.command.sdist import sdist
 
 from os import walk,remove,system,stat
-from os.path import dirname, basename, abspath, isdir, join, sep
+from os.path import dirname,basename,abspath,isdir,isfile,join,sep
 from shutil import rmtree
 
 class clean(_clean):
@@ -122,7 +122,8 @@ class build_ui(_build):
 			if not pyfile:
 				pyfile = join(dirname(uifile),
 					'Ui_'+basename(uifile).replace('.ui', '.py'))
-			if stat(uifile).st_mtime > stat(pyfile).st_mtime:
+
+			if not isfile(pyfile) or stat(uifile).st_mtime > stat(pyfile).st_mtime:
 				with open(uifile, 'r') as ui, open(pyfile, 'w') as py:
 					uic.compileUi(ui, py, execute=True, indent=0, from_imports=True)
 
@@ -137,7 +138,7 @@ class build_ui(_build):
 			if not pyfile:
 				pyfile = rcfile.replace(".qrc", "_rc.py")
 
-			if stat(rcfile).st_mtime > stat(pyfile).st_mtime:
+			if not isfile(pyfile) or stat(rcfile).st_mtime > stat(pyfile).st_mtime:
 				system("pyrcc4 -py3 {0} -o {1}".format(rcfile, pyfile))
 				print("Compiling Resource:", rcfile, "=>", pyfile)
 

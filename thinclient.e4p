@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric5 project file for project thinclient -->
-<!-- Saved: 2011-03-21, 23:03:48 -->
+<!-- Saved: 2011-03-21, 23:35:47 -->
 <!-- Copyright (C) 2011 Librix Dev Team, tutooprog@las.ic.unicamp.br -->
 <Project version="5.1">
   <Language>en</Language>
@@ -191,6 +191,12 @@
     <Source>src/modules/disable_run_cmd/__init__.py</Source>
     <Source>build/lib/ltmt/modules/disable_run_cmd/main.py</Source>
     <Source>build/lib/ltmt/modules/disable_run_cmd/__init__.py</Source>
+    <Source>build/lib/ltmt/ui/export/schedule/scheduleDialog.py</Source>
+    <Source>build/lib/ltmt/ui/export/schedule/__init__.py</Source>
+    <Source>build/lib/ltmt/ui/export/schedule/Ui_scheduleDialog.py</Source>
+    <Source>src/ui/export/scheduler/scheduleDialog.py</Source>
+    <Source>src/ui/export/scheduler/__init__.py</Source>
+    <Source>src/ui/export/scheduler/Ui_scheduleDialog.py</Source>
   </Sources>
   <Forms>
     <Form>src/ui/users/usersWidget.ui</Form>
@@ -213,6 +219,7 @@
     <Form>src/modules/app_permissions/ui/appPermissions.ui</Form>
     <Form>src/ui/keygen/keyGen.ui</Form>
     <Form>src/ui/keygen/openKey.ui</Form>
+    <Form>src/ui/export/scheduler/scheduleDialog.ui</Form>
   </Forms>
   <Translations>
     <Translation>src/ui/i18n/app_pt_BR.qm</Translation>

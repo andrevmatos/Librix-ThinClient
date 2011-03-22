@@ -199,24 +199,74 @@
     </widget>
    </item>
    <item>
+    <widget class="QGroupBox" name="schedulerFrame">
+     <property name="title">
+      <string>Schedule Export</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QCheckBox" name="scheduleCheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Schedule Export?</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QDateTimeEdit" name="dateTimeEdit">
+           <property name="dateTime">
+            <datetime>
+             <hour>23</hour>
+             <minute>59</minute>
+             <second>59</second>
+             <year>2012</year>
+             <month>12</month>
+             <day>21</day>
+            </datetime>
+           </property>
+           <property name="date">
+            <date>
+             <year>2012</year>
+             <month>12</month>
+             <day>21</day>
+            </date>
+           </property>
+           <property name="time">
+            <time>
+             <hour>23</hour>
+             <minute>59</minute>
+             <second>59</second>
+            </time>
+           </property>
+           <property name="displayFormat">
+            <string>dd/MM/yy HH:mm:ss</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="privKeyBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>100</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>100</height>
-      </size>
      </property>
      <property name="title">
       <string>Admin SSH Private Key</string>
@@ -288,8 +338,8 @@
    <slot>checkPrivKeyFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>358</x>
-     <y>478</y>
+     <x>472</x>
+     <y>504</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -304,8 +354,8 @@
    <slot>browsePrivKeyFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>622</x>
-     <y>477</y>
+     <x>638</x>
+     <y>509</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -368,12 +418,28 @@
    <slot>rescan()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>609</x>
-     <y>120</y>
+     <x>628</x>
+     <y>150</y>
     </hint>
     <hint type="destinationlabel">
      <x>651</x>
      <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scheduleCheckBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>widget</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>407</y>
     </hint>
    </hints>
   </connection>

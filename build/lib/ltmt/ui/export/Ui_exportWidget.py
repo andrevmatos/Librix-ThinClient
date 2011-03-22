@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/export/exportWidget.ui'
 #
-# Created: Mon Mar 21 19:51:01 2011
+# Created: Tue Mar 22 00:45:20 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -92,14 +92,38 @@ class Ui_ExportWidget(object):
 		self.horizontalLayout.addWidget(self.targetsToolBar)
 		self.verticalLayout.addWidget(self.IPsWidget)
 		self.mainVLayout.addWidget(self.targetsBox)
+		self.schedulerFrame = QtGui.QGroupBox(ExportWidget)
+		self.schedulerFrame.setObjectName(_fromUtf8("schedulerFrame"))
+		self.horizontalLayout_3 = QtGui.QHBoxLayout(self.schedulerFrame)
+		self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+		self.scheduleCheckBox = QtGui.QCheckBox(self.schedulerFrame)
+		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+		sizePolicy.setHorizontalStretch(0)
+		sizePolicy.setVerticalStretch(0)
+		sizePolicy.setHeightForWidth(self.scheduleCheckBox.sizePolicy().hasHeightForWidth())
+		self.scheduleCheckBox.setSizePolicy(sizePolicy)
+		self.scheduleCheckBox.setObjectName(_fromUtf8("scheduleCheckBox"))
+		self.horizontalLayout_3.addWidget(self.scheduleCheckBox)
+		self.widget = QtGui.QWidget(self.schedulerFrame)
+		self.widget.setObjectName(_fromUtf8("widget"))
+		self.horizontalLayout_4 = QtGui.QHBoxLayout(self.widget)
+		self.horizontalLayout_4.setMargin(0)
+		self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
+		self.dateTimeEdit = QtGui.QDateTimeEdit(self.widget)
+		self.dateTimeEdit.setDateTime(QtCore.QDateTime(QtCore.QDate(2012, 12, 21), QtCore.QTime(23, 59, 59)))
+		self.dateTimeEdit.setDate(QtCore.QDate(2012, 12, 21))
+		self.dateTimeEdit.setTime(QtCore.QTime(23, 59, 59))
+		self.dateTimeEdit.setCalendarPopup(True)
+		self.dateTimeEdit.setObjectName(_fromUtf8("dateTimeEdit"))
+		self.horizontalLayout_4.addWidget(self.dateTimeEdit)
+		self.horizontalLayout_3.addWidget(self.widget)
+		self.mainVLayout.addWidget(self.schedulerFrame)
 		self.privKeyBox = QtGui.QGroupBox(ExportWidget)
 		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
 		sizePolicy.setHorizontalStretch(0)
 		sizePolicy.setVerticalStretch(0)
 		sizePolicy.setHeightForWidth(self.privKeyBox.sizePolicy().hasHeightForWidth())
 		self.privKeyBox.setSizePolicy(sizePolicy)
-		self.privKeyBox.setMinimumSize(QtCore.QSize(0, 100))
-		self.privKeyBox.setMaximumSize(QtCore.QSize(16777215, 100))
 		self.privKeyBox.setObjectName(_fromUtf8("privKeyBox"))
 		self.horizontalLayout_2 = QtGui.QHBoxLayout(self.privKeyBox)
 		self.horizontalLayout_2.setSpacing(4)
@@ -133,6 +157,7 @@ class Ui_ExportWidget(object):
 		QtCore.QObject.connect(self.delButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.removeTargetsClicked)
 		QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("clicked(QAbstractButton*)")), ExportWidget.buttonBoxClicked)
 		QtCore.QObject.connect(self.rescanButton, QtCore.SIGNAL(_fromUtf8("clicked()")), ExportWidget.rescan)
+		QtCore.QObject.connect(self.scheduleCheckBox, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.widget.setEnabled)
 		QtCore.QMetaObject.connectSlotsByName(ExportWidget)
 
 	def retranslateUi(self, ExportWidget):
@@ -146,6 +171,9 @@ class Ui_ExportWidget(object):
 		self.delButton.setToolTip(QtGui.QApplication.translate("ExportWidget", "Remove Selected Targets", None, QtGui.QApplication.UnicodeUTF8))
 		self.delButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
 		self.rescanButton.setText(QtGui.QApplication.translate("ExportWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
+		self.schedulerFrame.setTitle(QtGui.QApplication.translate("ExportWidget", "Schedule Export", None, QtGui.QApplication.UnicodeUTF8))
+		self.scheduleCheckBox.setText(QtGui.QApplication.translate("ExportWidget", "Schedule Export?", None, QtGui.QApplication.UnicodeUTF8))
+		self.dateTimeEdit.setDisplayFormat(QtGui.QApplication.translate("ExportWidget", "dd/MM/yy HH:mm:ss", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyBox.setTitle(QtGui.QApplication.translate("ExportWidget", "Admin SSH Private Key", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyLabel.setText(QtGui.QApplication.translate("ExportWidget", "SSH Private Key:", None, QtGui.QApplication.UnicodeUTF8))
 		self.privKeyPath.setText(QtGui.QApplication.translate("ExportWidget", "/root/.ssh/id_rsa", None, QtGui.QApplication.UnicodeUTF8))

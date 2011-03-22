@@ -27,8 +27,7 @@ from ltmt.ui.export.targets.addTargets import AddTargets
 from ltmt.ui.export.targets.scanTargets import ScanTargets
 from ltmt.ui.export.targets.threadedScan import ThreadedScan
 from ltmt.ui.export.ssh_export.sshExport import SSHExport
-
-from ltmt.defs import configfile
+from ltmt.ui.export.scheduler.scheduleDialog import Scheduler
 
 class ExportPage(QtGui.QWidget):
 	"""Creates the main Export page"""
@@ -145,7 +144,7 @@ class ExportPage(QtGui.QWidget):
 			# Should be a better way to delete a tree item
 			index = self.ui.treeWidget.indexOfTopLevelItem(I.treeItem)
 			self.ui.treeWidget.takeTopLevelItem(index)
-				
+
 		self.checkPrivKeyFile()
 		self.checkConfigs()
 
@@ -162,9 +161,14 @@ class ExportPage(QtGui.QWidget):
 			self.checkPrivKeyFile()
 		elif self.ui.buttonBox.standardButton(button) == QtGui.QDialogButtonBox.Apply:
 			self.startExport()
-		
+
 	def startExport(self):
-		self.dialog = SSHExport([self.configparser.configfile], self.ui.privKeyPath.text(), 
+		if self.ui.scheduleCheckBox.isChecked():
+			r = Scheduler(self.ui.dateTimeEdit.dateTime(), self).exec_()
+			if not r:
+				return
+
+		self.dialog = SSHExport([self.configparser.configfile], self.ui.privKeyPath.text(),
 			list(self.targets), self)
 		self.dialog.execThreads()
 		self.dialog.show()

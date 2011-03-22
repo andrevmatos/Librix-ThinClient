@@ -330,12 +330,12 @@
 <context>
     <name>ExportPage</name>
     <message>
-        <location filename="export/exportPage.py" line="56"/>
+        <location filename="export/exportPage.py" line="55"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="export/exportPage.py" line="70"/>
+        <location filename="export/exportPage.py" line="69"/>
         <source>Import File</source>
         <translation>Importar Arquivo</translation>
     </message>
@@ -343,54 +343,69 @@
 <context>
     <name>ExportWidget</name>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="139"/>
+        <location filename="export/Ui_exportWidget.py" line="164"/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="140"/>
+        <location filename="export/Ui_exportWidget.py" line="165"/>
         <source>Targets</source>
         <translation>Alvos</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="142"/>
+        <location filename="export/Ui_exportWidget.py" line="167"/>
         <source>Address</source>
         <translation>Endereço</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="143"/>
+        <location filename="export/Ui_exportWidget.py" line="168"/>
         <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="144"/>
+        <location filename="export/Ui_exportWidget.py" line="169"/>
         <source>Add Targets Manually</source>
         <translation>Adicionar Alvos Manualmente</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="152"/>
+        <location filename="export/Ui_exportWidget.py" line="180"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="146"/>
+        <location filename="export/Ui_exportWidget.py" line="171"/>
         <source>Remove Selected Targets</source>
         <translation>Remover Alvos Selecionados</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="149"/>
+        <location filename="export/Ui_exportWidget.py" line="177"/>
         <source>Admin SSH Private Key</source>
         <translation>Chave Privada SSH do Administrador</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="150"/>
+        <location filename="export/Ui_exportWidget.py" line="178"/>
         <source>SSH Private Key:</source>
         <translation>Shave SSH Privada:</translation>
     </message>
     <message>
-        <location filename="export/Ui_exportWidget.py" line="151"/>
+        <location filename="export/Ui_exportWidget.py" line="179"/>
         <source>/root/.ssh/id_rsa</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="export/Ui_exportWidget.py" line="174"/>
+        <source>Schedule Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/Ui_exportWidget.py" line="175"/>
+        <source>Schedule Export?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/Ui_exportWidget.py" line="176"/>
+        <source>dd/MM/yy HH:mm:ss</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -754,6 +769,47 @@ Você deseja gerar um par de chaves pública;privada RSA agora agora?</translati
         <location filename="export/targets/Ui_scanTargetsDialog.py" line="98"/>
         <source>Select</source>
         <translation>Seleção</translation>
+    </message>
+</context>
+<context>
+    <name>Scheduler</name>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="98"/>
+        <source>Scheduled Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="99"/>
+        <source>Exporting Config Files and Updates through SSH</source>
+        <translation type="unfinished">Exportando Arquivos de Configuração e Atualizações via SSH</translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="100"/>
+        <source>Begin: &lt;b&gt;{0}&lt;/b&gt;
+&lt;br&gt;Elapsed: &lt;b&gt;{1}&lt;/b&gt;
+&lt;br&gt;Remaining: &lt;b&gt;{2}&lt;/b&gt;
+&lt;br&gt;End: &lt;b&gt;{3}&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="106"/>
+        <source>Proceed to Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="107"/>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="110"/>
+        <source>Cancel nonstarted operations</source>
+        <translation type="unfinished">Cancelar operações não-iniciadas</translation>
+    </message>
+    <message>
+        <location filename="export/scheduler/Ui_scheduleDialog.py" line="111"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
     </message>
 </context>
 <context>
