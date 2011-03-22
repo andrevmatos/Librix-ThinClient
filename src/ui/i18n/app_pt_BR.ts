@@ -675,17 +675,17 @@ Você deseja gerar um par de chaves pública;privada RSA agora agora?</translati
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/sshExport.py" line="154"/>
+        <location filename="export/ssh_export/sshExport.py" line="134"/>
         <source>Operation {0} of {1}: Send files to {2}</source>
         <translation>Operação {0} de {1}: Enviar arquivos para {2}</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/sshExport.py" line="167"/>
+        <location filename="export/ssh_export/sshExport.py" line="147"/>
         <source>Root Password</source>
         <translation>Senha de Root</translation>
     </message>
     <message>
-        <location filename="export/ssh_export/sshExport.py" line="167"/>
+        <location filename="export/ssh_export/sshExport.py" line="147"/>
         <source>The host {0} require a password!</source>
         <translation>O host {0} requer uma senha!</translation>
     </message>

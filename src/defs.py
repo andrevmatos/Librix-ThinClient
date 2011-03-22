@@ -19,9 +19,16 @@
 # along with librix-thinclient.  If not, see <http://www.gnu.org/licenses/>.
 
 pidfile = "/var/run/thinclient.pid"
+
 configfile = "/etc/thinclient.conf"
+
 logfile = "/var/log/thinclient.log"
+
+rsyncdirs = ["/mnt/cdrom/librix"]
+rsyncexclude = []	# e.g.: ['/mnt/cdrom/librix/etc/passwd']
+
 http_port = 8088
+
 version = "0.0.99"
 
 __all__ = ["pidfile", "configfile", "logfile", "http_port", "version"]

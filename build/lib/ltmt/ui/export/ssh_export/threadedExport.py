@@ -20,8 +20,11 @@
 
 #import os
 import subprocess
+import socket
 
 from PyQt4.QtCore import QThread,pyqtSignal
+
+from ltmt.defs import rsyncdirs, rsyncexclude
 
 class ThreadedExport(QThread):
 	"""Create a QThread that scp files to a list of targets"""
@@ -55,6 +58,70 @@ class ThreadedExport(QThread):
 		self.pause = False
 		QThread.start(self)
 
+	def make_copy(self, target):
+		"""Actually do SCP export
+
+		@param	self		A ThreadedExport instance
+		@param	target		Destiny IP
+		@return				Int. 0 if Success. 1 if password. Error code else.
+		"""
+		ssh_opts = ('-o "StrictHostKeyChecking no" -o '+
+			'"NumberOfPasswordPrompts 1" -o "PasswordAuthentication no" '+
+			'-i "{0}"'.format(self.privkey))
+
+		# SCP
+		if self.password:
+			# Use expect to pass password to scp
+			p = subprocess.Popen(('expect -c \'spawn scp -p {0} {1} root@{2}:/etc'+
+				' ; expect "*?assword:" ; send "{3}\\n" ; expect eof ; '+
+				'catch wait result ; exit [lindex $result 3 ]\'').format(
+				ssh_opts, ' '.join(self.files), target, self.password),
+				shell=True, stdin=subprocess.PIPE,
+				stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		else:
+			p = subprocess.Popen(('scp -B -p {0} {1} root@{2}:/etc').format(ssh_opts,
+				' '.join(self.files), target), shell=True, stdin=subprocess.PIPE,
+				stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+		r = p.wait()
+		if r == 1:
+			try:
+				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				sock.connect((target, 22))
+			except:
+				r = 99
+			finally:
+				sock.close()
+
+		if r or not 'rsync' in self.files:
+			return(r)
+
+		# RSYNC
+		if rsyncexclude:
+			exc = '--exclude={'+','.join(rsyncexclude)+'}'
+		else:
+			exc = ''
+		if self.password:
+			# Use expect to pass password to scp
+			q = subprocess.Popen(('expect -c \'spawn rsync -avRP -e "ssh -l '+
+				'root {0}" {1} {2} {3}:/'+
+				' ; expect "*?assword:" ; send "{4}\\n" ; expect eof ; '+
+				'catch wait result ; exit [lindex $result 3 ]\'').format(
+				ssh_opts, exc, ' '.format(rsyncdirs), target, self.password),
+				shell=True, stdin=subprocess.PIPE,
+				stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		else:
+			q = subprocess.Popen(('rsync -avRP -e "ssh -l root -o '+
+				'\'BatchMode yes\' {0}" {1} {2} {3}:/').format(ssh_opts, exc,
+				' '.format(rsyncdirs), target), shell=True,
+				stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+				stderr=subprocess.PIPE)
+
+		s = q.wait()
+
+		return(s)
+
+
 	def run(self):
 		"""Main thread method
 
@@ -67,24 +134,8 @@ class ThreadedExport(QThread):
 			t = self.targets.pop(0)
 
 			self.startedSCP.emit(t)
-			if self.password:
-				# Use expect to pass password to scp
-				p = subprocess.Popen(('expect -c \'spawn scp -p '+
-					'-o "StrictHostKeyChecking no" -o "NumberOfPasswordPrompts 1"'+
-					' -o "PasswordAuthentication no"  -i "{0}" {1} root@{2}:/etc ; '+
-					'expect "*?assword:" ; send "{3}\\n" ; expect eof ; '+
-					'catch wait result ; exit [lindex $result 3 ]\'').format(
-					self.privkey, ' '.join(self.files), t, self.password), 
-					shell=True, stdin=subprocess.PIPE, 
-					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-			else:
-				p = subprocess.Popen(('scp -B -o "StrictHostKeyChecking no" '+
-					'-p -i "{0}" {1} root@{2}:/etc').format(self.privkey, 
-					' '.join(self.files), t), shell=True, stdin=subprocess.PIPE,
-					stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+			r = self.make_copy(t)
 
-			r = p.wait()
-			# if got password error
 			if r == 0:
 				print("__ host finished", t)
 				self.finishedSCP.emit(t)
@@ -93,12 +144,11 @@ class ThreadedExport(QThread):
 				self.requestPasswd.emit(t)
 				# reinsert target on list, and pause thread
 				self.targets.insert(0, t)
-				print("__thread PAUSING!!")
-				return
+				self.pause = True
 			else:
 				print("__ host error", t, "=", r)
 				self.errorSCP.emit(t)
-				
+
 		if self.pause:
 			print("__thread PAUSING!!")
 		else:
